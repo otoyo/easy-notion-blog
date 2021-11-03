@@ -6,7 +6,7 @@ Deploy your [Vercel](https://vercel.com/) environment.
 
 ## Demo
 
-[https://my-notion-blog-seven.vercel.app/blog](https://my-notion-blog-seven.vercel.app/blog)
+[https://my-notion-blog-otoyo.vercel.app/blog](https://my-notion-blog-otoyo.vercel.app/blog)
 
 ## Requirements
 
