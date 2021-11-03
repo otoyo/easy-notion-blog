@@ -6,7 +6,7 @@ Deploy your [Vercel](https://vercel.com/) environment.
 
 ## Demo
 
-WIP
+[https://my-notion-blog-seven.vercel.app/blog](https://my-notion-blog-seven.vercel.app/blog)
 
 ## Requirements
 
@@ -32,9 +32,13 @@ WIP
 1. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
 1. Your Notion Blog will be published after deploy
 
+---
+
 Fig. 1
 
 ![Fig. 1](https://user-images.githubusercontent.com/1063435/140033686-3442a1f3-91b3-4e2e-981e-b0e998dc3b1e.png)
+
+---
 
 Fig. 2
 
