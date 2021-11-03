@@ -323,6 +323,10 @@ export async function getFirstPost() {
 
   const data = await client.databases.query(params)
 
+  if (!data.results.length) {
+    return null
+  }
+
   return _buildPost(data.results[0])
 }
 
@@ -364,6 +368,10 @@ export async function getPostBySlug(slug: string) {
       },
     ],
   })
+
+  if (!data.results.length) {
+    return null
+  }
 
   return _buildPost(data.results[0])
 }

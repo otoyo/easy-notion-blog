@@ -131,7 +131,7 @@ const RenderPostsBeforeDate = ({
               </div>
             )
           })}
-          {firstPost.Date !== posts[posts.length - 1].Date && (
+          {!!firstPost && firstPost.Date !== posts[posts.length - 1].Date && (
             <div className={blogStyles.nextContainer}>
               <hr />
               <Link

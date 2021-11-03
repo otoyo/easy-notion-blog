@@ -3,7 +3,7 @@ import { GA_TRACKING_ID } from '../lib/gtag'
 
 const GoogleAnalytics = () => {
   if (!GA_TRACKING_ID) {
-    return
+    return ''
   }
 
   return (
