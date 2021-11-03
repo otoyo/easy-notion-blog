@@ -27,3 +27,70 @@ curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE
         }
     }
 }'
+
+curl 'https://api.notion.com/v1/pages' \
+  -H 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
+  -H "Content-Type: application/json" \
+  -H "Notion-Version: 2021-08-16" \
+  --data '{
+	"parent": { "database_id": "'"$DATABASE_ID"'" },
+	"properties": {
+		"Page": {
+			"title": [
+				{
+					"text": {
+              "content": "My 1st post"
+					}
+				}
+			]
+		},
+		"Excerpt": {
+			"rich_text": [
+				{
+					"text": {
+						"content": "This is an excerpt."
+					}
+				}
+			]
+		},
+    "Slug": {
+			"rich_text": [
+				{
+					"text": {
+						"content": "my-first-post"
+					}
+				}
+			]
+    },
+    "Date": {
+        "date": {
+            "start": "2021-11-03"
+        }
+    },
+		"Tags": {
+			"multi_select": [
+          { "name": "Diary" }
+      ]
+		},
+    "Published": {
+        "checkbox": true
+    },
+		"Rank": { "number": 1 }
+	},
+	"children": [
+		{
+			"object": "block",
+			"type": "paragraph",
+			"paragraph": {
+				"text": [
+					{
+						"type": "text",
+						"text": {
+							"content": "This is my first post."
+						}
+					}
+				]
+			}
+		}
+	]
+}'
