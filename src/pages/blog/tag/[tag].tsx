@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Header from '../../../components/header'
 import blogStyles from '../../../styles/blog.module.css'
 import sharedStyles from '../../../styles/shared.module.css'
-import { getBlogLink, getTagLink } from '../../../lib/blog-helpers'
+import { getBlogLink, getTagLink, getDateStr } from '../../../lib/blog-helpers'
 import { useEffect } from 'react'
 import {
   getPosts,
@@ -94,7 +94,9 @@ const RenderPostsByTags = ({
             return (
               <div className={blogStyles.postPreview} key={post.Slug}>
                 {post.Date && (
-                  <div className="posted">📅&nbsp;&nbsp;{post.Date}</div>
+                  <div className="posted">
+                    📅&nbsp;&nbsp;{getDateStr(post.Date)}
+                  </div>
                 )}
                 <h3>
                   <div className={blogStyles.titleContainer}>

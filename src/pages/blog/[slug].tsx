@@ -9,7 +9,7 @@ import Heading from '../../components/heading'
 import SocialButtons from '../../components/social-buttons'
 import components from '../../components/dynamic'
 import blogStyles from '../../styles/blog.module.css'
-import { getBlogLink, getTagLink } from '../../lib/blog-helpers'
+import { getBlogLink, getTagLink, getDateStr } from '../../lib/blog-helpers'
 import { textBlock } from '../../lib/notion/renderers'
 import {
   getPosts,
@@ -119,7 +119,9 @@ const RenderPost = ({
       />
       <div className={`${blogStyles.flexContainer}`}>
         <div className={blogStyles.post}>
-          {post.Date && <div className="posted">📅&nbsp;&nbsp;{post.Date}</div>}
+          {post.Date && (
+            <div className="posted">📅&nbsp;&nbsp;{getDateStr(post.Date)}</div>
+          )}
           <h1>{post.Title || ''}</h1>
           <hr />
           <div className={blogStyles.tagContainer}>

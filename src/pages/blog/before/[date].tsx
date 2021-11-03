@@ -11,6 +11,7 @@ import {
   getBlogLink,
   getTagLink,
   getBeforeLink,
+  getDateStr,
 } from '../../../lib/blog-helpers'
 import {
   getPosts,
@@ -97,7 +98,9 @@ const RenderPostsBeforeDate = ({
             return (
               <div className={blogStyles.postPreview} key={post.Slug}>
                 {post.Date && (
-                  <div className="posted">📅&nbsp;&nbsp;{post.Date}</div>
+                  <div className="posted">
+                    📅&nbsp;&nbsp;{getDateStr(post.Date)}
+                  </div>
                 )}
                 <h3>
                   <div className={blogStyles.titleContainer}>
