@@ -1,0 +1,39 @@
+{
+  "name": "my-notion-blog",
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "build": "node scripts/set-blog-index-cache.js && next build && node scripts/expire-blog-index-cache.js",
+    "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
+    "lint": "next lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@notionhq/client": "^0.4.0",
+    "@zeit/react-jsx-parser": "^2.0.0",
+    "async-sema": "^3.1.0",
+    "github-slugger": "^1.2.1",
+    "next": "^11.1.2",
+    "prismjs": "^1.25.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-share": "^4.4.0",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.2",
+    "@types/react": "^16.9.17",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "typescript": "^4.4.3"
+  }
+}
