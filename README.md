@@ -4,6 +4,10 @@ Notion Blog by using Notion Official API.
 
 Deploy your [Vercel](https://vercel.com/) environment.
 
+## Screenshot
+
+![Screenshot](https://user-images.githubusercontent.com/1063435/140231088-5d04b7bd-1ec7-401e-860e-f60d14faaaf9.png)
+
 ## Demo
 
 [https://my-notion-blog-otoyo.vercel.app/blog](https://my-notion-blog-otoyo.vercel.app/blog)
