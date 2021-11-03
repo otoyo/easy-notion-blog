@@ -1,5 +1,4 @@
 .blogIndex {
-  min-width: 50vw;
   padding: 0 5%;
   max-width: calc(600px + 10%);
 }
@@ -209,16 +208,17 @@
   }
 
   .blogIndex {
+    min-width: 50%;
     padding: 0 5% 0 5%;
   }
 
   .post {
-    min-width: 50vw;
+    min-width: 50%;
     padding: 0 5% 0 5%;
   }
 
   .sideMenu {
-    width: 20vw;
+    min-width: 25%;
     padding: 0 3% 0 0;
   }
 
