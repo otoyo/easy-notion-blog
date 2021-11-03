@@ -1,8 +1,8 @@
 # my-notion-blog
 
-Notion Blog by using Notion Official API.
+Easy to start your blog.
 
-Deploy your [Vercel](https://vercel.com/) environment.
+You can write on your Notion.
 
 ## Screenshot
 
@@ -12,11 +12,21 @@ Deploy your [Vercel](https://vercel.com/) environment.
 
 [https://my-notion-blog-otoyo.vercel.app/blog](https://my-notion-blog-otoyo.vercel.app/blog)
 
+## Features
+
+- Very fast!
+- Write on the Notion
+- Using official API
+- Full customization
+
 ## Requirements
 
 - [Notion](https://www.notion.so/) account
 - [Vercel](https://vercel.com/) account
 - Git
+
+(For your customization)
+
 - Node.js v12
 - [Yarn](https://yarnpkg.com/getting-started)
 
@@ -29,7 +39,7 @@ Deploy your [Vercel](https://vercel.com/) environment.
 1. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
 1. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration)
-1. Clone this repo into your local `git clone git@github.com:otoyo/my-notion-blog.git`
+1. Clone this repo into your local `git clone git@github.com:otoyo/my-notion-blog.git && cd my-notion-blog`
 1. Run initialization script `DATABASE_ID=<YOUR_DATABASE_ID> NOTION_API_SECRET=<YOUR_NOTION_API_SECRET> ./scripts/init-database.sh`
 1. Go to [vercel.com](https://vercel.com/) and log-in with your account
 1. Create new project by importing GitHub repo `otoyo/my-notion-blog` (Skip team create)
