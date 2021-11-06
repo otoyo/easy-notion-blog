@@ -1,8 +1,8 @@
 [English](README.md) | 日本語
 
-# my-notion-blog
+# easy-notion-blog
 
-my-notion-blog を使えば簡単にブログを開設できます。
+easy-notion-blog を使えば簡単にブログを開設できます。
 
 ブログは Notion で書くことができます。
 
@@ -12,7 +12,7 @@ my-notion-blog を使えば簡単にブログを開設できます。
 
 ## デモ
 
-[https://my-notion-blog-otoyo.vercel.app/blog](https://my-notion-blog-otoyo.vercel.app/blog)
+[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
 
 ## 特長
 
@@ -41,10 +41,10 @@ my-notion-blog を使えば簡単にブログを開設できます。
 1. URL から次の部分を `DATABASE_ID` としてメモします `https://notion.so/your-account/<ココ>?v=xxxx`
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
 1. `DATABASE_ID` をメモしたデータベースを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
-1. ターミナルアプリを開きこのリポジトリをクローンします `git clone git@github.com:otoyo/my-notion-blog.git && cd my-notion-blog`
+1. ターミナルアプリを開きこのリポジトリをクローンします `git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog`
 1. 初期化スクリプトを実行します `DATABASE_ID=<YOUR_DATABASE_ID> NOTION_API_SECRET=<YOUR_NOTION_API_SECRET> ./scripts/init-database.sh`
 1. [vercel.com](https://vercel.com/) にログインします
-1. プロジェクトを新規作成しリポジトリとして `otoyo/my-notion-blog` をインポートします(チームの作成はスキップします)
+1. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
 1. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
 1. デプロイが完了すると Notion Blog が見えるようになります
 
@@ -85,4 +85,4 @@ PR 歓迎です。
 
 ---
 
-my-notion-blog は [ijjk/notion-blog](https://github.com/ijjk/notion-blog) と [otoyo/notion-blog](https://github.com/otoyo/notion-blog) をベースにしています。
+easy-notion-blog は [ijjk/notion-blog](https://github.com/ijjk/notion-blog) と [otoyo/notion-blog](https://github.com/otoyo/notion-blog) をベースにしています。

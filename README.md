@@ -1,6 +1,6 @@
 English | [日本語](README.ja.md)
 
-# my-notion-blog
+# eash-notion-blog
 
 Easy to start your blog.
 
@@ -12,7 +12,7 @@ You can write on your Notion.
 
 ## Demo
 
-[https://my-notion-blog-otoyo.vercel.app/blog](https://my-notion-blog-otoyo.vercel.app/blog)
+[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
 
 ## Features
 
@@ -41,10 +41,10 @@ You can write on your Notion.
 1. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
 1. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
-1. Open the Terminal.app and clone this repo into your local `git clone git@github.com:otoyo/my-notion-blog.git && cd my-notion-blog`
+1. Open the Terminal.app and clone this repo into your local `git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog`
 1. Run initialization script `DATABASE_ID=<YOUR_DATABASE_ID> NOTION_API_SECRET=<YOUR_NOTION_API_SECRET> ./scripts/init-database.sh`
 1. Go to [vercel.com](https://vercel.com/) and log-in with your account
-1. Create new project by importing GitHub repo `otoyo/my-notion-blog` (Skip team create)
+1. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
 1. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
 1. Your Notion Blog will be published after deploy
 
@@ -85,4 +85,4 @@ Pull requests are welcome.
 
 ---
 
-my-notion-blog is based on [ijjk/notion-blog](https://github.com/ijjk/notion-blog) and [otoyo/notion-blog](https://github.com/otoyo/notion-blog)
+easy-notion-blog is based on [ijjk/notion-blog](https://github.com/ijjk/notion-blog) and [otoyo/notion-blog](https://github.com/otoyo/notion-blog)
