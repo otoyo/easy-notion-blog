@@ -8,7 +8,7 @@ You can write on your Notion.
 
 ## Screenshot
 
-![Screenshot](https://user-images.githubusercontent.com/1063435/140231088-5d04b7bd-1ec7-401e-860e-f60d14faaaf9.png)
+![Screenshot](https://user-images.githubusercontent.com/1063435/140594180-1683fc3d-28fd-4978-9b15-ab59cf39c2db.png)
 
 ## Demo
 
@@ -52,7 +52,7 @@ You can write on your Notion.
 
 Fig.1 Select "Table - Inline" after typing `/table`
 
-![Fig.1](https://user-images.githubusercontent.com/1063435/140033686-3442a1f3-91b3-4e2e-981e-b0e998dc3b1e.png)
+![Fig.1](https://user-images.githubusercontent.com/1063435/140594182-1a717ed1-24ed-47e7-b037-70c684273dab.png)
 
 ---
 
