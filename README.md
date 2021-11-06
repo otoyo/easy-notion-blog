@@ -1,6 +1,6 @@
 English | [日本語](README.ja.md)
 
-# eash-notion-blog
+# easy-notion-blog
 
 Easy to start your blog.
 
