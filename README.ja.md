@@ -2,6 +2,9 @@
 
 # easy-notion-blog
 
+[![GitHub stars](https://img.shields.io/github/stars/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/stargazers)
+[![GitHub license](https://img.shields.io/github/license/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/blob/master/LICENSE)
+
 easy-notion-blog を使えば簡単にブログを開設できます。
 
 ブログは Notion で書くことができます。

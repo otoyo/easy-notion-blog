@@ -2,6 +2,9 @@ English | [日本語](README.ja.md)
 
 # easy-notion-blog
 
+[![GitHub stars](https://img.shields.io/github/stars/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/stargazers)
+[![GitHub license](https://img.shields.io/github/license/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/blob/master/LICENSE)
+
 Easy to start your blog.
 
 You can write on your Notion.
