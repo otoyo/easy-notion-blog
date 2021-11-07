@@ -58,7 +58,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 図 2 作成された "Untitled" データベースに移動します
 
-![Fig. 2](https://user-images.githubusercontent.com/1063435/140033797-843f552d-d561-41e0-ad90-8ef0bbf5b938.png)
+![Fig. 2](https://user-images.githubusercontent.com/1063435/140629759-b05d7596-394d-4fe4-9861-264bb01809b8.png)
 
 ## カスタマイズするには
 
