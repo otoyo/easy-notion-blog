@@ -8,10 +8,17 @@ const RenderPage = () => (
     <div className={sharedStyles.layout}>
       <div className="explanation">
         <p>
-          easy-notion-blog powered by{' '}
-          <ExtLink href="https://github.com/otoyo/easy-notion-blog">
-            otoyo/easy-notion-blog
-          </ExtLink>
+          はじめまして。わたしはへろほろと申します。
+          <br />
+          便利なアイテムが好きで、notion歴もかれこれ半年程になりました。
+          <br />
+          エンジニアではありませんが、プログラミングは趣味でやっています。
+          <br />
+          このブログを開設するにあたって触れることのなかった分野にも首を突っ込み、
+          <br />
+          試行錯誤しながらエラーと格闘しています。
+          <br />
+          notionに書き溜めた記録をブログっぽく公開していきながらポートフォリオも兼ねて発展させていきたいなーと思っています＼(^o^)／よろしくねー
         </p>
       </div>
     </div>

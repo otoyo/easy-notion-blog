@@ -10,7 +10,7 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Blog', page: '/blog' },
 ]
 
-const defaultTitle = 'easy-notion-blog'
+const defaultTitle = 'herohoroブログ'
 const defaultDescription =
   'This Notion Blog is powered by otoyo/easy-notion-blog'
 

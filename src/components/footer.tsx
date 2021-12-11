@@ -4,9 +4,9 @@ const Footer = () => (
   <>
     <footer>
       <div>
-        <span>Powered by </span>
+        <span>私のブログはこちらのkitを使用しています </span>
         <ExtLink href="https://github.com/otoyo/easy-notion-blog">
-          easy-notion-blog
+          ▶　アルパカさんのeasy-notion-blog
         </ExtLink>
       </div>
     </footer>
