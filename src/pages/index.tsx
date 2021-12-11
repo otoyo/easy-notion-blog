@@ -8,7 +8,7 @@ const RenderPage = () => (
     <div className={sharedStyles.layout}>
       <div className="explanation">
         <p>
-          はじめまして。わたしはへろほろと申します。
+          はじめまして。わたしは へろほろと申します。
           <br />
           便利なアイテムが好きで、notion歴もかれこれ半年程になりました。
           <br />
