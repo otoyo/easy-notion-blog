@@ -7,12 +7,14 @@ const RenderPage = () => (
   <>
     <Header titlePre="" />
     <div className={sharedStyles.layout}>
-      <Image
-        src="../public/hero-room.jpg"
-        layout="fill"
-        // width={500}
-        // height={500}
-      />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Image
+          src="/hero-room.jpg"
+          width={300}
+          height={300}
+          objectFit="contain"
+        />
+      </div>
       <div className="explanation">
         <p>
           はじめまして。わたしは へろほろと申します。
