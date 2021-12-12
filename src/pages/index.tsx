@@ -1,11 +1,18 @@
 import Header from '../components/header'
 import ExtLink from '../components/ext-link'
 import sharedStyles from '../styles/shared.module.css'
+import Image from 'next/image'
 
 const RenderPage = () => (
   <>
     <Header titlePre="" />
     <div className={sharedStyles.layout}>
+      <Image
+        src="../public/hero-room.jpg"
+        layout="fill"
+        // width={500}
+        // height={500}
+      />
       <div className="explanation">
         <p>
           はじめまして。わたしは へろほろと申します。
