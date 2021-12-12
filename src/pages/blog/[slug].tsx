@@ -284,7 +284,10 @@ const RenderPost = ({
           <div>
             <SocialButtons
               title={post.Title}
-              url={'https://alpacat.com' + getBlogLink(post.Slug)}
+              url={
+                'https://easy-notion-blog-02.vercel.app' +
+                getBlogLink(post.Slug)
+              }
               id={post.Slug}
             />
           </div>
