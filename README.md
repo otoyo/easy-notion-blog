@@ -63,6 +63,19 @@ Fig.2 Move "Untitled" database under the new page
 
 ![Fig.2](https://user-images.githubusercontent.com/1063435/140629759-b05d7596-394d-4fe4-9861-264bb01809b8.png)
 
+## Database properties
+
+| Property  | Description                                                            | Example               |
+| --------- | ---------------------------------------------------------------------- | --------------------- |
+| Page      | A blog entry.                                                          |
+| Slug      | Entry ID used as end of URL. Valid URL characters are only allowed.    | my-1st-entry          |
+| Date      | Publishing date                                                        | 2021/12/1             |
+| Tags      | Categorize entories by tags                                            | Diary                 |
+| OGImage   | An image treated as og-image                                           |
+| Excerpt   | Excerpt of the entry                                                   | This is my 1st entry. |
+| Published | Publishing state. Only checked entries are published.                  |
+| Rank      | Recommendation rank. Recommended entries are ordered by rank decendant | 10                    |
+
 ## How to customize
 
 Fork this repo into your GitHub account and develop.
