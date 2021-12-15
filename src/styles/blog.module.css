@@ -86,17 +86,17 @@
   padding: 0.3em 0.5em;
   background: -webkit-repeating-linear-gradient(
     -45deg,
-    #ffffaa,
-    #ffffaa 3px,
-    #ffd700 3px,
-    #ffd700 7px
+    #efefef,
+    #efefef 3px,
+    #ffffdf 3px,
+    #ffffdf 7px
   );
   background: repeating-linear-gradient(
     -45deg,
-    #ffffaa,
-    #ffffaa 3px,
-    #ffd700 3px,
-    #ffd700 7px
+    #efefef,
+    #efefef 3px,
+    #ffffdf 3px,
+    #ffffdf 7px
   );
 }
 .post :global(h3) {
