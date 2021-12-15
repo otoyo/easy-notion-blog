@@ -69,6 +69,8 @@
   /*box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);*/
   max-width: 100%;
   display: block;
+  border: 3px groove #666666;
+  border-radius: 10px;
 }
 
 .post :global(.tweet) {
