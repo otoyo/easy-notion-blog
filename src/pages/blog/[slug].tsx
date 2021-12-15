@@ -285,6 +285,7 @@ const RenderPost = ({
             return toRender
           })}
           <div>
+            ogImageUrl={post.OGImage}
             <SocialButtons
               title={post.Title}
               url={
