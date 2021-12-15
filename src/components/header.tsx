@@ -45,6 +45,15 @@ const Header = ({
           property="og:image"
           content={!ogImageUrl ? defaultOgImageUrl : ogImageUrl}
         />
+        <meta name="twitter:site" content="@mineral_30" />
+        <meta
+          name="twitter:card"
+          content={!ogImageUrl ? 'summary' : 'summary_large_image'}
+        />
+        <meta
+          name="twitter:image"
+          content={!ogImageUrl ? defaultOgImageUrl : ogImageUrl}
+        />
         <link
           rel="alternate"
           type="application/atom+xml"
