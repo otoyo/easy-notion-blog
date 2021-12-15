@@ -9,8 +9,9 @@ const navItems: { label: string; page?: string; link?: string }[] = [
   { label: 'Home', page: '/' },
   { label: 'Blog', page: '/blog' },
 ]
-
+const defaultUrl = 'https://easy-notion-blog-02.vercel.app'
 const defaultTitle = 'herohoroブログ'
+const defaultOgImageUrl = 'https://easy-notion-blog-02.vercel.app/hero-room.jpg'
 const defaultDescription =
   'This Notion Blog is powered by otoyo/easy-notion-blog'
 
@@ -40,7 +41,10 @@ const Header = ({
           property="og:description"
           content={!description ? defaultDescription : description}
         />
-        {ogImageUrl ? <meta property="og:image" content={ogImageUrl} /> : ''}
+        <meta
+          property="og:image"
+          content={!ogImageUrl ? defaultOgImageUrl : ogImageUrl}
+        />
         <link
           rel="alternate"
           type="application/atom+xml"
