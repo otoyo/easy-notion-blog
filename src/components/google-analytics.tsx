@@ -1,8 +1,8 @@
 import Script from 'next/script'
-import { GA_TRACKING_ID } from '../lib/gtag'
+import { NEXT_PUBLIC_GA_TRACKING_ID } from '../lib/notion/server-constants'
 
 const GoogleAnalytics = () => {
-  if (!GA_TRACKING_ID) {
+  if (!NEXT_PUBLIC_GA_TRACKING_ID) {
     return <></>
   }
 
@@ -11,14 +11,14 @@ const GoogleAnalytics = () => {
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
         defer
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GA_TRACKING_ID}`}
         strategy="afterInteractive"
       />
       <Script id="ga" defer strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
-          gtag('config', '${GA_TRACKING_ID}', { page_path: window.location.pathname });
+          gtag('config', '${NEXT_PUBLIC_GA_TRACKING_ID}', { page_path: window.location.pathname });
           `}
       </Script>
     </>
