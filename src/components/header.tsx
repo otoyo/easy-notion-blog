@@ -41,18 +41,15 @@ const Header = ({
           property="og:description"
           content={!description ? defaultDescription : description}
         />
-        <meta
-          property="og:image"
-          content={!ogImageUrl ? defaultOgImageUrl : ogImageUrl}
-        />
-        <meta name="twitter:site" content="@mineral_30" />
+        {ogImageUrl ? <meta property="og:image" content={ogImageUrl} /> : ''}
+        {ogImageUrl ? (
+          <meta property="twitter:image" content={ogImageUrl} />
+        ) : (
+          ''
+        )}
         <meta
           name="twitter:card"
           content={!ogImageUrl ? 'summary' : 'summary_large_image'}
-        />
-        <meta
-          name="twitter:image"
-          content={!ogImageUrl ? defaultOgImageUrl : ogImageUrl}
         />
         <link
           rel="alternate"
