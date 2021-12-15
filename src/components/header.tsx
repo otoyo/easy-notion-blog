@@ -41,6 +41,15 @@ const Header = ({
           content={!description ? defaultDescription : description}
         />
         {ogImageUrl ? <meta property="og:image" content={ogImageUrl} /> : ''}
+        {ogImageUrl ? (
+          <meta property="twitter:image" content={ogImageUrl} />
+        ) : (
+          ''
+        )}
+        <meta
+          name="twitter:card"
+          content={!ogImageUrl ? 'summary' : 'summary_large_image'}
+        />
         <link
           rel="alternate"
           type="application/atom+xml"
