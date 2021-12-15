@@ -54,8 +54,6 @@ You can write on your Notion.
 1. Go to [vercel.com](https://vercel.com/) and log-in with your account
 1. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
 1. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
-1. (Optional) Set your site URL to `NEXT_PUBLIC_URL` to "Environment Variables"
-   - If not set, social buttons are not displayed.
 1. Your Notion Blog will be published after deploy
 
 ---
@@ -100,7 +98,9 @@ yarn dev
 - favicon
   - Place `favicon.ico` under `public/` directory
 - Google Analytics 4
-  - Set your tracking ID in `lib/gtag.js`
+  - Set your tracking ID to "Environment Variables" as `NEXT_PUBLIC_GA_TRACKING_ID`
+- Social Buttons
+  - Set your site URL to `NEXT_PUBLIC_URL` to "Environment Variables"
 
 ## Contribution
 
