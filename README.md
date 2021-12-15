@@ -100,7 +100,7 @@ yarn dev
 - Google Analytics 4
   - Set your tracking ID to "Environment Variables" as `NEXT_PUBLIC_GA_TRACKING_ID`
 - Social Buttons
-  - Set your site URL to `NEXT_PUBLIC_URL` to "Environment Variables"
+  - Set your site URL to "Environment Variables" as `NEXT_PUBLIC_URL`
 
 ## Contribution
 
