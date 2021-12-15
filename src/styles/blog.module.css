@@ -83,20 +83,19 @@
   margin: 2.5rem 0 1.25rem 0;
   color: black;
   text-shadow: 0 0 5px white;
-  padding: 0.3em 0.5em;
+  padding: 0.5em 0.5em;
   background: -webkit-repeating-linear-gradient(
     -45deg,
-    #efefef,
-    #efefef 3px,
-    #ffffdf 3px,
-    #ffffdf 7px
+    white white 3px,
+    #f7eb98 3px,
+    #f7eb98 7px
   );
   background: repeating-linear-gradient(
     -45deg,
-    #efefef,
-    #efefef 3px,
-    #ffffdf 3px,
-    #ffffdf 7px
+    white,
+    white 3px,
+    #f7eb98 3px,
+    #f7eb98 7px
   );
 }
 .post :global(h3) {
