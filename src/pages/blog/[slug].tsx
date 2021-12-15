@@ -285,9 +285,8 @@ const RenderPost = ({
             return toRender
           })}
           <div>
-            ogImageUrl={post.OGImage}
             <SocialButtons
-              title={post.Title}
+              //title={post.Title}
               url={
                 'https://easy-notion-blog-02.vercel.app' +
                 getBlogLink(post.Slug)
