@@ -1,9 +1,12 @@
+const path = require('path')
+
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import fetch from 'node-fetch'
 import { useRouter } from 'next/router'
 
+import { NEXT_PUBLIC_URL } from '../../lib/notion/server-constants'
 import Header from '../../components/header'
 import Heading from '../../components/heading'
 import SocialButtons from '../../components/social-buttons'
@@ -282,11 +285,13 @@ const RenderPost = ({
             return toRender
           })}
           <div>
-            <SocialButtons
-              title={post.Title}
-              url={'https://alpacat.com' + getBlogLink(post.Slug)}
-              id={post.Slug}
-            />
+            {NEXT_PUBLIC_URL && (
+              <SocialButtons
+                title={post.Title}
+                url={path.join(NEXT_PUBLIC_URL, getBlogLink(post.Slug))}
+                id={post.Slug}
+              />
+            )}
           </div>
         </div>
         <div className={blogStyles.sideMenu}>
