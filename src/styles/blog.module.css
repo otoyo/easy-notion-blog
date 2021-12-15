@@ -26,10 +26,35 @@
   margin: 0 auto 40px;
 }
 
-.postPreview h3,
-.post h1 {
+.postPreview h3 {
   font-size: 0.9em;
   margin: 0;
+}
+
+.post h1 {
+  position: relative;
+  padding: 0.25em 1em;
+  border: solid 2px black;
+  border-radius: 3px 0 3px 0;
+}
+
+.post h1:before,
+.post h1:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.post h1:after {
+  top: -12px;
+  left: -12px;
+}
+.post h1:before {
+  bottom: -12px;
+  right: -12px;
 }
 
 .postPreview h3 a {
