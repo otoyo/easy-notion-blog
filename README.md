@@ -17,6 +17,11 @@ You can write on your Notion.
 
 [https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
 
+## Users' blogs
+
+- [herohoro ブログ](https://easy-notion-blog-02.vercel.app/)
+- [アルパカログ](https://alpacat.com/)
+
 ## Features
 
 - Very fast!
