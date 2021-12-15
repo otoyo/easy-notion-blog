@@ -49,6 +49,8 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 1. [vercel.com](https://vercel.com/) にログインします
 1. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
 1. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
+1. (オプション) "Environment Variables" でサイトの URL を `NEXT_PUBLIC_URL` として設定します
+   - 設定しなければソーシャルボタンは非表示になります
 1. デプロイが完了すると Notion Blog が見えるようになります
 
 ---
