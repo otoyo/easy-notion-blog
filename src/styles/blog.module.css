@@ -81,6 +81,23 @@
 
 .post :global(h2) {
   margin: 2.5rem 0 1.25rem 0;
+  color: black;
+  text-shadow: 0 0 5px white;
+  padding: 0.3em 0.5em;
+  background: -webkit-repeating-linear-gradient(
+    -45deg,
+    #ffffaa,
+    #ffffaa 3px,
+    #cccccc 3px,
+    #cccccc 7px
+  );
+  background: repeating-linear-gradient(
+    -45deg,
+    #ffffaa,
+    #ffffaa 3px,
+    #cccccc 3px,
+    #cccccc 7px
+  );
 }
 .post :global(h3) {
   margin: 2rem 0 1rem 0;
