@@ -83,15 +83,28 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## カスタマイズするには
 
-このリポジトリをあなたの GitHub アカウントにフォークして開発してください。
+このリポジトリをフォークしてローカルに clone します。
+
+プロジェクトルートに `.env.local` ファイルを作成し下記のように環境変数を書き込みます。
+
+```sh
+NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
+DATABASE_ID=<YOUR_DATABASE_ID>
+```
+
+依存関係をインストールしローカルサーバーを起動します。
 
 ```sh
 # 依存関係のインストール
 yarn install
 
-# 開発サーバー(localhost:3000) のスタート
+# 開発サーバー(localhost:3000) の起動
 yarn dev
 ```
+
+ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+
+開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
 ## オプション
 

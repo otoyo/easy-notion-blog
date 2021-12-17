@@ -83,7 +83,16 @@ Fig.2 Move "Untitled" database under the new page
 
 ## How to customize
 
-Fork this repo into your GitHub account and develop.
+Fork this repo from "Fork" button and clone it into your local.
+
+Create `.env.local` file in project root and write your ENV as follows.
+
+```sh
+NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
+DATABASE_ID=<YOUR_DATABASE_ID>
+```
+
+Install dependencies and start local server.
 
 ```sh
 # Install dependencies
@@ -92,6 +101,10 @@ yarn install
 # Start local server at localhost:3000
 yarn dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Press `Ctrl+C` to stop local server in the terminal.
 
 ## Optional settings
 
