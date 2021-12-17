@@ -270,6 +270,11 @@ const RenderPost = ({
                   </components.Callout>
                 )
                 break
+              case 'embed':
+                if (/^https:\/\/twitter\.com/.test(block.Embed.Url)) {
+                  toRender.push(<components.TweetEmbed url={block.Embed.Url} />)
+                }
+                break
               default:
                 if (
                   process.env.NODE_ENV !== 'production' &&
