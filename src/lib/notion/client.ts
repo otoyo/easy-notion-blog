@@ -51,6 +51,10 @@ interface CalloutBlock extends Block {
   Callout: Callout
 }
 
+interface EmbedBlock extends Block {
+  Embed: Embed
+}
+
 interface Image {
   Caption: RichText[]
   Type: string
@@ -73,6 +77,10 @@ interface Quote {
 interface Callout {
   RichTexts: RichText[]
   Icon: Icon
+}
+
+interface Embed {
+  Url: string
 }
 
 interface RichText {
@@ -531,6 +539,18 @@ export async function getAllBlocksByPageId(pageId) {
             Type: item.type,
             HasChildren: item.has_children,
             Callout: callout,
+          }
+          break
+        case 'embed':
+          const embed: Embed = {
+            Url: item.embed.url,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Embed: embed,
           }
           break
         default:
