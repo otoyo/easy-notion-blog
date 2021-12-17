@@ -112,22 +112,7 @@ export async function getPosts(pageSize: number = 10) {
 
   let params = {
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
-        },
-        {
-          property: 'Date',
-          date: {
-            on_or_before: new Date().toISOString(),
-          },
-        },
-      ],
-    },
+    filter: _buildFilter(),
     sorts: [
       {
         property: 'Date',
@@ -140,7 +125,9 @@ export async function getPosts(pageSize: number = 10) {
 
   const data = await client.databases.query(params)
 
-  return data.results.map(item => _buildPost(item))
+  return data.results
+    .filter(item => _validPost(item))
+    .map(item => _buildPost(item))
 }
 
 export async function getAllPosts() {
@@ -152,22 +139,7 @@ export async function getAllPosts() {
   } else {
     let params = {
       database_id: DATABASE_ID,
-      filter: {
-        and: [
-          {
-            property: 'Published',
-            checkbox: {
-              equals: true,
-            },
-          },
-          {
-            property: 'Date',
-            date: {
-              on_or_before: new Date().toISOString(),
-            },
-          },
-        ],
-      },
+      filter: _buildFilter(),
       sorts: [
         {
           property: 'Date',
@@ -191,7 +163,7 @@ export async function getAllPosts() {
     }
   }
 
-  return results.map(item => _buildPost(item))
+  return results.filter(item => _validPost(item)).map(item => _buildPost(item))
 }
 
 export async function getRankedPosts(pageSize: number = 10) {
@@ -212,28 +184,14 @@ export async function getRankedPosts(pageSize: number = 10) {
 
   const params = {
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
+    filter: _buildFilter([
+      {
+        property: 'Rank',
+        number: {
+          is_not_empty: true,
         },
-        {
-          property: 'Date',
-          date: {
-            on_or_before: new Date().toISOString(),
-          },
-        },
-        {
-          property: 'Rank',
-          number: {
-            is_not_empty: true,
-          },
-        },
-      ],
-    },
+      },
+    ]),
     sorts: [
       {
         property: 'Rank',
@@ -245,7 +203,9 @@ export async function getRankedPosts(pageSize: number = 10) {
 
   const data = await client.databases.query(params)
 
-  return data.results.map(item => _buildPost(item))
+  return data.results
+    .filter(item => _validPost(item))
+    .map(item => _buildPost(item))
 }
 
 export async function getPostsBefore(date: string, pageSize: number = 10) {
@@ -256,22 +216,7 @@ export async function getPostsBefore(date: string, pageSize: number = 10) {
 
   const params = {
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
-        },
-        {
-          property: 'Date',
-          date: {
-            before: date,
-          },
-        },
-      ],
-    },
+    filter: _buildFilter(),
     sorts: [
       {
         property: 'Date',
@@ -284,7 +229,9 @@ export async function getPostsBefore(date: string, pageSize: number = 10) {
 
   const data = await client.databases.query(params)
 
-  return data.results.map(item => _buildPost(item))
+  return data.results
+    .filter(item => _validPost(item))
+    .map(item => _buildPost(item))
 }
 
 export async function getFirstPost() {
@@ -295,22 +242,7 @@ export async function getFirstPost() {
 
   const params = {
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
-        },
-        {
-          property: 'Date',
-          date: {
-            on_or_before: new Date().toISOString(),
-          },
-        },
-      ],
-    },
+    filter: _buildFilter(),
     sorts: [
       {
         property: 'Date',
@@ -327,6 +259,10 @@ export async function getFirstPost() {
     return null
   }
 
+  if (!_validPost(data.results[0])) {
+    return null
+  }
+
   return _buildPost(data.results[0])
 }
 
@@ -338,28 +274,14 @@ export async function getPostBySlug(slug: string) {
 
   const data = await client.databases.query({
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
+    filter: _buildFilter([
+      {
+        property: 'Slug',
+        text: {
+          equals: slug,
         },
-        {
-          property: 'Date',
-          date: {
-            on_or_before: new Date().toISOString(),
-          },
-        },
-        {
-          property: 'Slug',
-          text: {
-            equals: slug,
-          },
-        },
-      ],
-    },
+      },
+    ]),
     sorts: [
       {
         property: 'Date',
@@ -370,6 +292,10 @@ export async function getPostBySlug(slug: string) {
   })
 
   if (!data.results.length) {
+    return null
+  }
+
+  if (!_validPost(data.results[0])) {
     return null
   }
 
@@ -384,28 +310,14 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
 
   let params = {
     database_id: DATABASE_ID,
-    filter: {
-      and: [
-        {
-          property: 'Published',
-          checkbox: {
-            equals: true,
-          },
+    filter: _buildFilter([
+      {
+        property: 'Tags',
+        multi_select: {
+          contains: tag,
         },
-        {
-          property: 'Date',
-          date: {
-            on_or_before: new Date().toISOString(),
-          },
-        },
-        {
-          property: 'Tags',
-          multi_select: {
-            contains: tag,
-          },
-        },
-      ],
-    },
+      },
+    ]),
     sorts: [
       {
         property: 'Date',
@@ -418,7 +330,9 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
 
   const data = await client.databases.query(params)
 
-  return data.results.map(item => _buildPost(item))
+  return data.results
+    .filter(item => _validPost(item))
+    .map(item => _buildPost(item))
 }
 
 export async function getAllBlocksByPageId(pageId) {
@@ -657,6 +571,34 @@ export async function getAllTags() {
     .sort()
 }
 
+function _buildFilter(conditions = []) {
+  if (process.env.NODE_ENV === 'development') {
+    return { and: conditions }
+  }
+
+  return {
+    and: conditions.concat([
+      {
+        property: 'Published',
+        checkbox: {
+          equals: true,
+        },
+      },
+      {
+        property: 'Date',
+        date: {
+          on_or_before: new Date().toISOString(),
+        },
+      },
+    ]),
+  }
+}
+
+function _validPost(data) {
+  const prop = data.properties
+  return prop.Page.title.length > 0 && prop.Slug.rich_text.length > 0
+}
+
 function _buildPost(data) {
   const prop = data.properties
 
@@ -666,7 +608,10 @@ function _buildPost(data) {
     Slug: prop.Slug.rich_text[0].plain_text,
     Date: prop.Date.date.start,
     Tags: prop.Tags.multi_select.map(opt => opt.name),
-    Excerpt: prop.Excerpt.rich_text[0].plain_text,
+    Excerpt:
+      prop.Excerpt.rich_text.length > 0
+        ? prop.Excerpt.rich_text[0].plain_text
+        : '',
     OGImage:
       prop.OGImage.files.length > 0 ? prop.OGImage.files[0].file.url : null,
     Rank: prop.Rank.number,
