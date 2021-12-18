@@ -273,6 +273,10 @@ const RenderPost = ({
               case 'embed':
                 if (/^https:\/\/twitter\.com/.test(block.Embed.Url)) {
                   toRender.push(<components.TweetEmbed url={block.Embed.Url} />)
+                } else if (
+                  /^https:\/\/gist\.github\.com/.test(block.Embed.Url)
+                ) {
+                  toRender.push(<components.Bookmark url={block.Embed.Url} />)
                 }
                 break
               case 'bookmark':
