@@ -55,6 +55,10 @@ interface EmbedBlock extends Block {
   Embed: Embed
 }
 
+interface BookmarkBlock extends Block {
+  Bookmark: Bookmark
+}
+
 interface Image {
   Caption: RichText[]
   Type: string
@@ -80,6 +84,10 @@ interface Callout {
 }
 
 interface Embed {
+  Url: string
+}
+
+interface Bookmark {
   Url: string
 }
 
@@ -558,6 +566,18 @@ export async function getAllBlocksByPageId(pageId) {
             Type: item.type,
             HasChildren: item.has_children,
             Embed: embed,
+          }
+          break
+        case 'bookmark':
+          const bookmark: Bookmark = {
+            Url: item.bookmark.url,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Bookmark: bookmark,
           }
           break
         default:
