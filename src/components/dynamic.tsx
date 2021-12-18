@@ -13,6 +13,7 @@ const Dynamic = {
   Code: dynamic(() => import('./code')),
   Callout: dynamic(() => import('./callout')),
   TweetEmbed: dynamic(() => import('./tweet-embed')),
+  Bookmark: dynamic(() => import('./bookmark')),
 }
 
 export default Dynamic

@@ -275,6 +275,9 @@ const RenderPost = ({
                   toRender.push(<components.TweetEmbed url={block.Embed.Url} />)
                 }
                 break
+              case 'bookmark':
+                toRender.push(<components.Bookmark url={block.Bookmark.Url} />)
+                break
               default:
                 if (
                   process.env.NODE_ENV !== 'production' &&
