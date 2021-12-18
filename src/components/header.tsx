@@ -63,6 +63,13 @@ const Header = ({
           <a>{defaultTitle}</a>
         </Link>
       </h1>
+      <p>
+        easy-notion-blogを導入に関する記事は
+        <Link href="https://easy-notion-blog-02.vercel.app/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
+          こちら
+        </Link>
+        をご覧ください
+      </p>
       <ul>
         {navItems.map(({ label, page, link }) => (
           <li key={label}>
