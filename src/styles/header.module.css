@@ -11,6 +11,10 @@
   font-weight: 400;
 }
 
+.header p {
+  font-size: 0.6rem;
+}
+
 .header h1 a {
   color: #000;
 }
