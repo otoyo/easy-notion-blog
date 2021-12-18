@@ -104,6 +104,8 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+Entries without `Published` are also displayed for preview in local. But no `Slug` entries are not displayed.
+
 Press `Ctrl+C` to stop local server in the terminal.
 
 ## Optional settings
@@ -114,6 +116,10 @@ Press `Ctrl+C` to stop local server in the terminal.
   - Set your tracking ID to "Environment Variables" as `NEXT_PUBLIC_GA_TRACKING_ID`
 - Social Buttons
   - Set your site URL to "Environment Variables" as `NEXT_PUBLIC_URL`
+
+## Bug report & requests
+
+Please create an issue in English or Japanese.
 
 ## Contribution
 

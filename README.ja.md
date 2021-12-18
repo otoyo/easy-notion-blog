@@ -104,6 +104,8 @@ yarn dev
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
 
+開発環境では `Published` でないエントリーも表示されるためプレビューすることができます。ただし `Slug` が設定されていないエントリーは表示されません。
+
 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
 ## オプション
@@ -114,6 +116,10 @@ yarn dev
   - "Environment Variables" でトラッキング ID を `NEXT_PUBLIC_GA_TRACKING_ID` として設定します
 - ソーシャルボタン
   - "Environment Variables" でサイトの URL を `NEXT_PUBLIC_URL` として設定します
+
+## バグ報告 & 要望
+
+Issue を作成してください。日本語で大丈夫です。
 
 ## 貢献
 
