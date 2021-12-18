@@ -224,7 +224,14 @@ export async function getPostsBefore(date: string, pageSize: number = 10) {
 
   const params = {
     database_id: DATABASE_ID,
-    filter: _buildFilter(),
+    filter: _buildFilter([
+      {
+        property: 'Date',
+        date: {
+          before: date,
+        },
+      },
+    ]),
     sorts: [
       {
         property: 'Date',
@@ -597,21 +604,35 @@ function _buildFilter(conditions = []) {
   }
 
   return {
-    and: conditions.concat([
-      {
-        property: 'Published',
-        checkbox: {
-          equals: true,
+    and: _uniqueContions(
+      conditions.concat([
+        {
+          property: 'Published',
+          checkbox: {
+            equals: true,
+          },
         },
-      },
-      {
-        property: 'Date',
-        date: {
-          on_or_before: new Date().toISOString(),
+        {
+          property: 'Date',
+          date: {
+            on_or_before: new Date().toISOString(),
+          },
         },
-      },
-    ]),
+      ])
+    ),
   }
+}
+
+function _uniqueContions(conditions = []) {
+  let properties = []
+
+  return conditions.filter(cond => {
+    if (conditions.includes(cond.property)) {
+      return false
+    }
+    properties.push(cond.property)
+    return true
+  })
 }
 
 function _validPost(data) {
