@@ -282,6 +282,9 @@ const RenderPost = ({
               case 'bookmark':
                 toRender.push(<components.Bookmark url={block.Bookmark.Url} />)
                 break
+              case 'divider':
+                toRender.push(<hr />)
+                break
               default:
                 if (
                   process.env.NODE_ENV !== 'production' &&
