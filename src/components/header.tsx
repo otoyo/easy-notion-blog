@@ -58,6 +58,13 @@ const Header = ({
           title={defaultTitle}
         />
       </Head>
+      <p>
+        ⭐このブログを便利に使う方法は
+        <Link href="https://sparkling-cinnamon-3f9.notion.site/herohoro-48ff806d05484215b51b9dc79df15357">
+          こちら
+        </Link>
+        で解説してます⭐
+      </p>
       <h1>
         <Link href="/" passHref>
           <a>{defaultTitle}</a>

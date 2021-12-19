@@ -1,5 +1,6 @@
 import Header from '../components/header'
 import ExtLink from '../components/ext-link'
+import Link from 'next/link'
 import sharedStyles from '../styles/shared.module.css'
 import Image from 'next/image'
 
