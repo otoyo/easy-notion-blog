@@ -21,46 +21,14 @@ interface Block {
   Id: string
   Type: string
   HasChildren: boolean
-}
-
-interface ParagraphBlock extends Block {
-  RichTexts: RichText[]
-}
-
-interface HeadingBlock extends Block {
-  RichTexts: RichText[]
-}
-
-interface ListBlock extends Block {
-  RichTexts: RichText[]
-}
-
-interface ImageBlock extends Block {
-  Image: Image
-}
-
-interface CodeBlock extends Block {
-  Code: Code
-}
-
-interface QuoteBlock extends Block {
-  Quote: Quote
-}
-
-interface CalloutBlock extends Block {
-  Callout: Callout
-}
-
-interface EmbedBlock extends Block {
-  Embed: Embed
-}
-
-interface BookmarkBlock extends Block {
-  Bookmark: Bookmark
-}
-
-interface LinkPreviewBlock extends Block {
-  LinkPreview: LinkPreview
+  RichTexts?: RichText[]
+  Image?: Image
+  Code?: Code
+  Quote?: Quote
+  Callout?: Callout
+  Embed?: Embed
+  Bookmark?: Bookmark
+  LinkPreview?: LinkPreview
 }
 
 interface Image {
