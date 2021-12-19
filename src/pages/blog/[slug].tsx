@@ -22,6 +22,8 @@ import {
   getAllBlocksByPageId,
 } from '../../lib/notion/client'
 
+import { LinkPreview } from '@dhaiwat10/react-link-preview'
+
 // Get the data for each blog post
 export async function getStaticProps({ params: { slug } }) {
   const post = await getPostBySlug(slug)
@@ -277,11 +279,29 @@ const RenderPost = ({
                 } else if (
                   /^https:\/\/gist\.github\.com/.test(block.Embed.Url)
                 ) {
-                  toRender.push(<components.Bookmark url={block.Embed.Url} />)
+                  toRender.push(
+                    <LinkPreview
+                      url={block.Embed.Url}
+                      className={blogStyles.linkPreview}
+                    />
+                  )
                 }
                 break
               case 'bookmark':
-                toRender.push(<components.Bookmark url={block.Bookmark.Url} />)
+                toRender.push(
+                  <LinkPreview
+                    url={block.Bookmark.Url}
+                    className={blogStyles.linkPreview}
+                  />
+                )
+                break
+              case 'link_preview':
+                toRender.push(
+                  <LinkPreview
+                    url={block.LinkPreview.Url}
+                    className={blogStyles.linkPreview}
+                  />
+                )
                 break
               case 'divider':
                 toRender.push(<hr />)
