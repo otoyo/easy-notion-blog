@@ -282,6 +282,11 @@ const RenderPost = ({
               case 'bookmark':
                 toRender.push(<components.Bookmark url={block.Bookmark.Url} />)
                 break
+              case 'link_preview':
+                toRender.push(
+                  <components.Bookmark url={block.LinkPreview.Url} />
+                )
+                break
               case 'divider':
                 toRender.push(<hr />)
                 break
