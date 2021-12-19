@@ -59,6 +59,10 @@ interface BookmarkBlock extends Block {
   Bookmark: Bookmark
 }
 
+interface LinkPreviewBlock extends Block {
+  LinkPreview: LinkPreview
+}
+
 interface Image {
   Caption: RichText[]
   Type: string
@@ -88,6 +92,10 @@ interface Embed {
 }
 
 interface Bookmark {
+  Url: string
+}
+
+interface LinkPreview {
   Url: string
 }
 
@@ -578,6 +586,18 @@ export async function getAllBlocksByPageId(pageId) {
             Type: item.type,
             HasChildren: item.has_children,
             Bookmark: bookmark,
+          }
+          break
+        case 'link_preview':
+          const linkPreview: LinkPreview = {
+            Url: item.link_preview.url,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            LinkPreview: linkPreview,
           }
           break
         default:
