@@ -2,8 +2,6 @@ const path = require('path')
 
 import React, { useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import fetch from 'node-fetch'
 import { useRouter } from 'next/router'
 
 import { NEXT_PUBLIC_URL } from '../../lib/notion/server-constants'
