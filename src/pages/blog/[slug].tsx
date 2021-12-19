@@ -1,5 +1,3 @@
-const path = require('path')
-
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -321,7 +319,7 @@ const RenderPost = ({
             {NEXT_PUBLIC_URL && (
               <SocialButtons
                 title={post.Title}
-                url={path.join(NEXT_PUBLIC_URL, getBlogLink(post.Slug))}
+                url={new URL(getBlogLink(post.Slug), NEXT_PUBLIC_URL)}
                 id={post.Slug}
               />
             )}
