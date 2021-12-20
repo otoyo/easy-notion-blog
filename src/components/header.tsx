@@ -41,12 +41,15 @@ const Header = ({
           property="og:description"
           content={!description ? defaultDescription : description}
         />
-        {ogImageUrl ? <meta property="og:image" content={ogImageUrl} /> : ''}
-        {ogImageUrl ? (
-          <meta property="twitter:image" content={ogImageUrl} />
-        ) : (
-          ''
-        )}
+
+        <meta
+          property="og:image"
+          content={ogImageUrl ? ogImageUrl : defaultOgImageUrl}
+        />
+        <meta
+          property="twitter:image"
+          content={ogImageUrl ? ogImageUrl : defaultOgImageUrl}
+        />
         <meta
           name="twitter:card"
           content={!ogImageUrl ? 'summary' : 'summary_large_image'}
