@@ -18,7 +18,7 @@ const RenderPage = () => (
       </div>
       <div className="explanation">
         <p>
-          はじめまして。わたしは へろほろと申します。
+          はじめまして。わたしはへろほろと申します。
           <br />
           便利なアイテムが好きで、notion歴もかれこれ半年程になりました。
           <br />
