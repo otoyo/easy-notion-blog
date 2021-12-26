@@ -61,6 +61,10 @@
   color: #333;
 }
 
+.postPreview h3 a:hover {
+  color: #f6d334;
+}
+
 .postPreview p {
   color: #333;
   font-size: 0.8em;
@@ -81,7 +85,9 @@
   border-bottom: double 5px #ffc778;
   font-weight: bolder;
 }
-
+.postPreview a.expandButton:hover {
+  color: #f6d334;
+}
 .post :global(h2) {
   margin: 2.5rem 0 1.25rem 0;
   color: black;
@@ -212,12 +218,16 @@
   display: block;
   width: 30%;
   margin: 40px auto;
-  border: 1px solid #3291ff;
+  border: 2px solid #ffc778;
   border-radius: 10px;
   color: #333;
+  font-weight: bold;
   font-size: 0.7em;
   text-align: center;
   line-height: 3em;
+}
+.nextContainer a.nextButton:hover {
+  color: #f6d334;
 }
 
 .sideMenu {
