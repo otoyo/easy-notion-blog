@@ -41,7 +41,11 @@ const RenderPosts = ({
 }) => {
   return (
     <>
-      <Header path="/blog" titlePre="" />
+      <Header
+        path="/blog"
+        titlePre=""
+        // ogImageUrl={posts.OGImage}
+      />
       <div className={`${blogStyles.flexContainer}`}>
         <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
           {posts.length === 0 && (
@@ -50,6 +54,10 @@ const RenderPosts = ({
           {posts.map(post => {
             return (
               <div className={blogStyles.postPreview} key={post.Slug}>
+                {/* <div>
+                 name="twitter:card"
+                 content={!ogImageUrl ? 'summary' : 'summary_large_image'}
+                </div> */}
                 {post.Date && (
                   <div className="posted">
                     📅&nbsp;&nbsp;{getDateStr(post.Date)}

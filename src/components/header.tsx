@@ -62,11 +62,9 @@ const Header = ({
         />
       </Head>
       <p>
-        ⭐このブログを便利に使う方法は
         <Link href="https://sparkling-cinnamon-3f9.notion.site/herohoro-48ff806d05484215b51b9dc79df15357">
-          こちら
+          ⭐このブログを便利に使う方法⭐
         </Link>
-        で解説してます⭐
       </p>
       <h1>
         <Link href="/" passHref>
@@ -74,11 +72,9 @@ const Header = ({
         </Link>
       </h1>
       <p>
-        easy-notion-blog導入に関する記事は
         <Link href="https://easy-notion-blog-02.vercel.app/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
-          こちら
+          ⭐　easy-notion-blog導入　⭐
         </Link>
-        をご覧ください
       </p>
       <ul>
         {navItems.map(({ label, page, link }) => (

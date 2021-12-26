@@ -4,7 +4,7 @@
   --gap: 1rem;
   --gap-double: 2rem;
 
-  --bg: #fff;
+  --bg: #fefdfb;
   --fg: #000;
   --accents-1: #111;
   --accents-2: #333;
@@ -222,11 +222,12 @@ figure {
 }
 
 a {
-  color: #0070f3;
+  /* color: #2D8534; */
+  color: #0a6111;
   text-decoration: none;
 }
 a:hover {
-  color: #3291ff;
+  color: #f6d334;
 }
 
 mark {
