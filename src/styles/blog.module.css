@@ -69,14 +69,17 @@
 
 .postPreview a.expandButton {
   display: block;
-  width: 30%;
+  width: 50%;
   margin: 1em auto;
-  border: 1px solid #3291ff;
-  border-radius: 10px;
-  color: #333;
+  /* border: 1px solid #3291ff; */
+  /* border-radius: 10px; */
+  color: #0a6111;
   font-size: 0.7em;
   text-align: center;
   line-height: 3em;
+  /*線の種類（二重線）太さ 色*/
+  border-bottom: double 5px #ffc778;
+  font-weight: bolder;
 }
 
 .post :global(h2) {
