@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import Header from '../../../components/header'
@@ -144,8 +145,27 @@ const RenderPostsBeforeDate = ({
                   as={getBeforeLink(posts[posts.length - 1].Date)}
                   passHref
                 >
-                  <a className={blogStyles.nextButton}>Next page ＞</a>
+                  <a className={blogStyles.nextButton}>Next ＞</a>
                 </Link>
+                <a
+                  className={blogStyles.backButton}
+                  onClick={() => Router.back()}
+                >
+                  ＜ Back
+                </a>
+              </div>
+            )}
+          {!!firstPost &&
+            posts.length > 0 &&
+            firstPost.Date == posts[posts.length - 1].Date && (
+              <div className={blogStyles.nextContainer}>
+                <hr />
+                <a
+                  className={blogStyles.backButton}
+                  onClick={() => Router.back()}
+                >
+                  ＜ Back
+                </a>
               </div>
             )}
         </div>

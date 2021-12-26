@@ -226,7 +226,20 @@
   text-align: center;
   line-height: 3em;
 }
-.nextContainer a.nextButton:hover {
+.nextContainer a.backButton {
+  display: block;
+  width: 30%;
+  margin: 40px auto;
+  border: 2px solid #ffc778;
+  border-radius: 10px;
+  color: #333;
+  font-weight: bold;
+  font-size: 0.7em;
+  text-align: center;
+  line-height: 3em;
+}
+.nextContainer a.nextButton:hover,
+.nextContainer a.backButton:hover {
   color: #f6d334;
 }
 
