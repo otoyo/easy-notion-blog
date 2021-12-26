@@ -36,7 +36,8 @@
 
 .header ul :global(a.active) {
   color: var(--accents-3);
-  font-weight: 400;
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
