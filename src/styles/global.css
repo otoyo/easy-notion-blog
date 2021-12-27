@@ -4,7 +4,7 @@
   --gap: 1rem;
   --gap-double: 2rem;
 
-  --bg: #fefdfb;
+  --bg: #faf5ec;
   --fg: #000;
   --accents-1: #111;
   --accents-2: #333;
@@ -340,8 +340,6 @@ code {
   .container {
     margin: 0 auto;
     width: 1024px;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
   }
 }
 
