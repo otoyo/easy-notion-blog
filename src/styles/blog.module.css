@@ -238,6 +238,10 @@
   text-align: center;
   line-height: 3em;
 }
+.nextContainer a.nextButton,
+.nextContainer a.backButton {
+  width: 50%;
+}
 .nextContainer a.nextButton:hover,
 .nextContainer a.backButton:hover {
   color: #f6d334;
@@ -312,6 +316,10 @@
 
   .nextContainer {
     padding: 0;
+  }
+  .nextContainer a.nextButton,
+  .nextContainer a.backButton {
+    width: 50%;
   }
 }
 
