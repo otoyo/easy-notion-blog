@@ -218,7 +218,6 @@
 
 .nextContainer a.nextButton {
   display: block;
-  width: 30%;
   margin: 40px auto;
   border: 2px solid #ffc778;
   border-radius: 10px;
@@ -230,7 +229,6 @@
 }
 .nextContainer a.backButton {
   display: block;
-  width: 30%;
   margin: 40px auto;
   border: 2px solid #ffc778;
   border-radius: 10px;
@@ -334,7 +332,8 @@
   .nextContainer {
     padding: 0;
   }
-  .nextContainer a.nextButton {
+  .nextContainer a.nextButton,
+  .nextContainer a.backButton {
     width: 50%;
   }
 }
