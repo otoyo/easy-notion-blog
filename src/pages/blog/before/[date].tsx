@@ -118,7 +118,9 @@ const RenderPostsBeforeDate = ({
                     </Link>
                   </div>
                 </h3>
-                <img className={blogStyles.thumbnail} src={post.OGImage} />
+                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+                  <img className={blogStyles.thumbnail} src={post.OGImage} />
+                </Link>
                 <div className={blogStyles.tagContainer}>
                   {post.Tags &&
                     post.Tags.length > 0 &&
