@@ -1,6 +1,8 @@
 .blogIndex {
   padding: 0 5%;
   max-width: calc(600px + 10%);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .blogIndex h1 {
@@ -20,13 +22,15 @@
 .noPosts {
   text-align: center;
 }
-
+/* .postPreviewContainer{
+  width:100%;
+} */
 .postPreview {
   width: 48%;
   margin: 10px 10px 10px 0;
   padding: 10px 30px;
   box-shadow: 0 0 8px rgb(196, 195, 195);
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .postPreview h3 {
@@ -213,8 +217,8 @@
 }
 
 .nextContainer {
-  max-width: calc(600px + 10%);
-  margin: 40px auto;
+  width: 100%;
+  margin: 40px 0;
   padding: 0 5%;
 }
 
