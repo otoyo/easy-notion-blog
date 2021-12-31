@@ -22,15 +22,11 @@
 .noPosts {
   text-align: center;
 }
-/* .postPreviewContainer{
-  width:100%;
-} */
 .postPreview {
   width: 48%;
   margin: 10px 10px 10px 0;
   padding: 10px 30px;
   box-shadow: 0 0 8px rgb(196, 195, 195);
-  /* display: inline-block; */
 }
 
 .postPreview h3 {
