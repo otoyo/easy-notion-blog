@@ -69,7 +69,10 @@
 .postPreview img.thumbnail {
   width: 100%;
   margin: 10px 0 0 0;
-  box-shadow: 0 0 8px rgb(165, 164, 164);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.postPreview img.thumbnail:hover {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 .postPreview p {
   color: #333;
