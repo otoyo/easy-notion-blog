@@ -27,6 +27,7 @@
   margin: 10px 10px 10px 0;
   padding: 10px 30px;
   box-shadow: 0 0 8px rgb(196, 195, 195);
+  border-radius: 10px;
 }
 
 .postPreview h3 {
@@ -74,6 +75,7 @@
   width: 100%;
   margin: 10px 0 0 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 .postPreview img.thumbnail:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
