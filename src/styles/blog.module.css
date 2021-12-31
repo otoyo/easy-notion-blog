@@ -33,7 +33,11 @@
   font-size: 0.9em;
   margin: 0;
 }
-
+.tagTitle {
+  width: 48%;
+  margin: 10px 10px 10px 0;
+  padding: 10px 30px;
+}
 .post h1 {
   position: relative;
   padding: 0.25em 1em;

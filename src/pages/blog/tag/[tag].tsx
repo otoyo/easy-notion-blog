@@ -86,7 +86,7 @@ const RenderPostsByTags = ({
       />
       <div className={`${blogStyles.flexContainer}`}>
         <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
-          <h2>{tag}</h2>
+          <h2 className={blogStyles.tagTitle}>🔖&nbsp;&nbsp;{tag}</h2>
           {posts.length === 0 && (
             <p className={blogStyles.noPosts}>There are no posts yet</p>
           )}
@@ -109,6 +109,9 @@ const RenderPostsByTags = ({
                     </Link>
                   </div>
                 </h3>
+                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+                  <img className={blogStyles.thumbnail} src={post.OGImage} />
+                </Link>
                 <div className={blogStyles.tagContainer}>
                   {post.Tags &&
                     post.Tags.length > 0 &&
