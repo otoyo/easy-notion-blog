@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Router from 'next/router'
+import Image from 'next/image'
 
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import Header from '../../../components/header'
@@ -20,6 +21,9 @@ import {
   getPostsBefore,
   getFirstPost,
   getAllTags,
+  getPostBySlug,
+  getPostsByTag,
+  getAllBlocksByPageId,
 } from '../../../lib/notion/client'
 
 export async function getStaticProps({ params: { date } }) {
@@ -114,6 +118,7 @@ const RenderPostsBeforeDate = ({
                     </Link>
                   </div>
                 </h3>
+                <img className={blogStyles.thumbnail} src={post.OGImage} />
                 <div className={blogStyles.tagContainer}>
                   {post.Tags &&
                     post.Tags.length > 0 &&

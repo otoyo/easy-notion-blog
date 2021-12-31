@@ -22,8 +22,11 @@
 }
 
 .postPreview {
-  max-width: 600px;
-  margin: 0 auto 40px;
+  width: 48%;
+  margin: 10px 10px 10px 0;
+  padding: 10px 30px;
+  box-shadow: 0 0 8px rgb(196, 195, 195);
+  display: inline-block;
 }
 
 .postPreview h3 {
@@ -56,7 +59,6 @@
   bottom: -12px;
   right: -12px;
 }
-
 .postPreview h3 a {
   color: #333;
 }
@@ -64,11 +66,16 @@
 .postPreview h3 a:hover {
   color: #f6d334;
 }
-
+.postPreview img.thumbnail {
+  width: 100%;
+  margin: 10px 0 0 0;
+  box-shadow: 0 0 8px rgb(165, 164, 164);
+}
 .postPreview p {
   color: #333;
   font-size: 0.8em;
   margin: 0.3em 0;
+  line-height: 1em;
 }
 
 .postPreview a.expandButton {
@@ -328,7 +335,9 @@
     font-size: 0.75em;
     padding-right: 0.75em;
   }
-
+  .postPreview {
+    width: 100%;
+  }
   .postPreview a.expandButton {
     width: 50%;
   }

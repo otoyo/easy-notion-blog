@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 import Header from '../../components/header'
 import blogStyles from '../../styles/blog.module.css'
 import sharedStyles from '../../styles/shared.module.css'
@@ -41,11 +41,7 @@ const RenderPosts = ({
 }) => {
   return (
     <>
-      <Header
-        path="/blog"
-        titlePre=""
-        // ogImageUrl={posts.OGImage}
-      />
+      <Header path="/blog" titlePre="" />
       <div className={`${blogStyles.flexContainer}`}>
         <div className={`${sharedStyles.layout} ${blogStyles.blogIndex}`}>
           {posts.length === 0 && (
@@ -54,10 +50,6 @@ const RenderPosts = ({
           {posts.map(post => {
             return (
               <div className={blogStyles.postPreview} key={post.Slug}>
-                {/* <div>
-                 name="twitter:card"
-                 content={!ogImageUrl ? 'summary' : 'summary_large_image'}
-                </div> */}
                 {post.Date && (
                   <div className="posted">
                     📅&nbsp;&nbsp;{getDateStr(post.Date)}
@@ -74,6 +66,7 @@ const RenderPosts = ({
                     </Link>
                   </div>
                 </h3>
+                <img className={blogStyles.thumbnail} src={post.OGImage} />
                 <div className={blogStyles.tagContainer}>
                   {post.Tags &&
                     post.Tags.length > 0 &&
