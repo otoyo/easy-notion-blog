@@ -100,7 +100,7 @@ const RenderPosts = ({
                   as={getBeforeLink(posts[posts.length - 1].Date)}
                   passHref
                 >
-                  <a className={blogStyles.nextButton}>Next page ＞</a>
+                  <a className={blogStyles.nextButton_topPage}>Next ＞</a>
                 </Link>
               </div>
             )}

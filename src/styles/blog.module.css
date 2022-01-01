@@ -230,37 +230,41 @@
 .nextContainer hr {
   background-color: #fff;
   border-top: 1px dashed #666;
+  margin-bottom: 20px;
 }
-
-.nextContainer a.nextButton {
-  display: block;
-  margin: 40px auto;
-  border: 2px solid #ffc778;
-  border-radius: 10px;
-  color: #333;
-  font-weight: bold;
-  font-size: 0.7em;
-  text-align: center;
-  line-height: 3em;
+.nextContainer a.nextButton_topPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.nextContainer a.backButton {
-  display: block;
-  margin: 40px auto;
-  border: 2px solid #ffc778;
-  border-radius: 10px;
-  color: #333;
-  font-weight: bold;
-  font-size: 0.7em;
-  text-align: center;
-  line-height: 3em;
+.nextContainer .buttonSubContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .nextContainer a.nextButton,
+.nextContainer a.nextButton_topPage {
+  background: #eeaf74; /*色*/
+}
 .nextContainer a.backButton {
-  width: 50%;
+  background: #abbae1; /*色*/
+}
+.nextContainer a.nextButton,
+.nextContainer a.backButton,
+.nextContainer a.nextButton_topPage {
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px; /*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
 }
 .nextContainer a.nextButton:hover,
-.nextContainer a.backButton:hover {
+.nextContainer a.backButton:hover,
+.nextContainer a.nextButton_topPage:hover {
   color: #f6d334;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .sideMenu {
@@ -343,10 +347,10 @@
   .nextContainer {
     padding: 0;
   }
-  .nextContainer a.nextButton,
+  /* .nextContainer a.nextButton,
   .nextContainer a.backButton {
     width: 50%;
-  }
+  } */
 }
 
 @media (max-width: 600px) {
@@ -368,8 +372,8 @@
   .nextContainer {
     padding: 0;
   }
-  .nextContainer a.nextButton,
+  /* .nextContainer a.nextButton,
   .nextContainer a.backButton {
     width: 50%;
-  }
+  } */
 }

@@ -147,19 +147,21 @@ const RenderPostsBeforeDate = ({
             firstPost.Date !== posts[posts.length - 1].Date && (
               <div className={blogStyles.nextContainer}>
                 <hr />
-                <Link
-                  href="/blog/before/[date]"
-                  as={getBeforeLink(posts[posts.length - 1].Date)}
-                  passHref
-                >
-                  <a className={blogStyles.nextButton}>Next ＞</a>
-                </Link>
-                <a
-                  className={blogStyles.backButton}
-                  onClick={() => Router.back()}
-                >
-                  ＜ Back
-                </a>
+                <div className={blogStyles.buttonSubContainer}>
+                  <a
+                    className={blogStyles.backButton}
+                    onClick={() => Router.back()}
+                  >
+                    ＜ Back
+                  </a>
+                  <Link
+                    href="/blog/before/[date]"
+                    as={getBeforeLink(posts[posts.length - 1].Date)}
+                    passHref
+                  >
+                    <a className={blogStyles.nextButton}>Next ＞</a>
+                  </Link>
+                </div>
               </div>
             )}
           {!!firstPost &&
