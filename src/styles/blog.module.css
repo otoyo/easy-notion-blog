@@ -1,5 +1,5 @@
 .blogIndex {
-  padding: 0 5%;
+  padding: 0;
   max-width: calc(600px + 10%);
   display: flex;
   flex-wrap: wrap;
@@ -317,12 +317,12 @@
 @media (min-width: 1024px) {
   .flexContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .blogIndex {
     min-width: 50%;
-    padding: 0 5% 0 5%;
+    padding: 0;
   }
 
   .post {
