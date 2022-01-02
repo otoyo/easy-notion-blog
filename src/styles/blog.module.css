@@ -1,6 +1,6 @@
 .blogIndex {
   padding-left: 15px;
-  justify-content: center;
+  justify-content: space-between;
   /* max-width: calc(600px + 10%); */
   display: flex;
   flex-wrap: wrap;
