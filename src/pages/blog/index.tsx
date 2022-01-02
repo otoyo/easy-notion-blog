@@ -108,7 +108,6 @@ const RenderPosts = ({
         <div className={blogStyles.sideMenu}>
           <h3>Recommended</h3>
           <hr />
-
           {rankedPosts.length === 0 && (
             <div className={blogStyles.noContents}>There are no posts yet</div>
           )}
@@ -131,7 +130,6 @@ const RenderPosts = ({
           )}
           <h3>Categories</h3>
           <hr />
-
           {tags.length === 0 && (
             <div className={blogStyles.noContents}>There are no tags yet</div>
           )}
@@ -148,6 +146,22 @@ const RenderPosts = ({
               })}
             </ul>
           )}
+          <h3>Twitter Timeline</h3>
+          <hr />
+          <a
+            class="twitter-timeline"
+            data-width="300"
+            data-height="500"
+            data-theme="light"
+            href="https://twitter.com/mineral_30?ref_src=twsrc%5Etfw"
+          >
+            Tweets by mineral_30
+          </a>{' '}
+          <script
+            async
+            src="https://platform.twitter.com/widgets.js"
+            charset="utf-8"
+          ></script>
         </div>
       </div>
     </>
