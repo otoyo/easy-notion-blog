@@ -84,9 +84,9 @@ const RenderPosts = ({
                     ))}
                 </div>
                 <p>{post.Excerpt}</p>
-                <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+                {/* <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
                   <a className={blogStyles.expandButton}>Read more...</a>
-                </Link>
+                </Link> */}
               </div>
             )
           })}
