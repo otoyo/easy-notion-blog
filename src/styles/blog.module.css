@@ -128,6 +128,7 @@
   margin: 2rem 0 1rem 0;
   font-size: 1em;
   background: linear-gradient(transparent 70%, #ffc778 90%);
+  padding-left: 1rem;
 }
 
 .post :global(video),
