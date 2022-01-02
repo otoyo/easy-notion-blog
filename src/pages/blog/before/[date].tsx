@@ -222,7 +222,7 @@ const RenderPostsBeforeDate = ({
           <h3>Twitter Timeline</h3>
           <hr />
           <a
-            class="twitter-timeline"
+            className="twitter-timeline"
             data-width="300"
             data-height="500"
             data-theme="light"
@@ -233,7 +233,7 @@ const RenderPostsBeforeDate = ({
           <script
             async
             src="https://platform.twitter.com/widgets.js"
-            charset="utf-8"
+            // charset="utf-8"
           ></script>
         </div>
       </div>
