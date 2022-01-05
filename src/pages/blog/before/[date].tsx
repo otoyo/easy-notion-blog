@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Router from 'next/router'
-import Image from 'next/image'
 
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import Header from '../../../components/header'
@@ -21,9 +19,6 @@ import {
   getPostsBefore,
   getFirstPost,
   getAllTags,
-  getPostBySlug,
-  getPostsByTag,
-  getAllBlocksByPageId,
 } from '../../../lib/notion/client'
 
 export async function getStaticProps({ params: { date } }) {
@@ -150,9 +145,10 @@ const RenderPostsBeforeDate = ({
                 <div className={blogStyles.buttonSubContainer}>
                   <a
                     className={blogStyles.backButton}
-                    onClick={() => Router.back()}
+                    onClick={() => router.back()}
                   >
-                    ＜ Back
+                    {' '}
+                    ＜ Back{' '}
                   </a>
                   <Link
                     href="/blog/before/[date]"
@@ -171,7 +167,7 @@ const RenderPostsBeforeDate = ({
                 <hr />
                 <a
                   className={blogStyles.backButton}
-                  onClick={() => Router.back()}
+                  onClick={() => router.back()}
                 >
                   ＜ Back
                 </a>
