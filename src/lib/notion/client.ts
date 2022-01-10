@@ -334,11 +334,11 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
     .map(item => _buildPost(item))
 }
 
-export async function getAllBlocksByPageId(pageId) {
+export async function getAllBlocksByBlockId(blockId) {
   let allBlocks: Block[] = []
 
   let params = {
-    block_id: pageId,
+    block_id: blockId,
   }
 
   while (true) {
