@@ -17,7 +17,7 @@ import {
   getPostBySlug,
   getPostsByTag,
   getAllTags,
-  getAllBlocksByPageId,
+  getAllBlocksByBlockId,
 } from '../../lib/notion/client'
 
 import { LinkPreview } from '@dhaiwat10/react-link-preview'
@@ -36,7 +36,7 @@ export async function getStaticProps({ params: { slug } }) {
     }
   }
 
-  const blocks = await getAllBlocksByPageId(post.PageId)
+  const blocks = await getAllBlocksByBlockId(post.PageId)
   const rankedPosts = await getRankedPosts()
   const recentPosts = await getPosts(5)
   const tags = await getAllTags()
@@ -300,6 +300,11 @@ const RenderPost = ({
                 break
               case 'divider':
                 toRender.push(<hr />)
+                break
+              case 'table':
+                toRender.push(
+                  <components.Table key={block.Id} table={block.Table} />
+                )
                 break
               default:
                 if (
