@@ -29,6 +29,8 @@ interface Block {
   Embed?: Embed
   Bookmark?: Bookmark
   LinkPreview?: LinkPreview
+  Table?: Table
+  TableRow?: TableRow
 }
 
 interface Image {
@@ -65,6 +67,21 @@ interface Bookmark {
 
 interface LinkPreview {
   Url: string
+}
+
+interface Table {
+  TableWidth: number
+  HasColumnHeader: boolean
+  HasRowHeader: boolean
+  Rows: Block[]
+}
+
+interface TableRow {
+  Cells: TableCell[]
+}
+
+interface TableCell {
+  RichTexts: RichText[]
 }
 
 interface RichText {
@@ -568,6 +585,64 @@ export async function getAllBlocksByBlockId(blockId) {
             LinkPreview: linkPreview,
           }
           break
+        case 'table':
+          const table: Table = {
+            TableWidth: item.table.table_width,
+            HasColumnHeader: item.table.has_column_header,
+            HasRowHeader: item.table.has_row_header,
+            Rows: [],
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Table: table,
+          }
+          break
+        case 'table_row':
+          const cells: TableCell[] = item.table_row.cells.map(cell => {
+            const tableCell: TableCell = {
+              RichTexts: cell.map(item => {
+                const text: Text = {
+                  Content: item.text.content,
+                  Link: item.text.link,
+                }
+
+                const annotation: Annotation = {
+                  Bold: item.annotations.bold,
+                  Italic: item.annotations.italic,
+                  Strikethrough: item.annotations.strikethrough,
+                  Underline: item.annotations.underline,
+                  Code: item.annotations.code,
+                  Color: item.annotations.color,
+                }
+
+                const richText: RichText = {
+                  Text: text,
+                  Annotation: annotation,
+                  PlainText: item.plain_text,
+                  Href: item.href,
+                }
+
+                return richText
+              }),
+            }
+
+            return tableCell
+          })
+
+          const tableRow: TableRow = {
+            Cells: cells,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            TableRow: tableRow,
+          }
+          break
         default:
           block = {
             Id: item.id,
@@ -587,6 +662,15 @@ export async function getAllBlocksByBlockId(blockId) {
     }
 
     params['start_cursor'] = data.next_cursor
+  }
+
+  for (let i = 0; i < allBlocks.length; i++) {
+    let block = allBlocks[i]
+
+    if (block.Type === 'table') {
+      // Fetch table_row
+      block.Table.Rows = await getAllBlocksByBlockId(block.Id)
+    }
   }
 
   return allBlocks
