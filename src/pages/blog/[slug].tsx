@@ -304,6 +304,11 @@ const RenderPost = ({
               case 'divider':
                 toRender.push(<hr />)
                 break
+              case 'table':
+                toRender.push(
+                  <components.Table key={block.Id} table={block.Table} />
+                )
+                break
               default:
                 if (
                   process.env.NODE_ENV !== 'production' &&
