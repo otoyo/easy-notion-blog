@@ -13,6 +13,7 @@ const Dynamic = {
   Code: dynamic(() => import('./code')),
   Callout: dynamic(() => import('./callout')),
   TweetEmbed: dynamic(() => import('./tweet-embed')),
+  Table: dynamic(() => import('./table')),
 }
 
 export default Dynamic
