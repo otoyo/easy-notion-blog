@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  nodeapp:
+    image: node:lts
+    container_name: 'nodeapp'
+    tty: true
+    working_dir: '/usr/src/app/'
+    volumes:
+      - '.:/usr/src/app'
