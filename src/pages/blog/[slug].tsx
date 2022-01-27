@@ -245,7 +245,7 @@ const RenderPost = ({
                 toRender.push(
                   <components.Code
                     key={block.Id}
-                    language={block.Code.Language || ''}
+                    language={block.Language || ''}
                     caption={block.Code.Caption}
                   >
                     {block.Code.Text.map(
