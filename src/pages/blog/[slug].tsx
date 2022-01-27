@@ -243,6 +243,7 @@ const RenderPost = ({
                   <components.Code
                     key={block.Id}
                     language={block.Language || ''}
+                    caption={block.Code.Caption}
                   >
                     {block.Code.Text.map(
                       richText => richText.Text.Content
