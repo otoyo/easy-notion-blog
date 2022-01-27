@@ -44,6 +44,7 @@ interface File {
 }
 
 interface Code {
+  Caption: RichText[]
   Text: RichText[]
   Language: string
 }
@@ -442,6 +443,30 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'code':
           const code: Code = {
+            Caption: item[item.type].caption.map(item => {
+              const text: Text = {
+                Content: item.text.content,
+                Link: item.text.link,
+              }
+
+              const annotation: Annotation = {
+                Bold: item.annotations.bold,
+                Italic: item.annotations.italic,
+                Strikethrough: item.annotations.strikethrough,
+                Underline: item.annotations.underline,
+                Code: item.annotations.code,
+                Color: item.annotations.color,
+              }
+
+              const richText: RichText = {
+                Text: text,
+                Annotation: annotation,
+                PlainText: item.plain_text,
+                Href: item.href,
+              }
+
+              return richText
+            }),
             Text: item[item.type].text.map(item => {
               const text: Text = {
                 Content: item.text.content,
