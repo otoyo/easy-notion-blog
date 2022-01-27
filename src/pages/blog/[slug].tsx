@@ -245,7 +245,8 @@ const RenderPost = ({
                 toRender.push(
                   <components.Code
                     key={block.Id}
-                    language={block.Language || ''}
+                    language={block.Code.Language || ''}
+                    caption={block.Code.Caption}
                   >
                     {block.Code.Text.map(
                       richText => richText.Text.Content
