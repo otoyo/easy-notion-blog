@@ -1,118 +1,27 @@
 import { NOTION_API_SECRET, DATABASE_ID } from './server-constants'
+import {
+  Post,
+  Block,
+  Image,
+  Code,
+  Quote,
+  Callout,
+  Embed,
+  Bookmark,
+  LinkPreview,
+  Table,
+  TableRow,
+  TableCell,
+  RichText,
+  Text,
+  Annotation,
+} from './interfaces'
 const { Client } = require('@notionhq/client')
 const blogIndexCache = require('./blog-index-cache.js')
 
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
-
-interface Post {
-  PageId: string
-  Title: string
-  Slug: string
-  Date: string
-  Tags: string[]
-  Excerpt: string
-  OGImage: string
-  Rank: number
-}
-
-interface Block {
-  Id: string
-  Type: string
-  HasChildren: boolean
-  RichTexts?: RichText[]
-  Image?: Image
-  Code?: Code
-  Quote?: Quote
-  Callout?: Callout
-  Embed?: Embed
-  Bookmark?: Bookmark
-  LinkPreview?: LinkPreview
-  Table?: Table
-  TableRow?: TableRow
-}
-
-interface Image {
-  Caption: RichText[]
-  Type: string
-  File: File
-}
-
-interface File {
-  Url: string
-}
-
-interface Code {
-  Caption: RichText[]
-  Text: RichText[]
-  Language: string
-}
-
-interface Quote {
-  Text: RichText[]
-}
-
-interface Callout {
-  RichTexts: RichText[]
-  Icon: Icon
-}
-
-interface Embed {
-  Url: string
-}
-
-interface Bookmark {
-  Url: string
-}
-
-interface LinkPreview {
-  Url: string
-}
-
-interface Table {
-  TableWidth: number
-  HasColumnHeader: boolean
-  HasRowHeader: boolean
-  Rows: Block[]
-}
-
-interface TableRow {
-  Cells: TableCell[]
-}
-
-interface TableCell {
-  RichTexts: RichText[]
-}
-
-interface RichText {
-  Text: Text
-  Annotation: Annotation
-  PlainText: string
-  Href?: string
-}
-
-interface Text {
-  Content: string
-  Link?: Link
-}
-
-interface Icon {
-  Emoji: string
-}
-
-interface Annotation {
-  Bold: boolean
-  Italic: boolean
-  Strikethrough: boolean
-  Underline: boolean
-  Code: boolean
-  Color: string
-}
-
-interface Link {
-  Url: string
-}
 
 export async function getPosts(pageSize: number = 10) {
   if (blogIndexCache.exists()) {
