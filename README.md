@@ -50,7 +50,7 @@ You can write on your Notion.
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
 1. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
 1. Open the Terminal.app and clone this repo into your local `git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog`
-1. Run initialization script `DATABASE_ID=<YOUR_DATABASE_ID> NOTION_API_SECRET=<YOUR_NOTION_API_SECRET> ./scripts/init-database.sh`
+1. Run initialization script `DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh`
 1. Go to [vercel.com](https://vercel.com/) and log-in with your account
 1. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
 1. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
