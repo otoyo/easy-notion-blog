@@ -469,7 +469,7 @@ function _buildFilter(conditions = []) {
   }
 
   return {
-    and: _uniqueContions(
+    and: _uniqueConditions(
       conditions.concat([
         {
           property: 'Published',
@@ -488,7 +488,7 @@ function _buildFilter(conditions = []) {
   }
 }
 
-function _uniqueContions(conditions = []) {
+function _uniqueConditions(conditions = []) {
   let properties = []
 
   return conditions.filter(cond => {
