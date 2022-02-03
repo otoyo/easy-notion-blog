@@ -1,41 +1,31 @@
 .header {
   display: block;
-  min-height: 64px;
-  padding: 2em 0;
+  padding: 15px 0;
   text-align: center;
-  letter-spacing: -0.02em;
 }
-
 .header h1 {
-  font-size: 1.5rem;
+  padding: 0.5rem 0;
   font-weight: 400;
-}
-
-.header h1 a {
   color: #000;
 }
-
+.header h1 a {
+  color: inherit;
+}
 .header ul {
   list-style: none;
-  padding: 0;
+  margin: inherit;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
 }
-
+@media (max-width: 600px) {
+  .header ul {
+    font-size: 1rem;
+  }
+}
 .header ul li {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 15px;
 }
-
-.header ul :global(a) {
-  font-weight: 400;
-}
-
-.header ul :global(a.active) {
+.header ul li :global(a.active) {
   color: var(--accents-3);
-  font-weight: 400;
-}
-
-@media (max-width: 600px) {
-  .header {
-    padding: 0.5em 0;
-  }
 }

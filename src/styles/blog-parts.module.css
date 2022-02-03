@@ -1,0 +1,165 @@
+.postDate {
+  padding: 0 0 0.3rem;
+  font-size: 0.9rem;
+}
+
+.postTags {
+  font-size: 0.9rem;
+}
+.postTags a {
+  padding-right: 0.8rem;
+}
+
+.postTitle {
+  font-size: 1.6rem;
+  color: var(--fg);
+}
+@media (max-width: 600px) {
+  .postTitle {
+    font-size: 1.2rem;
+  }
+}
+.postTitle a {
+  font-size: 1.2rem;
+  color: inherit;
+}
+@media (max-width: 600px) {
+  .postTitle a {
+    font-size: 1.15rem;
+  }
+}
+
+.postExcerpt {
+  padding: 0.4rem 0;
+  font-size: 1rem;
+}
+
+.postBody {
+  padding: 0.5rem 0;
+}
+
+.readMoreLink {
+  color: var(--fg);
+}
+.readMoreLink a {
+  display: block;
+  width: 30%;
+  margin: 1rem auto 0;
+  border: 1px solid var(--accents-2);
+  color: inherit;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 3rem;
+}
+@media (max-width: 600px) {
+  .readMoreLink a {
+    width: 50%;
+  }
+}
+
+.nextPageLink {
+  color: var(--fg);
+}
+.nextPageLink a {
+  display: block;
+  width: 30%;
+  margin: 0 auto;
+  border: 1px solid var(--accents-2);
+  color: inherit;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 3rem;
+}
+@media (max-width: 600px) {
+  .nextPageLink a {
+    width: 50%;
+  }
+}
+
+.noContents {
+}
+
+.blogPostLink {
+}
+.blogPostLink h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.blogPostLink ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0.3rem;
+}
+.blogPostLink ul li {
+  position: relative;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  padding-left: 0.7rem;
+  line-height: 1.2rem;
+}
+.blogPostLink ul li:before {
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  content: '';
+  background: #333;
+}
+
+.blogTagLink {
+}
+.blogTagLink h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.blogTagLink ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0.3rem;
+}
+.blogTagLink ul li {
+  position: relative;
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  padding-left: 0.7rem;
+  line-height: 1.2rem;
+}
+.blogTagLink ul li:before {
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.9rem;
+  content: '';
+  background: #333;
+}
+
+.postsNotFound {
+}
+
+@media (max-width: 600px) {
+  .tag {
+    font-size: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .post a.expandButton {
+    width: 50%;
+  }
+
+  .post .caption {
+    font-size: 0.9rem;
+  }
+
+  .nextContainer {
+    padding: 0;
+  }
+  .nextContainer a.nextButton {
+    width: 50%;
+  }
+}
