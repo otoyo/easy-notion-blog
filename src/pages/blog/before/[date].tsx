@@ -15,7 +15,9 @@ import {
   PostTitle,
   PostsNotFound,
   ReadMoreLink,
+  PostThumbnail,
 } from '../../../components/blog-parts'
+import stylesParts from '../../../styles/blog-parts.module.css'
 import styles from '../../../styles/blog.module.css'
 
 import { getBeforeLink } from '../../../lib/blog-helpers'
@@ -81,37 +83,37 @@ const RenderPostsBeforeDate = ({
 
   return (
     <div className={styles.container}>
-      <DocumentHead description={`Post before ${date}`} />
-
       <div className={styles.mainContent}>
-        <header>
+        <DocumentHead description={`Post before ${date}`} />
+        <header className={styles.mainTop}>
           <h2>Posts before {date}</h2>
         </header>
 
-        <NoContents contents={posts} />
+        <div className={styles.mainGallery}>
+          <NoContents contents={posts} />
 
-        {posts.map(post => {
-          return (
-            <div className={styles.post} key={post.Slug}>
-              <PostDate post={post} />
-              <PostTags post={post} />
-              <PostTitle post={post} />
-              <PostExcerpt post={post} />
-              <ReadMoreLink post={post} />
-            </div>
-          )
-        })}
+          {posts.map(post => {
+            return (
+              <div className={styles.post} key={post.Slug}>
+                <PostDate post={post} />
+                <PostTitle post={post} />
+                <PostThumbnail post={post} />
+                <PostTags post={post} />
+                <PostExcerpt post={post} />
+              </div>
+            )
+          })}
+        </div>
 
         <footer>
-          <NextPageLink firstPost={firstPost} posts={posts} />
           {!!firstPost &&
             posts.length > 0 &&
             firstPost.Date !== posts[posts.length - 1].Date && (
-              <div className={styles.nextContainer}>
+              <div className={stylesParts.nextContainer}>
                 <hr />
-                <div className={styles.buttonSubContainer}>
+                <div className={stylesParts.buttonSubContainer}>
                   <a
-                    className={styles.backButton}
+                    className={stylesParts.backButton}
                     onClick={() => router.back()}
                   >
                     {' '}
@@ -122,24 +124,27 @@ const RenderPostsBeforeDate = ({
                     as={getBeforeLink(posts[posts.length - 1].Date)}
                     passHref
                   >
-                    <a className={styles.nextButton}>Next ＞</a>
+                    <a className={stylesParts.nextButton}>Next ＞</a>
                   </Link>
                 </div>
               </div>
             )}
+
           {!!firstPost &&
             posts.length > 0 &&
             firstPost.Date == posts[posts.length - 1].Date && (
-              <div className={styles.nextContainer}>
+              <div className={stylesParts.nextContainer}>
                 <hr />
-                <a className={styles.backButton} onClick={() => router.back()}>
+                <a
+                  className={stylesParts.backButton}
+                  onClick={() => router.back()}
+                >
                   ＜ Back
                 </a>
               </div>
             )}
         </footer>
       </div>
-
       <div className={styles.subContent}>
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogTagLink heading="Categories" tags={tags} />

@@ -11,8 +11,10 @@ import {
   PostTags,
   PostTitle,
   ReadMoreLink,
+  PostThumbnail,
 } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
+import stylesParts from '../../styles/blog-parts.module.css'
 import {
   getPosts,
   getFirstPost,
@@ -49,22 +51,22 @@ const RenderPosts = ({
 
       <div className={styles.mainContent}>
         <NoContents contents={posts} />
-
-        {posts.map(post => {
-          return (
-            <div className={styles.post} key={post.Slug}>
-              <PostDate post={post} />
-              <PostTitle post={post} />
-              <Link href="/blog/[slug]" as={BlogPostLink(post.Slug)} passHref>
-                <img className={styles.thumbnail} src={post.OGImage} />
-              </Link>
-              <PostTags post={post} />
-              <PostExcerpt post={post} />
-              <ReadMoreLink post={post} />
-            </div>
-          )
-        })}
-
+        <div className={styles.mainGallery}>
+          {posts.map(post => {
+            return (
+              <div className={styles.post} key={post.Slug}>
+                <PostDate post={post} />
+                <PostTitle post={post} />
+                <PostThumbnail post={post} />
+                {/* <Link href="/blog/[slug]" as={BlogPostLink(post.Slug)} passHref>
+                <img className={stylesParts.thumbnail} src={post.OGImage} />
+              </Link> */}
+                <PostTags post={post} />
+                <PostExcerpt post={post} />
+              </div>
+            )
+          })}
+        </div>
         <footer>
           <NextPageLink firstPost={firstPost} posts={posts} />
         </footer>

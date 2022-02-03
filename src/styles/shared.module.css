@@ -1,15 +1,7 @@
-.layout h1,
-.layout h2 {
-  text-align: center;
+.container {
+  width: 100%;
+  padding: 0 5%;
 }
 
-ul.socialButtons {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-}
-
-li.socialButtonsItem {
-  display: inline-block;
-  margin-right: 0.5em;
+.content {
 }

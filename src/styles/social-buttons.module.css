@@ -1,0 +1,9 @@
+.socialButtons {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+.socialButtons li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}

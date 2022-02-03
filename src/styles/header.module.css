@@ -4,8 +4,8 @@
   padding: 2em 0;
   text-align: center;
   letter-spacing: -0.02em;
+  margin-top: 20px;
 }
-
 .header h1 {
   font-size: 1.8rem;
   font-weight: bolder;
@@ -14,21 +14,17 @@
 .header p {
   font-size: 0.8rem;
 }
-
 .header h1 a {
   color: #000;
 }
-
 .header ul {
   list-style: none;
   padding: 0;
 }
-
 .header ul li {
   display: inline-block;
   padding: 10px 20px;
 }
-
 .header ul :global(a) {
   font-weight: 400;
   color: var(--accents-3);

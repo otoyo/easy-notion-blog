@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import DocumentHead from '../../../components/document-head'
 import {
@@ -11,8 +12,10 @@ import {
   PostTitle,
   PostsNotFound,
   ReadMoreLink,
+  PostThumbnail,
 } from '../../../components/blog-parts'
 import styles from '../../../styles/blog.module.css'
+import stylesParts from '../../../styles/blog-parts.module.css'
 import { getTagLink } from '../../../lib/blog-helpers'
 import { useEffect } from 'react'
 import {
@@ -84,23 +87,24 @@ const RenderPostsByTags = ({
       <DocumentHead description={`Posts in ${tag}`} />
 
       <div className={styles.mainContent}>
-        <header>
+        <header className={styles.mainTop}>
           <h2>{tag}</h2>
         </header>
+        <div className={styles.mainGallery}>
+          <NoContents contents={posts} />
 
-        <NoContents contents={posts} />
-
-        {posts.map(post => {
-          return (
-            <div className={styles.post} key={post.Slug}>
-              <PostDate post={post} />
-              <PostTags post={post} />
-              <PostTitle post={post} />
-              <PostExcerpt post={post} />
-              <ReadMoreLink post={post} />
-            </div>
-          )
-        })}
+          {posts.map(post => {
+            return (
+              <div className={styles.post} key={post.Slug}>
+                <PostDate post={post} />
+                <PostTitle post={post} />
+                <PostThumbnail post={post} />
+                <PostTags post={post} />
+                <PostExcerpt post={post} />
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       <div className={styles.subContent}>

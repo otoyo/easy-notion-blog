@@ -22,11 +22,21 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
+      <p>
+        <Link href="https://sparkling-cinnamon-3f9.notion.site/herohoro-48ff806d05484215b51b9dc79df15357">
+          ⭐このブログを便利に使う方法⭐
+        </Link>
+      </p>
       <h1>
         <Link href="/" passHref>
           <a>{SITE_TITLE}</a>
         </Link>
       </h1>
+      <p>
+        <Link href="https://easy-notion-blog-02.vercel.app/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
+          ⭐easy-notion-blog導入⭐
+        </Link>
+      </p>
       <ul>
         {navItems.map(({ label, path }) => (
           <li key={label}>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import { NEXT_PUBLIC_URL } from '../../lib/notion/server-constants'
 import DocumentHead from '../../components/document-head'
@@ -9,12 +10,17 @@ import {
   NoContents,
   PostBody,
   PostDate,
+  PostTitleSlug,
   PostTags,
+  PostTagsSlug,
   PostTitle,
   PostsNotFound,
+  PostThumbnail,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
 import styles from '../../styles/blog.module.css'
+import stylesParts from '../../styles/blog-parts.module.css'
+import stylesShared from '../../styles/shared.module.css'
 import { getBlogLink } from '../../lib/blog-helpers'
 import {
   getPosts,
@@ -102,10 +108,13 @@ const RenderPost = ({
       />
 
       <div className={styles.mainContent}>
-        <div className={styles.post}>
+        <div className={styles.postSlug}>
           <PostDate post={post} />
-          <PostTags post={post} />
-          <PostTitle post={post} enableLink={false} />
+          <PostTitleSlug post={post} enableLink={false} />
+          <PostThumbnail post={post} />
+          <PostTagsSlug post={post} />
+          <br />
+          <hr />
 
           <NoContents contents={blocks} />
           <PostBody blocks={blocks} />

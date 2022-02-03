@@ -3,11 +3,15 @@ import { useRouter } from 'next/router'
 
 import { NEXT_PUBLIC_URL } from '../lib/notion/server-constants'
 
-export const SITE_TITLE = 'easy-notion-blog'
+export const SITE_TITLE = 'herohoroブログ'
 export const SITE_DESCRIPTION =
   'Easy to start your blog. You can write on your Notion.'
 
-const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
+const DocumentHead = ({
+  title = 'herohoroブログ',
+  description = 'This Notion Blog is powered by otoyo/easy-notion-blog',
+  urlOgImage = 'https://easy-notion-blog-02.vercel.app/hero-room.jpg',
+}) => {
   const { asPath, pathname } = useRouter()
 
   const currentURL = new URL(asPath, NEXT_PUBLIC_URL)

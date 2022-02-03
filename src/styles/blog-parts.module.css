@@ -1,0 +1,246 @@
+.post {
+  width: 48%;
+  margin: 10px 10px 10px 0;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 0 0 8px rgb(196, 195, 195);
+  border-radius: 10px;
+}
+
+.postDate {
+  padding: 0 0 0.3rem;
+  font-size: 0.9rem;
+}
+/*Slug内調整*/
+.postTagsSlug a {
+  font-size: 0.8em;
+}
+.postTags a {
+  font-size: 0.5em;
+}
+.postTags,
+.postTagsSlug {
+  display: block;
+  margin: 0.2em 0;
+}
+.postTags a,
+.postTagsSlug a {
+  display: inline-block;
+  padding: 0.3em 1em;
+  margin: 0 0.5em 0.2em 0;
+  text-decoration: none;
+  background: #f7f7f7;
+  border-right: solid 6px #ff9c83; /*左線*/
+  color: #ff7c5c; /*文字色*/
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+.postTags a:hover,
+.postTagsSlug a:hover {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.postTitle {
+  font-size: 0.9em;
+  margin: 0;
+  color: #333;
+}
+
+.postTitle:before,
+.postTitle:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.postTitle:after {
+  top: -12px;
+  left: -12px;
+}
+.postTitle:before {
+  bottom: -12px;
+  right: -12px;
+}
+.postTitle a {
+  color: #333;
+}
+.postTitle a:hover {
+  color: #f6d334;
+}
+/*Slug内調整*/
+.postTitleSlug {
+  font-size: 1.6rem;
+}
+.thumbnail {
+  width: 100%;
+  margin: 10px 0 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: none !important;
+  border-radius: 10px !important;
+}
+.thumbnail:hover {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.postExcerpt p {
+  color: #333;
+  font-size: 0.8em;
+  margin: 0.3em 0;
+  line-height: 1em;
+}
+
+.post a.expandButton {
+  display: block;
+  width: 50%;
+  margin: 1em auto;
+  color: #0a6111;
+  font-size: 0.7em;
+  text-align: center;
+  line-height: 3em;
+  /*線の種類（二重線）太さ 色*/
+  border-bottom: double 5px #ffc778;
+  font-weight: bolder;
+}
+.post a.expandButton:hover {
+  color: #f6d334;
+}
+.nextContainer {
+  width: 100%;
+  margin: 40px 0;
+  padding: 0 5%;
+}
+.nextContainer hr {
+  background-color: #fff;
+  border-top: 1px dashed #666;
+  margin-bottom: 20px;
+}
+.nextPageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.nextContainer .buttonSubContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nextContainer a.nextButton,
+.nextPageLink {
+  background: #eeaf74; /*色*/
+}
+.nextContainer a.backButton {
+  background: #abbae1; /*色*/
+}
+.nextContainer a.nextButton,
+.nextContainer a.backButton,
+.nextPageLink {
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  border-radius: 4px; /*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+}
+.nextContainer a.nextButton:hover,
+.nextContainer a.backButton:hover,
+.nextPageLink:hover {
+  color: #f6d334;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  .postTitle {
+    font-size: 1.2rem;
+  }
+}
+.postTitle a {
+  font-size: 1.2rem;
+  color: inherit;
+}
+@media (max-width: 600px) {
+  .postTitle a {
+    font-size: 1.15rem;
+  }
+}
+
+.postExcerpt {
+  padding: 0.4rem 0;
+  font-size: 1rem;
+}
+
+.postBody {
+  padding: 0.5rem 0;
+}
+
+.noContents {
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .postDate {
+    min-width: 50%;
+    padding: 2% 5%;
+  }
+  .nextContainer {
+    padding: 0;
+  }
+
+  .blogTagLink {
+  }
+  .blogTagLink h3,
+  .blogPostLink h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  .blogTagLink ul,
+  .blogPostLink ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0.3rem;
+  }
+  .blogTagLink ul li,
+  .blogPostLink ul li {
+    position: relative;
+    font-size: 1rem;
+    padding: 0.4rem 0;
+    padding-left: 0.7rem;
+    line-height: 1.2rem;
+  }
+  .blogTagLink ul li:before,
+  .blogPostLink ul li:before {
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0.9rem;
+    content: '';
+    background: #333;
+  }
+
+  .postsNotFound {
+  }
+}
+@media (max-width: 600px) {
+  .postTags a {
+    font-size: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .post a.expandButton {
+    width: 50%;
+  }
+
+  .postExcerpt {
+    font-size: 0.9rem;
+  }
+  .nextContainer {
+    padding: 0;
+  }
+  .nextContainer a.nextButton {
+    width: 50%;
+  }
+}
