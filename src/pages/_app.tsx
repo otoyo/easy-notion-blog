@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }) => {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [router.events])
+  }, [router.events, pageProps.title])
 
   return (
     <>
