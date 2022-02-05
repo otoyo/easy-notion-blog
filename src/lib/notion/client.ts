@@ -1,118 +1,27 @@
 import { NOTION_API_SECRET, DATABASE_ID } from './server-constants'
+import {
+  Post,
+  Block,
+  Image,
+  Code,
+  Quote,
+  Callout,
+  Embed,
+  Bookmark,
+  LinkPreview,
+  Table,
+  TableRow,
+  TableCell,
+  RichText,
+  Text,
+  Annotation,
+} from './interfaces'
 const { Client } = require('@notionhq/client')
 const blogIndexCache = require('./blog-index-cache.js')
 
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
-
-interface Post {
-  PageId: string
-  Title: string
-  Slug: string
-  Date: string
-  Tags: string[]
-  Excerpt: string
-  OGImage: string
-  Rank: number
-}
-
-interface Block {
-  Id: string
-  Type: string
-  HasChildren: boolean
-  RichTexts?: RichText[]
-  Image?: Image
-  Code?: Code
-  Quote?: Quote
-  Callout?: Callout
-  Embed?: Embed
-  Bookmark?: Bookmark
-  LinkPreview?: LinkPreview
-  Table?: Table
-  TableRow?: TableRow
-}
-
-interface Image {
-  Caption: RichText[]
-  Type: string
-  File: File
-}
-
-interface File {
-  Url: string
-}
-
-interface Code {
-  Caption: RichText[]
-  Text: RichText[]
-  Language: string
-}
-
-interface Quote {
-  Text: RichText[]
-}
-
-interface Callout {
-  RichTexts: RichText[]
-  Icon: Icon
-}
-
-interface Embed {
-  Url: string
-}
-
-interface Bookmark {
-  Url: string
-}
-
-interface LinkPreview {
-  Url: string
-}
-
-interface Table {
-  TableWidth: number
-  HasColumnHeader: boolean
-  HasRowHeader: boolean
-  Rows: Block[]
-}
-
-interface TableRow {
-  Cells: TableCell[]
-}
-
-interface TableCell {
-  RichTexts: RichText[]
-}
-
-interface RichText {
-  Text: Text
-  Annotation: Annotation
-  PlainText: string
-  Href?: string
-}
-
-interface Text {
-  Content: string
-  Link?: Link
-}
-
-interface Icon {
-  Emoji: string
-}
-
-interface Annotation {
-  Bold: boolean
-  Italic: boolean
-  Strikethrough: boolean
-  Underline: boolean
-  Code: boolean
-  Color: string
-}
-
-interface Link {
-  Url: string
-}
 
 export async function getPosts(pageSize: number = 10) {
   if (blogIndexCache.exists()) {
@@ -376,58 +285,12 @@ export async function getAllBlocksByBlockId(blockId) {
             Id: item.id,
             Type: item.type,
             HasChildren: item.has_children,
-            RichTexts: item[item.type].text.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
+            RichTexts: item[item.type].text.map(_buildRichText),
           }
           break
         case 'image':
           const image: Image = {
-            Caption: item.image.caption.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
+            Caption: item.image.caption.map(_buildRichText),
             Type: item.image.type,
             File: {
               Url: item.image.file.url,
@@ -443,54 +306,8 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'code':
           const code: Code = {
-            Caption: item[item.type].caption.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
-            Text: item[item.type].text.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
+            Caption: item[item.type].caption.map(_buildRichText),
+            Text: item[item.type].text.map(_buildRichText),
             Language: item.code.language,
           }
 
@@ -503,30 +320,7 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'quote':
           const quote: Quote = {
-            Text: item[item.type].text.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
+            Text: item[item.type].text.map(_buildRichText),
           }
 
           block = {
@@ -538,30 +332,7 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'callout':
           const callout: Callout = {
-            RichTexts: item[item.type].text.map(item => {
-              const text: Text = {
-                Content: item.text.content,
-                Link: item.text.link,
-              }
-
-              const annotation: Annotation = {
-                Bold: item.annotations.bold,
-                Italic: item.annotations.italic,
-                Strikethrough: item.annotations.strikethrough,
-                Underline: item.annotations.underline,
-                Code: item.annotations.code,
-                Color: item.annotations.color,
-              }
-
-              const richText: RichText = {
-                Text: text,
-                Annotation: annotation,
-                PlainText: item.plain_text,
-                Href: item.href,
-              }
-
-              return richText
-            }),
+            RichTexts: item[item.type].text.map(_buildRichText),
             Icon: {
               Emoji: item[item.type].icon.emoji,
             },
@@ -628,30 +399,7 @@ export async function getAllBlocksByBlockId(blockId) {
         case 'table_row':
           const cells: TableCell[] = item.table_row.cells.map(cell => {
             const tableCell: TableCell = {
-              RichTexts: cell.map(item => {
-                const text: Text = {
-                  Content: item.text.content,
-                  Link: item.text.link,
-                }
-
-                const annotation: Annotation = {
-                  Bold: item.annotations.bold,
-                  Italic: item.annotations.italic,
-                  Strikethrough: item.annotations.strikethrough,
-                  Underline: item.annotations.underline,
-                  Code: item.annotations.code,
-                  Color: item.annotations.color,
-                }
-
-                const richText: RichText = {
-                  Text: text,
-                  Annotation: annotation,
-                  PlainText: item.plain_text,
-                  Href: item.href,
-                }
-
-                return richText
-              }),
+              RichTexts: cell.map(_buildRichText),
             }
 
             return tableCell
@@ -721,7 +469,7 @@ function _buildFilter(conditions = []) {
   }
 
   return {
-    and: _uniqueContions(
+    and: _uniqueConditions(
       conditions.concat([
         {
           property: 'Published',
@@ -740,7 +488,7 @@ function _buildFilter(conditions = []) {
   }
 }
 
-function _uniqueContions(conditions = []) {
+function _uniqueConditions(conditions = []) {
   let properties = []
 
   return conditions.filter(cond => {
@@ -776,4 +524,29 @@ function _buildPost(data) {
   }
 
   return post
+}
+
+function _buildRichText(item) {
+  const text: Text = {
+    Content: item.text.content,
+    Link: item.text.link,
+  }
+
+  const annotation: Annotation = {
+    Bold: item.annotations.bold,
+    Italic: item.annotations.italic,
+    Strikethrough: item.annotations.strikethrough,
+    Underline: item.annotations.underline,
+    Code: item.annotations.code,
+    Color: item.annotations.color,
+  }
+
+  const richText: RichText = {
+    Text: text,
+    Annotation: annotation,
+    PlainText: item.plain_text,
+    Href: item.href,
+  }
+
+  return richText
 }

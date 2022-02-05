@@ -6,18 +6,14 @@ const TweetEmbed = ({ url }) => {
     matched = new URL(url).pathname.match(/\/(\d+)$/)
   } catch (error) {
     console.log(error)
-    return <></>
+    return null
   }
 
   if (!matched) {
-    return <></>
+    return null
   }
 
-  return (
-    <>
-      <TwitterTweetEmbed tweetId={matched[1]} />
-    </>
-  )
+  return <TwitterTweetEmbed tweetId={matched[1]} />
 }
 
 export default TweetEmbed

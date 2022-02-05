@@ -3,7 +3,7 @@ import { NEXT_PUBLIC_GA_TRACKING_ID } from '../lib/notion/server-constants'
 
 const GoogleAnalytics = () => {
   if (!NEXT_PUBLIC_GA_TRACKING_ID) {
-    return <></>
+    return null
   }
 
   return (

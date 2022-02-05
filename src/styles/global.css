@@ -5,13 +5,13 @@
   --gap-double: 2rem;
 
   --bg: #fff;
-  --fg: #000;
-  --accents-1: #111;
-  --accents-2: #333;
-  --accents-3: #888;
+  --fg: #333;
+  --accents-1: #0070f3;
+  --accents-2: #3291ff;
+  --accents-3: #666;
   --geist-foreground: #000;
 
-  --radius: 8px;
+  --radius: 4px;
 
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -29,7 +29,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 body {
@@ -62,8 +62,8 @@ pre[class*='language-'] {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  font-size: 0.95em;
-  line-height: 1.4em;
+  font-size: 0.95rem;
+  line-height: 1.4rem;
   tab-size: 4;
   hyphens: none;
 }
@@ -198,18 +198,6 @@ pre.dark[class*='language-'] {
   color: #50e3c2;
 }
 
-.explanation {
-  font-size: 1em;
-  width: 40rem;
-  max-width: 100vw;
-  padding: 0 2rem;
-  background: var(--bg);
-  margin: var(--gap-half) auto;
-}
-.explanation p {
-  color: #333;
-  font-size: 0.8em;
-}
 figure {
   font-size: 0.85rem;
   color: #999;
@@ -222,11 +210,11 @@ figure {
 }
 
 a {
-  color: #0070f3;
+  color: var(--accents-1);
   text-decoration: none;
 }
 a:hover {
-  color: #3291ff;
+  color: var(--accents-2);
 }
 
 mark {
@@ -235,52 +223,40 @@ mark {
   background: rgba(247, 212, 255, 0.8);
 }
 
-.title {
-  text-align: center;
-}
-
-.logo :global(svg) {
-  max-width: calc(100vw - var(--gap-double));
-}
-
 h1 {
-  margin: var(--gap-double) 0 calc(0.5 * var(--gap)) 0;
+  margin: 0;
+  color: var(--fg);
   font-size: 2rem;
   font-weight: 700;
-  /*font-size: 2.25rem;
-  font-weight: 800;*/
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.6rem;
+  }
 }
 
 h2 {
-  color: #333;
+  margin: 0;
+  color: var(--fg);
+  font-size: 1.2rem;
   font-weight: 700;
-  font-size: 1rem;
-  /*color: var(--accents-3);*/
+}
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.15rem;
+  }
 }
 
 h3 {
-  color: #333;
+  margin: 0;
+  color: var(--fg);
+  font-size: 1.2rem;
   font-weight: 700;
-  font-size: 1rem;
 }
-
-.video {
-  width: 1080px;
-  max-width: calc(100vw - 40px);
-  transform: translateX(-50%);
-  margin-left: 50%;
-  text-align: center;
-  cursor: pointer;
-}
-.video :global(video) {
-  max-width: 100%;
-  max-height: 90vh;
-  outline: none;
-}
-
-.posted {
-  font-size: 0.9rem;
-  color: #222;
+@media (max-width: 600px) {
+  h3 {
+    font-size: 1.15rem;
+  }
 }
 
 ol {
@@ -293,11 +269,13 @@ p,
 ul {
   color: #222;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.8rem;
 }
 pre {
+  margin: 0;
   white-space: pre;
+  tab-size: 2;
 }
 pre :global(code) {
   overflow: auto;
@@ -308,14 +286,14 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  margin: 0.3em 0;
+  margin: 0.3rem 0;
   background-color: #333;
 }
 
 code {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   background: #f1f1f1;
-  padding: 0.2rem;
+  padding: 0.25rem;
   border-radius: var(--radius);
   font-family: var(--font-mono);
 }
@@ -336,82 +314,8 @@ table th {
 
 table td,
 table th {
-  font-size: 0.75em;
+  font-size: 0.9rem;
   border: 1px solid #e4e4e4;
-  padding: 0.5em 1em;
-  line-height: 1.2em;
-}
-
-.slice {
-  position: relative;
-}
-
-.slice::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 130%;
-  background: #fff;
-  transform: skew(-20deg);
-}
-
-@media (min-width: 1024px) {
-  .container {
-    margin: 0 auto;
-    width: 1024px;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
-  }
-}
-
-@media (max-width: 600px) {
-  html {
-    font-size: 18px;
-  }
-  .explanation {
-    padding: 0 1rem 1rem;
-  }
-
-  h1 {
-    font-size: 1.2rem;
-    letter-spacing: 0;
-  }
-
-  h2 {
-    font-size: 1rem;
-    letter-spacing: 0;
-  }
-
-  h3 {
-    font-size: 1rem;
-    letter-spacing: 0;
-  }
-
-  .authors .posted {
-    font-size: 0.9rem;
-  }
-}
-
-.dotted {
-  border-bottom: 1px dashed black;
-}
-
-footer {
-  padding: 2em 0;
-  text-align: center;
-  font-size: 14px;
-}
-
-footer img {
-  display: inline-block;
-}
-
-footer span {
-  color: #777777;
-}
-
-footer span a {
-  color: inherit;
+  padding: 0.5rem 1rem;
+  line-height: 1.2rem;
 }
