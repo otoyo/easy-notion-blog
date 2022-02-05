@@ -11,7 +11,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## スクリーンショット
 
-![Screenshot](https://user-images.githubusercontent.com/1063435/140594180-1683fc3d-28fd-4978-9b15-ab59cf39c2db.png)
+![Screenshot](https://user-images.githubusercontent.com/1063435/152633191-0bda9095-52ce-4e01-9794-4268c26d0ef4.png)
 
 ## デモ
 
