@@ -41,6 +41,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 1. 新規に空のページを作成します
 1. `/table` とタイプし "Table - Inline" を選択します(下図 1)
 1. "Untitled" と名前のついた一階層下のページ(データベース) に移動します(下図 2)
+1. データベースの列名が `Name`, `Tags` になっていることを確認します。そうなっていない場合は変更します
 1. URL から次の部分を `DATABASE_ID` としてメモします `https://notion.so/your-account/<ココ>?v=xxxx`
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
 1. `DATABASE_ID` をメモしたデータベースを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
