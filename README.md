@@ -46,6 +46,7 @@ You can write on your Notion.
 1. Create a blank page.
 1. Type `/table` and select "Table - Inline" (Fig.1)
 1. Go to under page(database) named as "Untitled" (Fig.2)
+1. Check the name of the database columns to be `Name`, `Tags`. Rename if they are not so.
 1. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
 1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
 1. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
