@@ -14,16 +14,17 @@
 .code {
   display: block;
   width: 100%;
+  padding: 1rem 0;
+}
+.code pre {
+  display: block;
   overflow: auto;
-  margin: 0.6rem 0;
+  margin: 5px;
   padding: 0.8rem;
-  line-height: 1.2rem;
   background: #f1f1f1;
   font-size: 0.9rem;
+  line-height: 1.2rem;
   border-radius: var(--radius);
-}
-.code code {
-  padding: 0;
 }
 
 .callout {
