@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-jsx'
 import TweetEmbed from './tweet-embed'
@@ -63,12 +64,16 @@ const Caption = ({ caption }) => {
   return <div className={styles.caption}>{caption[0].Text.Content}</div>
 }
 
-const Image = ({ block }) => (
+const ImageBlock = ({ block }) => (
   <div className={styles.image}>
-    <img
-      src={block.Image.File.Url}
-      alt="画像が読み込まれない場合はページを更新してみてください。"
-    />
+    <div>
+      <Image
+        src={block.Image.File.Url}
+        layout="fill"
+        objectFit="contain"
+        alt="画像が読み込まれない場合はページを更新してみてください。"
+      />
+    </div>
     <Caption caption={block.Image.Caption} />
   </div>
 )
@@ -198,7 +203,7 @@ const NotionBlock = ({ block }) => {
   } else if (block.Type === 'heading_3') {
     return <Heading block={block} level={3} />
   } else if (block.Type === 'image') {
-    return <Image block={block} />
+    return <ImageBlock block={block} />
   } else if (block.Type === 'code') {
     return <Code block={block} />
   } else if (block.Type === 'quote') {
