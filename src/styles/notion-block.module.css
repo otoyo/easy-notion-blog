@@ -11,6 +11,11 @@
   padding: 1rem 0;
   text-align: center;
 }
+.image > div:first-child {
+  position: relative;
+  width: 90%;
+  height: 360px;
+}
 
 .code {
   display: block;
