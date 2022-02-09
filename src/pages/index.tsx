@@ -16,7 +16,7 @@ const RenderPage = () => (
       />
     </div>
 
-    <div className="explanation">
+    <div>
       <p>
         はじめまして。わたしはへろほろと申します。
         <br />
