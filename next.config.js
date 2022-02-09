@@ -42,4 +42,6 @@ module.exports = {
       { source: '/sitemap', destination: '/api/sitemap' },
     ]
   },
+
+  outputFileTracing: false,
 }
