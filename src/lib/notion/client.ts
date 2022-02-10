@@ -502,7 +502,11 @@ function _uniqueConditions(conditions = []) {
 
 function _validPost(data) {
   const prop = data.properties
-  return prop.Page.title.length > 0 && prop.Slug.rich_text.length > 0
+  return (
+    prop.Page.title.length > 0 &&
+    prop.Slug.rich_text.length > 0 &&
+    !!prop.Date.date
+  )
 }
 
 function _buildPost(data) {
