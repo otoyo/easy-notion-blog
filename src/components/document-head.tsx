@@ -29,7 +29,8 @@ const DocumentHead = ({
         property="og:description"
         content={description ? description : SITE_DESCRIPTION}
       />
-      {urlOgImage ? <meta property="og:image" content={urlOgImage} /> : null}
+      <meta property="og:image" content={urlOgImage} />
+      {/* {urlOgImage ? <meta property="og:image" content={urlOgImage} /> : null} */}
       <meta
         name="twitter:card"
         content={
@@ -38,7 +39,8 @@ const DocumentHead = ({
             : 'summary'
         }
       />
-      {urlOgImage ? <meta name="twitter:image" content={urlOgImage} /> : null}
+      <meta name="twitter:image" content={urlOgImage} />
+      {/* {urlOgImage ? <meta name="twitter:image" content={urlOgImage} /> : null} */}
       <link rel="canonical" href={currentURL.toString()} />
     </Head>
   )
