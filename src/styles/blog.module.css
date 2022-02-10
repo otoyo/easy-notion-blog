@@ -113,7 +113,8 @@
   border-radius: 10px;
 }
 
-.post :global(p) {
+.post :global(p),
+.postSlug :global(p) {
   margin: 0.3rem 0;
   color: var(--fg);
   font-size: 1rem;
