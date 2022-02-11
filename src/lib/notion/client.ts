@@ -16,20 +16,21 @@ import {
   Text,
   Annotation,
 } from './interfaces'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
-const blogIndexCache = require('./blog-index-cache.js')
+import * as blogIndexCache from './blog-index-cache.js'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
 
-export async function getPosts(pageSize: number = 10) {
+export async function getPosts(pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.slice(0, pageSize)
   }
 
-  let params = {
+  const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
     sorts: [
@@ -56,7 +57,7 @@ export async function getAllPosts() {
     results = blogIndexCache.get()
     console.log('Found cached posts.')
   } else {
-    let params = {
+    const params = {
       database_id: DATABASE_ID,
       filter: _buildFilter(),
       sorts: [
@@ -85,7 +86,7 @@ export async function getAllPosts() {
   return results.filter(item => _validPost(item)).map(item => _buildPost(item))
 }
 
-export async function getRankedPosts(pageSize: number = 10) {
+export async function getRankedPosts(pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
@@ -127,7 +128,7 @@ export async function getRankedPosts(pageSize: number = 10) {
     .map(item => _buildPost(item))
 }
 
-export async function getPostsBefore(date: string, pageSize: number = 10) {
+export async function getPostsBefore(date: string, pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.filter(post => post.Date < date).slice(0, pageSize)
@@ -228,13 +229,13 @@ export async function getPostBySlug(slug: string) {
   return _buildPost(data.results[0])
 }
 
-export async function getPostsByTag(tag: string, pageSize: number = 100) {
+export async function getPostsByTag(tag: string, pageSize = 100) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
   }
 
-  let params = {
+  const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -264,7 +265,7 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
 export async function getAllBlocksByBlockId(blockId) {
   let allBlocks: Block[] = []
 
-  let params = {
+  const params = {
     block_id: blockId,
   }
 
@@ -438,7 +439,7 @@ export async function getAllBlocksByBlockId(blockId) {
   }
 
   for (let i = 0; i < allBlocks.length; i++) {
-    let block = allBlocks[i]
+    const block = allBlocks[i]
 
     if (block.Type === 'table') {
       // Fetch table_row
@@ -489,7 +490,7 @@ function _buildFilter(conditions = []) {
 }
 
 function _uniqueConditions(conditions = []) {
-  let properties = []
+  const properties = []
 
   return conditions.filter(cond => {
     if (conditions.includes(cond.property)) {

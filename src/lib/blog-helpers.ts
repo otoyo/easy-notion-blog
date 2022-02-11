@@ -1,6 +1,3 @@
-// constants
-const NOW = new Date()
-
 export const getBlogLink = (slug: string) => {
   return `/blog/${slug}`
 }
@@ -21,15 +18,11 @@ export const getDateStr = date => {
   return y + '-' + m + '-' + d
 }
 
-export const postIsPublished = (post: any) => {
-  return post.Published === 'Yes' && new Date(post.Date) < NOW
-}
-
 export const normalizeSlug = slug => {
   if (typeof slug !== 'string') return slug
 
-  let startingSlash = slug.startsWith('/')
-  let endingSlash = slug.endsWith('/')
+  const startingSlash = slug.startsWith('/')
+  const endingSlash = slug.endsWith('/')
 
   if (startingSlash) {
     slug = slug.substr(1)
