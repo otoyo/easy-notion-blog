@@ -7,7 +7,8 @@
     "start": "next start",
     "build": "node scripts/set-blog-index-cache.js && next build && node scripts/expire-blog-index-cache.js",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "husky": {
     "hooks": {
