@@ -76,6 +76,18 @@ yarn install
 yarn dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Entries without `Published` are also displayed for preview in local. But no `Slug` entries are not displayed.
+
+Press `Ctrl+C` to stop local server in the terminal.
+
+## Lint
+
+```
+yarn lint
+```
+
 ## Optional settings
 
 - favicon

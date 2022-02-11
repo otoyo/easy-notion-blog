@@ -76,7 +76,19 @@ yarn install
 yarn dev
 ```
 
-## オプション
+ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+
+開発環境では `Published` でないエントリーも表示されるためプレビューすることができます。ただし `Slug` が設定されていないエントリーは表示されません。
+
+開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
+
+## Lint
+
+```
+yarn lint
+```
+
+## オプション設定
 
 - favicon
   - `public/` ディレクトリ以下に `favicon.ico` を置きます
