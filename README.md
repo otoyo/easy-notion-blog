@@ -109,6 +109,12 @@ Entries without `Published` are also displayed for preview in local. But no `Slu
 
 Press `Ctrl+C` to stop local server in the terminal.
 
+## Lint
+
+```
+yarn lint
+```
+
 ## Optional settings
 
 - favicon
