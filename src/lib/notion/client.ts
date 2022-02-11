@@ -29,7 +29,7 @@ export async function getPosts(pageSize: number = 10) {
     return allPosts.slice(0, pageSize)
   }
 
-  let params = {
+  const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
     sorts: [
@@ -56,7 +56,7 @@ export async function getAllPosts() {
     results = blogIndexCache.get()
     console.log('Found cached posts.')
   } else {
-    let params = {
+    const params = {
       database_id: DATABASE_ID,
       filter: _buildFilter(),
       sorts: [
@@ -234,7 +234,7 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
     return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
   }
 
-  let params = {
+  const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -264,7 +264,7 @@ export async function getPostsByTag(tag: string, pageSize: number = 100) {
 export async function getAllBlocksByBlockId(blockId) {
   let allBlocks: Block[] = []
 
-  let params = {
+  const params = {
     block_id: blockId,
   }
 
@@ -438,7 +438,7 @@ export async function getAllBlocksByBlockId(blockId) {
   }
 
   for (let i = 0; i < allBlocks.length; i++) {
-    let block = allBlocks[i]
+    const block = allBlocks[i]
 
     if (block.Type === 'table') {
       // Fetch table_row
@@ -489,7 +489,7 @@ function _buildFilter(conditions = []) {
 }
 
 function _uniqueConditions(conditions = []) {
-  let properties = []
+  const properties = []
 
   return conditions.filter(cond => {
     if (conditions.includes(cond.property)) {
