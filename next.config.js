@@ -6,7 +6,7 @@ const {
 } = require('./src/lib/notion/server-constants')
 
 const warnOrError =
-  process.env.NODE_ENV !== 'production'
+  process.env.NODE_ENV !== 'production' || process.env.GITHUB_ACTIONS
     ? console.warn
     : msg => {
         throw new Error(msg)

@@ -109,7 +109,13 @@ yarn dev
 
 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
-## オプション
+## Lint
+
+```
+yarn lint
+```
+
+## オプション設定
 
 - favicon
   - `public/` ディレクトリ以下に `favicon.ico` を置きます
