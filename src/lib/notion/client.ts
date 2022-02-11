@@ -24,7 +24,7 @@ const client = new Client({
   auth: NOTION_API_SECRET,
 })
 
-export async function getPosts(pageSize: number = 10) {
+export async function getPosts(pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.slice(0, pageSize)
@@ -86,7 +86,7 @@ export async function getAllPosts() {
   return results.filter(item => _validPost(item)).map(item => _buildPost(item))
 }
 
-export async function getRankedPosts(pageSize: number = 10) {
+export async function getRankedPosts(pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
@@ -128,7 +128,7 @@ export async function getRankedPosts(pageSize: number = 10) {
     .map(item => _buildPost(item))
 }
 
-export async function getPostsBefore(date: string, pageSize: number = 10) {
+export async function getPostsBefore(date: string, pageSize = 10) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.filter(post => post.Date < date).slice(0, pageSize)
@@ -229,7 +229,7 @@ export async function getPostBySlug(slug: string) {
   return _buildPost(data.results[0])
 }
 
-export async function getPostsByTag(tag: string, pageSize: number = 100) {
+export async function getPostsByTag(tag: string, pageSize = 100) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
