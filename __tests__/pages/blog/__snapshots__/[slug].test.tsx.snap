@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RenderPost renders the page unchanged 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="mainContent"
+    >
+      <div
+        class="post"
+      >
+        <div
+          class="postDate"
+        >
+          2021-11-06
+        </div>
+        <div
+          class="postTags"
+        >
+          <a
+            href="/blog/tag/Diary"
+          >
+            Diary
+          </a>
+        </div>
+        <h3
+          class="postTitle"
+        >
+          あのイーハトーヴォのすきとおった風
+        </h3>
+        <div
+          class="postBody"
+        >
+          <a
+            href="#Heading 1"
+            id="Heading 1"
+          >
+            <h4>
+              Heading 1
+            </h4>
+          </a>
+          <a
+            href="#Heading 2"
+            id="Heading 2"
+          >
+            <h5>
+              Heading 2
+            </h5>
+          </a>
+          <a
+            href="#Heading 3"
+            id="Heading 3"
+          >
+            <h6>
+              Heading 3
+            </h6>
+          </a>
+          <p>
+            Paragraph
+          </p>
+          <p>
+            <b>
+              bold
+            </b>
+          </p>
+          <p>
+            <i>
+              italic
+            </i>
+          </p>
+          <p>
+            <u>
+              Underline
+            </u>
+          </p>
+          <p>
+            <s>
+              Strike
+            </s>
+          </p>
+          <p>
+            <a
+              href="https://github.com/otoyo/easy-notion-blog"
+            >
+              link
+            </a>
+          </p>
+          <p>
+            <code>
+              code
+            </code>
+          </p>
+          <p />
+          <ul>
+            <li>
+              Bulleted List
+            </li>
+            <li>
+              Uni
+            </li>
+            <li>
+              Tako
+            </li>
+          </ul>
+          <p />
+          <ol>
+            <li>
+              Numbered List
+            </li>
+            <li>
+              Kani
+            </li>
+            <li>
+              Ika
+            </li>
+          </ol>
+          <p />
+          <p>
+            Divider
+          </p>
+          <hr
+            class="divider"
+          />
+          <p />
+          <div
+            class="callout"
+          >
+            <div>
+              ℹ️
+            </div>
+            <div>
+              Callout
+            </div>
+          </div>
+          <p />
+          <div
+            class="code"
+          >
+            <pre>
+              <code>
+                console
+                <span
+                  class="token punctuation"
+                >
+                  .
+                </span>
+                <span
+                  class="token function"
+                >
+                  log
+                </span>
+                <span
+                  class="token punctuation"
+                >
+                  (
+                </span>
+                <span
+                  class="token string"
+                >
+                  'This is Code Block.'
+                </span>
+                <span
+                  class="token punctuation"
+                >
+                  )
+                </span>
+              </code>
+            </pre>
+            <div
+              class="caption"
+            >
+              This is code caption.
+            </div>
+          </div>
+          <p />
+          <blockquote>
+            Quote Block
+          </blockquote>
+          <p />
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  Simple
+                </th>
+                <th>
+                  Table
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  1
+                </td>
+                <td>
+                  Tako
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  2
+                </td>
+                <td>
+                  Ika
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  3
+                </td>
+                <td>
+                  Uni
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p />
+          <div
+            class="image"
+          >
+            <div>
+              <span
+                style="box-sizing: border-box; display: block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"
+              >
+                <img
+                  alt="画像が読み込まれない場合はページを更新してみてください。"
+                  data-nimg="fill"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
+                />
+                <noscript />
+              </span>
+            </div>
+            <div
+              class="caption"
+            >
+              This is image caption.
+            </div>
+          </div>
+        </div>
+        <footer>
+          <ul
+            class="socialButtons"
+          >
+            <li>
+              <button
+                aria-label="twitter"
+                class="react-share__ShareButton"
+                style="background-color: transparent; padding: 0px; cursor: pointer;"
+              >
+                <svg
+                  height="32"
+                  viewBox="0 0 64 64"
+                  width="32"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    fill="#00aced"
+                    r="31"
+                  />
+                  <path
+                    d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="facebook"
+                class="react-share__ShareButton"
+                style="background-color: transparent; padding: 0px; cursor: pointer;"
+              >
+                <svg
+                  height="32"
+                  viewBox="0 0 64 64"
+                  width="32"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    fill="#3b5998"
+                    r="31"
+                  />
+                  <path
+                    d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="pocket"
+                class="react-share__ShareButton"
+                style="background-color: transparent; padding: 0px; cursor: pointer;"
+              >
+                <svg
+                  height="32"
+                  viewBox="0 0 64 64"
+                  width="32"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    fill="#EF3F56"
+                    r="31"
+                  />
+                  <path
+                    d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z"
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="hatena"
+                class="react-share__ShareButton"
+                style="background-color: transparent; padding: 0px; cursor: pointer;"
+              >
+                <svg
+                  height="32"
+                  viewBox="0 0 64 64"
+                  width="32"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    fill="#009ad9"
+                    r="31"
+                  />
+                  <path
+                    d="M 36.164062 33.554688 C 34.988281 32.234375 33.347656 31.5 31.253906 31.34375 C 33.125 30.835938 34.476562 30.09375 35.335938 29.09375 C 36.191406 28.09375 36.609375 26.78125 36.609375 25.101562 C 36.628906 23.875 36.332031 22.660156 35.75 21.578125 C 35.160156 20.558594 34.292969 19.71875 33.253906 19.160156 C 32.304688 18.640625 31.175781 18.265625 29.847656 18.042969 C 28.523438 17.824219 26.195312 17.730469 22.867188 17.730469 L 14.769531 17.730469 L 14.769531 47.269531 L 23.113281 47.269531 C 26.46875 47.269531 28.886719 47.15625 30.367188 46.929688 C 31.851562 46.695312 33.085938 46.304688 34.085938 45.773438 C 35.289062 45.148438 36.28125 44.179688 36.933594 42.992188 C 37.597656 41.796875 37.933594 40.402344 37.933594 38.816406 C 37.933594 36.621094 37.347656 34.867188 36.164062 33.554688 Z M 22.257812 24.269531 L 23.984375 24.269531 C 25.988281 24.269531 27.332031 24.496094 28.015625 24.945312 C 28.703125 25.402344 29.042969 26.183594 29.042969 27.285156 C 29.042969 28.390625 28.664062 29.105469 27.9375 29.550781 C 27.210938 29.992188 25.84375 30.199219 23.855469 30.199219 L 22.257812 30.199219 Z M 29.121094 41.210938 C 28.328125 41.691406 26.976562 41.925781 25.078125 41.925781 L 22.257812 41.925781 L 22.257812 35.488281 L 25.195312 35.488281 C 27.144531 35.488281 28.496094 35.738281 29.210938 36.230469 C 29.925781 36.726562 30.304688 37.582031 30.304688 38.832031 C 30.304688 40.078125 29.914062 40.742188 29.105469 41.222656 Z M 29.121094 41.210938 M 46.488281 39.792969 C 44.421875 39.792969 42.742188 41.46875 42.742188 43.535156 C 42.742188 45.605469 44.421875 47.28125 46.488281 47.28125 C 48.554688 47.28125 50.230469 45.605469 50.230469 43.535156 C 50.230469 41.46875 48.554688 39.792969 46.488281 39.792969 Z M 46.488281 39.792969 M 43.238281 17.730469 L 49.738281 17.730469 L 49.738281 37.429688 L 43.238281 37.429688 Z M 43.238281 17.730469 "
+                    fill="white"
+                  />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+    <div
+      class="subContent"
+    >
+      <div
+        class="blogPostLink"
+      >
+        <h3>
+          Posts in the same category
+        </h3>
+        <ul>
+          <li>
+            <a
+              href="/blog/supported-blocks"
+            >
+              Supported blocks
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog/my-first-post"
+            >
+              My 1st post
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="blogPostLink"
+      >
+        <h3>
+          Recommended
+        </h3>
+        <ul>
+          <li>
+            <a
+              href="/blog/ihatov"
+            >
+              あのイーハトーヴォのすきとおった風
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog/supported-blocks"
+            >
+              Supported blocks
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog/my-first-post"
+            >
+              My 1st post
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="blogPostLink"
+      >
+        <h3>
+          Latest posts
+        </h3>
+        <ul>
+          <li>
+            <a
+              href="/blog/ihatov"
+            >
+              あのイーハトーヴォのすきとおった風
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog/supported-blocks"
+            >
+              Supported blocks
+            </a>
+          </li>
+          <li>
+            <a
+              href="/blog/my-first-post"
+            >
+              My 1st post
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="blogTagLink"
+      >
+        <h3>
+          Categories
+        </h3>
+        <ul>
+          <li>
+            <a
+              href="/blog/tag/Diary"
+            >
+              Diary
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+`;
