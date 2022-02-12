@@ -82,11 +82,20 @@ yarn dev
 
 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
-## Lint
+## Lint & Test
 
 ```
 yarn lint
+yarn test
 ```
+
+HTML を変更した場合はスナップショットを更新してください。
+
+```
+yarn jest --updateSnapshot
+```
+
+- [Jest CLI オプション --updateSnapshot](https://jestjs.io/ja/docs/cli#--updatesnapshot)
 
 ## オプション設定
 
