@@ -18,7 +18,7 @@ import {
 } from './interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
-import * as blogIndexCache from './blog-index-cache.js'
+import * as blogIndexCache from './blog-index-cache'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
