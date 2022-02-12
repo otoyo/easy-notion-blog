@@ -109,11 +109,20 @@ Entries without `Published` are also displayed for preview in local. But no `Slu
 
 Press `Ctrl+C` to stop local server in the terminal.
 
-## Lint
+## Lint & Test
 
 ```
 yarn lint
+yarn test
 ```
+
+Update the snapshot if you change HTML.
+
+```
+yarn jest --updateSnapshot
+```
+
+- [Jest CLI Options --updateSnapshot](https://jestjs.io/docs/cli#--updatesnapshot)
 
 ## Optional settings
 
