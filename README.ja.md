@@ -17,6 +17,12 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 [https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
 
+## ユーザーブログ
+
+- [www.gadge7.net](https://www.gadge7.net/blog)
+- [herohoro ブログ](https://easy-notion-blog-02.vercel.app/)
+- [アルパカログ](https://alpacat.com/)
+
 ## 特長
 
 - 高速な表示
