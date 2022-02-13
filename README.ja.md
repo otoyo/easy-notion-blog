@@ -19,6 +19,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## ユーザーブログ
 
+- [www.gadge7.net](https://www.gadge7.net/blog)
 - [herohoro ブログ](https://easy-notion-blog-02.vercel.app/)
 - [アルパカログ](https://alpacat.com/)
 

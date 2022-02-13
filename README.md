@@ -19,6 +19,7 @@ You can write on your Notion.
 
 ## Users' blogs
 
+- [www.gadge7.net](https://www.gadge7.net/blog)
 - [herohoro ブログ](https://easy-notion-blog-02.vercel.app/)
 - [アルパカログ](https://alpacat.com/)
 
