@@ -176,6 +176,34 @@ export const BlogTagLink = ({ heading, tags }) => (
     <TagLinkList tags={tags} />
   </div>
 )
+export const IndexBlogTagLink = ({ heading, tags }) => (
+  <div className={styles.IndexblogTagLink}>
+    <h3>{heading}</h3>
+    <hr />
+    <NoContents contents={tags} />
+    <TagLinkList tags={tags} />
+  </div>
+)
+
+// export const IndexBlogTagLink = ({ heading, tags }) => {
+//   if (!tags || tags.length === 0) return null
+//   return(
+
+//     <div className={styles.IndexblogTagLink} >
+//       <h3>{heading}</h3>
+//       <div>
+//     {tags.map(tag => {
+//       return(
+
+//     <div key={tag}>
+//     <NoContents contents={tags} />
+//     <Link  href="/blog/tag/[tag]" as={getTagLink(tag)} passHref >
+//       <a >{tag}</a>
+//      </Link>
+//      </div>
+//   )})}</div>
+//   <hr/></div>
+// )}
 
 export const PostLinkList = ({ posts }) => {
   if (!posts || posts.length === 0) return null

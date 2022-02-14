@@ -1,5 +1,5 @@
-.divider {
-}
+/* .divider {
+} */
 
 .caption {
   font-size: 0.9rem;
@@ -14,7 +14,7 @@
 .image > div:first-child {
   position: relative;
   width: 90%;
-  height: 360px;
+  height: 300px;
 }
 
 .code {

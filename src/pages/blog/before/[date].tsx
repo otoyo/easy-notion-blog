@@ -146,8 +146,8 @@ const RenderPostsBeforeDate = ({
         </footer>
       </div>
       <div className={styles.subContent}>
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogTagLink heading="Categories" tags={tags} />
+        <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <h3>Twitter Timeline</h3>
         <hr />
         <a

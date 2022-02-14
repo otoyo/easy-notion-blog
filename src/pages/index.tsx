@@ -1,12 +1,27 @@
 import DocumentHead from '../components/document-head'
 import ExtLink from '../components/ext-link'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import styles from '../styles/page.module.css'
 
 const RenderPage = () => (
   <div className={styles.container}>
     <DocumentHead />
+    <h4 className={styles.h1}>ほんの気持ち程度の解説記事もあります</h4>
+    <ul>
+      <li>
+        <Link href="https://sparkling-cinnamon-3f9.notion.site/herohoro-48ff806d05484215b51b9dc79df15357">
+          このブログを便利に使う方法⭐
+        </Link>
+      </li>
+      <li>
+        <Link href="https://easy-notion-blog-02.vercel.app/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
+          easy-notion-blog導入⭐
+        </Link>
+      </li>
+    </ul>
+
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <Image
         src="/hero-room.jpg"
@@ -18,7 +33,7 @@ const RenderPage = () => (
 
     <div>
       <p>
-        はじめまして。わたしはへろほろと申します。
+        わたしはへろほろと申します。
         <br />
         便利なアイテムが好きで、notion歴もかれこれ半年程になりました。
         <br />

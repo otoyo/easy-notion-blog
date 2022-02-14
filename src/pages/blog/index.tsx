@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {
   BlogPostLink,
   BlogTagLink,
+  IndexBlogTagLink,
   NextPageLink,
   NoContents,
   PostDate,
@@ -50,6 +51,7 @@ const RenderPosts = ({
       <DocumentHead title="Blog" />
 
       <div className={styles.mainContent}>
+        {/* <IndexBlogTagLink heading="Tags" tags={tags} /> */}
         <NoContents contents={posts} />
         <div className={styles.mainGallery}>
           {posts.map(post => {
@@ -73,8 +75,8 @@ const RenderPosts = ({
       </div>
 
       <div className={styles.subContent}>
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogTagLink heading="Categories" tags={tags} />
+        <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <h3>Twitter Timeline</h3>
         <hr />
         <a

@@ -3,3 +3,15 @@
   max-width: 100%;
   margin: 0 auto;
 }
+.h1 {
+  margin: 2rem 0 1rem 0;
+  font-size: 1.2em;
+  background: linear-gradient(transparent 70%, #ffc778 90%);
+  padding-left: 1rem;
+  color: black;
+}
+.h1:after {
+  color: #9c9ea4;
+  font-size: 0.9rem;
+  padding-left: 0.2rem;
+}

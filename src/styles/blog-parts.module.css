@@ -37,6 +37,74 @@
 .postTagsSlug a:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
+.IndexblogTagLink {
+  display: inline-block;
+}
+.IndexblogTagLink ul,
+.IndexblogTagLink ol {
+  padding: 0;
+}
+.IndexblogTagLink ul li {
+  position: relative;
+  list-style-type: none !important; /*ポチ消す*/
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  /* background: #dbebf8; */
+  /* background:#f7eb98; */
+  vertical-align: middle;
+  color: #505050;
+  border-radius: 15px 0px 0px 15px; /*左側の角丸く*/
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.IndexblogTagLink ul li:before {
+  display: inline-block;
+  vertical-align: middle;
+  /*以下白丸つくる*/
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: #faf5ec;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+/* .IndexblogTagLink > div:first-child{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.IndexblogTagLink a {
+  font-size: 1em;
+}
+.IndexblogTagLink h3 {
+  position: relative;
+  padding: 0.25em 1em;
+  font-size: 1.5em;
+  border: solid 2px black;
+  border-radius: 3px 0 3px 0;
+  color: black;
+}
+
+.IndexblogTagLink h3:before,
+.IndexblogTagLink h3:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.IndexblogTagLink h3:after {
+  top: -12px;
+  left: -12px;
+}
+
+.IndexblogTagLink h3:before {
+  bottom: -12px;
+  right: -12px;
+}
 
 .postTitle {
   font-size: 0.9em;
