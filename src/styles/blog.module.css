@@ -180,14 +180,14 @@
     align-items: flex-start;
   }
   .mainContent {
-    width: 68%;
+    width: 70%;
   }
 
   .mainGallery {
     min-width: 50%;
     padding: 0;
     margin-left: 20px;
-    max-width: calc(600px + 10%);
+    /* max-width: calc(600px + 10%); */
   }
 
   .subContent {
