@@ -1,9 +1,73 @@
 .container {
-  width: 640px;
+  /* width: 640px; */
   max-width: 100%;
   margin: 0 auto;
 }
-.h1 {
+.mainContent {
+  width: 100%;
+}
+.tagMain {
+  margin: 0 1em 1.25rem 0;
+  display: inline-block;
+  font-size: 1em;
+  color: black;
+  text-shadow: 0 0 5px white;
+  padding: 1em 0.8em;
+  background: -webkit-repeating-linear-gradient(
+    -45deg,
+    white white 3px,
+    #f7eb98 3px,
+    #f7eb98 7px
+  );
+  background: repeating-linear-gradient(
+    -45deg,
+    white,
+    white 3px,
+    #f7eb98 3px,
+    #f7eb98 7px
+  );
+}
+.moreSearch {
+  margin: 0 1em 1.25rem 0;
+  display: inline-block;
+  font-size: 1em;
+  color: black;
+  text-shadow: 0 0 5px white;
+  padding: 1em 0.8em;
+  background: -webkit-repeating-linear-gradient(
+    -45deg,
+    white white 3px,
+    #e6e6e3 3px,
+    #e6e6e3 7px
+  );
+  background: repeating-linear-gradient(
+    -45deg,
+    white,
+    white 3px,
+    #e6e6e3 3px,
+    #e6e6e3 7px
+  );
+}
+
+@media (min-width: 1024px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .mainContent {
+    width: 100%;
+  }
+  .subContent {
+    width: 60%;
+    padding: 0 3%;
+  }
+  .tagMalin {
+    font-size: 1.2em;
+  }
+}
+
+/* .h1 {
   margin: 2rem 0 1rem 0;
   font-size: 1.2em;
   background: linear-gradient(transparent 70%, #ffc778 90%);
@@ -14,4 +78,4 @@
   color: #9c9ea4;
   font-size: 0.9rem;
   padding-left: 0.2rem;
-}
+} */
