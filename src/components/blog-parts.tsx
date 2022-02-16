@@ -257,7 +257,7 @@ export const TagLinkNoList = ({ tags }) => {
     <div>
       {tags.map(tag => {
         return (
-          <div className={styles.tagSub}>
+          <div className={styles.tagSub} key={tag}>
             <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
               <p>{tag}</p>
             </Link>
