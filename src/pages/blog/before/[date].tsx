@@ -7,14 +7,12 @@ import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
   BlogTagLinkNoList,
-  NextPageLink,
   NoContents,
   PostDate,
   PostExcerpt,
   PostTags,
   PostTitle,
   PostsNotFound,
-  ReadMoreLink,
   PostThumbnail,
   TwitterTimeline,
 } from '../../../components/blog-parts'
