@@ -16,6 +16,7 @@ import {
   PostTitle,
   PostsNotFound,
   PostThumbnail,
+  TwitterTimeline,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
 import styles from '../../styles/blog.module.css'
@@ -142,22 +143,7 @@ const RenderPost = ({
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogPostLink heading="Latest posts" posts={recentPosts} />
-        <h3>Twitter Timeline</h3>
-        <hr />
-        <a
-          className="twitter-timeline"
-          data-width="300"
-          data-height="500"
-          data-theme="light"
-          href="https://twitter.com/mineral_30?ref_src=twsrc%5Etfw"
-        >
-          Tweets by mineral_30
-        </a>{' '}
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          // charset="utf-8"
-        ></script>
+        <TwitterTimeline />
       </div>
     </div>
   )

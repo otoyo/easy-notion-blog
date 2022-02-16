@@ -3,7 +3,11 @@ import ExtLink from '../components/ext-link'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getTagLink } from '../lib/blog-helpers'
-import { BlogPostLink, BlogTagLinkNoList } from '../components/blog-parts'
+import {
+  BlogPostLink,
+  BlogTagLinkNoList,
+  TwitterTimeline,
+} from '../components/blog-parts'
 
 import styles from '../styles/page.module.css'
 import stylesBlog from '../styles/blog.module.css'
@@ -145,7 +149,8 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         </li>
       </ul>
       <BlogPostLink heading="Recommended" posts={rankedPosts} />
-      <h3>Twitter Timeline</h3>
+      <TwitterTimeline />
+      {/* <h3>Twitter Timeline</h3>
       <hr />
       <p>フォロー大歓迎＼(^o^)／</p>
       <a
@@ -161,7 +166,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         async
         src="https://platform.twitter.com/widgets.js"
         // charset="utf-8"
-      ></script>
+      ></script> */}
     </div>
   </div>
 )
