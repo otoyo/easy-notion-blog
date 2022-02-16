@@ -12,7 +12,7 @@
   font-size: 1em;
   color: black;
   text-shadow: 0 0 5px white;
-  padding: 1em 0.8em;
+  padding: 0 0.8em;
   background: -webkit-repeating-linear-gradient(
     -45deg,
     white white 3px,
@@ -41,7 +41,7 @@
   font-size: 1em;
   color: black;
   text-shadow: 0 0 5px white;
-  padding: 1em 0.8em;
+  padding: 0 0.8em;
   background: -webkit-repeating-linear-gradient(
     -45deg,
     white white 3px,
@@ -82,6 +82,18 @@
   }
   .tagMalin {
     font-size: 1.2em;
+  }
+}
+@media (max-width: 600px) {
+  .tagMain,
+  .moreSearch {
+    margin: 0 1em 1.25rem 0;
+    padding: 0 0.8em;
+  }
+  .tagMain p,
+  .moreSearch p {
+    font-size: 0.5em;
+    font-weight: bold;
   }
 }
 
