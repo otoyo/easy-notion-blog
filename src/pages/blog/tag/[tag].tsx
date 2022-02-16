@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 import DocumentHead from '../../../components/document-head'
 import {
@@ -11,12 +10,10 @@ import {
   PostTags,
   PostTitle,
   PostsNotFound,
-  ReadMoreLink,
   PostThumbnail,
   TwitterTimeline,
 } from '../../../components/blog-parts'
 import styles from '../../../styles/blog.module.css'
-import stylesParts from '../../../styles/blog-parts.module.css'
 import { getTagLink } from '../../../lib/blog-helpers'
 import { useEffect } from 'react'
 import {

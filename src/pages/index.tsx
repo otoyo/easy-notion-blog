@@ -1,5 +1,4 @@
 import DocumentHead from '../components/document-head'
-import ExtLink from '../components/ext-link'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getTagLink } from '../lib/blog-helpers'
@@ -10,9 +9,7 @@ import {
 } from '../components/blog-parts'
 
 import styles from '../styles/page.module.css'
-import stylesBlog from '../styles/blog.module.css'
 import { getPosts, getRankedPosts, getAllTags } from '../lib/notion/client'
-import { relative } from 'path'
 
 export async function getStaticProps() {
   const posts = await getPosts()

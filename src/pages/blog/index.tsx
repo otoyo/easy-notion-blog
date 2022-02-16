@@ -1,22 +1,18 @@
 import DocumentHead from '../../components/document-head'
 
-import Link from 'next/link'
 import {
   BlogPostLink,
   BlogTagLinkNoList,
-  IndexBlogTagLink,
   NextPageLink,
   NoContents,
   PostDate,
   PostExcerpt,
   PostTags,
   PostTitle,
-  ReadMoreLink,
   PostThumbnail,
   TwitterTimeline,
 } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
-import stylesParts from '../../styles/blog-parts.module.css'
 import {
   getPosts,
   getFirstPost,
