@@ -27,6 +27,14 @@
     #f7eb98 7px
   );
 }
+.tagMain p,
+.moreSearch p {
+  font-weight: bold;
+}
+.tagMain p:hover,
+.moreSearch p:hover {
+  color: #f6d334;
+}
 .moreSearch {
   margin: 0 1em 1.25rem 0;
   display: inline-block;
@@ -47,6 +55,16 @@
     #e6e6e3 3px,
     #e6e6e3 7px
   );
+}
+.tagSub {
+  margin: 0 1em 1.25rem 0;
+  display: inline-block;
+  background-color: #d3d2c7e7;
+  padding: 0 0.5em;
+}
+.tagSub p {
+  padding: 0 0.8em;
+  margin: 0;
 }
 
 @media (min-width: 1024px) {

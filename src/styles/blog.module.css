@@ -160,17 +160,9 @@
   line-height: 1.8rem;
 }
 .postSlug {
-  max-width: calc(600px + 10%);
   padding: 8% 10%;
   background: #fefdfb;
   border-radius: 10px;
-}
-
-@media (min-width: 1024px) {
-  .postSlug {
-    min-width: 50%;
-    padding: 2% 5%;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -187,12 +179,14 @@
     min-width: 50%;
     padding: 0;
     margin-left: 20px;
-    /* max-width: calc(600px + 10%); */
   }
 
   .subContent {
     width: 33%;
     padding: 0 3%;
+  }
+  .postSlug {
+    padding: 2% 5%;
   }
   /* .postInPost{
     min-width: 50%;

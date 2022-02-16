@@ -6,7 +6,7 @@ import { NEXT_PUBLIC_URL } from '../../lib/notion/server-constants'
 import DocumentHead from '../../components/document-head'
 import {
   BlogPostLink,
-  BlogTagLink,
+  BlogTagLinkNoList,
   NoContents,
   PostBody,
   PostDate,
@@ -139,9 +139,9 @@ const RenderPost = ({
           heading="Posts in the same category"
           posts={sameTagPosts}
         />
+        <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogPostLink heading="Latest posts" posts={recentPosts} />
-        <BlogTagLink heading="Categories" tags={tags} />
         <h3>Twitter Timeline</h3>
         <hr />
         <a

@@ -3,7 +3,7 @@ import DocumentHead from '../../components/document-head'
 import Link from 'next/link'
 import {
   BlogPostLink,
-  BlogTagLink,
+  BlogTagLinkNoList,
   IndexBlogTagLink,
   NextPageLink,
   NoContents,
@@ -75,7 +75,7 @@ const RenderPosts = ({
       </div>
 
       <div className={styles.subContent}>
-        <BlogTagLink heading="Categories" tags={tags} />
+        <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <h3>Twitter Timeline</h3>
         <hr />

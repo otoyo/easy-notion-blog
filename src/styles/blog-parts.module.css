@@ -218,6 +218,19 @@
   color: #f6d334;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
+.tagSub {
+  margin: 0 1em 1.25rem 0;
+  display: inline-block;
+  background-color: #d3d2c7e7;
+  padding: 0 0.5em;
+}
+.tagSub p {
+  padding: 0 0.8em;
+  margin: 0;
+}
+.tagSub p:hover {
+  color: #f6d334;
+}
 
 @media (max-width: 600px) {
   .postTitle {

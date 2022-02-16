@@ -3,7 +3,7 @@ import ExtLink from '../components/ext-link'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getTagLink } from '../lib/blog-helpers'
-import { BlogPostLink } from '../components/blog-parts'
+import { BlogPostLink, BlogTagLinkNoList } from '../components/blog-parts'
 
 import styles from '../styles/page.module.css'
 import stylesBlog from '../styles/blog.module.css'
@@ -48,7 +48,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
               // <h3>{tag}</h3>
               <div className={styles.tagMain}>
                 <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
-                  <a>{tag}</a>
+                  <p>{tag}</p>
                 </Link>
 
                 {/* <p>{getPostsByTag(tag,6)}</p> */}
@@ -72,7 +72,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         })}
         <div className={styles.moreSearch}>
           <Link href="/blog">
-            <a> 🔍　to Blog List </a>
+            <p> 🔍　to Blog List </p>
           </Link>
         </div>
       </div>
@@ -102,6 +102,24 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
     </div>
 
     <div className={styles.subContent}>
+      {/* <h3>Tags</h3>
+      <hr/><br/>
+      <div>
+    {tags.map(tag => {
+          
+            return (
+              
+              <div className={styles.tagSub}>
+                <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
+                  <p>{tag}</p>
+                </Link>
+              </div>
+
+            ) 
+        })}
+        
+        </div> */}
+      <BlogTagLinkNoList heading="Tag List" tags={tags} />
       <h3>Prolile</h3>
       <hr />
       <Image src="/profile.png" width={200} height={200} objectFit="contain" />
