@@ -2,6 +2,7 @@ import React from 'react'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-jsx'
 import TweetEmbed from './tweet-embed'
+import Mermaid from './mermaid'
 import { LinkPreview } from '@dhaiwat10/react-link-preview'
 import Image from 'next/image'
 
@@ -84,17 +85,21 @@ const Code = ({ block }) => {
 
   return (
     <div className={styles.code}>
-      <pre>
-        <code
-          dangerouslySetInnerHTML={{
-            __html: Prism.highlight(
-              code,
-              Prism.languages[language.toLowerCase()] ||
-                Prism.languages.javascript
-            ),
-          }}
-        />
-      </pre>
+      {language === 'mermaid' ? (
+        <Mermaid id={`mermaid-${block.Id}`} definition={code} />
+      ) : (
+        <pre>
+          <code
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(
+                code,
+                Prism.languages[language.toLowerCase()] ||
+                  Prism.languages.javascript
+              ),
+            }}
+          />
+        </pre>
+      )}
       <Caption caption={block.Code.Caption} />
     </div>
   )
