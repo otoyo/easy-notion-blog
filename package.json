@@ -18,9 +18,11 @@
   "dependencies": {
     "@dhaiwat10/react-link-preview": "^1.12.2",
     "@notionhq/client": "^0.4.0",
+    "@types/mermaid": "^8.2.7",
     "@zeit/react-jsx-parser": "^2.0.0",
     "async-sema": "^3.1.0",
     "github-slugger": "^1.2.1",
+    "mermaid": "^8.14.0",
     "next": "12",
     "prismjs": "^1.25.0",
     "react": "^17.0.2",
