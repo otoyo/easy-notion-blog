@@ -294,7 +294,10 @@ export async function getAllBlocksByBlockId(blockId) {
             Caption: item.image.caption.map(_buildRichText),
             Type: item.image.type,
             File: {
-              Url: item.image.file.url,
+              Url:
+                item.image.type === 'external'
+                  ? item.image.external.url
+                  : item.image.file.url,
             },
           }
 
