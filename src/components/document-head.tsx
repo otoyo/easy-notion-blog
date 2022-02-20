@@ -10,8 +10,6 @@ export const SITE_DESCRIPTION =
 const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
   const { asPath, pathname } = useRouter()
 
-  const currentURL = new URL(asPath, NEXT_PUBLIC_URL)
-
   return (
     <Head>
       <title>{title ? `${title} - ${SITE_TITLE}` : SITE_TITLE}</title>
@@ -19,7 +17,12 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         name="description"
         content={description ? description : SITE_DESCRIPTION}
       />
-      <meta property="og:url" content={currentURL.toString()} />
+      {NEXT_PUBLIC_URL ? (
+        <meta
+          property="og:url"
+          content={new URL(asPath, NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
       <meta property="og:title" content={title ? title : SITE_TITLE} />
       <meta
         property="og:description"
@@ -35,7 +38,12 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         }
       />
       {urlOgImage ? <meta name="twitter:image" content={urlOgImage} /> : null}
-      <link rel="canonical" href={currentURL.toString()} />
+      {NEXT_PUBLIC_URL ? (
+        <link
+          rel="canonical"
+          href={new URL(asPath, NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
     </Head>
   )
 }
