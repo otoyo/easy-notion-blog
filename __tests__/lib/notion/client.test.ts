@@ -37,9 +37,9 @@ describe('getAllBlocksByBlockId', () => {
   const pageBlockId = '"ed0090ef-628c-4cfd-a8ea-1a5326855f8a'
   const tableBlockId = '30f2f940-3bd8-46de-b76c-00e4c0eb9521'
 
-  it('resolves 31 blocks', async () => {
+  it('resolves 32 blocks', async () => {
     const got = await getAllBlocksByBlockId(pageBlockId)
-    expect(got).toHaveLength(31)
+    expect(got).toHaveLength(32)
   })
 
   it('resolves Rows in Table blocks', async () => {
