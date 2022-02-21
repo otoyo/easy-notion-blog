@@ -89,6 +89,10 @@ yarn dev
 
 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
+## よくある質問
+
+[wiki](https://github.com/otoyo/easy-notion-blog/wiki) の「よくある質問」をご覧ください。
+
 ## Lint & Test
 
 ```
