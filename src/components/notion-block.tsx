@@ -70,7 +70,9 @@ const ImageBlock = ({ block }) => (
     <div>
       <Image
         src={
-          block.Image.External ? block.Image.External.Url : block.Image.File.Url
+          block.Image.External
+            ? block.Image.External.Url
+            : `/notion-images/${block.Id}.png`
         }
         layout="fill"
         objectFit="contain"
