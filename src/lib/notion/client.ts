@@ -19,6 +19,7 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
 import * as blogIndexCache from './blog-index-cache'
+import * as imageCache from './image-cache'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
@@ -298,6 +299,7 @@ export async function getAllBlocksByBlockId(blockId) {
           if (item.image.type === 'external') {
             image.External = { Url: item.image.external.url }
           } else {
+            imageCache.store(item.id, item.image.file.url)
             image.File = { Url: item.image.file.url }
           }
 
