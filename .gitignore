@@ -31,3 +31,5 @@ yarn-error.log*
 .vercel
 
 tmp/
+public/notion-images/*
+!public/notion-images/.gitkeep
