@@ -17,7 +17,7 @@ export const store = async (id: string, url: string) => {
   })
 }
 
-const dir = 'public/notion-images'
+const dir = 'public/notion_images'
 
 const filePath = (id: string) => {
   return `${dir}/${id}.png`
