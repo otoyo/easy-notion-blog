@@ -69,7 +69,9 @@ const ImageBlock = ({ block }) => (
   <div className={styles.image}>
     <div>
       <Image
-        src={block.Image.File.Url}
+        src={
+          block.Image.External ? block.Image.External.Url : block.Image.File.Url
+        }
         layout="fill"
         objectFit="contain"
         alt="画像が読み込まれない場合はページを更新してみてください。"
