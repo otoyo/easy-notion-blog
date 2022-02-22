@@ -293,12 +293,12 @@ export async function getAllBlocksByBlockId(blockId) {
           const image: Image = {
             Caption: item.image.caption.map(_buildRichText),
             Type: item.image.type,
-            File: {
-              Url:
-                item.image.type === 'external'
-                  ? item.image.external.url
-                  : item.image.file.url,
-            },
+          }
+
+          if (item.image.type === 'external') {
+            image.External = { Url: item.image.external.url }
+          } else {
+            image.File = { Url: item.image.file.url }
           }
 
           block = {
