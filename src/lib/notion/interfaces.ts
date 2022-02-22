@@ -28,10 +28,15 @@ export interface Block {
 export interface Image {
   Caption: RichText[]
   Type: string
-  File: File
+  File?: File
+  External?: External
 }
 
 export interface File {
+  Url: string
+}
+
+export interface External {
   Url: string
 }
 
