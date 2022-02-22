@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-// import { SITE_TITLE } from './document-head'
+import { SITE_TITLE } from './document-head'
 import styles from '../styles/header.module.css'
 
 interface NavItem {
@@ -26,6 +26,7 @@ const Header = () => {
             width={400}
             height={100}
             objectFit="contain"
+            alt={SITE_TITLE}
           />
         </Link>
       </h1>
