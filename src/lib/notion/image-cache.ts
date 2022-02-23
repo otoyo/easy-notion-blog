@@ -1,8 +1,6 @@
 import * as fs from 'fs'
 
-export const store = async (id: string, url: string) => {
-  const blob = await fetchImageAsBlob(url)
-
+export const store = async (id: string, blob: Blob) => {
   if (!blob) {
     return
   }
@@ -21,13 +19,4 @@ const dir = 'public/notion_images'
 
 const filePath = (id: string) => {
   return `${dir}/${id}.png`
-}
-
-const fetchImageAsBlob = async (url: string) => {
-  try {
-    return await fetch(url).then(res => res.blob())
-  } catch (err) {
-    console.log(err)
-    return null
-  }
 }
