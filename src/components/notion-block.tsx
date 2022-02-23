@@ -175,39 +175,58 @@ const Table = ({ block }) => (
   </table>
 )
 
-const BulletedList = ({ block }) => (
-  <ul>
-    {block.ListItems.map(listItem => {
-      return (
-        <li key={`bulleted-list-item-${listItem.Id}`}>
-          {listItem.RichTexts.map((richText, i) => (
-            <RichText
-              richText={richText}
-              key={`bulleted-list-item-${listItem.Id}-${i}`}
-            />
-          ))}
-        </li>
-      )
-    })}
-  </ul>
-)
+const List = ({ block }) => {
+  if (block.Type === 'bulleted_list') {
+    return (
+      <ul>
+        <BulletedListItems blocks={block.ListItems} />
+      </ul>
+    )
+  }
+  return (
+    <ol>
+      <NumberedListItems blocks={block.ListItems} />
+    </ol>
+  )
+}
 
-const NumberedList = ({ block }) => (
-  <ol>
-    {block.ListItems.map(listItem => {
-      return (
-        <li key={`numbered-list-item-${listItem.Id}`}>
-          {listItem.RichTexts.map((richText, i) => (
-            <RichText
-              richText={richText}
-              key={`numbered-list-item-${listItem.Id}-${i}`}
-            />
-          ))}
-        </li>
-      )
-    })}
-  </ol>
-)
+const BulletedListItems = ({ blocks }) =>
+  blocks
+    .filter(b => b.Type === 'bulleted_list_item')
+    .map(listItem => (
+      <li key={`bulleted-list-item-${listItem.Id}`}>
+        {listItem.RichTexts.map((richText, i) => (
+          <RichText
+            richText={richText}
+            key={`bulleted-list-item-${listItem.Id}-${i}`}
+          />
+        ))}
+        {listItem.HasChildren ? (
+          <ul>
+            <BulletedListItems blocks={listItem.Children} />
+          </ul>
+        ) : null}
+      </li>
+    ))
+
+const NumberedListItems = ({ blocks }) =>
+  blocks
+    .filter(b => b.Type === 'numbered_list_item')
+    .map(listItem => (
+      <li key={`numbered-list-item-${listItem.Id}`}>
+        {listItem.RichTexts.map((richText, i) => (
+          <RichText
+            richText={richText}
+            key={`numbered-list-item-${listItem.Id}-${i}`}
+          />
+        ))}
+        {listItem.HasChildren ? (
+          <ol>
+            <NumberedListItems blocks={listItem.Children} />
+          </ol>
+        ) : null}
+      </li>
+    ))
 
 const NotionBlock = ({ block }) => {
   if (block.Type === 'paragraph') {
@@ -248,10 +267,8 @@ const NotionBlock = ({ block }) => {
     return <hr className="divider" />
   } else if (block.Type === 'table') {
     return <Table block={block} />
-  } else if (block.Type === 'bulleted_list') {
-    return <BulletedList block={block} />
-  } else if (block.Type === 'numbered_list') {
-    return <NumberedList block={block} />
+  } else if (block.Type === 'bulleted_list' || block.Type === 'numbered_list') {
+    return <List block={block} />
   }
 
   return null
