@@ -199,14 +199,10 @@ pre.dark[class*='language-'] {
 }
 
 figure {
+  margin: 0;
   font-size: 0.85rem;
   color: #999;
   line-height: 1.8rem;
-}
-
-figure {
-  font-size: 0.85rem;
-  color: #999;
 }
 
 a {
