@@ -59,14 +59,21 @@ const Heading = ({ block, level = 1 }) => {
   )
 }
 
-const Caption = ({ caption }) => {
+const Caption = ({ caption, type = 'figure' }) => {
   if (caption.length === 0 || !caption[0].Text.Content) return null
 
+  if (type === 'figure') {
+    return (
+      <figcaption className={styles.caption}>
+        {caption[0].Text.Content}
+      </figcaption>
+    )
+  }
   return <div className={styles.caption}>{caption[0].Text.Content}</div>
 }
 
 const ImageBlock = ({ block }) => (
-  <div className={styles.image}>
+  <figure className={styles.image}>
     <div>
       <Image
         src={
@@ -79,8 +86,8 @@ const ImageBlock = ({ block }) => (
         alt="画像が読み込まれない場合はページを更新してみてください。"
       />
     </div>
-    <Caption caption={block.Image.Caption} />
-  </div>
+    <Caption caption={block.Image.Caption} type="figure" />
+  </figure>
 )
 
 const Code = ({ block }) => {
