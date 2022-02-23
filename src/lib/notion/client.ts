@@ -20,6 +20,7 @@ import {
 const { Client } = require('@notionhq/client')
 import * as blogIndexCache from './blog-index-cache'
 import * as imageCache from './image-cache'
+import { fetchImageAsBlob, getImageSize } from './image-utils'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
@@ -299,7 +300,6 @@ export async function getAllBlocksByBlockId(blockId) {
           if (item.image.type === 'external') {
             image.External = { Url: item.image.external.url }
           } else {
-            imageCache.store(item.id, item.image.file.url)
             image.File = { Url: item.image.file.url }
           }
 
@@ -449,6 +449,21 @@ export async function getAllBlocksByBlockId(blockId) {
     if (block.Type === 'table') {
       // Fetch table_row
       block.Table.Rows = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'image') {
+      // Get image size and cache to local (only type: file)
+      const blob = await fetchImageAsBlob(
+        block.Image.File ? block.Image.File.Url : block.Image.External.Url
+      )
+      const dimensions = await getImageSize(blob)
+
+      if (dimensions) {
+        block.Image.Width = dimensions.width
+        block.Image.Height = dimensions.height
+      }
+
+      if (block.Image.File) {
+        imageCache.store(block.Id, blob)
+      }
     }
   }
 
