@@ -74,8 +74,8 @@ const ImageBlock = ({ block }) => (
             ? block.Image.External.Url
             : `/notion_images/${block.Id}.png`
         }
-        layout="fill"
-        objectFit="contain"
+        width={block.Image.Width || 100}
+        height={block.Image.Height || 100}
         alt="画像が読み込まれない場合はページを更新してみてください。"
       />
     </div>
