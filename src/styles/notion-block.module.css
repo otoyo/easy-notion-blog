@@ -9,12 +9,11 @@
 
 .image {
   padding: 1rem 0;
-  text-align: center;
+  width: 90%;
+  margin: 0 auto;
 }
 .image > div:first-child {
-  position: relative;
-  width: 90%;
-  height: 360px;
+  text-align: center;
 }
 
 .code {
