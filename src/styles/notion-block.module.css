@@ -9,14 +9,11 @@
 
 .image {
   padding: 1rem 0;
-  text-align: center;
+  width: 90%;
+  margin: 0 auto;
 }
 .image > div:first-child {
-  position: relative;
-  width: auto;
-  height: 600px;
-  border: 3px groove #dddddd;
-  border-radius: 10px;
+  text-align: center;
 }
 
 .code {
