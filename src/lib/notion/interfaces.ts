@@ -13,6 +13,7 @@ export interface Block {
   Id: string
   Type: string
   HasChildren: boolean
+  Children?: Block[]
   RichTexts?: RichText[]
   Image?: Image
   Code?: Code

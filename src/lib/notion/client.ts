@@ -449,6 +449,13 @@ export async function getAllBlocksByBlockId(blockId) {
     if (block.Type === 'table') {
       // Fetch table_row
       block.Table.Rows = await getAllBlocksByBlockId(block.Id)
+    } else if (
+      (block.Type === 'bulleted_list_item' ||
+        block.Type === 'numbered_list_item') &&
+      block.HasChildren
+    ) {
+      // Fetch nested list_item
+      block.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'image') {
       // Get image size and cache to local (only type: file)
       const blob = await fetchImageAsBlob(

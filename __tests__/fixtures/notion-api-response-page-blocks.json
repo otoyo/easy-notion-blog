@@ -380,7 +380,7 @@
       "id": "d3a36836-2e43-4d4d-a186-9b18bc86e6ff",
       "created_time": "2022-02-05T06:57:00.000Z",
       "last_edited_time": "2022-02-05T06:57:00.000Z",
-      "has_children": false,
+      "has_children": true,
       "archived": false,
       "type": "bulleted_list_item",
       "bulleted_list_item": {
@@ -482,7 +482,7 @@
       "id": "4e28c935-0b09-48c3-b72c-169b7fc5dbdb",
       "created_time": "2022-02-05T06:57:00.000Z",
       "last_edited_time": "2022-02-05T06:57:00.000Z",
-      "has_children": false,
+      "has_children": true,
       "archived": false,
       "type": "numbered_list_item",
       "numbered_list_item": {
