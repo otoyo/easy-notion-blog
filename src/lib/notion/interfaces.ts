@@ -30,6 +30,8 @@ export interface Image {
   Type: string
   File?: File
   External?: External
+  Width?: number
+  Height?: number
 }
 
 export interface File {
