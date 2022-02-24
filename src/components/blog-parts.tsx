@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import NotionBlock from './notion-block'
 import * as interfaces from '../lib/notion/interfaces'
@@ -18,9 +19,16 @@ export const PostDate = ({ post }) => (
 )
 
 export const PostThumbnail = ({ post }) => (
-  <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-    <img className={styles.thumbnail} src={post.OGImage} />
-  </Link>
+  <div className={styles.thumbnail}>
+    <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+      <Image src={post.OGImage} width={500} height={250} />
+    </Link>
+  </div>
+)
+export const PostThumbnailSlug = ({ post }) => (
+  <div className={styles.thumbnailSlug}>
+    <Image src={post.OGImage} width={880} height={460} />
+  </div>
 )
 export const PostTitle = ({ post, enableLink = true }) => {
   const postTitle = post.Title ? post.Title : ''

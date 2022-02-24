@@ -11,8 +11,8 @@ import {
   PostDate,
   PostTitleSlug,
   PostTagsSlug,
+  PostThumbnailSlug,
   PostsNotFound,
-  PostThumbnail,
   TwitterTimeline,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
@@ -107,7 +107,7 @@ const RenderPost = ({
         <div className={styles.postSlug}>
           <PostDate post={post} />
           <PostTitleSlug post={post} enableLink={false} />
-          <PostThumbnail post={post} />
+          <PostThumbnailSlug post={post} />
           <PostTagsSlug post={post} />
           <br />
           <hr />

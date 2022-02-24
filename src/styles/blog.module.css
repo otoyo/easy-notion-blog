@@ -213,6 +213,9 @@
     box-shadow: 0 0 8px rgb(196, 195, 195);
     border-radius: 10px;
   }
+  .postSlug p {
+    font-size: 1em;
+  }
   .subContent {
     width: 100%;
     padding: 0 3%;
