@@ -173,6 +173,8 @@ export const TwitterTimeline = () => (
     <p>フォロー大歓迎＼(^o^)／</p>
     <a
       className="twitter-timeline"
+      data-lang="en"
+      data-chrome="nofooter,transparent"
       data-width="500"
       data-height="500"
       data-theme="light"
