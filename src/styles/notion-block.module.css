@@ -87,3 +87,12 @@
     font-size: 1rem;
   }
 }
+
+.tweetEmbed {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+.tweetEmbed div:first-child div:first-child {
+  margin: auto;
+}
