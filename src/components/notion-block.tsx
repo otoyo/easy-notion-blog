@@ -4,7 +4,6 @@ import 'prismjs/components/prism-jsx'
 import TweetEmbed from './tweet-embed'
 import Mermaid from './mermaid'
 import { LinkPreview } from '@dhaiwat10/react-link-preview'
-import Image from 'next/image'
 
 import styles from '../styles/notion-block.module.css'
 
