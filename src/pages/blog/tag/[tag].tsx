@@ -26,9 +26,6 @@ import * as imageCache from '../../../lib/notion/image-cache'
 
 export async function getStaticProps({ params: { tag } }) {
   const posts = await getPostsByTag(tag)
-  const rankedPosts = await getRankedPosts()
-  const recentPosts = await getPosts(5)
-  const tags = await getAllTags()
 
   if (posts.length === 0) {
     console.log(`Failed to find posts for tag: ${tag}`)
@@ -41,6 +38,12 @@ export async function getStaticProps({ params: { tag } }) {
   }
 
   posts.forEach(p => p.OGImage && imageCache.store(p.PageId, p.OGImage))
+
+  const [rankedPosts, recentPosts, tags] = await Promise.all([
+    getRankedPosts(),
+    getPosts(5),
+    getAllTags(),
+  ])
 
   return {
     props: {
