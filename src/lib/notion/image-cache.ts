@@ -1,6 +1,10 @@
 import * as fs from 'fs'
 
-export const store = async (id: string, blob: Blob) => {
+import { fetchImageAsBlob } from './image-utils'
+
+export const store = async (id: string, url: string) => {
+  const blob = await fetchImageAsBlob(url)
+
   if (!blob) {
     return
   }
