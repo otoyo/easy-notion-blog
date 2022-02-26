@@ -19,10 +19,12 @@ import {
 } from '../../lib/notion/client'
 
 export async function getStaticProps() {
-  const posts = await getPosts()
-  const firstPost = await getFirstPost()
-  const rankedPosts = await getRankedPosts()
-  const tags = await getAllTags()
+  const [posts, firstPost, rankedPosts, tags] = await Promise.all([
+    getPosts(),
+    getFirstPost(),
+    getRankedPosts(),
+    getAllTags(),
+  ])
 
   return {
     props: {

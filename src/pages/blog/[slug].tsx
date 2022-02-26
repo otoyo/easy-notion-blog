@@ -39,17 +39,19 @@ export async function getStaticProps({ params: { slug } }) {
     }
   }
 
-  const blocks = await getAllBlocksByBlockId(post.PageId)
-  const rankedPosts = await getRankedPosts()
-  const recentPosts = await getPosts(5)
-  const tags = await getAllTags()
-
-  let sameTagPosts = []
-  if (post.Tags.length > 0) {
-    sameTagPosts = (await getPostsByTag(post.Tags[0], 6)).filter(
-      p => p.Slug !== post.Slug
-    )
-  }
+  const [
+    blocks,
+    rankedPosts,
+    recentPosts,
+    tags,
+    sameTagPosts,
+  ] = await Promise.all([
+    getAllBlocksByBlockId(post.PageId),
+    getRankedPosts(),
+    getPosts(5),
+    getAllTags(),
+    getPostsByTag(post.Tags[0], 6),
+  ])
 
   return {
     props: {
@@ -57,8 +59,8 @@ export async function getStaticProps({ params: { slug } }) {
       blocks,
       rankedPosts,
       recentPosts,
-      sameTagPosts,
       tags,
+      sameTagPosts: sameTagPosts.filter(p => p.Slug !== post.Slug),
     },
     revalidate: 60,
   }
