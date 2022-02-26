@@ -206,7 +206,7 @@ const BulletedListItems = ({ blocks }) =>
       </li>
     ))
 
-const NumberedListItems = ({ blocks }) =>
+const NumberedListItems = ({ blocks, level = 1 }) =>
   blocks
     .filter(b => b.Type === 'numbered_list_item')
     .map(listItem => (
@@ -218,9 +218,19 @@ const NumberedListItems = ({ blocks }) =>
           />
         ))}
         {listItem.HasChildren ? (
-          <ol>
-            <NumberedListItems blocks={listItem.Children} />
-          </ol>
+          level % 3 === 0 ? (
+            <ol type="1">
+              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+            </ol>
+          ) : level % 3 === 1 ? (
+            <ol type="a">
+              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+            </ol>
+          ) : (
+            <ol type="i">
+              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+            </ol>
+          )
         ) : null}
       </li>
     ))

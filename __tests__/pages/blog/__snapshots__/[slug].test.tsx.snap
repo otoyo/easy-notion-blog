@@ -122,7 +122,9 @@ exports[`RenderPost renders the page unchanged 1`] = `
             </li>
             <li>
               Ika
-              <ol>
+              <ol
+                type="a"
+              >
                 <li>
                   111
                 </li>
