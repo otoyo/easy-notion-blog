@@ -153,45 +153,6 @@ exports[`RenderPost renders the page unchanged 1`] = `
             </div>
           </div>
           <p />
-          <div
-            class="code"
-          >
-            <pre>
-              <code>
-                console
-                <span
-                  class="token punctuation"
-                >
-                  .
-                </span>
-                <span
-                  class="token function"
-                >
-                  log
-                </span>
-                <span
-                  class="token punctuation"
-                >
-                  (
-                </span>
-                <span
-                  class="token string"
-                >
-                  'This is Code Block.'
-                </span>
-                <span
-                  class="token punctuation"
-                >
-                  )
-                </span>
-              </code>
-            </pre>
-            <figcaption
-              class="caption"
-            >
-              This is code caption.
-            </figcaption>
-          </div>
           <p />
           <blockquote>
             Quote Block
