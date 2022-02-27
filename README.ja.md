@@ -21,7 +21,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 - [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
 - [www.gadge7.net](https://www.gadge7.net/blog)
-- [herohoro ブログ](https://easy-notion-blog-02.vercel.app/)
+- [herohoro ブログ](https://easy-notion-blog-02.vercel.app/) (Contributor)
 - [アルパカログ](https://alpacat.com/) (Owner)
 
 ## 特長
