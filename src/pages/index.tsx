@@ -131,6 +131,14 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         <li>元教員・介護士</li>
         <li>家の中では無限大</li>
       </ul>
+      <h3>Study TimeLine</h3>
+      <hr />
+      <iframe
+        src="https://notion2charts.com/embed/bad01964-6bce-4f62-bc9d-1d2899652ed6"
+        width="100%"
+        height="400"
+      ></iframe>
+
       <h3>Setup</h3>
       <hr />
       <ul>
