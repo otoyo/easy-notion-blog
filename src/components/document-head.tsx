@@ -8,7 +8,7 @@ export const SITE_DESCRIPTION =
   'Easy to start your blog. You can write on your Notion.'
 
 const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
-  const { asPath, pathname } = useRouter()
+  const { asPath } = useRouter()
 
   return (
     <Head>
@@ -28,16 +28,23 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         property="og:description"
         content={description ? description : SITE_DESCRIPTION}
       />
-      {urlOgImage ? <meta property="og:image" content={urlOgImage} /> : null}
-      <meta
-        name="twitter:card"
-        content={
-          pathname === '/blog/[slug]' && urlOgImage
-            ? 'summary_large_image'
-            : 'summary'
-        }
-      />
-      {urlOgImage ? <meta name="twitter:image" content={urlOgImage} /> : null}
+      {urlOgImage ? (
+        <meta property="og:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          property="og:image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
+      <meta name="twitter:card" content="summary_large_image" />
+      {urlOgImage ? (
+        <meta name="twitter:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          name="twitter:image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
       {NEXT_PUBLIC_URL ? (
         <link
           rel="canonical"
