@@ -141,6 +141,10 @@ yarn jest --updateSnapshot
 
 Please create an issue in English or Japanese.
 
+## Twitter community
+
+- [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
+
 ## Contribution
 
 Pull requests are welcome.

@@ -145,6 +145,10 @@ yarn jest --updateSnapshot
 
 Issue を作成してください。日本語で大丈夫です。
 
+## Twitter コミュニティ
+
+- [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
+
 ## 貢献
 
 PR 歓迎です。
