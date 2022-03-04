@@ -205,7 +205,7 @@ export async function getPostBySlug(slug: string) {
     filter: _buildFilter([
       {
         property: 'Slug',
-        text: {
+        rich_text: {
           equals: slug,
         },
       },
@@ -287,7 +287,7 @@ export async function getAllBlocksByBlockId(blockId) {
             Id: item.id,
             Type: item.type,
             HasChildren: item.has_children,
-            RichTexts: item[item.type].text.map(_buildRichText),
+            RichTexts: item[item.type].rich_text.map(_buildRichText),
           }
           break
         case 'image':
@@ -312,7 +312,7 @@ export async function getAllBlocksByBlockId(blockId) {
         case 'code':
           const code: Code = {
             Caption: item[item.type].caption.map(_buildRichText),
-            Text: item[item.type].text.map(_buildRichText),
+            Text: item[item.type].rich_text.map(_buildRichText),
             Language: item.code.language,
           }
 
@@ -325,7 +325,7 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'quote':
           const quote: Quote = {
-            Text: item[item.type].text.map(_buildRichText),
+            Text: item[item.type].rich_text.map(_buildRichText),
           }
 
           block = {
@@ -337,7 +337,7 @@ export async function getAllBlocksByBlockId(blockId) {
           break
         case 'callout':
           const callout: Callout = {
-            RichTexts: item[item.type].text.map(_buildRichText),
+            RichTexts: item[item.type].rich_text.map(_buildRichText),
             Icon: {
               Emoji: item[item.type].icon.emoji,
             },
@@ -511,7 +511,7 @@ function _uniqueConditions(conditions = []) {
   const properties = []
 
   return conditions.filter(cond => {
-    if (conditions.includes(cond.property)) {
+    if (properties.includes(cond.property)) {
       return false
     }
     properties.push(cond.property)
