@@ -14,7 +14,7 @@
   margin: 10px 10px 20px 0;
   padding: 10px 30px;
   position: relative;
-  color: #333;
+  color: var(--fg);
   text-align: center;
   display: inline-block;
   text-shadow: 0 0 2px white;
@@ -36,9 +36,9 @@
   position: relative;
   padding: 0.25em 1em;
   font-size: 1.5em;
-  border: solid 2px black;
+  border: solid 2px var(--fg);
   border-radius: 3px 0 3px 0;
-  color: black;
+  color: var(--fg);
 }
 
 .postSlug :global(h4):before,
@@ -47,7 +47,7 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  border: solid 2px black;
+  border: solid 2px var(--fg);
   border-radius: 50%;
 }
 
@@ -67,7 +67,7 @@
 .postSlug :global(h5) {
   margin: 2.5rem 0 1.25rem 0;
   font-size: 1.5em;
-  color: black;
+  color: var(--fg);
   text-shadow: 0 0 5px white;
   padding: 0.5em 0.5em;
   background: -webkit-repeating-linear-gradient(
@@ -86,7 +86,7 @@
 }
 .postSlug :global(h5):after {
   content: '▼';
-  color: #9c9ea4;
+  color: var(--fg-accents-1);
   font-size: 0.9rem;
   padding-left: 0.2rem;
 }
@@ -96,11 +96,11 @@
   font-size: 1.2em;
   background: linear-gradient(transparent 70%, #ffc778 90%);
   padding-left: 1rem;
-  color: black;
+  color: var(--fg);
 }
 .postSlug :global(h6):after {
   content: '▼';
-  color: #9c9ea4;
+  color: var(--fg-accents-1);
   font-size: 0.9rem;
   padding-left: 0.2rem;
 }
@@ -111,6 +111,7 @@
   padding: 10px 30px 20px 30px;
   box-shadow: 0 0 8px rgb(196, 195, 195);
   border-radius: 10px;
+  background: #fefdfb;
 }
 
 .post :global(p),

@@ -15,7 +15,7 @@
   font-size: 0.8rem;
 }
 .header h1 a {
-  color: #000;
+  color: var(--fg);
 }
 .header ul {
   list-style: none;
@@ -26,19 +26,19 @@
   padding: 10px 20px;
 }
 .header ul :global(a) {
-  font-weight: 400;
-  color: var(--accents-3);
+  font-weight: bolder;
+  color: var(--fg-accents-1);
 }
 .header ul :global(a:hover) {
-  color: #f6d334;
+  color: var(--hero-hover-fg);
 }
 
 .header ul :global(a.active) {
-  color: var(--accents-2);
+  color: var(--fg);
   font-weight: bolder;
   border-radius: 50%;
   padding: 10px 10px;
-  background: #ffc778;
+  background: var(--hero-point-bg);
 }
 
 @media (max-width: 600px) {

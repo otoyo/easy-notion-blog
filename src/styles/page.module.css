@@ -10,7 +10,7 @@
   margin: 0 1em 1.25rem 0;
   display: inline-block;
   font-size: 1em;
-  color: black;
+  color: var(--fg);
   text-shadow: 0 0 5px white;
   padding: 0 0.8em;
   background: -webkit-repeating-linear-gradient(
@@ -33,13 +33,13 @@
 }
 .tagMain p:hover,
 .moreSearch p:hover {
-  color: #f6d334;
+  color: var(--hero-hover-fg);
 }
 .moreSearch {
   margin: 0 1em 1.25rem 0;
   display: inline-block;
   font-size: 1em;
-  color: black;
+  color: var(--fg);
   text-shadow: 0 0 5px white;
   padding: 0 0.8em;
   background: -webkit-repeating-linear-gradient(
