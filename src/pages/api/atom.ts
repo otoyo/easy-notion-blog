@@ -17,11 +17,9 @@ function mapToEntry(post) {
   const date = new Date(post.Date)
   return `
     <entry>
-      <id>https://easy-notion-blog-02.vercel.app${getBlogLink(post.Slug)}</id>
+      <id>https://herohoro.com${getBlogLink(post.Slug)}</id>
       <title>${decode(post.Title)}</title>
-      <link href="https://easy-notion-blog-02.vercel.app${getBlogLink(
-        post.Slug
-      )}"/>
+      <link href="https://herohoro.com${getBlogLink(post.Slug)}"/>
       <published>${date.toJSON()}</published>
       <updated>${date.toJSON()}</updated>
       <author>
@@ -52,9 +50,9 @@ function createRSS(posts = []) {
   <feed xmlns="http://www.w3.org/2005/Atom">
     <title>herohoroブログ</title>
     <subtitle>herohoroブログの更新情報</subtitle>
-    <link href="https://easy-notion-blog-02.vercel.app/atom" rel="self" type="application/rss+xml"/>
-    <link href="https://easy-notion-blog-02.vercel.app" />${updated}
-    <id>https://easy-notion-blog-02.vercel.app/atom</id>${postsString}
+    <link href="https://herohoro.com/atom" rel="self" type="application/rss+xml"/>
+    <link href="https://herohoro.com" />${updated}
+    <id>https://herohoro.com/atom</id>${postsString}
   </feed>`
 }
 
