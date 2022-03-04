@@ -117,6 +117,10 @@ yarn jest --updateSnapshot
 - Google Analytics 4
   - `lib/gtag.js` にトラッキング ID を記載します
 
+## Twitter コミュニティ
+
+- [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
+
 ## 貢献
 
 PR 歓迎です。

@@ -113,6 +113,10 @@ yarn jest --updateSnapshot
 - Google Analytics 4
   - Set your tracking ID in `lib/gtag.js`
 
+## Twitter community
+
+- [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
+
 ## Contribution
 
 Pull requests are welcome.
