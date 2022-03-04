@@ -91,6 +91,10 @@ yarn dev
 
 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
+## How to deploy to Google Cloud Run
+
+See the [wiki](https://github.com/otoyo/easy-notion-blog/wiki/How-to-deploy-easy-notion-blog-to-Google-Cloud-Run).
+
 ## よくある質問
 
 [wiki](https://github.com/otoyo/easy-notion-blog/wiki) の「よくある質問」をご覧ください。

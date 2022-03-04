@@ -91,6 +91,10 @@ Entries without `Published` are also displayed for preview in local. But no `Slu
 
 Press `Ctrl+C` to stop local server in the terminal.
 
+## How to deploy to Google Cloud Run
+
+See the [wiki](https://github.com/otoyo/easy-notion-blog/wiki/How-to-deploy-easy-notion-blog-to-Google-Cloud-Run).
+
 ## Lint & Test
 
 ```
