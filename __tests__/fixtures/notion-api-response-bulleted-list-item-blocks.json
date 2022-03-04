@@ -18,7 +18,7 @@
       "archived": false,
       "type": "bulleted_list_item",
       "bulleted_list_item": {
-        "text": [
+        "rich_text": [
           {
             "type": "text",
             "text": {
@@ -56,7 +56,7 @@
       "archived": false,
       "type": "bulleted_list_item",
       "bulleted_list_item": {
-        "text": [
+        "rich_text": [
           {
             "type": "text",
             "text": {
@@ -94,7 +94,7 @@
       "archived": false,
       "type": "numbered_list_item",
       "numbered_list_item": {
-        "text": [
+        "rich_text": [
           {
             "type": "text",
             "text": {
