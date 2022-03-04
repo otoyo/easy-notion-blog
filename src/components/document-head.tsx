@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 const DocumentHead = ({
   title = 'herohoroブログ',
   description = 'This Notion Blog is powered by otoyo/easy-notion-blog',
-  urlOgImage = 'https://easy-notion-blog-02.vercel.app/hero-room.jpg',
+  urlOgImage = 'https://herohoro.com/hero-room.jpg',
 }) => {
   const { asPath, pathname } = useRouter()
 
