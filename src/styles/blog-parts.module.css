@@ -259,6 +259,10 @@
   .postTitleSlug {
     font-size: 1.15em;
   }
+  .tagSub {
+    margin: 0 1em 0.8rem 0;
+    padding: 0 0.5em;
+  }
 }
 
 .postExcerpt {

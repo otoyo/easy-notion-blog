@@ -87,12 +87,14 @@
 @media (max-width: 600px) {
   .tagMain,
   .moreSearch {
-    margin: 0 1em 1.25rem 0;
+    min-width: 40%;
+    text-align: center;
+    margin: 0 1em 0.6rem 0;
     padding: 0 0.8em;
   }
   .tagMain p,
   .moreSearch p {
-    font-size: 0.5em;
+    font-size: 0.8em;
     font-weight: bold;
   }
 }
