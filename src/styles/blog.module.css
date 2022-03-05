@@ -129,6 +129,12 @@
   border: 3px groove #dddddd;
   border-radius: 10px;
 }
+.postSlug :global(a) {
+  color: var(--hero-hover-fg);
+}
+.postSlug :global(a) :hover {
+  color: var(--fg);
+}
 
 .post :global(.tweet) {
   margin: 2rem auto;
