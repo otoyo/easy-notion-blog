@@ -234,6 +234,7 @@
   display: inline-block;
   background-color: #d3d2c7e7;
   padding: 0 0.5em;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 .tagSub p {
   padding: 0 0.8em;
