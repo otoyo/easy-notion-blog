@@ -6,6 +6,8 @@
 .footer span {
   color: #777;
 }
-.footer span a {
-  color: inherit;
+.footer a {
+  /* color: inherit; */
+  color: #22a50e;
+  font-weight: bolder;
 }

@@ -16,15 +16,15 @@
   background: -webkit-repeating-linear-gradient(
     -45deg,
     white white 3px,
-    #f7eb98 3px,
-    #f7eb98 7px
+    #fc8b534b 3px,
+    #fc8b534b 7px
   );
   background: repeating-linear-gradient(
     -45deg,
     white,
     white 3px,
-    #f7eb98 3px,
-    #f7eb98 7px
+    #fc8b534b 3px,
+    #fc8b534b 7px /* #f7eb98 */
   );
 }
 .tagMain p,
@@ -45,15 +45,15 @@
   background: -webkit-repeating-linear-gradient(
     -45deg,
     white white 3px,
-    #e6e6e3 3px,
-    #e6e6e3 7px
+    #34afe425 3px,
+    #34afe425 7px
   );
   background: repeating-linear-gradient(
     -45deg,
     white,
     white 3px,
-    #e6e6e3 3px,
-    #e6e6e3 7px
+    #34afe425 3px,
+    #34afe425 7px
   );
 }
 .tagSub {

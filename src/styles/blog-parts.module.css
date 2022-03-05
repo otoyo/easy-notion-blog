@@ -30,7 +30,7 @@
   text-decoration: none;
   background: #f7f7f7;
   border-right: solid 6px #ff9c83; /*左線*/
-  color: #f0542d; /*文字色*/
+  color: #e42d5d; /*文字色*/
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.29);
 }
 .postTags a:hover,
