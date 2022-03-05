@@ -49,7 +49,7 @@ export const PostTitleSlug = ({ post, enableLink = true }) => {
   const postTitle = post.Title ? post.Title : ''
 
   return (
-    <h3 className={styles.postTitleSlug}>
+    <h2 className={styles.postTitleSlug}>
       {enableLink ? (
         <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
           <a>{postTitle}</a>
@@ -57,7 +57,7 @@ export const PostTitleSlug = ({ post, enableLink = true }) => {
       ) : (
         postTitle
       )}
-    </h3>
+    </h2>
   )
 }
 export const PostTagsSlug = ({ post }) => (
