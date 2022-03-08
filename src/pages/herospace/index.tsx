@@ -1,10 +1,6 @@
 import DocumentHead from '../../components/document-head'
 
-import {
-  BlogPostLink,
-  BlogTagLinkNoList,
-  TwitterTimeline,
-} from '../../components/blog-parts'
+import { BlogTagLinkNoList, TwitterTimeline } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
 import {
   getPosts,
@@ -23,7 +19,6 @@ export async function getStaticProps() {
     props: {
       posts,
       firstPost,
-      rankedPosts,
       tags,
     },
     revalidate: 60,
