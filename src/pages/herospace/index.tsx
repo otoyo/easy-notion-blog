@@ -12,7 +12,6 @@ import {
 export async function getStaticProps() {
   const posts = await getPosts()
   const firstPost = await getFirstPost()
-  const rankedPosts = await getRankedPosts()
   const tags = await getAllTags()
 
   return {
