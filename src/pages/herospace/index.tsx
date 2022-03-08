@@ -2,12 +2,7 @@ import DocumentHead from '../../components/document-head'
 
 import { BlogTagLinkNoList, TwitterTimeline } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
-import {
-  getPosts,
-  getFirstPost,
-  getRankedPosts,
-  getAllTags,
-} from '../../lib/notion/client'
+import { getPosts, getFirstPost, getAllTags } from '../../lib/notion/client'
 
 export async function getStaticProps() {
   const posts = await getPosts()
@@ -27,7 +22,7 @@ export async function getStaticProps() {
 const RenderPostsSpace = ({
   //   posts = [],
   //   firstPost,
-  rankedPosts = [],
+
   tags = [],
 }) => {
   return (
