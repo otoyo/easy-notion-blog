@@ -19,12 +19,15 @@ import {
   getRankedPosts,
   getAllTags,
 } from '../../lib/notion/client'
+import * as imageCache from '../../lib/notion/image-cache'
 
 export async function getStaticProps() {
   const posts = await getPosts()
   const firstPost = await getFirstPost()
   const rankedPosts = await getRankedPosts()
   const tags = await getAllTags()
+
+  posts.forEach(p => p.OGImage && imageCache.store(p.PageId, p.OGImage))
 
   return {
     props: {
