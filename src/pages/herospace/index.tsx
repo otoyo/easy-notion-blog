@@ -41,7 +41,6 @@ const RenderPostsSpace = ({
           width="100%"
           height="300"
         ></iframe>
-
         <iframe
           src="https://dev.herohoro.com"
           width="100%"
