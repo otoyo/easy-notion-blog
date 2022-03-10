@@ -25,11 +25,11 @@ export const PostThumbnail = ({ post }) => (
     </Link>
   </div>
 )
-export const PostThumbnailSlug = ({ post }) => (
-  <div className={styles.thumbnailSlug}>
-    <Image src={post.OGImage} width={880} height={460} />
-  </div>
-)
+// export const PostThumbnailSlug = ({ post }) => (
+//   <div className={styles.thumbnailSlug}>
+//     <Image src={post.OGImage} width={880} height={460} />
+//   </div>
+// )
 export const PostTitle = ({ post, enableLink = true }) => {
   const postTitle = post.Title ? post.Title : ''
 
