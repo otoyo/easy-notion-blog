@@ -72,7 +72,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
           }
         })}
         <div className={styles.moreSearch}>
-          <Link href="/blog">
+          <Link href="/blog" passHref>
             <p> 🔍　to Blog List </p>
           </Link>
         </div>
