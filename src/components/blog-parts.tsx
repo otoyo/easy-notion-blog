@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import NotionBlock from './notion-block'
 import * as interfaces from '../lib/notion/interfaces'
@@ -21,7 +20,12 @@ export const PostDate = ({ post }) => (
 export const PostThumbnail = ({ post }) => (
   <div className={styles.thumbnail}>
     <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-      <Image src={post.OGImage} width={500} height={250} />
+      <img
+        src={`/notion_images/${post.PageId}.png`}
+        width={500}
+        height={250}
+        alt="thumbnail"
+      />
     </Link>
   </div>
 )
