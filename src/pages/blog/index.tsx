@@ -1,5 +1,4 @@
 import DocumentHead from '../../components/document-head'
-
 import {
   BlogPostLink,
   BlogTagLinkNoList,
