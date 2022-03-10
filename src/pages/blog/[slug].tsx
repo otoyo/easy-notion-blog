@@ -11,7 +11,7 @@ import {
   PostDate,
   PostTitleSlug,
   PostTagsSlug,
-  PostThumbnailSlug,
+  // PostThumbnailSlug,
   PostsNotFound,
   TwitterTimeline,
 } from '../../components/blog-parts'
@@ -107,7 +107,7 @@ const RenderPost = ({
         <div className={styles.postSlug}>
           <PostDate post={post} />
           <PostTitleSlug post={post} enableLink={false} />
-          <PostThumbnailSlug post={post} />
+          {/* <PostThumbnailSlug post={post} /> */}
           <PostTagsSlug post={post} />
           <br />
           <hr />

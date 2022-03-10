@@ -9,7 +9,7 @@ import {
   PostExcerpt,
   PostTags,
   PostTitle,
-  PostThumbnail,
+  // PostThumbnail,
   TwitterTimeline,
 } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
@@ -59,7 +59,7 @@ const RenderPosts = ({
               <div className={styles.post} key={post.Slug}>
                 <PostDate post={post} />
                 <PostTitle post={post} />
-                <PostThumbnail post={post} />
+                {/* <PostThumbnail post={post} /> */}
                 {/* <Link href="/blog/[slug]" as={BlogPostLink(post.Slug)} passHref>
                 <img className={stylesParts.thumbnail} src={post.OGImage} />
               </Link> */}

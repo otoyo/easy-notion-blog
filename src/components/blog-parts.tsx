@@ -22,8 +22,8 @@ export const PostThumbnail = ({ post }) => (
     <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
       <img
         src={`/notion_images/${post.PageId}.png`}
-        width={500}
-        height={250}
+        width={305}
+        height={160}
         alt="thumbnail"
       />
     </Link>
@@ -31,7 +31,14 @@ export const PostThumbnail = ({ post }) => (
 )
 export const PostThumbnailSlug = ({ post }) => (
   <div className={styles.thumbnailSlug}>
-    <Image src={post.OGImage} width={880} height={460} />
+    <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+      <img
+        src={`/notion_images/${post.PageId}.png`}
+        width={800}
+        height={420}
+        alt="thumbnail"
+      />
+    </Link>
   </div>
 )
 export const PostTitle = ({ post, enableLink = true }) => {
