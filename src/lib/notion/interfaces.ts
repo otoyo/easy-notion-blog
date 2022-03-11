@@ -89,11 +89,13 @@ export interface Code {
 
 export interface Quote {
   Text: RichText[]
+  Color: string
 }
 
 export interface Callout {
   RichTexts: RichText[]
   Icon: Icon
+  Color: string
 }
 
 export interface Embed {
