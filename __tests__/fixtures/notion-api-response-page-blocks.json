@@ -28,7 +28,8 @@
             "plain_text": "Heading 1",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -58,7 +59,8 @@
             "plain_text": "Heading 2",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -88,7 +90,8 @@
             "plain_text": "Heading 3",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -118,7 +121,8 @@
             "plain_text": "Paragraph",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -148,7 +152,8 @@
             "plain_text": "bold",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -178,7 +183,8 @@
             "plain_text": "italic",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -208,7 +214,8 @@
             "plain_text": "Underline",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -238,7 +245,8 @@
             "plain_text": "Strike",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -270,7 +278,8 @@
             "plain_text": "link",
             "href": "https://github.com/otoyo/easy-notion-blog"
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -300,7 +309,8 @@
             "plain_text": "code",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -312,7 +322,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -342,7 +353,8 @@
             "plain_text": "Bulleted List",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -372,7 +384,8 @@
             "plain_text": "Uni",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -402,7 +415,8 @@
             "plain_text": "Tako",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -414,7 +428,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -444,7 +459,8 @@
             "plain_text": "Numbered List",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -474,7 +490,8 @@
             "plain_text": "Kani",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -504,7 +521,8 @@
             "plain_text": "Ika",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -516,7 +534,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -546,7 +565,8 @@
             "plain_text": "Divider",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -568,7 +588,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -602,7 +623,8 @@
         "icon": {
           "type": "emoji",
           "emoji": "ℹ️"
-        }
+        },
+        "color": "default"
       }
     },
     {
@@ -614,7 +636,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -676,7 +699,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -706,7 +730,8 @@
             "plain_text": "Quote Block",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -718,7 +743,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
@@ -744,7 +770,8 @@
       "archived": false,
       "type": "paragraph",
       "paragraph": {
-        "rich_text": []
+        "rich_text": [],
+        "color": "default"
       }
     },
     {
