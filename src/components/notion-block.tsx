@@ -22,6 +22,11 @@ const RichText = ({ richText }) => {
   if (richText.Annotation.Underline) {
     element = <u>{element}</u>
   }
+  if (richText.Annotation.Color && richText.Annotation.Color !== 'default') {
+    element = (
+      <span className={colorClass(richText.Annotation.Color)}>{element}</span>
+    )
+  }
   if (richText.Annotation.Code) {
     element = <code>{element}</code>
   }
@@ -30,6 +35,48 @@ const RichText = ({ richText }) => {
   }
 
   return element
+}
+
+const colorClass = color => {
+  switch (color) {
+    case 'gray':
+      return styles.gray
+    case 'brown':
+      return styles.brown
+    case 'orange':
+      return styles.orange
+    case 'yellow':
+      return styles.yellow
+    case 'green':
+      return styles.green
+    case 'blue':
+      return styles.blue
+    case 'purple':
+      return styles.purple
+    case 'pink':
+      return styles.pink
+    case 'red':
+      return styles.red
+    case 'gray_background':
+      return styles.grayBackground
+    case 'brown_background':
+      return styles.brownBackground
+    case 'orange_background':
+      return styles.orangeBackground
+    case 'yellow_background':
+      return styles.yellowBackground
+    case 'green_background':
+      return styles.greenBackground
+    case 'blue_background':
+      return styles.blueBackground
+    case 'purple_background':
+      return styles.purpleBackground
+    case 'pink_background':
+      return styles.pinkBackground
+    case 'red_background':
+      return styles.redBackground
+  }
+  return null
 }
 
 const Paragraph = ({ block }) => (
