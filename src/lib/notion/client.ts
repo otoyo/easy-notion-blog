@@ -2,6 +2,12 @@ import { NOTION_API_SECRET, DATABASE_ID } from './server-constants'
 import {
   Post,
   Block,
+  Paragraph,
+  Heading1,
+  Heading2,
+  Heading3,
+  BulletedListItem,
+  NumberedListItem,
   Image,
   Code,
   Quote,
@@ -278,16 +284,81 @@ export async function getAllBlocksByBlockId(blockId) {
 
       switch (item.type) {
         case 'paragraph':
-        case 'heading_1':
-        case 'heading_2':
-        case 'heading_3':
-        case 'bulleted_list_item':
-        case 'numbered_list_item':
+          const paragraph: Paragraph = {
+            RichTexts: item.paragraph.rich_text.map(_buildRichText),
+            Color: item.paragraph.color,
+          }
+
           block = {
             Id: item.id,
             Type: item.type,
             HasChildren: item.has_children,
-            RichTexts: item[item.type].rich_text.map(_buildRichText),
+            Paragraph: paragraph,
+          }
+          break
+        case 'heading_1':
+          const heading1: Heading1 = {
+            RichTexts: item.heading_1.rich_text.map(_buildRichText),
+            Color: item.heading_1.color,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Heading1: heading1,
+          }
+          break
+        case 'heading_2':
+          const heading2: Heading2 = {
+            RichTexts: item.heading_2.rich_text.map(_buildRichText),
+            Color: item.heading_2.color,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Heading2: heading2,
+          }
+          break
+        case 'heading_3':
+          const heading3: Heading3 = {
+            RichTexts: item.heading_3.rich_text.map(_buildRichText),
+            Color: item.heading_3.color,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            Heading3: heading3,
+          }
+          break
+        case 'bulleted_list_item':
+          const bulletedListItem: BulletedListItem = {
+            RichTexts: item.bulleted_list_item.rich_text.map(_buildRichText),
+            Color: item.bulleted_list_item.color,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            BulletedListItem: bulletedListItem,
+          }
+          break
+        case 'numbered_list_item':
+          const numberedListItem: NumberedListItem = {
+            RichTexts: item.numbered_list_item.rich_text.map(_buildRichText),
+            Color: item.numbered_list_item.color,
+          }
+
+          block = {
+            Id: item.id,
+            Type: item.type,
+            HasChildren: item.has_children,
+            NumberedListItem: numberedListItem,
           }
           break
         case 'image':
@@ -448,13 +519,10 @@ export async function getAllBlocksByBlockId(blockId) {
     if (block.Type === 'table') {
       // Fetch table_row
       block.Table.Rows = await getAllBlocksByBlockId(block.Id)
-    } else if (
-      (block.Type === 'bulleted_list_item' ||
-        block.Type === 'numbered_list_item') &&
-      block.HasChildren
-    ) {
-      // Fetch nested list_item
-      block.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'bulleted_list_item' && block.HasChildren) {
+      block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
+      block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (
       block.Type === 'image' &&
       block.Image.File &&
