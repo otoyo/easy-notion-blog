@@ -8,7 +8,7 @@ export const SITE_DESCRIPTION =
   '非エンジニアがeasy-notion-blogを通して勉強しながらスキルアップをしていくブログ'
 
 const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
-  const { asPath, pathname } = useRouter()
+  const { asPath } = useRouter()
   const currentURL = new URL(asPath, NEXT_PUBLIC_URL)
   const defaultImageURL = new URL('/hero-room.jpeg', NEXT_PUBLIC_URL)
 
