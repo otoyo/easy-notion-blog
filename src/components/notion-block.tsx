@@ -80,27 +80,31 @@ const colorClass = color => {
 }
 
 const Paragraph = ({ block }) => (
-  <p>
-    {block.RichTexts.map((richText, i) => (
+  <p className={colorClass(block.Paragraph.Color)}>
+    {block.Paragraph.RichTexts.map((richText, i) => (
       <RichText richText={richText} key={`paragraph-${block.Id}-${i}`} />
     ))}
   </p>
 )
 
-const Heading = ({ block, level = 1 }) => {
+const Heading1 = ({ block }) => <Heading heading={block.Heading1} level={1} />
+const Heading2 = ({ block }) => <Heading heading={block.Heading2} level={2} />
+const Heading3 = ({ block }) => <Heading heading={block.Heading3} level={3} />
+
+const Heading = ({ heading, level = 1 }) => {
   const tag = `h${level + 3}`
-  const id = block.RichTexts.map(richText => richText.Text.Content)
+  const id = heading.RichTexts.map(richText => richText.Text.Content)
     .join()
     .trim()
-  const heading = React.createElement(
+  const htag = React.createElement(
     tag,
-    {},
-    block.RichTexts.map(richText => <RichText richText={richText} key={id} />)
+    { className: colorClass(heading.Color) },
+    heading.RichTexts.map(richText => <RichText richText={richText} key={id} />)
   )
 
   return (
     <a href={`#${id}`} id={id}>
-      {heading}
+      {htag}
     </a>
   )
 }
@@ -126,23 +130,28 @@ const ImageBlock = ({ block }) => (
 )
 
 const Quote = ({ block }) => (
-  <blockquote>
+  <blockquote className={colorClass(block.Quote.Color)}>
     {block.Quote.Text.map((richText, i) => (
       <RichText richText={richText} key={`quote-${block.Id}-${i}`} />
     ))}
   </blockquote>
 )
 
-const Callout = ({ block }) => (
-  <div className={styles.callout}>
-    <div>{block.Callout.Icon.Emoji}</div>
-    <div>
-      {block.Callout.RichTexts.map((richText, i) => (
-        <RichText richText={richText} key={`callout-${block.Id}-${i}`} />
-      ))}
+const Callout = ({ block }) => {
+  const color = colorClass(block.Callout.Color)
+  const className = color ? `${styles.callout} ${color}` : styles.callout
+
+  return (
+    <div className={className}>
+      <div>{block.Callout.Icon.Emoji}</div>
+      <div>
+        {block.Callout.RichTexts.map((richText, i) => (
+          <RichText richText={richText} key={`callout-${block.Id}-${i}`} />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const Table = ({ block }) => (
   <table>
@@ -193,8 +202,11 @@ const BulletedListItems = ({ blocks }) =>
   blocks
     .filter(b => b.Type === 'bulleted_list_item')
     .map(listItem => (
-      <li key={`bulleted-list-item-${listItem.Id}`}>
-        {listItem.RichTexts.map((richText, i) => (
+      <li
+        key={`bulleted-list-item-${listItem.Id}`}
+        className={colorClass(listItem.BulletedListItem.Color)}
+      >
+        {listItem.BulletedListItem.RichTexts.map((richText, i) => (
           <RichText
             richText={richText}
             key={`bulleted-list-item-${listItem.Id}-${i}`}
@@ -202,7 +214,7 @@ const BulletedListItems = ({ blocks }) =>
         ))}
         {listItem.HasChildren ? (
           <ul>
-            <BulletedListItems blocks={listItem.Children} />
+            <BulletedListItems blocks={listItem.BulletedListItem.Children} />
           </ul>
         ) : null}
       </li>
@@ -212,8 +224,11 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
   blocks
     .filter(b => b.Type === 'numbered_list_item')
     .map(listItem => (
-      <li key={`numbered-list-item-${listItem.Id}`}>
-        {listItem.RichTexts.map((richText, i) => (
+      <li
+        key={`numbered-list-item-${listItem.Id}`}
+        className={colorClass(listItem.NumberedListItem.Color)}
+      >
+        {listItem.NumberedListItem.RichTexts.map((richText, i) => (
           <RichText
             richText={richText}
             key={`numbered-list-item-${listItem.Id}-${i}`}
@@ -222,15 +237,24 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
         {listItem.HasChildren ? (
           level % 3 === 0 ? (
             <ol type="1">
-              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+              <NumberedListItems
+                blocks={listItem.NumberedListItem.Children}
+                level={level + 1}
+              />
             </ol>
           ) : level % 3 === 1 ? (
             <ol type="a">
-              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+              <NumberedListItems
+                blocks={listItem.NumberedListItem.Children}
+                level={level + 1}
+              />
             </ol>
           ) : (
             <ol type="i">
-              <NumberedListItems blocks={listItem.Children} level={level + 1} />
+              <NumberedListItems
+                blocks={listItem.NumberedListItem.Children}
+                level={level + 1}
+              />
             </ol>
           )
         ) : null}
@@ -241,11 +265,11 @@ const NotionBlock = ({ block }) => {
   if (block.Type === 'paragraph') {
     return <Paragraph block={block} />
   } else if (block.Type === 'heading_1') {
-    return <Heading block={block} level={1} />
+    return <Heading1 block={block} />
   } else if (block.Type === 'heading_2') {
-    return <Heading block={block} level={2} />
+    return <Heading2 block={block} />
   } else if (block.Type === 'heading_3') {
-    return <Heading block={block} level={3} />
+    return <Heading3 block={block} />
   } else if (block.Type === 'image') {
     return <ImageBlock block={block} />
   } else if (block.Type === 'code') {

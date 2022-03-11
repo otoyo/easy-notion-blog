@@ -36,7 +36,8 @@
             "plain_text": "111",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -74,7 +75,8 @@
             "plain_text": "222",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     },
     {
@@ -112,7 +114,8 @@
             "plain_text": "aaa",
             "href": null
           }
-        ]
+        ],
+        "color": "default"
       }
     }
   ],
