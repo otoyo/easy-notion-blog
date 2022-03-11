@@ -80,7 +80,7 @@ const colorClass = color => {
 }
 
 const Paragraph = ({ block }) => (
-  <p>
+  <p className={colorClass(block.Paragraph.Color)}>
     {block.Paragraph.RichTexts.map((richText, i) => (
       <RichText richText={richText} key={`paragraph-${block.Id}-${i}`} />
     ))}
@@ -98,7 +98,7 @@ const Heading = ({ heading, level = 1 }) => {
     .trim()
   const htag = React.createElement(
     tag,
-    {},
+    { className: colorClass(heading.Color) },
     heading.RichTexts.map(richText => <RichText richText={richText} key={id} />)
   )
 
@@ -130,23 +130,28 @@ const ImageBlock = ({ block }) => (
 )
 
 const Quote = ({ block }) => (
-  <blockquote>
+  <blockquote className={colorClass(block.Quote.Color)}>
     {block.Quote.Text.map((richText, i) => (
       <RichText richText={richText} key={`quote-${block.Id}-${i}`} />
     ))}
   </blockquote>
 )
 
-const Callout = ({ block }) => (
-  <div className={styles.callout}>
-    <div>{block.Callout.Icon.Emoji}</div>
-    <div>
-      {block.Callout.RichTexts.map((richText, i) => (
-        <RichText richText={richText} key={`callout-${block.Id}-${i}`} />
-      ))}
+const Callout = ({ block }) => {
+  const color = colorClass(block.Callout.Color)
+  const className = color ? `${styles.callout} ${color}` : styles.callout
+
+  return (
+    <div className={className}>
+      <div>{block.Callout.Icon.Emoji}</div>
+      <div>
+        {block.Callout.RichTexts.map((richText, i) => (
+          <RichText richText={richText} key={`callout-${block.Id}-${i}`} />
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 const Table = ({ block }) => (
   <table>
@@ -197,7 +202,10 @@ const BulletedListItems = ({ blocks }) =>
   blocks
     .filter(b => b.Type === 'bulleted_list_item')
     .map(listItem => (
-      <li key={`bulleted-list-item-${listItem.Id}`}>
+      <li
+        key={`bulleted-list-item-${listItem.Id}`}
+        className={colorClass(listItem.BulletedListItem.Color)}
+      >
         {listItem.BulletedListItem.RichTexts.map((richText, i) => (
           <RichText
             richText={richText}
@@ -216,7 +224,10 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
   blocks
     .filter(b => b.Type === 'numbered_list_item')
     .map(listItem => (
-      <li key={`numbered-list-item-${listItem.Id}`}>
+      <li
+        key={`numbered-list-item-${listItem.Id}`}
+        className={colorClass(listItem.NumberedListItem.Color)}
+      >
         {listItem.NumberedListItem.RichTexts.map((richText, i) => (
           <RichText
             richText={richText}
