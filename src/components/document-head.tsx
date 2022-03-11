@@ -26,11 +26,22 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         property="og:description"
         content={description ? description : SITE_DESCRIPTION}
       />
-      <meta
+      {urlOgImage ? (
+        <meta property="og:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta property="og:image" content={defaultImageURL.toString()} />
+      ) : null}
+      <meta name="twitter:card" content="summary_large_image" />
+      {urlOgImage ? (
+        <meta name="twitter:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta name="twitter:image" content={defaultImageURL.toString()} />
+      ) : null}
+      {/* <meta
         property="og:image"
         content={urlOgImage ? urlOgImage : defaultImageURL.toString()}
       />
-      {/* {urlOgImage ? <meta property="og:image" content={urlOgImage} /> : null} */}
+      
       <meta name="twitter:site" content="@mineral_30" />
       <meta
         name="twitter:card"
@@ -43,7 +54,7 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
       <meta
         name="twitter:image"
         content={urlOgImage ? urlOgImage : defaultImageURL.toString()}
-      />
+      /> */}
 
       <link rel="canonical" href={currentURL.toString()} />
 
