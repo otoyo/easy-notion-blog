@@ -361,6 +361,7 @@ export async function getAllBlocksByBlockId(blockId) {
         case 'quote':
           const quote: Quote = {
             Text: item[item.type].rich_text.map(_buildRichText),
+            Color: item[item.type].color,
           }
 
           block.Quote = quote
@@ -371,6 +372,7 @@ export async function getAllBlocksByBlockId(blockId) {
             Icon: {
               Emoji: item[item.type].icon.emoji,
             },
+            Color: item[item.type].color,
           }
 
           block.Callout = callout
