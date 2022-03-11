@@ -8,9 +8,10 @@ export const SITE_DESCRIPTION =
   '非エンジニアがeasy-notion-blogを通して勉強しながらスキルアップをしていくブログ'
 
 const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
-  const { asPath } = useRouter()
+  const { asPath, pathname } = useRouter()
   const currentURL = new URL(asPath, NEXT_PUBLIC_URL)
-  const defaultImageURL = new URL('/hero-room.jpeg', NEXT_PUBLIC_URL)
+  // const defaultImageURL = 'https://herohoro.com/hero-room.jpg'
+  const defaultImageURL = new URL('/hero-room.jpg', NEXT_PUBLIC_URL)
 
   return (
     <Head>
@@ -26,6 +27,9 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         property="og:description"
         content={description ? description : SITE_DESCRIPTION}
       />
+
+      {/* 
+      ## 最新版コード
       {urlOgImage ? (
         <meta property="og:image" content={urlOgImage} />
       ) : NEXT_PUBLIC_URL ? (
@@ -36,12 +40,13 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         <meta name="twitter:image" content={urlOgImage} />
       ) : NEXT_PUBLIC_URL ? (
         <meta name="twitter:image" content={defaultImageURL.toString()} />
-      ) : null}
-      {/* <meta
+      ) : null} */}
+
+      <meta
         property="og:image"
         content={urlOgImage ? urlOgImage : defaultImageURL.toString()}
       />
-      
+
       <meta name="twitter:site" content="@mineral_30" />
       <meta
         name="twitter:card"
@@ -54,7 +59,7 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
       <meta
         name="twitter:image"
         content={urlOgImage ? urlOgImage : defaultImageURL.toString()}
-      /> */}
+      />
 
       <link rel="canonical" href={currentURL.toString()} />
 
