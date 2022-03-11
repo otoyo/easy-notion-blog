@@ -13,8 +13,13 @@ export interface Block {
   Id: string
   Type: string
   HasChildren: boolean
-  Children?: Block[]
-  RichTexts?: RichText[]
+
+  Paragraph?: Paragraph
+  Heading1?: Heading1
+  Heading2?: Heading2
+  Heading3?: Heading3
+  BulletedListItem?: BulletedListItem
+  NumberedListItem?: NumberedListItem
   Image?: Image
   Code?: Code
   Quote?: Quote
@@ -24,6 +29,39 @@ export interface Block {
   LinkPreview?: LinkPreview
   Table?: Table
   TableRow?: TableRow
+}
+
+export interface Paragraph {
+  RichTexts: RichText[]
+  Color: string
+  Children?: Block[]
+}
+
+export interface Heading1 {
+  RichTexts: RichText[]
+  Color: string
+}
+
+export interface Heading2 {
+  RichTexts: RichText[]
+  Color: string
+}
+
+export interface Heading3 {
+  RichTexts: RichText[]
+  Color: string
+}
+
+export interface BulletedListItem {
+  RichTexts: RichText[]
+  Color: string
+  Children?: Block[]
+}
+
+export interface NumberedListItem {
+  RichTexts: RichText[]
+  Color: string
+  Children?: Block[]
 }
 
 export interface Image {
