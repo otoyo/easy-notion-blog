@@ -100,7 +100,10 @@ const RenderPost = ({
       <DocumentHead
         title={post.Title}
         description={post.Excerpt}
-        urlOgImage={`/notion_images/${post.PageId}.png`}
+        urlOgImage={new URL(
+          `/notion_images/${post.PageId}.png`,
+          NEXT_PUBLIC_URL
+        ).toString()}
       />
 
       <div className={styles.mainContent}>
