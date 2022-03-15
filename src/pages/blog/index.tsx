@@ -19,6 +19,7 @@ import {
   getAllTags,
 } from '../../lib/notion/client'
 import * as imageCache from '../../lib/notion/image-cache'
+import Image from 'next/image'
 
 export async function getStaticProps() {
   const [posts, firstPost, rankedPosts, tags] = await Promise.all([
@@ -53,6 +54,14 @@ const RenderPosts = ({
 
       <div className={styles.mainContent}>
         {/* <IndexBlogTagLink heading="Tags" tags={tags} /> */}
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Image
+            src="/study-hero.jpeg"
+            width={300}
+            height={200}
+            objectFit="contain"
+          />
+        </div>
         <NoContents contents={posts} />
         <div className={styles.mainGallery}>
           {posts.map(post => {
