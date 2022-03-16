@@ -40,11 +40,13 @@ const RenderPostsSpace = ({
           src="https://notion2charts.com/embed/bad01964-6bce-4f62-bc9d-1d2899652ed6"
           width="100%"
           height="300"
+          frameborder="0"
         ></iframe>
         <iframe
           src="https://dev.herohoro.com"
           width="100%"
           height="600"
+          frameborder="0"
         ></iframe>
       </div>
 

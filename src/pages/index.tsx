@@ -137,6 +137,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         src="https://notion2charts.com/embed/bad01964-6bce-4f62-bc9d-1d2899652ed6"
         width="100%"
         height="400"
+        frameborder="0"
       ></iframe>
 
       <h3>Setup</h3>
