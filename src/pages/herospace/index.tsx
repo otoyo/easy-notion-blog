@@ -40,7 +40,7 @@ const RenderPostsSpace = ({
           src="https://notion2charts.com/embed/bad01964-6bce-4f62-bc9d-1d2899652ed6"
           width="100%"
           height="300"
-          frameborder="0"
+          // frameborder="0"
         ></iframe>
         <p>▼　Lofi動画をアップロードしてみた</p>
 
@@ -48,15 +48,15 @@ const RenderPostsSpace = ({
           src="https://www.youtube.com/embed/videoseries?list=PLUq06vyynuEUdRd1lu3ncpfTSjbogScmR"
           width="50%"
           height="300"
-          frameborder="0"
+          // frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          // allowfullscreen
         ></iframe>
         <iframe
           src="https://dev.herohoro.com"
           width="100%"
           height="600"
-          frameborder="0"
+          // frameborder="0"
         ></iframe>
       </div>
 
