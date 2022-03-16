@@ -42,6 +42,16 @@ const RenderPostsSpace = ({
           height="300"
           frameborder="0"
         ></iframe>
+        <p>▼　Lofi動画をアップロードしてみた</p>
+
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=PLUq06vyynuEUdRd1lu3ncpfTSjbogScmR"
+          width="50%"
+          height="300"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
         <iframe
           src="https://dev.herohoro.com"
           width="100%"
