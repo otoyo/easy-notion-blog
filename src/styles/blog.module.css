@@ -51,7 +51,6 @@
   border: solid 2px var(--fg);
   border-radius: 50%;
 }
-
 .postSlug :global(h4):after {
   top: -12px;
   left: -12px;
