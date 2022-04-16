@@ -41,7 +41,6 @@ export async function getStaticProps() {
     revalidate: 60,
   }
 }
-
 const RenderPosts = ({
   posts = [],
   firstPost,
