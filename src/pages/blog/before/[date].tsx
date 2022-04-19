@@ -13,7 +13,7 @@ import {
   PostTags,
   PostTitle,
   PostsNotFound,
-  // PostThumbnail,
+  PostThumbnail,
   TwitterTimeline,
 } from '../../../components/blog-parts'
 import stylesParts from '../../../styles/blog-parts.module.css'
@@ -101,7 +101,7 @@ const RenderPostsBeforeDate = ({
               <div className={styles.post} key={post.Slug}>
                 <PostDate post={post} />
                 <PostTitle post={post} />
-                {/* <PostThumbnail post={post} /> */}
+                <PostThumbnail post={post} />
                 <PostTags post={post} />
                 <PostExcerpt post={post} />
               </div>
