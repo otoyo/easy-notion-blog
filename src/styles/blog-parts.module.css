@@ -143,11 +143,16 @@
   font-size: 1.6rem;
 }
 .thumbnail {
-  width: 100%;
-  margin: 10px 0 0 0;
+  width: 50vw;
+  height: calc(50vw * 0.53);
+  margin: 10px 0 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border: none !important;
   border-radius: 10px !important;
+}
+.thumbnail img {
+  width: 50vw;
+  height: calc(50vw * 0.53);
 }
 .thumbnail:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
@@ -323,6 +328,15 @@
 
   .postsNotFound {
   }
+  .thumbnail {
+    width: 23vw;
+    height: calc(23vw * 0.53);
+    margin: 10px 0 10px 0;
+  }
+  .thumbnail img {
+    width: 23vw;
+    height: calc(23vw * 0.53);
+  }
 }
 @media (max-width: 600px) {
   .postTags a {
@@ -342,5 +356,14 @@
   }
   .nextContainer a.nextButton {
     width: 50%;
+  }
+  .thumbnail {
+    width: 75vw;
+    height: calc(75vw * 0.53);
+    margin: 10px 0 10px 0;
+  }
+  .thumbnail img {
+    width: 75vw;
+    height: calc(75vw * 0.53);
   }
 }

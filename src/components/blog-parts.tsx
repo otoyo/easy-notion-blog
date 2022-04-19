@@ -16,13 +16,18 @@ export const PostDate = ({ post }) => (
     📅&nbsp;&nbsp;{post.Date ? getDateStr(post.Date) : ''}
   </div>
 )
-
+{
+  /* キャッシュ保存前のコード
+ <Link href="/blog/[slug]" as={BlogPostLink(post.Slug)} passHref>
+                <img className={stylesParts.thumbnail} src={post.OGImage} />
+              </Link> */
+}
 export const PostThumbnail = ({ post }) => (
   <div className={styles.thumbnail}>
     <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
       <img
         src={`/notion_images/${post.PageId}.png`}
-        width={305}
+        width={300}
         height={160}
         alt="thumbnail"
       />
