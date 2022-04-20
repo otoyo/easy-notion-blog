@@ -1,10 +1,18 @@
+curl 'https://api.notion.com/v1/databases/'"$DATABASE_ID"'' \
+  -H 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
+  -H 'Notion-Version: 2022-02-22' | grep -q 'Tags'
+if [ $? -ne 0 ]; then
+  echo "データベースの列名「タグ」を「Tags」に変更してください。詳細は README をご覧ください。"
+  exit 1
+fi
+
 curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE_ID"'' \
 --header 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
 --header 'Content-Type: application/json' \
---header 'Notion-Version: 2021-08-16' \
+--header 'Notion-Version: 2022-02-22' \
 --data '{
     "properties": {
-        "Name": {
+        "title": {
             "name": "Page"
         },
         "Slug": {
@@ -31,7 +39,7 @@ curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE
 curl 'https://api.notion.com/v1/pages' \
   -H 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
   -H "Content-Type: application/json" \
-  -H "Notion-Version: 2021-08-16" \
+  -H "Notion-Version: 2022-02-22" \
   --data '{
 	"parent": { "database_id": "'"$DATABASE_ID"'" },
 	"properties": {
@@ -82,7 +90,7 @@ curl 'https://api.notion.com/v1/pages' \
 			"object": "block",
 			"type": "paragraph",
 			"paragraph": {
-				"text": [
+				"rich_text": [
 					{
 						"type": "text",
 						"text": {
