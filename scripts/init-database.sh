@@ -4,7 +4,7 @@ curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE
 --header 'Notion-Version: 2022-02-22' \
 --data '{
     "properties": {
-        "Name": {
+        "title": {
             "name": "Page"
         },
         "Slug": {
