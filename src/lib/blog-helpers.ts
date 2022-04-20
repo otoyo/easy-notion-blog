@@ -9,6 +9,7 @@ export const getTagLink = (tag: string) => {
 export const getBeforeLink = (date: string) => {
   return `/blog/before/${date}`
 }
+
 export const getDateStr = date => {
   const dt = new Date(date)
   const y = dt.getFullYear()
