@@ -1,7 +1,7 @@
 curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE_ID"'' \
 --header 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
 --header 'Content-Type: application/json' \
---header 'Notion-Version: 2021-08-16' \
+--header 'Notion-Version: 2022-02-22' \
 --data '{
     "properties": {
         "Name": {
@@ -31,7 +31,7 @@ curl --location --request PATCH 'https://api.notion.com/v1/databases/'"$DATABASE
 curl 'https://api.notion.com/v1/pages' \
   -H 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
   -H "Content-Type: application/json" \
-  -H "Notion-Version: 2021-08-16" \
+  -H "Notion-Version: 2022-02-22" \
   --data '{
 	"parent": { "database_id": "'"$DATABASE_ID"'" },
 	"properties": {
@@ -82,7 +82,7 @@ curl 'https://api.notion.com/v1/pages' \
 			"object": "block",
 			"type": "paragraph",
 			"paragraph": {
-				"text": [
+				"rich_text": [
 					{
 						"type": "text",
 						"text": {
