@@ -47,23 +47,34 @@ You can write on your Notion.
 ## Quick Start
 
 1. Go to [notion.so](https://www.notion.so/) and log-in with your Notion account.
-1. Create a blank page.
-1. Type `/table` and select "Table - Inline" (Fig.1)
-1. Go to under page(database) named as "Untitled" (Fig.2)
-1. Check the name of the database columns to be `Name`, `Tags`. Rename if they are not so.
-1. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
-1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
-1. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
-1. Open the Terminal.app and clone this repo into your local `git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog`
-1. Run initialization script `DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh`
-1. Go to [vercel.com](https://vercel.com/) and log-in with your account
-1. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
-1. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
-1. Your Notion Blog will be published after deploy
+2. Create a blank page.
+3. Add [Inline Table](https://www.notion.so/help/tables) to the page
+   - To add Inline Table to type `/table` or push the "+" button (Fig.1)
+4. Go to under page(database) named as "Untitled" (Fig.2)
+5. Check the name of the database columns to be `Name`, `Tags`. Rename if they are not so.
+6. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
+7. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
+8. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
+9. Open the Terminal.app and clone this repo into your local
+
+```
+git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog
+```
+
+10. Run initialization script
+
+```
+DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh
+```
+
+11. Go to [vercel.com](https://vercel.com/) and log-in with your account
+12. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
+13. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
+14. Your Notion Blog will be published after deploy
 
 ---
 
-Fig.1 Select "Table - Inline" after typing `/table`
+Fig.1 Select "Table - Inline"
 
 ![Fig.1](https://user-images.githubusercontent.com/1063435/140594182-1a717ed1-24ed-47e7-b037-70c684273dab.png)
 
