@@ -47,23 +47,34 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 ## クイックスタート
 
 1. [notion.so](https://www.notion.so/) にログインします
-1. 新規に空のページを作成します
-1. `/table` とタイプし "Table - Inline" を選択します(下図 1)
-1. "Untitled" と名前のついた一階層下のページ(データベース) に移動します(下図 2)
-1. データベースの列名が `Name`, `Tags` になっていることを確認します。そうなっていない場合は変更します
-1. URL から次の部分を `DATABASE_ID` としてメモします `https://notion.so/your-account/<ココ>?v=xxxx`
-1. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
-1. `DATABASE_ID` をメモしたデータベースを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
-1. ターミナルアプリを開きこのリポジトリをクローンします `git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog`
-1. 初期化スクリプトを実行します `DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh`
-1. [vercel.com](https://vercel.com/) にログインします
-1. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
-1. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
-1. デプロイが完了すると Notion Blog が見えるようになります
+2. 新規に空のページを作成します
+3. ページに [インラインテーブル](https://www.notion.so/ja-jp/help/tables) を追加します
+   - インラインテーブルを追加するには `/table` とタイプするか + メニューを押してインラインテーブルを選択します(下図 1)
+4. "Untitled" と名前のついた一階層下のページ(データベース) に移動します(下図 2)
+5. データベースの列名が `Name`, `Tags` になっていることを確認します。そうなっていない場合は変更します
+6. URL から次の部分を `DATABASE_ID` としてメモします `https://notion.so/your-account/<ココ>?v=xxxx`
+7. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
+8. `DATABASE_ID` をメモしたデータベースを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
+9. ターミナルアプリを開きこのリポジトリをクローンします
+
+```
+git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog
+```
+
+10. 初期化スクリプトを実行します
+
+```
+DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh
+```
+
+11. [vercel.com](https://vercel.com/) にログインします
+12. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
+13. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
+14. デプロイが完了すると Notion Blog が見えるようになります
 
 ---
 
-図 1 `/table` とタイプしたら "Table - Inline" を選択します
+図 1 インラインテーブル (Table - Inline) を選択します
 
 ![Fig. 1](https://user-images.githubusercontent.com/1063435/140594182-1a717ed1-24ed-47e7-b037-70c684273dab.png)
 
