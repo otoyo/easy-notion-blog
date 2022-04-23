@@ -1,3 +1,6 @@
+/* eslint @typescript-eslint/no-var-requires: 0 */
+// use commonjs so it can be required without transpiling
+
 const fs = require('fs')
 
 const {

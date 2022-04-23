@@ -1,0 +1,74 @@
+{
+  "object": "database",
+  "id": "158bd901-1600-4cd1-9aca-26ad88cb5c07",
+  "cover": null,
+  "icon": null,
+  "created_time": "2021-11-03T02:01:00.000Z",
+  "last_edited_time": "2022-02-05T07:00:00.000Z",
+  "title": [],
+  "properties": {
+    "Published": {
+      "id": "%5Cm%3Dn",
+      "name": "Published",
+      "type": "checkbox",
+      "checkbox": {}
+    },
+    "OGImage": {
+      "id": "%5D%3Cnr",
+      "name": "OGImage",
+      "type": "files",
+      "files": {}
+    },
+    "Excerpt": {
+      "id": "fM%3E%3D",
+      "name": "Excerpt",
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "Date": {
+      "id": "q%60QR",
+      "name": "Date",
+      "type": "date",
+      "date": {}
+    },
+    "Tags": {
+      "id": "%7CtLD",
+      "name": "Tags",
+      "type": "multi_select",
+      "multi_select": {
+        "options": [
+          {
+            "id": "0f891e29-0103-4eb3-b0d4-07057e3c8c35",
+            "name": "Diary",
+            "color": "default"
+          }
+        ]
+      }
+    },
+    "Rank": {
+      "id": "%7D%3Bil",
+      "name": "Rank",
+      "type": "number",
+      "number": {
+        "format": "number"
+      }
+    },
+    "Slug": {
+      "id": "~Bl%60",
+      "name": "Slug",
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "Page": {
+      "id": "title",
+      "name": "Page",
+      "type": "title",
+      "title": {}
+    }
+  },
+  "parent": {
+    "type": "page_id",
+    "page_id": "ea693190-141d-4cef-b495-fb90a2b0bcc0"
+  },
+  "url": "https://www.notion.so/158bd90116004cd19aca26ad88cb5c07"
+}

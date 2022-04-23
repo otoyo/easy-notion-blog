@@ -1,70 +1,36 @@
 import Link from 'next/link'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import ExtLink from './ext-link'
+import { SITE_TITLE } from './document-head'
 import styles from '../styles/header.module.css'
 
-const navItems: { label: string; page?: string; link?: string }[] = [
-  { label: 'Home', page: '/' },
-  { label: 'Blog', page: '/blog' },
-]
+interface NavItem {
+  label: string
+  path: string
+}
 
-const defaultTitle = 'herohoroブログ'
-const defaultDescription =
-  'This Notion Blog is powered by otoyo/easy-notion-blog'
+const Header = () => {
+  const { asPath } = useRouter()
 
-const Header = ({
-  path = '',
-  titlePre = '',
-  description = '',
-  ogImageUrl = '',
-}) => {
-  const { pathname } = useRouter()
+  const navItems: NavItem[] = [
+    { label: 'Home', path: '/' },
+    { label: 'Blog', path: '/blog' },
+  ]
 
   return (
     <header className={styles.header}>
-      <Head>
-        <title>
-          {!titlePre ? defaultTitle : `${titlePre} - ${defaultTitle}`}
-        </title>
-        <meta
-          name="description"
-          content={!description ? defaultDescription : description}
-        />
-        <meta
-          property="og:title"
-          content={!titlePre ? defaultTitle : titlePre}
-        />
-        <meta
-          property="og:description"
-          content={!description ? defaultDescription : description}
-        />
-        {ogImageUrl ? <meta property="og:image" content={ogImageUrl} /> : ''}
-        <link
-          rel="alternate"
-          type="application/atom+xml"
-          href="/atom"
-          title={defaultTitle}
-        />
-      </Head>
       <h1>
         <Link href="/" passHref>
-          <a>{defaultTitle}</a>
+          <a>{SITE_TITLE}</a>
         </Link>
       </h1>
+
       <ul>
-        {navItems.map(({ label, page, link }) => (
+        {navItems.map(({ label, path }) => (
           <li key={label}>
-            {page ? (
-              <Link href={page} passHref>
-                <a className={pathname === page ? 'active' : undefined}>
-                  {label}
-                </a>
-              </Link>
-            ) : (
-              <ExtLink href={link}>{label}</ExtLink>
-            )}
+            <Link href={path} passHref>
+              <a className={asPath === path ? 'active' : null}>{label}</a>
+            </Link>
           </li>
         ))}
       </ul>

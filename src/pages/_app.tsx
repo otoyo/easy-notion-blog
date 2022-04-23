@@ -3,8 +3,11 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import * as gtag from '../lib/gtag'
+import Header from '../components/header'
 import Footer from '../components/footer'
 import GoogleAnalytics from '../components/google-analytics'
+
+import styles from '../styles/shared.module.css'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -18,13 +21,16 @@ const App = ({ Component, pageProps }) => {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
-  }, [router.events])
+  }, [router.events, pageProps.title])
 
   return (
     <>
       <GoogleAnalytics />
-      <div className="container">
-        <Component {...pageProps} />
+      <div className={styles.container}>
+        <Header />
+        <div className={styles.content}>
+          <Component {...pageProps} />
+        </div>
         <Footer />
       </div>
     </>

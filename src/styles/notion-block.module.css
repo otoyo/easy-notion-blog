@@ -1,0 +1,153 @@
+.divider {
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: var(--accents-3);
+  text-align: center;
+}
+
+.image {
+  padding: 1rem 0;
+  width: 90%;
+  margin: 0 auto;
+}
+.image > div:first-child {
+  text-align: center;
+}
+
+.code {
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+}
+.code pre {
+  display: block;
+  overflow: auto;
+  margin: 5px;
+  padding: 0.8rem;
+  background: #f1f1f1;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  border-radius: var(--radius);
+}
+
+.gray {
+  color: rgba(120, 119, 116, 1);
+}
+.brown {
+  color: rgba(159, 107, 83, 1);
+}
+.orange {
+  color: rgba(217, 115, 13, 1);
+}
+.yellow {
+  color: rgba(203, 145, 47, 1);
+}
+.green {
+  color: rgba(68, 131, 97, 1);
+}
+.blue {
+  color: rgba(51, 126, 169, 1);
+}
+.purple {
+  color: rgba(144, 101, 176, 1);
+}
+.pink {
+  color: rgba(193, 76, 138, 1);
+}
+.red {
+  color: rgba(212, 76, 71, 1);
+}
+.grayBackground {
+  background: rgba(241, 241, 239, 1) !important;
+}
+.brownBackground {
+  background: rgba(244, 238, 238, 1) !important;
+}
+.orangeBackground {
+  background: rgba(251, 236, 221, 1) !important;
+}
+.yellowBackground {
+  background: rgba(251, 243, 219, 1) !important;
+}
+.greenBackground {
+  background: rgba(237, 243, 236, 1) !important;
+}
+.blueBackground {
+  background: rgba(231, 243, 248, 1) !important;
+}
+.purpleBackground {
+  background: rgba(244, 240, 247, 0.8) !important;
+}
+.pinkBackground {
+  background: rgba(249, 238, 243, 0.8) !important;
+}
+.redBackground {
+  background: rgba(253, 235, 236, 1) !important;
+}
+
+.callout {
+  display: flex;
+  margin: 1rem auto;
+  padding: 16px 12px;
+  width: 100%;
+  font-size: 0.95rem;
+  line-height: 1.6rem;
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  background: rgba(235, 236, 237, 0.6);
+}
+.callout div {
+  margin: 0;
+  color: var(--fg);
+  line-height: 1.2rem;
+}
+.callout div:first-child {
+  margin-right: 0.7rem;
+}
+
+.linkPreview {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 0.9rem;
+}
+@media (max-width: 1024px) {
+  .linkPreview {
+    max-height: 320px;
+  }
+}
+@media (max-width: 600px) {
+  .linkPreview {
+    max-height: 240px;
+  }
+}
+.linkPreview h3 {
+  width: 100%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+  .linkPreview h3 {
+    height: 1.1rem;
+    line-height: 1.1rem;
+    font-size: 1rem;
+  }
+}
+
+.tweetEmbed {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+.tweetEmbed div:first-child div:first-child {
+  margin: auto;
+}

@@ -1,13 +1,14 @@
 {
   "name": "easy-notion-blog",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
     "build": "node scripts/set-blog-index-cache.js && next build && node scripts/expire-blog-index-cache.js",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css,html,yml,yaml,scss,sass}\" --ignore-path .gitignore",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "husky": {
     "hooks": {
@@ -15,23 +16,33 @@
     }
   },
   "dependencies": {
-    "@notionhq/client": "^0.4.0",
+    "@dhaiwat10/react-link-preview": "^1.12.2",
+    "@notionhq/client": "1.0.1",
+    "@types/mermaid": "^8.2.7",
     "@zeit/react-jsx-parser": "^2.0.0",
     "async-sema": "^3.1.0",
     "github-slugger": "^1.2.1",
-    "next": "^11.1.2",
-    "prismjs": "^1.25.0",
+    "image-size": "^1.0.1",
+    "mermaid": "^8.14.0",
+    "next": "12",
+    "prismjs": "^1.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-share": "^4.4.0",
+    "react-twitter-embed": "^3.0.3",
+    "shell-quote": "^1.7.3",
     "uuid": "^8.1.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
     "@types/node": "^13.1.2",
     "@types/react": "^16.9.17",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "husky": "^3.1.0",
+    "jest": "^27.5.1",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "typescript": "^4.4.3"

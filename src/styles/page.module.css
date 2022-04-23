@@ -1,0 +1,23 @@
+.container {
+  width: 640px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.container > div {
+  margin-bottom: 40px;
+}
+.container div:last-child {
+  margin-bottom: 0;
+}
+
+.container h2 {
+  margin: 0 0 14px;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.container p {
+  margin: 0.3rem auto;
+  line-height: 2rem;
+}

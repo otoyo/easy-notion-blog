@@ -6,7 +6,7 @@ const {
 } = require('./src/lib/notion/server-constants')
 
 const warnOrError =
-  process.env.NODE_ENV !== 'production'
+  process.env.NODE_ENV !== 'production' || process.env.GITHUB_ACTIONS
     ? console.warn
     : msg => {
         throw new Error(msg)
@@ -31,9 +31,9 @@ if (!DATABASE_ID) {
 }
 
 module.exports = {
-  target: 'experimental-serverless-trace',
-
   images: {
-    domains: ['s3.us-west-2.amazonaws.com'],
+    domains: ['s3.us-west-2.amazonaws.com', 'images.unsplash.com'],
   },
+
+  outputFileTracing: false,
 }

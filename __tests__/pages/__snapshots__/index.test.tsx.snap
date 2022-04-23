@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RenderPage renders the page unchanged 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div>
+      <h2>
+        Welcome!
+      </h2>
+      <p>
+        Your easy-notion-blog deployed successfully!
+      </p>
+      <p>
+        Have fun!
+      </p>
+      <p>
+        easy-notion-blog powered by
+         
+        <a
+          href="https://github.com/otoyo/easy-notion-blog"
+          rel="noopener"
+          target="_blank"
+        >
+          otoyo/easy-notion-blog
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;

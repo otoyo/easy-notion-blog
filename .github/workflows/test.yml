@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  test:
+    name: Jest
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_URL: http://localhost
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Run tests
+        run: yarn jest --ci
