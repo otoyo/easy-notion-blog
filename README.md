@@ -24,7 +24,7 @@ You can write on your Notion.
 - [shmn7iii](https://blog.shmn7iii.net/)
 - [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
 - [www.gadge7.net](https://www.gadge7.net/blog)
-- [herohoro ブログ](https://easy-notion-blog-02.vercel.app/) (Contributor)
+- [herohoro ブログ](https://herohoro.com/) (Contributor)
 - [アルパカログ](https://alpacat.com/) (Owner)
 
 ## Features
