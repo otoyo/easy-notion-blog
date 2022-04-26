@@ -21,6 +21,7 @@ You can write on your Notion.
 
 ## Users' blogs
 
+- [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
 - [shmn7iii](https://blog.shmn7iii.net/)
 - [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
 - [www.gadge7.net](https://www.gadge7.net/blog)
