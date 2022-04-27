@@ -13,6 +13,7 @@
   --accents-2: #333;
   --accents-3: #888;
   --geist-foreground: #000;
+  --geist-success: rgb(15, 95, 244);
 
   --radius: 4px;
 
@@ -289,7 +290,8 @@ hr {
 code {
   font-size: 0.9rem;
   background: #f1f1f1;
-  /* color: #eb5757; */
+  color: #eb5757;
+  padding: 0.25rem;
   border-radius: var(--radius);
   font-family: var(--font-mono);
 }

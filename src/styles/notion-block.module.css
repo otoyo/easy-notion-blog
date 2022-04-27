@@ -31,7 +31,10 @@
   line-height: 1.2rem;
   border-radius: var(--radius);
 }
-
+.code pre code {
+  color: var(--fg);
+  padding: 0;
+}
 .gray {
   color: rgba(120, 119, 116, 1);
 }
