@@ -14,6 +14,7 @@ import {
   // PostThumbnailSlug,
   PostsNotFound,
   TwitterTimeline,
+  ClosePhrase,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
 import styles from '../../styles/blog.module.css'
@@ -119,6 +120,7 @@ const RenderPost = ({
 
           <NoContents contents={blocks} />
           <PostBody blocks={blocks} />
+          <ClosePhrase />
 
           <footer>
             {NEXT_PUBLIC_URL && (

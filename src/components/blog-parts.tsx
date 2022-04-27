@@ -113,7 +113,12 @@ export const PostBody = ({ blocks }) => (
     ))}
   </div>
 )
-
+export const ClosePhrase = () => (
+  <div>
+    <p>Twitterでは更新のお知らせを随時行っています</p>
+    <a href="https://twitter.com/mineral_30">興味ある方はLet'sフォロー★</a>
+  </div>
+)
 export const ReadMoreLink = ({ post }) => (
   <div className={styles.readMoreLink}>
     <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
