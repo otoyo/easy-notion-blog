@@ -289,6 +289,8 @@ hr {
 code {
   font-size: 0.9rem;
   background: #f1f1f1;
+  color: #eb5757;
+  padding: 0.25rem;
   border-radius: var(--radius);
   font-family: var(--font-mono);
 }
