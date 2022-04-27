@@ -116,7 +116,7 @@ export const PostBody = ({ blocks }) => (
 export const ClosePhrase = () => (
   <div>
     <p>Twitterでは更新のお知らせを随時行っています</p>
-    <a href="https://twitter.com/mineral_30">興味ある方はLet'sフォロー★</a>
+    <a href="https://twitter.com/mineral_30">興味ある方はLet&apos;sフォロー★</a>
   </div>
 )
 export const ReadMoreLink = ({ post }) => (
