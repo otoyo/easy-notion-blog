@@ -21,6 +21,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## ユーザーブログ
 
+- [オマツリ](https://omatsuri.vercel.app/)
 - [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
 - [shmn7iii](https://blog.shmn7iii.net/)
 - [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
