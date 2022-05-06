@@ -8,6 +8,7 @@ import {
   getBlogLink,
   getDateStr,
   getTagLink,
+  getTagBeforeLink,
 } from '../lib/blog-helpers'
 import styles from '../styles/blog-parts.module.css'
 
@@ -67,7 +68,7 @@ export const ReadMoreLink = ({ post }) => (
   </div>
 )
 
-export const NextPageLink = ({ firstPost, posts }) => {
+export const NextPageLink = ({ firstPost, posts, tag = '' }) => {
   if (!firstPost) return null
   if (posts.length === 0) return null
 
@@ -78,8 +79,12 @@ export const NextPageLink = ({ firstPost, posts }) => {
   return (
     <div className={styles.nextPageLink}>
       <Link
-        href="/blog/before/[date]"
-        as={getBeforeLink(lastPost.Date)}
+        href={tag ? '/blog/tag/[tag]/before/[date]' : '/blog/before/[date]'}
+        as={
+          tag
+            ? getTagBeforeLink(tag, lastPost.Date)
+            : getBeforeLink(lastPost.Date)
+        }
         passHref
       >
         <a>Next page ＞</a>
