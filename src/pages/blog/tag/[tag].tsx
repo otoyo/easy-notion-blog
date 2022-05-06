@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
@@ -20,12 +21,13 @@ import {
   getPosts,
   getRankedPosts,
   getPostsByTag,
+  getFirstPostByTag,
   getAllTags,
 } from '../../../lib/notion/client'
 import * as imageCache from '../../../lib/notion/image-cache'
 
 export async function getStaticProps({ params: { tag } }) {
-  const posts = await getPostsByTag(tag)
+  const posts = await getPostsByTag(tag, NUMBER_OF_POSTS_PER_PAGE)
 
   const [rankedPosts, recentPosts, tags] = await Promise.all([
     getRankedPosts(),
