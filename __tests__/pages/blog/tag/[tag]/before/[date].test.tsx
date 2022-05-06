@@ -14,8 +14,8 @@ import {
 jest.mock('next/router', () => ({
   useRouter() {
     return {
-      asPath: '/blog/tag/Diary',
-      pathname: '/blog/tag/[tag]',
+      asPath: '/blog/tag/Diary/before/2022-05-01',
+      pathname: '/blog/tag/[tag]/before/[date]',
     }
   },
 }))
