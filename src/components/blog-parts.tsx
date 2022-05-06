@@ -7,6 +7,7 @@ import {
   getBeforeLink,
   getBlogLink,
   getDateStr,
+  getEditTimeStr,
   getTagLink,
 } from '../lib/blog-helpers'
 import styles from '../styles/blog-parts.module.css'
@@ -22,6 +23,11 @@ export const PostDate = ({ post }) => (
                 <img className={stylesParts.thumbnail} src={post.OGImage} />
               </Link> */
 }
+export const PostEditTimeStr = ({ post }) => (
+  <div className={styles.postEditTime}>
+    🔄 &nbsp;&nbsp;{post.EditTime ? getEditTimeStr(post.EditTime) : ''}
+  </div>
+)
 export const PostThumbnail = ({ post }) => (
   <div className={styles.thumbnail}>
     <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>

@@ -1,5 +1,6 @@
 export interface Post {
   PageId: string
+  EditTime: string
   Title: string
   Slug: string
   Date: string

@@ -9,6 +9,12 @@
   padding: 0 0 0.3rem;
   font-size: 0.9rem;
 }
+.postEditTime {
+  padding: 0 0 0.3rem;
+  font-size: 1.2rem;
+  color: #22a50e;
+  text-align: right;
+}
 /*Slug内調整*/
 .postTagsSlug a {
   font-size: 0.8em;

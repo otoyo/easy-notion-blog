@@ -525,6 +525,7 @@ function _buildPost(data) {
 
   const post: Post = {
     PageId: data.id,
+    EditTime: data.last_edited_time,
     Title: prop.Page.title[0].plain_text,
     Slug: prop.Slug.rich_text[0].plain_text,
     Date: prop.Date.date.start,

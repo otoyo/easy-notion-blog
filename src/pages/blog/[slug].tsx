@@ -9,6 +9,7 @@ import {
   NoContents,
   PostBody,
   PostDate,
+  PostEditTimeStr,
   PostTitleSlug,
   PostTagsSlug,
   // PostThumbnailSlug,
@@ -117,6 +118,7 @@ const RenderPost = ({
           <PostTagsSlug post={post} />
           <br />
           <hr />
+          <PostEditTimeStr post={post} />
 
           <NoContents contents={blocks} />
           <PostBody blocks={blocks} />
