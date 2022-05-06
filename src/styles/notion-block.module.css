@@ -105,7 +105,6 @@
 }
 .callout div {
   margin: 0;
-  color: var(--fg);
   line-height: 1.2rem;
 }
 .callout div:first-child {
