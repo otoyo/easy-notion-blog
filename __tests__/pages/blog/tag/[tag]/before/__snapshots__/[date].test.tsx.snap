@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RenderPostsByTags renders the page unchanged 1`] = `
+exports[`RenderPostsByTagsBeforeDate renders the page unchanged 1`] = `
 <div>
   <div
     class="container"

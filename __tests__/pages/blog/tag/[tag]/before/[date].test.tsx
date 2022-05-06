@@ -1,15 +1,15 @@
-jest.mock('../../../../src/lib/notion/blog-index-cache')
+jest.mock('../../../../../../src/lib/notion/blog-index-cache')
 
 import { render } from '@testing-library/react'
-import RenderPostsByTags from '../../../../src/pages/blog/tag/[tag]'
+import RenderPostsByTagsBeforeDate from '../../../../../../src/pages/blog/tag/[tag]/before/[date]'
 
 import {
   getPosts,
-  getPostsByTag,
+  getPostsByTagBefore,
   getFirstPostByTag,
   getRankedPosts,
   getAllTags,
-} from '../../../../src/lib/notion/client'
+} from '../../../../../../src/lib/notion/client'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -20,17 +20,19 @@ jest.mock('next/router', () => ({
   },
 }))
 
-describe('RenderPostsByTags', () => {
+describe('RenderPostsByTagsBeforeDate', () => {
   it('renders the page unchanged', async () => {
     const tag = 'Diary'
-    const posts = await getPostsByTag(tag)
+    const date = '2022-05-01'
+    const posts = await getPostsByTagBefore(tag, date)
     const firstPost = await getFirstPostByTag(tag)
     const rankedPosts = await getRankedPosts()
     const recentPosts = await getPosts(5)
     const tags = await getAllTags()
 
     const { container } = render(
-      <RenderPostsByTags
+      <RenderPostsByTagsBeforeDate
+        date={date}
         tag={tag}
         posts={posts}
         firstPost={firstPost}

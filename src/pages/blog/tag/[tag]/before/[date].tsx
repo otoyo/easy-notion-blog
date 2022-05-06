@@ -1,7 +1,8 @@
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
-import DocumentHead from '../../../components/document-head'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../lib/notion/server-constants'
+import DocumentHead from '../../../../../components/document-head'
 import {
   BlogPostLink,
   BlogTagLink,
@@ -13,20 +14,23 @@ import {
   PostTitle,
   PostsNotFound,
   ReadMoreLink,
-} from '../../../components/blog-parts'
-import styles from '../../../styles/blog.module.css'
-import { getTagLink } from '../../../lib/blog-helpers'
-import { useEffect } from 'react'
+} from '../../../../../components/blog-parts'
+import styles from '../../../../../styles/blog.module.css'
+
 import {
   getPosts,
   getRankedPosts,
-  getPostsByTag,
+  getPostsByTagBefore,
   getFirstPostByTag,
   getAllTags,
-} from '../../../lib/notion/client'
+} from '../../../../../lib/notion/client'
 
-export async function getStaticProps({ params: { tag } }) {
-  const posts = await getPostsByTag(tag, NUMBER_OF_POSTS_PER_PAGE)
+export async function getStaticProps({ params: { tag, date } }) {
+  if (!Date.parse(date) || !/\d{4}-\d{2}-\d{2}/.test(date)) {
+    return { notFound: true }
+  }
+
+  const posts = await getPostsByTagBefore(tag, date, NUMBER_OF_POSTS_PER_PAGE)
 
   if (posts.length === 0) {
     console.log(`Failed to find posts for tag: ${tag}`)
@@ -47,6 +51,7 @@ export async function getStaticProps({ params: { tag } }) {
 
   return {
     props: {
+      date,
       posts,
       firstPost,
       rankedPosts,
@@ -54,26 +59,25 @@ export async function getStaticProps({ params: { tag } }) {
       tags,
       tag,
     },
-    revalidate: 60,
+    revalidate: 3600,
   }
 }
 
 export async function getStaticPaths() {
-  const tags = await getAllTags()
-
   return {
-    paths: tags.map(tag => getTagLink(tag)),
+    paths: [],
     fallback: 'blocking',
   }
 }
 
-const RenderPostsByTags = ({
-  tag,
+const RenderPostsByTagBeforeDate = ({
+  date,
   posts = [],
   firstPost,
   rankedPosts = [],
   recentPosts = [],
   tags = [],
+  tag,
   redirect,
 }) => {
   const router = useRouter()
@@ -90,7 +94,7 @@ const RenderPostsByTags = ({
 
   return (
     <div className={styles.container}>
-      <DocumentHead description={`Posts in ${tag}`} />
+      <DocumentHead description={`Posts in ${tag} before ${date}`} />
 
       <div className={styles.mainContent}>
         <header>
@@ -125,4 +129,4 @@ const RenderPostsByTags = ({
   )
 }
 
-export default RenderPostsByTags
+export default RenderPostsByTagBeforeDate
