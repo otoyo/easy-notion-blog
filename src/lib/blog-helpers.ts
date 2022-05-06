@@ -10,6 +10,10 @@ export const getBeforeLink = (date: string) => {
   return `/blog/before/${date}`
 }
 
+export const getTagBeforeLink = (tag: string, date: string) => {
+  return `/blog/tag/${encodeURIComponent(tag)}/before/${date}`
+}
+
 export const getDateStr = date => {
   const dt = new Date(date)
   const y = dt.getFullYear()
