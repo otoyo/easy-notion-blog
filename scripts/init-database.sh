@@ -1,5 +1,5 @@
-curl 'https://api.notion.com/v1/databases/'"$DATABASE_ID"'' \
-  -H 'Authorization: Bearer '"$NOTION_API_SECRET"'' \
+curl 'https://api.notion.com/v1/databases/'"$DATABASE_ID"'4eeb086815f04b2c961fbe46fcc5eeb5' \
+  -H 'Authorization: Bearer '"$NOTION_API_SECRET"'secret_puHbfd0kwFxre8LH8Ogyz9MkZy7BmtI44IiLU71yMCd' \
   -H 'Notion-Version: 2022-02-22' | grep -q 'Tags'
 if [ $? -ne 0 ]; then
   echo "データベースの列名「タグ」を「Tags」に変更してください。詳細は README をご覧ください。"
