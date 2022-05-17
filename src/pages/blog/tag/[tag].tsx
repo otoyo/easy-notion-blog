@@ -21,7 +21,7 @@ import {
   getPosts,
   getRankedPosts,
   getPostsByTag,
-  getFirstPostByTag,
+  // getFirstPostByTag,
   getAllTags,
 } from '../../../lib/notion/client'
 import * as imageCache from '../../../lib/notion/image-cache'
