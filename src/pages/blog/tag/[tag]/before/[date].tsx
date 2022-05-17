@@ -49,7 +49,7 @@ export async function getStaticProps({ params: { tag, date } }) {
     }
   }
 
-  const [firstPost, rankedPosts, tags] = await Promise.all([
+  const [firstPost, rankedPosts, recentPosts, tags] = await Promise.all([
     getFirstPostByTag(tag),
     getRankedPosts(),
     getPosts(5),
@@ -62,7 +62,7 @@ export async function getStaticProps({ params: { tag, date } }) {
       posts,
       firstPost,
       rankedPosts,
-      //   recentPosts,
+      recentPosts,
       tags,
       tag,
     },
@@ -82,7 +82,7 @@ const RenderPostsByTagBeforeDate = ({
   posts = [],
   firstPost,
   rankedPosts = [],
-  //   recentPosts = [],
+  recentPosts = [],
   tags = [],
   tag,
   redirect,
@@ -170,6 +170,7 @@ const RenderPostsByTagBeforeDate = ({
         <BlogTagLink heading="Categories" tags={tags} /> */}
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
+        <BlogPostLink heading="Latest Posts" posts={recentPosts} />
         <TwitterTimeline />
       </div>
     </div>
