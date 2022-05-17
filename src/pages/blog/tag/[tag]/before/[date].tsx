@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
-import { getBeforeLink } from '../../../../../lib/blog-helpers'
+// import Link from 'next/link'
+// import { getBeforeLink } from '../../../../../lib/blog-helpers'
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../lib/notion/server-constants'
 import DocumentHead from '../../../../../components/document-head'
 import {
   BlogPostLink,
   //   BlogTagLink,
   BlogTagLinkNoList,
-  //   NextPageLink,
+  NextPageLink,
   NoContents,
   PostDate,
   PostExcerpt,
@@ -123,8 +123,8 @@ const RenderPostsByTagBeforeDate = ({
           })}
         </div>
         <footer>
-          {/* <NextPageLink firstPost={firstPost} posts={posts} tag={tag} /> */}
-          {!!firstPost &&
+          <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+          {/* {!!firstPost &&
             posts.length > 0 &&
             firstPost.Date !== posts[posts.length - 1].Date && (
               <div className={stylesParts.nextContainer}>
@@ -146,7 +146,7 @@ const RenderPostsByTagBeforeDate = ({
                   </Link>
                 </div>
               </div>
-            )}
+            )} */}
 
           {!!firstPost &&
             posts.length > 0 &&

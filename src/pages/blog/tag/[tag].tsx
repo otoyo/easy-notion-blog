@@ -5,7 +5,7 @@ import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
-  // NextPageLink,
+  NextPageLink,
   BlogTagLinkNoList,
   NoContents,
   PostDate,
@@ -119,9 +119,9 @@ const RenderPostsByTags = ({
           })}
         </div>
         <footer>
-          {/* <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
-           */}
-          {!!firstPost &&
+          <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+
+          {/* {!!firstPost &&
             posts.length > 0 &&
             firstPost.Date !== posts[posts.length - 1].Date && (
               <div className={stylesParts.nextContainer}>
@@ -143,7 +143,7 @@ const RenderPostsByTags = ({
                   </Link>
                 </div>
               </div>
-            )}
+            )} */}
         </footer>
       </div>
 
