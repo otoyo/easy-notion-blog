@@ -319,7 +319,8 @@ export async function getPostsByTagBefore(
 export async function getFirstPostByTag(tag: string) {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Tags.includes(tag))[allPosts.length - 1]
+    const sameTagPosts = allPosts.filter(post => post.Tags.includes(tag))
+    return sameTagPosts[sameTagPosts.length - 1]
   }
 
   const params = {
