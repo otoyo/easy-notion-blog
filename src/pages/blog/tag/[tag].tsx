@@ -4,6 +4,7 @@ import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
+  NextPageLink,
   BlogTagLinkNoList,
   NoContents,
   PostDate,
@@ -21,7 +22,7 @@ import {
   getPosts,
   getRankedPosts,
   getPostsByTag,
-  // getFirstPostByTag,
+  getFirstPostByTag,
   getAllTags,
 } from '../../../lib/notion/client'
 import * as imageCache from '../../../lib/notion/image-cache'
@@ -29,7 +30,8 @@ import * as imageCache from '../../../lib/notion/image-cache'
 export async function getStaticProps({ params: { tag } }) {
   const posts = await getPostsByTag(tag, NUMBER_OF_POSTS_PER_PAGE)
 
-  const [rankedPosts, recentPosts, tags] = await Promise.all([
+  const [firstPost, rankedPosts, recentPosts, tags] = await Promise.all([
+    getFirstPostByTag(tag),
     getRankedPosts(),
     getPosts(5),
     getAllTags(),
@@ -50,6 +52,7 @@ export async function getStaticProps({ params: { tag } }) {
   return {
     props: {
       posts,
+      firstPost,
       rankedPosts,
       recentPosts,
       tags,
@@ -71,7 +74,8 @@ export async function getStaticPaths() {
 const RenderPostsByTags = ({
   tag,
   posts = [],
-  rankedPosts,
+  firstPost,
+  rankedPosts = [],
   recentPosts = [],
   tags = [],
   redirect,
@@ -111,6 +115,9 @@ const RenderPostsByTags = ({
             )
           })}
         </div>
+        <footer>
+          <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+        </footer>
       </div>
 
       <div className={styles.subContent}>

@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
-import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
-import DocumentHead from '../../../components/document-head'
+import { getBeforeLink } from '../../../../../lib/blog-helpers'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../lib/notion/server-constants'
+import DocumentHead from '../../../../../components/document-head'
 import {
   BlogPostLink,
+  //   BlogTagLink,
   BlogTagLinkNoList,
+  //   NextPageLink,
   NoContents,
   PostDate,
   PostExcerpt,
@@ -14,33 +16,45 @@ import {
   PostTitle,
   PostsNotFound,
   PostThumbnail,
+  //   ReadMoreLink,
   TwitterTimeline,
-} from '../../../components/blog-parts'
-import stylesParts from '../../../styles/blog-parts.module.css'
-import styles from '../../../styles/blog.module.css'
-import { getBeforeLink } from '../../../lib/blog-helpers'
-import * as imageCache from '../../../lib/notion/image-cache'
+} from '../../../../../components/blog-parts'
+// import styles from '../../../../../styles/blog.module.css'
+
 import {
   getPosts,
   getRankedPosts,
-  getPostsBefore,
-  getFirstPost,
+  getPostsByTagBefore,
+  getFirstPostByTag,
   getAllTags,
-} from '../../../lib/notion/client'
+} from '../../../../../lib/notion/client'
 
-export async function getStaticProps({ params: { date } }) {
+import stylesParts from '../../../../../styles/blog-parts.module.css'
+import styles from '../../../../../styles/blog.module.css'
+
+export async function getStaticProps({ params: { tag, date } }) {
   if (!Date.parse(date) || !/\d{4}-\d{2}-\d{2}/.test(date)) {
     return { notFound: true }
   }
 
-  const [posts, firstPost, rankedPosts, tags] = await Promise.all([
-    getPostsBefore(date, NUMBER_OF_POSTS_PER_PAGE),
-    getFirstPost(),
+  const posts = await getPostsByTagBefore(tag, date, NUMBER_OF_POSTS_PER_PAGE)
+
+  if (posts.length === 0) {
+    console.log(`Failed to find posts for tag: ${tag}`)
+    return {
+      props: {
+        redirect: '/blog',
+      },
+      revalidate: 30,
+    }
+  }
+
+  const [firstPost, rankedPosts, recentPosts, tags] = await Promise.all([
+    getFirstPostByTag(tag),
     getRankedPosts(),
+    getPosts(5),
     getAllTags(),
   ])
-
-  posts.forEach(p => p.OGImage && imageCache.store(p.PageId, p.OGImage))
 
   return {
     props: {
@@ -48,34 +62,35 @@ export async function getStaticProps({ params: { date } }) {
       posts,
       firstPost,
       rankedPosts,
+      recentPosts,
       tags,
+      tag,
     },
     revalidate: 3600,
   }
 }
 
 export async function getStaticPaths() {
-  const posts = await getPosts()
-  const path = getBeforeLink(posts[posts.length - 1].Date)
-
   return {
-    paths: [path],
+    paths: [],
     fallback: 'blocking',
   }
 }
 
-const RenderPostsBeforeDate = ({
+const RenderPostsByTagBeforeDate = ({
   date,
   posts = [],
   firstPost,
   rankedPosts = [],
+  recentPosts = [],
   tags = [],
+  tag,
   redirect,
 }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (redirect && !posts) {
+    if (redirect && posts.length === 0) {
       router.replace(redirect)
     }
   }, [router, redirect, posts])
@@ -86,12 +101,12 @@ const RenderPostsBeforeDate = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <DocumentHead description={`Post before ${date}`} />
-        <header className={styles.mainTop}>
-          <h2>Posts before {date}</h2>
-        </header>
+      <DocumentHead description={`Posts in ${tag} before ${date}`} />
 
+      <div className={styles.mainContent}>
+        <header className={styles.mainTop}>
+          <h2>{tag}</h2>
+        </header>
         <div className={styles.mainGallery}>
           <NoContents contents={posts} />
 
@@ -107,9 +122,8 @@ const RenderPostsBeforeDate = ({
             )
           })}
         </div>
-
         <footer>
-          {/* <NextPageLink firstPost={firstPost} posts={posts} /> */}
+          {/* <NextPageLink firstPost={firstPost} posts={posts} tag={tag} /> */}
           {!!firstPost &&
             posts.length > 0 &&
             firstPost.Date !== posts[posts.length - 1].Date && (
@@ -149,7 +163,11 @@ const RenderPostsBeforeDate = ({
             )}
         </footer>
       </div>
+
       <div className={styles.subContent}>
+        {/* <BlogPostLink heading="Recommended" posts={rankedPosts} />
+        <BlogPostLink heading="Latest Posts" posts={recentPosts} />
+        <BlogTagLink heading="Categories" tags={tags} /> */}
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <TwitterTimeline />
@@ -158,4 +176,4 @@ const RenderPostsBeforeDate = ({
   )
 }
 
-export default RenderPostsBeforeDate
+export default RenderPostsByTagBeforeDate
