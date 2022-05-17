@@ -49,7 +49,7 @@ export async function getStaticProps({ params: { tag, date } }) {
     }
   }
 
-  const [firstPost, rankedPosts, recentPosts, tags] = await Promise.all([
+  const [firstPost, rankedPosts, tags] = await Promise.all([
     getFirstPostByTag(tag),
     getRankedPosts(),
     getPosts(5),
