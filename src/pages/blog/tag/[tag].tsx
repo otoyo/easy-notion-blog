@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
-  NextPageLink,
+  // NextPageLink,
   BlogTagLinkNoList,
   NoContents,
   PostDate,
@@ -16,7 +17,9 @@ import {
   TwitterTimeline,
 } from '../../../components/blog-parts'
 import styles from '../../../styles/blog.module.css'
+import stylesParts from '../../../styles/blog-parts.module.css'
 import { getTagLink } from '../../../lib/blog-helpers'
+import { getBeforeLink } from '../../../lib/blog-helpers'
 import { useEffect } from 'react'
 import {
   getPosts,
@@ -116,7 +119,31 @@ const RenderPostsByTags = ({
           })}
         </div>
         <footer>
-          <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+          {/* <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+           */}
+          {!!firstPost &&
+            posts.length > 0 &&
+            firstPost.Date !== posts[posts.length - 1].Date && (
+              <div className={stylesParts.nextContainer}>
+                <hr />
+                <div className={stylesParts.buttonSubContainer}>
+                  <a
+                    className={stylesParts.backButton}
+                    onClick={() => router.back()}
+                  >
+                    {' '}
+                    ＜ Back{' '}
+                  </a>
+                  <Link
+                    href="/blog/before/[date]"
+                    as={getBeforeLink(posts[posts.length - 1].Date)}
+                    passHref
+                  >
+                    <a className={stylesParts.nextButton}>Next ＞</a>
+                  </Link>
+                </div>
+              </div>
+            )}
         </footer>
       </div>
 
