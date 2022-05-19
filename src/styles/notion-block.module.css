@@ -114,7 +114,8 @@
 .table {
   overflow-x: auto;
 }
-.table th {
+.table th,
+.table td {
   white-space: nowrap;
 }
 .linkPreview {
