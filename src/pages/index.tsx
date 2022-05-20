@@ -149,7 +149,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
           </Link>
         </li>
         <li>
-          <Link href="https://easy-notion-blog-02.vercel.app/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
+          <Link href="https://herohoro.com/blog/tag/easy-notion-blog_%E4%BA%8B%E5%A7%8B%E3%82%81">
             easy-notion-blog導入⭐
           </Link>
         </li>
