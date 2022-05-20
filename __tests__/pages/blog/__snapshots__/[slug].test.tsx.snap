@@ -230,7 +230,7 @@ exports[`RenderPost renders the page unchanged 1`] = `
             </figcaption>
           </figure>
         </div>
-         <footer>
+        <footer>
           <ul
             class="socialButtons"
           >
