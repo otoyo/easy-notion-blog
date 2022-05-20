@@ -331,7 +331,7 @@ exports[`RenderPost renders the page unchanged 1`] = `
               </button>
             </li>
           </ul>
-        <footer />
+        </footer>
       </div>
     </div>
     <div
