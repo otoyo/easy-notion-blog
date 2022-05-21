@@ -110,7 +110,13 @@
 .callout div:first-child {
   margin-right: 0.7rem;
 }
-
+.table {
+  overflow-x: auto;
+}
+.table th,
+.table td {
+  white-space: nowrap;
+}
 .linkPreview {
   width: 100%;
   max-width: 600px;
