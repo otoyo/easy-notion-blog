@@ -145,11 +145,13 @@ const RenderPost = ({
           heading="Posts in the same category"
           posts={sameTagPosts}
         />
+        <IndexList heading="★ MOKUJI ★" blocks={blocks} />
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogPostLink heading="Latest posts" posts={recentPosts} />
         <TwitterTimeline />
         <IndexList heading="★ MOKUJI ★" blocks={blocks} />
+        <p>スクロールしても目次がくっついてくるように改造したい...只今格闘中</p>
       </div>
     </div>
   )

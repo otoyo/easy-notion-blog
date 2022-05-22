@@ -272,7 +272,7 @@
 .indexList h5,
 .indexList h6 {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 .indexList h5::before {
   content: ' ';
