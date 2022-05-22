@@ -141,10 +141,7 @@ const RenderPost = ({
       </div>
 
       <div className={styles.subContent}>
-        <BlogPostLink
-          heading="Posts in the same category"
-          posts={sameTagPosts}
-        />
+        <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
         <IndexList heading="★ MOKUJI ★" blocks={blocks} />
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
