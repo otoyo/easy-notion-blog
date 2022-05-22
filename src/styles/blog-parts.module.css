@@ -268,14 +268,20 @@
   font-size: 1.5rem;
   text-align: center;
 }
+.indexList h4::before {
+  content: '_';
+}
+.indexList h5::before {
+  content: '__';
+}
+.indexList h6::before {
+  content: '___';
+}
 .indexList h4,
 .indexList h5,
 .indexList h6 {
   margin: 0;
   font-size: 0.8rem;
-}
-.indexList h5::before {
-  content: ' ';
 }
 
 @media (max-width: 600px) {
