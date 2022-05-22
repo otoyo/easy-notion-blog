@@ -136,14 +136,13 @@ const RenderPost = ({
               />
             )}
           </footer>
+          <p>▼　この記事に興味があったら同じタグから関連記事をのぞいてみてね</p>
+          <PostTagsSlug post={post} />
         </div>
       </div>
 
       <div className={styles.subContent}>
-        <BlogPostLink
-          heading="Posts in the same category"
-          posts={sameTagPosts}
-        />
+        <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
         <BlogTagLinkNoList heading="Tag List" tags={tags} />
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogPostLink heading="Latest posts" posts={recentPosts} />
