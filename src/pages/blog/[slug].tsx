@@ -16,6 +16,7 @@ import {
   PostsNotFound,
   TwitterTimeline,
   ClosePhrase,
+  IndexList,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
 import styles from '../../styles/blog.module.css'
@@ -147,6 +148,8 @@ const RenderPost = ({
         <BlogPostLink heading="Recommended" posts={rankedPosts} />
         <BlogPostLink heading="Latest posts" posts={recentPosts} />
         <TwitterTimeline />
+        <IndexList heading="★ MOKUJI ★" blocks={blocks} />
+        <p>スクロールしても目次がくっついてくるように改造したい...只今格闘中</p>
       </div>
     </div>
   )
