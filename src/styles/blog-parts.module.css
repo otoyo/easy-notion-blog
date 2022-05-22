@@ -7,12 +7,12 @@
 }
 .postDate {
   padding: 0 0 0.3rem;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 .postEditTime {
   padding: 0 0 0.3rem;
   font-size: 1.2rem;
-  color: #22a50e;
+  color: #7dbe74;
   text-align: right;
 }
 /*Slug内調整*/
@@ -349,7 +349,10 @@
     font-size: 0.75rem;
     padding-right: 0.75rem;
   }
-
+  .postEditTime,
+  .postDate {
+    font-size: 0.75rem;
+  }
   .post a.expandButton {
     width: 50%;
   }
