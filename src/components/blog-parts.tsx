@@ -12,6 +12,7 @@ import {
   getTagBeforeLink,
 } from '../lib/blog-helpers'
 import styles from '../styles/blog-parts.module.css'
+import ContentIndex from './content-index'
 
 export const PostDate = ({ post }) => (
   <div className={styles.postDate}>
@@ -117,6 +118,14 @@ export const PostBody = ({ blocks }) => (
   <div className={styles.postBody}>
     {wrapListItems(blocks).map((block, i) => (
       <NotionBlock block={block} key={`post-body-${i}`} />
+    ))}
+  </div>
+)
+export const IndexList = ({ blocks, heading }) => (
+  <div className={styles.indexList}>
+    <h3>{heading}</h3>
+    {wrapListItems(blocks).map((block, i) => (
+      <ContentIndex block={block} key={`post-body-${i}`} />
     ))}
   </div>
 )
