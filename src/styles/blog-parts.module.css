@@ -260,6 +260,7 @@
   border: 3px dashed #dddddd;
   border-radius: 10px;
   padding: 5px 4px;
+  overflow-x: auto;
 }
 .indexList a:hover {
   color: var(--hero-hover-fg);
@@ -272,16 +273,17 @@
   content: '🟠 ';
 }
 .indexList h5::before {
-  content: '__';
+  content: '  ├─ ';
 }
 .indexList h6::before {
-  content: '___';
+  content: '  │└─ ';
 }
 .indexList h4,
 .indexList h5,
 .indexList h6 {
   margin: 0;
   font-size: 0.8rem;
+  white-space: nowrap;
 }
 
 @media (max-width: 600px) {
