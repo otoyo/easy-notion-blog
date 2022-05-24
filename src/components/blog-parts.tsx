@@ -207,6 +207,13 @@ export const NoContents = ({ contents }) => {
 
   return <div className={styles.noContents}>There are no contents yet</div>
 }
+export const NewPostList = () => (
+  <div className={styles.newPostList}>
+    <Link href="/blog" passHref>
+      <p> 🔍　to Blog List </p>
+    </Link>
+  </div>
+)
 export const TwitterTimeline = () => (
   <div>
     <h3>Twitter Timeline</h3>
@@ -230,12 +237,16 @@ export const TwitterTimeline = () => (
     ></script>
   </div>
 )
-export const BlogPostLink = ({ heading, posts }) => (
+export const BlogPostLink = ({ heading, posts, enableThumnail = false }) => (
   <div className={styles.blogPostLink}>
     <h3>{heading}</h3>
     <hr />
     <NoContents contents={posts} />
-    <PostLinkList posts={posts} />
+    {enableThumnail ? (
+      <PostLinkListThumnail posts={posts} />
+    ) : (
+      <PostLinkList posts={posts} />
+    )}
   </div>
 )
 
@@ -294,7 +305,30 @@ export const PostLinkList = ({ posts }) => {
     </ul>
   )
 }
-
+const PostLinkListThumnail = ({ posts }) => {
+  if (!posts || posts.length === 0) return null
+  return (
+    <div>
+      {posts.map(post => {
+        return (
+          <div key={post.Slug} className={styles.flexWraper}>
+            <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+              <img
+                src={`/notion_images/${post.PageId}.png`}
+                width={143.54}
+                height={75}
+                alt="thumbnail"
+              />
+            </Link>
+            <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
+              <a>{post.Title}</a>
+            </Link>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 export const TagLinkList = ({ tags }) => {
   if (!tags || tags.length === 0) return null
 

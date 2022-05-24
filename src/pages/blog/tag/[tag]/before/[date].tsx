@@ -6,7 +6,6 @@ import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../lib/notion/server-const
 import DocumentHead from '../../../../../components/document-head'
 import {
   BlogPostLink,
-  //   BlogTagLink,
   BlogTagLink,
   NextPageLink,
   NoContents,

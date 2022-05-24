@@ -1,0 +1,4 @@
+diff a/src/styles/blog.module.css b/src/styles/blog.module.css	(rejected hunks)
+@@ -165 +165 @@
+-  margin:0 20px;
++  margin: 0 20px;

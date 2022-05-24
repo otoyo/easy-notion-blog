@@ -17,6 +17,7 @@ import {
   TwitterTimeline,
   ClosePhrase,
   IndexList,
+  NewPostList,
 } from '../../components/blog-parts'
 import SocialButtons from '../../components/social-buttons'
 import styles from '../../styles/blog.module.css'
@@ -145,10 +146,22 @@ const RenderPost = ({
         </div>
 
         <div className={styles.subContent}>
-          <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
+          <BlogPostLink
+            heading="Posts in the same tag"
+            posts={sameTagPosts}
+            enableThumnail={true}
+          />
           <BlogTagLink heading="Tag List" tags={tags} />
-          <BlogPostLink heading="Recommended" posts={rankedPosts} />
-          <BlogPostLink heading="Latest posts" posts={recentPosts} />
+          <BlogPostLink
+            heading="Recommended"
+            posts={rankedPosts}
+            enableThumnail={true}
+          />
+          <BlogPostLink
+            heading="Latest posts"
+            posts={recentPosts}
+            enableThumnail={true}
+          />
           <TwitterTimeline />
           <IndexList heading="★ MOKUJI ★" blocks={blocks} />
           <p>
@@ -158,6 +171,28 @@ const RenderPost = ({
       </div>
       <div className={styles.endContent}>
         <p>記事を読んだ後に表示させたい関連記事一覧</p>
+        <div className={styles.endSection}>
+          <BlogPostLink
+            heading="Posts in the same tag"
+            posts={sameTagPosts}
+            enableThumnail={true}
+          />
+          <PostTagsSlug post={post} />
+        </div>
+        <div className={styles.endSection}>
+          <BlogPostLink
+            heading="Latest posts"
+            posts={recentPosts}
+            enableThumnail={true}
+          />
+          <div className={styles.inlineCenter}>
+            <NewPostList />
+          </div>
+        </div>
+        <div className={styles.endSection}>
+          <BlogTagLink heading="Tag List" tags={tags} />
+          <TwitterTimeline />
+        </div>
       </div>
     </div>
   )
