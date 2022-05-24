@@ -163,9 +163,6 @@
 
 @media (min-width: 1024px) {
   .container {
-    /* display: flex;
-    justify-content: center;
-    align-items: flex-start; */
   }
   .flexWraper {
     display: flex;
@@ -192,8 +189,19 @@
   .endContent {
     width: 100%;
     background-color: aqua;
+    padding-left: 15px;
+    /* justify-content: space-between; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
   }
-
+  .endSection {
+    width: 33%;
+    background-color: coral;
+  }
+  .endContent p {
+    width: 100%;
+  }
   /* .postInPost{
     min-width: 50%;
     padding: 2% 5%;

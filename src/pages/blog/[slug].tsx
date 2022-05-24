@@ -158,6 +158,15 @@ const RenderPost = ({
       </div>
       <div className={styles.endContent}>
         <p>記事を読んだ後に表示させたい関連記事一覧</p>
+        <div className={styles.endSection}>
+          <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
+        </div>
+        <div className={styles.endSection}>
+          <BlogPostLink heading="Latest posts" posts={recentPosts} />
+        </div>
+        <div className={styles.endSection}>
+          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+        </div>
       </div>
     </div>
   )
