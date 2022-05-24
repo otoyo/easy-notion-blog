@@ -100,6 +100,12 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
           notionに書き溜めた記録をブログっぽく公開していきながらポートフォリオも兼ねて発展させていきたいなーと思っています＼(^o^)／よろしくねー
         </p>
       </div>
+      <iframe
+        src="https://dev.herohoro.com/posting"
+        width="100%"
+        height="600"
+        // frameborder="0"
+      ></iframe>
     </div>
 
     <div className={styles.subContent}>
