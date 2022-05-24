@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { getTagLink } from '../lib/blog-helpers'
 import {
   BlogPostLink,
-  BlogTagLinkNoList,
+  BlogTagLink,
   TwitterTimeline,
 } from '../components/blog-parts'
 
@@ -120,7 +120,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         })}
         
         </div> */}
-      <BlogTagLinkNoList heading="Tag List" tags={tags} />
+      <BlogTagLink heading="Tag List" tags={tags} />
       <h3>Prolile</h3>
       <hr />
       <Image src="/profile.png" width={200} height={200} objectFit="contain" />

@@ -239,24 +239,15 @@ export const BlogPostLink = ({ heading, posts }) => (
   </div>
 )
 
-export const BlogTagLink = ({ heading, tags }) => (
+export const BlogTagLink = ({ heading, tags, enableList = false }) => (
   <div className={styles.blogTagLink}>
     <h3>{heading}</h3>
     <hr />
     <NoContents contents={tags} />
-    <TagLinkList tags={tags} />
+    {enableList ? <TagLinkList tags={tags} /> : <TagLinkNoList tags={tags} />}
   </div>
 )
 
-export const BlogTagLinkNoList = ({ heading, tags }) => (
-  <div className={styles.blogTagLink}>
-    <h3>{heading}</h3>
-    <hr />
-    <br />
-    <NoContents contents={tags} />
-    <TagLinkNoList tags={tags} />
-  </div>
-)
 export const IndexBlogTagLink = ({ heading, tags }) => (
   <div className={styles.IndexblogTagLink}>
     <h3>{heading}</h3>

@@ -1,6 +1,6 @@
 import DocumentHead from '../../components/document-head'
 
-import { BlogTagLinkNoList, TwitterTimeline } from '../../components/blog-parts'
+import { BlogTagLink, TwitterTimeline } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
 import { getPosts, getFirstPost, getAllTags } from '../../lib/notion/client'
 
@@ -61,7 +61,7 @@ const RenderPostsSpace = ({
         </div>
 
         <div className={styles.subContent}>
-          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogTagLink heading="Tag List" tags={tags} />
 
           <TwitterTimeline />
         </div>

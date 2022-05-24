@@ -6,8 +6,7 @@ import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../lib/notion/server-const
 import DocumentHead from '../../../../../components/document-head'
 import {
   BlogPostLink,
-  //   BlogTagLink,
-  BlogTagLinkNoList,
+  BlogTagLink,
   NextPageLink,
   NoContents,
   PostDate,
@@ -168,7 +167,7 @@ const RenderPostsByTagBeforeDate = ({
           {/* <BlogPostLink heading="Recommended" posts={rankedPosts} />
           <BlogPostLink heading="Latest Posts" posts={recentPosts} />
           <BlogTagLink heading="Categories" tags={tags} /> */}
-          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogTagLink heading="Tag List" tags={tags} />
           <BlogPostLink heading="Recommended" posts={rankedPosts} />
           <BlogPostLink heading="Latest Posts" posts={recentPosts} />
           <TwitterTimeline />
