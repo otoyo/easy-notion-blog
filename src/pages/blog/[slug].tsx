@@ -110,46 +110,54 @@ const RenderPost = ({
           NEXT_PUBLIC_URL
         ).toString()}
       />
+      <div className={styles.flexWraper}>
+        <div className={styles.mainContent}>
+          <div className={styles.postSlug}>
+            <PostDate post={post} />
+            <PostTitleSlug post={post} enableLink={false} />
+            {/* <PostThumbnailSlug post={post} /> */}
+            <PostTagsSlug post={post} />
+            <br />
+            <hr />
+            <PostEditTimeStr post={post} />
 
-      <div className={styles.mainContent}>
-        <div className={styles.postSlug}>
-          <PostDate post={post} />
-          <PostTitleSlug post={post} enableLink={false} />
-          {/* <PostThumbnailSlug post={post} /> */}
-          <PostTagsSlug post={post} />
-          <br />
-          <hr />
-          <PostEditTimeStr post={post} />
+            <NoContents contents={blocks} />
+            <PostBody blocks={blocks} />
+            <ClosePhrase />
 
-          <NoContents contents={blocks} />
-          <PostBody blocks={blocks} />
-          <ClosePhrase />
+            <footer>
+              {NEXT_PUBLIC_URL && (
+                <SocialButtons
+                  title={post.Title}
+                  url={new URL(
+                    getBlogLink(post.Slug),
+                    NEXT_PUBLIC_URL
+                  ).toString()}
+                  id={post.Slug}
+                />
+              )}
+            </footer>
+            <p>
+              ▼　この記事に興味があったら同じタグから関連記事をのぞいてみてね
+            </p>
+            <PostTagsSlug post={post} />
+          </div>
+        </div>
 
-          <footer>
-            {NEXT_PUBLIC_URL && (
-              <SocialButtons
-                title={post.Title}
-                url={new URL(
-                  getBlogLink(post.Slug),
-                  NEXT_PUBLIC_URL
-                ).toString()}
-                id={post.Slug}
-              />
-            )}
-          </footer>
-          <p>▼　この記事に興味があったら同じタグから関連記事をのぞいてみてね</p>
-          <PostTagsSlug post={post} />
+        <div className={styles.subContent}>
+          <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
+          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+          <BlogPostLink heading="Latest posts" posts={recentPosts} />
+          <TwitterTimeline />
+          <IndexList heading="★ MOKUJI ★" blocks={blocks} />
+          <p>
+            スクロールしても目次がくっついてくるように改造したい...只今格闘中
+          </p>
         </div>
       </div>
-
-      <div className={styles.subContent}>
-        <BlogPostLink heading="Posts in the same tag" posts={sameTagPosts} />
-        <BlogTagLinkNoList heading="Tag List" tags={tags} />
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <BlogPostLink heading="Latest posts" posts={recentPosts} />
-        <TwitterTimeline />
-        <IndexList heading="★ MOKUJI ★" blocks={blocks} />
-        <p>スクロールしても目次がくっついてくるように改造したい...只今格闘中</p>
+      <div className={styles.endContent}>
+        <p>記事を読んだ後に表示させたい関連記事一覧</p>
       </div>
     </div>
   )

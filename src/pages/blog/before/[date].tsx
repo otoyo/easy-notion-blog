@@ -86,73 +86,75 @@ const RenderPostsBeforeDate = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <DocumentHead description={`Post before ${date}`} />
-        <header className={styles.mainTop}>
-          <h2>Posts before {date}</h2>
-        </header>
+      <div className={styles.flexWraper}>
+        <div className={styles.mainContent}>
+          <DocumentHead description={`Post before ${date}`} />
+          <header className={styles.mainTop}>
+            <h2>Posts before {date}</h2>
+          </header>
 
-        <div className={styles.mainGallery}>
-          <NoContents contents={posts} />
+          <div className={styles.mainGallery}>
+            <NoContents contents={posts} />
 
-          {posts.map(post => {
-            return (
-              <div className={styles.post} key={post.Slug}>
-                <PostDate post={post} />
-                <PostTitle post={post} />
-                <PostThumbnail post={post} />
-                <PostTags post={post} />
-                <PostExcerpt post={post} />
-              </div>
-            )
-          })}
-        </div>
+            {posts.map(post => {
+              return (
+                <div className={styles.post} key={post.Slug}>
+                  <PostDate post={post} />
+                  <PostTitle post={post} />
+                  <PostThumbnail post={post} />
+                  <PostTags post={post} />
+                  <PostExcerpt post={post} />
+                </div>
+              )
+            })}
+          </div>
 
-        <footer>
-          {/* <NextPageLink firstPost={firstPost} posts={posts} /> */}
-          {!!firstPost &&
-            posts.length > 0 &&
-            firstPost.Date !== posts[posts.length - 1].Date && (
-              <div className={stylesParts.nextContainer}>
-                <hr />
-                <div className={stylesParts.buttonSubContainer}>
+          <footer>
+            {/* <NextPageLink firstPost={firstPost} posts={posts} /> */}
+            {!!firstPost &&
+              posts.length > 0 &&
+              firstPost.Date !== posts[posts.length - 1].Date && (
+                <div className={stylesParts.nextContainer}>
+                  <hr />
+                  <div className={stylesParts.buttonSubContainer}>
+                    <a
+                      className={stylesParts.backButton}
+                      onClick={() => router.back()}
+                    >
+                      {' '}
+                      ＜ Back{' '}
+                    </a>
+                    <Link
+                      href="/blog/before/[date]"
+                      as={getBeforeLink(posts[posts.length - 1].Date)}
+                      passHref
+                    >
+                      <a className={stylesParts.nextButton}>Next ＞</a>
+                    </Link>
+                  </div>
+                </div>
+              )}
+
+            {!!firstPost &&
+              posts.length > 0 &&
+              firstPost.Date == posts[posts.length - 1].Date && (
+                <div className={stylesParts.nextContainer}>
+                  <hr />
                   <a
                     className={stylesParts.backButton}
                     onClick={() => router.back()}
                   >
-                    {' '}
-                    ＜ Back{' '}
+                    ＜ Back
                   </a>
-                  <Link
-                    href="/blog/before/[date]"
-                    as={getBeforeLink(posts[posts.length - 1].Date)}
-                    passHref
-                  >
-                    <a className={stylesParts.nextButton}>Next ＞</a>
-                  </Link>
                 </div>
-              </div>
-            )}
-
-          {!!firstPost &&
-            posts.length > 0 &&
-            firstPost.Date == posts[posts.length - 1].Date && (
-              <div className={stylesParts.nextContainer}>
-                <hr />
-                <a
-                  className={stylesParts.backButton}
-                  onClick={() => router.back()}
-                >
-                  ＜ Back
-                </a>
-              </div>
-            )}
-        </footer>
-      </div>
-      <div className={styles.subContent}>
-        <BlogTagLinkNoList heading="Tag List" tags={tags} />
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <TwitterTimeline />
+              )}
+          </footer>
+        </div>
+        <div className={styles.subContent}>
+          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+          <TwitterTimeline />
+        </div>
       </div>
     </div>
   )

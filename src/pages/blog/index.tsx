@@ -50,41 +50,42 @@ const RenderPosts = ({
   return (
     <div className={styles.container}>
       <DocumentHead title="Blog" />
+      <div className={styles.flexWraper}>
+        <div className={styles.mainContent}>
+          {/* <IndexBlogTagLink heading="Tags" tags={tags} /> */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Image
+              src="/study-hero.jpeg"
+              width={300}
+              height={200}
+              objectFit="contain"
+            />
+          </div>
+          <NoContents contents={posts} />
+          <div className={styles.mainGallery}>
+            {posts.map(post => {
+              return (
+                <div className={styles.post} key={post.Slug}>
+                  <PostDate post={post} />
+                  <PostTitle post={post} />
+                  <PostThumbnail post={post} />
 
-      <div className={styles.mainContent}>
-        {/* <IndexBlogTagLink heading="Tags" tags={tags} /> */}
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Image
-            src="/study-hero.jpeg"
-            width={300}
-            height={200}
-            objectFit="contain"
-          />
+                  <PostTags post={post} />
+                  <PostExcerpt post={post} />
+                </div>
+              )
+            })}
+          </div>
+          <footer>
+            <NextPageLink firstPost={firstPost} posts={posts} />
+          </footer>
         </div>
-        <NoContents contents={posts} />
-        <div className={styles.mainGallery}>
-          {posts.map(post => {
-            return (
-              <div className={styles.post} key={post.Slug}>
-                <PostDate post={post} />
-                <PostTitle post={post} />
-                <PostThumbnail post={post} />
 
-                <PostTags post={post} />
-                <PostExcerpt post={post} />
-              </div>
-            )
-          })}
+        <div className={styles.subContent}>
+          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+          <TwitterTimeline />
         </div>
-        <footer>
-          <NextPageLink firstPost={firstPost} posts={posts} />
-        </footer>
-      </div>
-
-      <div className={styles.subContent}>
-        <BlogTagLinkNoList heading="Tag List" tags={tags} />
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <TwitterTimeline />
       </div>
     </div>
   )
