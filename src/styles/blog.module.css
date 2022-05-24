@@ -163,6 +163,11 @@
 
 @media (min-width: 1024px) {
   .container {
+    /* display: flex;
+    justify-content: center;
+    align-items: flex-start; */
+  }
+  .flexWraper {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -184,6 +189,11 @@
   .postSlug {
     padding: 2% 5%;
   }
+  .endContent {
+    width: 100%;
+    background-color: aqua;
+  }
+
   /* .postInPost{
     min-width: 50%;
     padding: 2% 5%;
