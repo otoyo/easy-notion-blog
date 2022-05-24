@@ -249,7 +249,7 @@ export const BlogTagLink = ({ heading, tags }) => (
 )
 
 export const BlogTagLinkNoList = ({ heading, tags }) => (
-  <div>
+  <div className={styles.blogTagLink}>
     <h3>{heading}</h3>
     <hr />
     <br />
