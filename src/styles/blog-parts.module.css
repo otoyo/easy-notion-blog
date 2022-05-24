@@ -368,7 +368,8 @@
   .blogTagLink {
   }
   .blogTagLink h3,
-  .blogPostLink h3 {
+  .blogPostLink h3,
+  .twitterTimeline h3 {
     margin: 0;
     font-size: 1.1rem;
   }
@@ -423,7 +424,8 @@
   .flexWraper > a {
     width: 80%;
   }
-  .blogPostLink > h3 {
+  .blogPostLink > h3,
+  .twitterTimeline > h3 {
     margin-left: 10px;
   }
   .newPostList {
