@@ -160,6 +160,10 @@
   background: #fefdfb;
   border-radius: 10px;
 }
+.inlineCenter {
+  text-align: center;
+  margin: 0 20px;
+}
 
 @media (min-width: 1024px) {
   .container {
@@ -188,16 +192,13 @@
   }
   .endContent {
     width: 100%;
-    background-color: aqua;
-    padding-left: 15px;
     /* justify-content: space-between; */
     display: flex;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 30px;
   }
   .endSection {
     width: 33%;
-    background-color: coral;
   }
   .endContent p {
     width: 100%;
