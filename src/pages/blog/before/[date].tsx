@@ -6,7 +6,7 @@ import { NUMBER_OF_POSTS_PER_PAGE } from '../../../lib/notion/server-constants'
 import DocumentHead from '../../../components/document-head'
 import {
   BlogPostLink,
-  BlogTagLinkNoList,
+  BlogTagLink,
   NoContents,
   PostDate,
   PostExcerpt,
@@ -151,7 +151,7 @@ const RenderPostsBeforeDate = ({
           </footer>
         </div>
         <div className={styles.subContent}>
-          <BlogTagLinkNoList heading="Tag List" tags={tags} />
+          <BlogTagLink heading="Tag List" tags={tags} />
           <BlogPostLink heading="Recommended" posts={rankedPosts} />
           <TwitterTimeline />
         </div>
