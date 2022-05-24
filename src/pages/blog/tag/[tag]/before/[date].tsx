@@ -173,6 +173,18 @@ const RenderPostsByTagBeforeDate = ({
           <TwitterTimeline />
         </div>
       </div>
+      <div className={styles.endContent}>
+        <div className={styles.endSection}>
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+        </div>
+        <div className={styles.endSection}>
+          <BlogPostLink heading="Latest Posts" posts={recentPosts} />
+        </div>
+        <div className={styles.endSection}>
+          <BlogTagLink heading="Tag List" tags={tags} />
+          <TwitterTimeline />
+        </div>
+      </div>
     </div>
   )
 }

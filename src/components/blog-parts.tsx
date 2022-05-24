@@ -215,7 +215,7 @@ export const NewPostList = () => (
   </div>
 )
 export const TwitterTimeline = () => (
-  <div>
+  <div className={styles.twitterTimeline}>
     <h3>Twitter Timeline</h3>
     <hr />
     <p>フォロー大歓迎＼(^o^)／</p>
