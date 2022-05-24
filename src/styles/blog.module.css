@@ -145,7 +145,7 @@
 }
 
 .subContent {
-  padding: 0 5%;
+  display: none;
 }
 
 .postSlug :global(blockquote) {
@@ -184,6 +184,7 @@
   .subContent {
     width: 33%;
     padding: 0 3%;
+    display: block;
   }
   .postSlug {
     padding: 2% 5%;
@@ -230,7 +231,6 @@
     font-size: 1em;
   }
   .subContent {
-    width: 100%;
-    padding: 0 3%;
+    display: none;
   }
 }
