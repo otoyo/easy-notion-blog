@@ -67,6 +67,14 @@
   padding: 0 0.8em;
   margin: 0;
 }
+.flexWraper {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  align-items: center;
+}
 
 @media (min-width: 1024px) {
   .container {

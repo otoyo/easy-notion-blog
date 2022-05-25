@@ -129,14 +129,27 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
       <BlogTagLink heading="Tag List" tags={tags} />
       <h3>Prolile</h3>
       <hr />
-      <Image src="/profile.png" width={200} height={200} objectFit="contain" />
-      <ul>
-        <li>勉強が趣味</li>
-        <li>教えるの好き</li>
-        <li>オンライン学習塾で５画面を操り指導(自称：職人)</li>
-        <li>元教員・介護士</li>
-        <li>家の中では無限大</li>
-      </ul>
+      <div className={styles.flexWraper}>
+        <Image
+          src="/profile.png"
+          width={200}
+          height={200}
+          objectFit="contain"
+        />
+        <Image
+          src="/notion-essentials-badge.png"
+          width={80}
+          height={80}
+          objectFit="contain"
+        />
+        <ul>
+          <li>勉強が趣味</li>
+          <li>教えるの好き</li>
+          <li>オンライン学習塾で５画面を操り指導(自称：職人)</li>
+          <li>元教員・介護士</li>
+          <li>家の中では無限大</li>
+        </ul>
+      </div>
       <h3>Study TimeLine</h3>
       <hr />
       <iframe
