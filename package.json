@@ -16,21 +16,18 @@
     }
   },
   "dependencies": {
-    "@dhaiwat10/react-link-preview": "^1.12.2",
-    "@notionhq/client": "1.0.1",
-    "@types/mermaid": "^8.2.7",
-    "async-sema": "^3.1.0",
-    "github-slugger": "^1.2.1",
+    "@dhaiwat10/react-link-preview": "^1.14.0",
+    "@notionhq/client": "^1.0.4",
+    "@types/mermaid": "^8.2.9",
     "image-size": "^1.0.1",
-    "mermaid": "^8.14.0",
+    "mermaid": "^9.1.1",
     "next": "12",
-    "prismjs": "^1.27.0",
+    "prismjs": "^1.28.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-share": "^4.4.0",
     "react-twitter-embed": "^4.0.4",
-    "shell-quote": "^1.7.3",
-    "uuid": "^8.1.0"
+    "shell-quote": "^1.7.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
