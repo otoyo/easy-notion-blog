@@ -75,6 +75,8 @@ DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./
 13. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
 14. デプロイが完了すると Notion Blog が見えるようになります
 
+さらに詳しい解説は[へろほろさんの記事](https://herohoro.com/blog/easy-notion-blog-firstdeploy)をご覧ください。
+
 ---
 
 図 1 インラインテーブル (Table - Inline) を選択します
