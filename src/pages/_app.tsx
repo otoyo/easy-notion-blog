@@ -26,13 +26,16 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <GoogleAnalytics />
+      <Header />
       <div className={styles.container}>
-        <Header />
+        
         <div className={styles.content}>
           <Component {...pageProps} />
         </div>
-        <Footer />
+        
       </div>
+      <Footer />
+      
     </>
   )
 }

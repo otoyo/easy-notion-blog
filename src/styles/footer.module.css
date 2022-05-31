@@ -2,14 +2,10 @@
   margin: 40px 0 10px;
   text-align: center;
   font-size: 1rem;
+  background-color: var(--bg-cleanness);
 }
 .footer span {
-  color: #777;
-}
-.footer a {
-  /* color: inherit; */
-  /* color: #22a50e;
-  font-weight: bolder; */
+  color: var(--fg-cleanness);
 }
 .powered{
   display: flex;

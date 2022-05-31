@@ -14,7 +14,8 @@
   --geist-foreground: #000;
 
   --geist-success: rgb(15, 95, 244);
-
+  --bg-cleanness:rgba(88,73,51,0.6);
+  --fg-cleanness:rgb(255, 255, 255);
   --radius: 4px;
 
   --font-sans: -apple-system, 'Zen Maru Gothic', 'Yomogi', 'Kiwi Maru',
@@ -373,7 +374,7 @@ table th {
 }
 
 footer {
-  padding: 2em 0;
+  padding: 1em 0 0;
   text-align: center;
   font-size: 14px;
 }

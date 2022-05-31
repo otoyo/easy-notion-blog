@@ -21,13 +21,16 @@
   list-style: none;
   padding: 0;
 }
+.naviContent{
+  background-color: var(--bg-cleanness);
+}
 .header ul li {
   display: inline-block;
   padding: 10px 20px;
 }
 .header ul :global(a) {
   font-weight: bolder;
-  color: var(--fg-accents-1);
+  color: var(--fg-cleanness);
 }
 .header ul :global(a:hover) {
   color: var(--hero-hover-fg);

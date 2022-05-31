@@ -32,7 +32,7 @@ const Header = () => {
         </Link>
       </h1>
 
-      <ul>
+      <ul className={styles.naviContent}>
         {navItems.map(({ label, path }) => (
           <li key={label}>
             <Link href={path} passHref>
