@@ -8,6 +8,16 @@
 }
 .footer a {
   /* color: inherit; */
-  color: #22a50e;
-  font-weight: bolder;
+  /* color: #22a50e;
+  font-weight: bolder; */
 }
+.powered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.titleLogo {
+  height: 3em;
+  margin-left: 0.5rem;
+} 
