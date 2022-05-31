@@ -30,7 +30,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
   <div className={styles.container}>
     <DocumentHead />
     <div className={styles.mainContent}>
-      <div style={{ display: 'block' }}>
+      <div className={styles.flexTagsMain}>
         {/* <BlogTagLink heading="Categories" tags={tags} /> */}
         {/* <div>{getTag}</div> */}
         {/* {getTagObject.map(cate =>{

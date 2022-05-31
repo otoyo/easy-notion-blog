@@ -6,8 +6,16 @@
 .mainContent {
   width: 100%;
 }
+.flexTagsMain{
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
 .tagMain {
-  margin: 0 1em 1.25rem 0;
+  margin: 0 0.7em 0.7rem 0;
+  width: 45%;
   display: inline-block;
   font-size: 1em;
   color: var(--fg);
@@ -31,6 +39,7 @@
 .moreSearch p {
   font-weight: bold;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 .tagMain p:hover,
 .moreSearch p:hover {
@@ -38,6 +47,7 @@
 }
 .moreSearch {
   margin: 0 1em 1.25rem 0;
+  width:45%;
   display: inline-block;
   font-size: 1em;
   color: var(--fg);
@@ -71,7 +81,7 @@
   width: 100%;
   justify-content: center;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   margin-top: 30px;
   align-items: center;
 }
@@ -89,7 +99,7 @@
     width: 60%;
     padding: 0 3%;
   }
-  .tagMalin {
+  .tagMain {
     font-size: 1.2em;
   }
 }
@@ -105,6 +115,12 @@
   .moreSearch p {
     font-size: 0.8em;
     font-weight: bold;
+  }
+}
+@media (max-width:480px){
+  .tagMain,
+  .moreSearch{
+    width:98%;
   }
 }
 
