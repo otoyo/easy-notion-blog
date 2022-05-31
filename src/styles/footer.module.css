@@ -9,3 +9,13 @@
 .footer span a {
   color: inherit;
 }
+.powered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.titleLogo {
+  height: 3em;
+  margin-left: 0.5rem;
+}
