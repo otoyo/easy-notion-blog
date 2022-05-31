@@ -120,7 +120,14 @@
 @media (max-width:480px){
   .tagMain,
   .moreSearch{
-    width:98%;
+    max-width:45%;
+    padding: 0 0.8em;
+  }
+  .tagMain p,
+  .moreSearch p {
+    font-size: 0.5em;
+    font-weight: bold;
+    line-height: 1;
   }
 }
 
