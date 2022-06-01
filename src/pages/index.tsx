@@ -31,52 +31,34 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
     <DocumentHead />
     <div className={styles.mainContent}>
       <div className={styles.flexTagsMain}>
-        {/* <BlogTagLink heading="Categories" tags={tags} /> */}
-        {/* <div>{getTag}</div> */}
-        {/* {getTagObject.map(cate =>{
-      return (
-        <h2>{cate}</h2>
-      )
-    })} */}
+        
 
         {tags.map(tag => {
           if (
-            tag === '03_パワーアップ計画' ||
+            tag === '04_パワーアップ計画' ||
             tag === '02_ブログ改造日記' ||
-            tag === '01_よくある質問'
+            tag === '01_よくある質問' ||
+            tag === '03_作業ページ改造'
           ) {
             return (
-              // <h3>{tag}</h3>
+              
               <div className={styles.tagMain}>
                 <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
                   <p>{tag}</p>
                 </Link>
-
-                {/* <p>{getPostsByTag(tag,6)}</p> */}
               </div>
-
-              //   {posts.map(post => {
-              //     return(
-              //   <div className={stylesBlog.post} key={post.Slug}>
-              //   <PostDate post={post} />
-              //   <PostTitle post={post} />
-              //   <PostThumbnail post={post} />
-              //   <PostTags post={post} />
-              //   <PostExcerpt post={post} />
-              // </div>
-              //     )})
-              //     }
             )
           } else {
             return null
           }
         })}
-        <div className={styles.moreSearch}>
+        {/* 奇数だからお休み */}
+        {/* <div className={styles.moreSearch}>
           <Link href="/blog" passHref>
             <p> 🔍　to Blog List </p>
           </Link>
-        </div>
-      </div>
+        </div> */}
+      </div> 
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Image
           src="/hero-room.jpg"
@@ -104,28 +86,10 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         src="https://dev.herohoro.com/posting"
         width="100%"
         height="600"
-        // frameborder="0"
       ></iframe>
     </div>
 
     <div className={styles.subContent}>
-      {/* <h3>Tags</h3>
-      <hr/><br/>
-      <div>
-    {tags.map(tag => {
-          
-            return (
-              
-              <div className={styles.tagSub}>
-                <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
-                  <p>{tag}</p>
-                </Link>
-              </div>
-
-            ) 
-        })}
-        
-        </div> */}
       <h3>Setup</h3>
       <hr />
       <ul>
@@ -171,28 +135,10 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
         src="https://notion2charts.com/embed/bad01964-6bce-4f62-bc9d-1d2899652ed6"
         width="100%"
         height="400"
-        // frameborder="0"
       ></iframe>
 
       <BlogPostLink heading="Recommended" posts={rankedPosts} />
       <TwitterTimeline />
-      {/* <h3>Twitter Timeline</h3>
-      <hr />
-      <p>フォロー大歓迎＼(^o^)／</p>
-      <a
-        className="twitter-timeline"
-        data-width="500"
-        data-height="500"
-        data-theme="light"
-        href="https://twitter.com/mineral_30?ref_src=twsrc%5Etfw"
-      >
-        Tweets by mineral_30
-      </a>{' '}
-      <script
-        async
-        src="https://platform.twitter.com/widgets.js"
-        // charset="utf-8"
-      ></script> */}
     </div>
   </div>
 )
