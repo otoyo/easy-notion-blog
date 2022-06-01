@@ -41,9 +41,9 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
 
         {tags.map(tag => {
           if (
-            tag === 'ブログ改造日記' ||
-            tag === '自動化' ||
-            tag === 'よくある質問'
+            tag === '03_パワーアップ計画' ||
+            tag === '02_ブログ改造日記' ||
+            tag === '01_よくある質問'
           ) {
             return (
               // <h3>{tag}</h3>
