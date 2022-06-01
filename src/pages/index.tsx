@@ -43,7 +43,7 @@ const RenderPage = ({ rankedPosts = [], tags = [] }) => (
           if (
             tag === 'ブログ改造日記' ||
             tag === '自動化' ||
-            tag === 'easy-notion-blog_最新情報'
+            tag === 'よくある質問'
           ) {
             return (
               // <h3>{tag}</h3>
