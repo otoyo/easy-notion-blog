@@ -124,13 +124,35 @@
   margin: 20px auto;
   font-size: 0.9rem;
   align-items: center;
+  box-shadow: 0 2px 5px rgba(97, 87, 17, 0.5); 
 }
 .linkPreview:hover{
-  width:100%;
+  width:75%;
 }
 .linkPreview > div{
   width:90%;
   display: block;
+}
+.MylinkPreview{
+  width:70%;
+  align-items: center;
+  border-color: rgb(140, 134, 118);
+  margin: 20px auto;
+  background-color: pink;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(97, 87, 17, 0.5); 
+}
+.MylinkPreview p{
+  color: rgb(7, 6, 6);
+  /* text-shadow: 0 2px 5px rgba(221, 221, 221, 0.5); */
+}
+.MylinkPreview p::after{
+  content:"....🐌";
+}
+.MylinkPreview:hover{
+  background-color: #f1f1f1;
+  width:75%;
 }
 @media (max-width: 1400px) {
   .linkPreview {
