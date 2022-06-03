@@ -59,6 +59,7 @@ const RenderPosts = ({
               width={300}
               height={200}
               objectFit="contain"
+              alt=""
             />
           </div>
           <NoContents contents={posts} />
