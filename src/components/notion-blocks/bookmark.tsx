@@ -14,9 +14,9 @@ const Bookmark = ({ block }) => {
       url={url}
       className={styles.linkPreview}
       fallbackImageSrc={new URL('/error.png', NEXT_PUBLIC_URL).toString()}
-      backgroundColor="pink"
+      backgroundColor="#d5d1ed"
       // fallbackImageSrc="https://herohoro.com/default.png"
-      imageHeight='100wh'
+      imageHeight='120wh'
       
       borderColor='#8c8676'
       descriptionLength={60}

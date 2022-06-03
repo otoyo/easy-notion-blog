@@ -123,19 +123,29 @@
   max-width: 600px;
   margin: 20px auto;
   font-size: 0.9rem;
+  align-items: center;
 }
 .linkPreview:hover{
-  /* box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); */
-  width:80%;
+  width:100%;
 }
-@media (max-width: 1024px) {
+.linkPreview > div{
+  width:90%;
+  display: block;
+}
+@media (max-width: 1400px) {
   .linkPreview {
     max-height: 320px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 865px) {
   .linkPreview {
     max-height: 240px;
+    
+  }
+}
+@media (max-width:600px){
+  .linkPreview{
+    width:100%;
   }
 }
 .linkPreview h3 {
