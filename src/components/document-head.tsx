@@ -33,6 +33,8 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
         property="og:description"
         content={description ? description : SITE_DESCRIPTION}
       />
+      <meta property='og:type' content='article' />
+      
       {urlOgImage ? (
         <meta property="og:image" content={urlOgImage} />
       ) : NEXT_PUBLIC_URL ? (
