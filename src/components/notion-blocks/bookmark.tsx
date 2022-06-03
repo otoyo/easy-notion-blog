@@ -5,8 +5,28 @@ import styles from '../../styles/notion-block.module.css'
 const Bookmark = ({ block }) => {
   const url = block.Bookmark ? block.Bookmark.Url : block.LinkPreview.Url
   // {new URL('/error.jpg', NEXT_PUBLIC_URL).toString()}
-  return (
-    <LinkPreview
+  const result = url.indexOf(NEXT_PUBLIC_URL.toString())
+  
+    if(result !== -1){
+      // 見つかった時
+      return (
+        <LinkPreview
+      url={url}
+      className={styles.linkPreview}
+      fallbackImageSrc={new URL('/error.png', NEXT_PUBLIC_URL).toString()}
+      backgroundColor="pink"
+      // fallbackImageSrc="https://herohoro.com/default.png"
+      imageHeight='100wh'
+      
+      borderColor='#8c8676'
+      descriptionLength={60}
+      
+    />
+      )
+    }
+    else{
+      return(
+      <LinkPreview
       url={url}
       className={styles.linkPreview}
       fallbackImageSrc={new URL('/error.png', NEXT_PUBLIC_URL).toString()}
@@ -17,8 +37,9 @@ const Bookmark = ({ block }) => {
       borderColor='#8c8676'
       descriptionLength={60}
       
-    />
+    /> 
   )
+ }
 }
 
 export default Bookmark
