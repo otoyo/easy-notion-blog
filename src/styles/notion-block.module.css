@@ -119,10 +119,14 @@
   white-space: nowrap;
 }
 .linkPreview {
-  width: 100%;
+  width: 70%;
   max-width: 600px;
   margin: 20px auto;
   font-size: 0.9rem;
+}
+.linkPreview:hover{
+  /* box-shadow: 0 0 2px rgba(0, 0, 0, 0.2); */
+  width:80%;
 }
 @media (max-width: 1024px) {
   .linkPreview {
