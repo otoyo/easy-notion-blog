@@ -154,6 +154,9 @@
   background-color: #f1f1f1;
   width:75%;
 }
+.MylinkPreview p:hover{
+  font-size: 1.2rem;
+}
 @media (max-width: 1400px) {
   .linkPreview {
     max-height: 320px;
