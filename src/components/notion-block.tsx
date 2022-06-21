@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 const Code = dynamic(() => import('./notion-blocks/code'))
 const Embed = dynamic(() => import('./notion-blocks/embed'))
 const Bookmark = dynamic(() => import('./notion-blocks/bookmark'))
-const Video = dynamic(() => import ('./notion-blocks/video'))
+const Video = dynamic(() => import('./notion-blocks/video'))
 
 import styles from '../styles/notion-block.module.css'
 
@@ -276,7 +276,7 @@ const NotionBlock = ({ block }) => {
   } else if (block.Type === 'image') {
     return <ImageBlock block={block} />
   } else if (block.Type === 'video') {
-    return <Video block={block} />  
+    return <Video block={block} />
   } else if (block.Type === 'code') {
     return <Code block={block} />
   } else if (block.Type === 'quote') {

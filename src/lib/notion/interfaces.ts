@@ -73,7 +73,8 @@ export interface Image {
   Width?: number
   Height?: number
 }
-export interface Video{
+
+export interface Video {
   Type: string
   External?: External
 }
