@@ -13,6 +13,7 @@ import {
   Quote,
   Callout,
   Embed,
+  Video,
   Bookmark,
   LinkPreview,
   Table,
@@ -422,6 +423,18 @@ export async function getAllBlocksByBlockId(blockId) {
 
           block.NumberedListItem = numberedListItem
           break
+        case 'video':
+           const  video: Video={
+              Type: item.video.type
+            }
+            if (item.video.type === 'external') {
+              video.External = { Url: item.video.external.url }
+            } else {
+              null
+            }
+  
+            block.Video = video
+            break
         case 'image':
           const image: Image = {
             Caption: item.image.caption.map(_buildRichText),
