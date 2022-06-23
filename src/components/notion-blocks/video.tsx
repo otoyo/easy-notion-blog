@@ -1,11 +1,20 @@
-import styles from '../../styles/notion-block.module.css'
 import React from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
+import { isYouTubeURL, parseYouTubeVideoId } from '../../lib/blog-helpers'
 
+import styles from '../../styles/notion-block.module.css'
 
 const Video = ({ block }) => {
-  const url = block.Video.External.Url
-  const VIDEOS = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/)
+  let url: URL
+  try {
+    url = new URL(block.Video.External.Url)
+  } catch {
+    return null
+  }
+
+  if (!isYouTubeURL(url)) {
+    return null
+  }
 
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
     event.target.pauseVideo()
@@ -18,12 +27,16 @@ const Video = ({ block }) => {
     },
   }
 
+  const videoId = parseYouTubeVideoId(url)
+  if (videoId === '') {
+    return null
+  }
+
   return (
-    <div className={styles.Video}>
-      <YouTube videoId={VIDEOS[1]} opts={opts} onReady={onPlayerReady} className={styles.youtube} />
+    <div className={styles.video}>
+      <YouTube videoId={videoId} opts={opts} onReady={onPlayerReady} className={styles.youtube} />
     </div>
   )
 }
-
 
 export default Video
