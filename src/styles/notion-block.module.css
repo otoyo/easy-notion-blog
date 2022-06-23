@@ -159,3 +159,9 @@
 .tweetEmbed div:first-child div:first-child {
   margin: auto;
 }
+
+.video .youtube :first-child {
+  top: 0;
+  right: 0;
+  width: 100%;
+}
