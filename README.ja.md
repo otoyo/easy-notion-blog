@@ -44,7 +44,7 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 (カスタマイズしたい場合は下記も)
 
-- Node.js v12
+- Node.js v14 もしくはそれ以上
 - [Yarn](https://yarnpkg.com/getting-started)
 
 ## クイックスタート

@@ -44,7 +44,7 @@ You can write on your Notion.
 
 (For your customization)
 
-- Node.js v12
+- Node.js v14 or higher
 - [Yarn](https://yarnpkg.com/getting-started)
 
 ## Quick Start
