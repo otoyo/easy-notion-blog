@@ -72,6 +72,11 @@
           "type": "number",
           "number": 3
         },
+        "Like": {
+          "id": "Ai%60A",
+          "type": "number",
+          "number": 3
+        },
         "Slug": {
           "id": "Ai%60L",
           "type": "rich_text",
@@ -192,6 +197,11 @@
           "type": "number",
           "number": 2
         },
+        "Like": {
+          "id": "Ai%60A",
+          "type": "number",
+          "number": 2
+        },
         "Slug": {
           "id": "Ai%60L",
           "type": "rich_text",
@@ -309,6 +319,11 @@
         },
         "Rank": {
           "id": "Ai%60L",
+          "type": "number",
+          "number": 1
+        },
+        "Like": {
+          "id": "Ai%60A",
           "type": "number",
           "number": 1
         },
