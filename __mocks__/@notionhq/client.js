@@ -32,6 +32,19 @@ client.Client = class {
           )
         },
       },
+      pages: {
+        update: ({ page_id, properties }) => {
+          return JSON.parse(
+            fs
+              .readFileSync(
+                path.resolve(
+                  './__tests__/fixtures/notion-api-response-page.json'
+                )
+              )
+              .toString()
+          )
+        },
+      },
       blocks: {
         children: {
           list: ({ block_id }) => {

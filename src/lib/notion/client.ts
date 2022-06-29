@@ -565,6 +565,21 @@ export async function getAllTags() {
     .sort()
 }
 
+export async function incrementLikes(post:Post) {
+  const result = await client.pages.update({
+    page_id: post.PageId,
+    properties: {
+      'Like': (post.Like || 0) + 1,
+    },
+  })
+
+  if (!result) {
+    return null
+  }
+
+  return _buildPost(result)
+}
+
 function _buildFilter(conditions = []) {
   if (process.env.NODE_ENV === 'development') {
     return { and: conditions }

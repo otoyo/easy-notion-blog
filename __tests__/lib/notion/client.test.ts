@@ -4,7 +4,10 @@ import {
   getPosts,
   getAllBlocksByBlockId,
   getAllTags,
+  incrementLikes,
 } from '../../../src/lib/notion/client'
+
+import { Post } from '../../../src/lib/notion/interfaces'
 
 describe('getPosts', () => {
   it('resolves 3 posts', async () => {
@@ -64,5 +67,13 @@ describe('getAllTags', () => {
   it('resolved 1 tag', async () => {
     const got = await getAllTags()
     expect(got).toEqual(expect.arrayContaining(['Diary']))
+  })
+})
+
+describe('incrementLikes', () => {
+  it('resolved 1 tag', async () => {
+    const post = { PageId: 'ed0090ef-628c-4cfd-a8ea-1a5326855f8a' } as Post
+    const got = await incrementLikes(post)
+    expect(got.PageId).toEqual(post.PageId)
   })
 })
