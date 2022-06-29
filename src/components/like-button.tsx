@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-
-import * as gtag from '../lib/gtag'
+import axios from 'axios'
 
 import styles from '../styles/like-button.module.css'
 import Heart from './svgs/heart'
@@ -14,10 +13,7 @@ const LikeButton = (props: Props) => {
 
   const handleClick = () => {
     if (!active) {
-      gtag.like({
-        contentType: 'article',
-        itemId: props.id,
-      })
+      axios.put(`/api/like?slug=${props.id}`, {})
       setActive(true)
     }
   }
