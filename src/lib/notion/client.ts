@@ -26,7 +26,6 @@ import {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
 import * as blogIndexCache from './blog-index-cache'
-import * as imageCache from './image-cache'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
@@ -546,13 +545,6 @@ export async function getAllBlocksByBlockId(blockId) {
       block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
       block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id)
-    } else if (
-      block.Type === 'image' &&
-      block.Image.File &&
-      block.Image.File.Url
-    ) {
-      // Cache image to local (only type: file)
-      imageCache.store(block.Id, block.Image.File.Url)
     }
   }
 
