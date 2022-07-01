@@ -34,16 +34,18 @@ describe('RenderPost', () => {
     const sameTagPosts = (await getPostsByTag(post.Tags[0], 6)).filter(
       p => p.Slug !== post.Slug
     )
+    const fallback = {}
+    fallback[slug] = blocks
 
     const { container } = render(
       <RenderPost
+        slug={slug}
         post={post}
-        blocks={blocks}
         rankedPosts={rankedPosts}
         recentPosts={recentPosts}
         sameTagPosts={sameTagPosts}
         tags={tags}
-        redirect={null}
+        fallback={fallback}
       />
     )
     await waitFor(() => {
