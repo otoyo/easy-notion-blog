@@ -442,7 +442,7 @@ export async function getAllBlocksByBlockId(blockId) {
           if (item.image.type === 'external') {
             image.External = { Url: item.image.external.url }
           } else {
-            image.File = { Url: item.image.file.url }
+            image.File = { Url: item.image.file.url, ExpiryTime: item.image.file.expiry_time }
           }
 
           block.Image = image
