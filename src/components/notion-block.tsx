@@ -117,7 +117,7 @@ const ImageBlock = ({ block }) => (
         src={
           block.Image.External
             ? block.Image.External.Url
-            : `/notion_images/${block.Id}.png`
+            : block.Image.File.Url
         }
         alt="画像が読み込まれない場合はページを更新してみてください。"
       />

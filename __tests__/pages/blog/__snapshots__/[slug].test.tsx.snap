@@ -205,7 +205,7 @@ exports[`RenderPost renders the page unchanged 1`] = `
             <div>
               <img
                 alt="画像が読み込まれない場合はページを更新してみてください。"
-                src="/notion_images/5d04be89-54da-482a-9391-efd465f74082.png"
+                src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5d04be89-54da-482a-9391-efd465f74082/profile.png"
               />
             </div>
             <figcaption
