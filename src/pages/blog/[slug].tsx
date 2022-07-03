@@ -92,7 +92,7 @@ const fetchBlocks = async (slug: string): Promise<Array<Block>> => {
 const includeExpiredImage = (blocks: Array<Block>): boolean => {
   const now = Date.now()
 
-  blocks.forEach(block => {
+  return blocks.some(block => {
     if (block.Type === 'image') {
       const image = block.Image
       if (image.File && image.File.ExpiryTime && Date.parse(image.File.ExpiryTime) < now) {
@@ -100,9 +100,8 @@ const includeExpiredImage = (blocks: Array<Block>): boolean => {
       }
     }
     // TODO: looking for the image block in Children recursively
+    return false
   })
-
-  return false
 }
 
 const RenderPost = ({
