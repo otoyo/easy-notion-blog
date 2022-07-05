@@ -21,7 +21,7 @@
     "@types/mermaid": "^8.2.9",
     "axios": "^0.27.2",
     "image-size": "^1.0.1",
-    "mermaid": "^9.1.1",
+    "mermaid": "^9.1.2",
     "next": "12",
     "prismjs": "^1.28.0",
     "react": "^17.0.2",
