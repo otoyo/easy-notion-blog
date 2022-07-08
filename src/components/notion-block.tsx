@@ -299,11 +299,13 @@ const NotionBlock = ({ block }) => {
   return null
 }
 
-const NotionBlocks = ({ blocks }) => {
-  return wrapListItems(blocks).map((block: interfaces.Block, i: number) => (
-    <NotionBlock block={block} key={`block-${i}`} />
-  ))
-}
+const NotionBlocks = ({ blocks }) => (
+  <>
+    {wrapListItems(blocks).map((block: interfaces.Block, i: number) => (
+      <NotionBlock block={block} key={`block-${i}`} />
+    ))}
+  </>
+)
 
 const wrapListItems = (blocks: Array<interfaces.Block>) =>
   blocks.reduce((arr, block: interfaces.Block, i: number) => {
