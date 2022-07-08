@@ -12,7 +12,7 @@ import styles from '../styles/shared.module.css'
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
   useEffect(() => {
-    const handleRouteChange = url => {
+    const handleRouteChange = (url: string) => {
       if (location.host !== 'localhost') {
         gtag.pageview(pageProps.title, url)
       }

@@ -3,6 +3,7 @@ import useSWR from "swr"
 import axios from 'axios'
 
 import { NEXT_PUBLIC_URL } from '../../lib/notion/server-constants'
+import { Post } from '../../lib/notion/interfaces'
 import DocumentHead from '../../components/document-head'
 import { Block } from '../../lib/notion/interfaces'
 import {
@@ -65,7 +66,7 @@ export async function getStaticProps({ params: { slug } }) {
       rankedPosts,
       recentPosts,
       tags,
-      sameTagPosts: sameTagPosts.filter(p => p.Slug !== post.Slug),
+      sameTagPosts: sameTagPosts.filter((p: Post) => p.Slug !== post.Slug),
       fallback,
     },
     revalidate: 60,

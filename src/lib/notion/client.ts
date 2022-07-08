@@ -356,7 +356,7 @@ export async function getFirstPostByTag(tag: string) {
   return _buildPost(data.results[0])
 }
 
-export async function getAllBlocksByBlockId(blockId) {
+export async function getAllBlocksByBlockId(blockId: string) {
   let allBlocks: Block[] = []
 
   const params = {
