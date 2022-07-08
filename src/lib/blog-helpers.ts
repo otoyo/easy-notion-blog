@@ -27,10 +27,10 @@ export const normalizeSlug = (slug: string) => {
   const endingSlash = slug.endsWith('/')
 
   if (startingSlash) {
-    slug = slug.substr(1)
+    slug = slug.substring(1)
   }
   if (endingSlash) {
-    slug = slug.substr(0, slug.length - 1)
+    slug = slug.substring(0, slug.length - 1)
   }
   return startingSlash || endingSlash ? normalizeSlug(slug) : slug
 }
