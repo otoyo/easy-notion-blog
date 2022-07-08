@@ -3,7 +3,7 @@ import { TwitterTweetEmbed } from 'react-twitter-embed'
 import styles from '../../styles/notion-block.module.css'
 
 const TweetEmbed = ({ url }) => {
-  let matched
+  let matched: Array<string>
   try {
     matched = new URL(url).pathname.match(/\/(\d+)$/)
   } catch (error) {

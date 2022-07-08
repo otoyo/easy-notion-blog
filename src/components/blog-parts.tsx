@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+import { Post } from '../lib/notion/interfaces'
 import NotionBlocks from './notion-block'
 import {
   getBeforeLink,
@@ -37,7 +38,7 @@ export const PostTags = ({ post }) => (
   <div className={styles.postTags}>
     {post.Tags &&
       post.Tags.length > 0 &&
-      post.Tags.map(tag => (
+      post.Tags.map((tag: string) => (
         <Link href="/blog/tag/[tag]" as={getTagLink(tag)} key={tag} passHref>
           <a>{tag}</a>
         </Link>
@@ -117,7 +118,7 @@ export const PostLinkList = ({ posts }) => {
 
   return (
     <ul>
-      {posts.map(post => {
+      {posts.map((post: Post) => {
         return (
           <li key={post.Slug}>
             <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
@@ -135,7 +136,7 @@ export const TagLinkList = ({ tags }) => {
 
   return (
     <ul>
-      {tags.map(tag => {
+      {tags.map((tag: string) => {
         return (
           <li key={tag}>
             <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>

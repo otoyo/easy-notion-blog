@@ -2,12 +2,14 @@ import dynamic from 'next/dynamic'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-jsx'
 
+import { RichText } from '../../lib/notion/interfaces'
+
 import styles from '../../styles/notion-block.module.css'
 
 const Mermaid = dynamic(() => import('./mermaid'))
 
 const Code = ({ block }) => {
-  const code = block.Code.Text.map(richText => richText.Text.Content).join('')
+  const code = block.Code.Text.map((richText: RichText) => richText.Text.Content).join('')
   const language = block.Code.Language || 'javascript'
 
   return (
