@@ -1,5 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import * as interfaces from '../lib/notion/interfaces'
 
 const Code = dynamic(() => import('./notion-blocks/code'))
 const Embed = dynamic(() => import('./notion-blocks/embed'))
@@ -298,4 +299,45 @@ const NotionBlock = ({ block }) => {
   return null
 }
 
-export default NotionBlock
+const NotionBlocks = ({ blocks }) => {
+  return wrapListItems(blocks).map((block, i) => (
+    <NotionBlock block={block} key={`block-${i}`} />
+  ))
+}
+
+const wrapListItems = blocks =>
+  blocks.reduce((arr, block, i) => {
+    const isBulletedListItem = block.Type === 'bulleted_list_item'
+    const isNumberedListItem = block.Type === 'numbered_list_item'
+
+    if (!isBulletedListItem && !isNumberedListItem) return arr.concat(block)
+
+    const listType = isBulletedListItem ? 'bulleted_list' : 'numbered_list'
+
+    if (i === 0) {
+      const list: interfaces.List = {
+        Type: listType,
+        ListItems: [block],
+      }
+      return arr.concat(list)
+    }
+
+    const prevList = arr[arr.length - 1]
+
+    if (
+      (isBulletedListItem && prevList.Type !== 'bulleted_list') ||
+      (isNumberedListItem && prevList.Type !== 'numbered_list')
+    ) {
+      const list: interfaces.List = {
+        Type: listType,
+        ListItems: [block],
+      }
+      return arr.concat(list)
+    }
+
+    prevList.ListItems.push(block)
+
+    return arr
+  }, [])
+
+export default NotionBlocks
