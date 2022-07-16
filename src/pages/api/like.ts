@@ -1,11 +1,11 @@
-import { IncomingMessage, ServerResponse } from 'http'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 import {
   getPostBySlug,
   incrementLikes,
 } from '../../lib/notion/client'
 
-const ApiBlogSlug = async function(req: IncomingMessage, res: ServerResponse) {
+const ApiBlogSlug = async function(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'PUT') {
     res.statusCode = 400
     res.end()
