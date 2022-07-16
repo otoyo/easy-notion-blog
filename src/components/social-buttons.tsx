@@ -8,6 +8,7 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share'
+import LikeButton from './like-button'
 
 import * as gtag from '../lib/gtag'
 import styles from '../styles/social-buttons.module.css'
@@ -72,6 +73,9 @@ const SocialButtons = ({ title = '', url, id = null }) => (
       >
         <HatenaIcon size={32} round={true} />
       </HatenaShareButton>
+    </li>
+    <li>
+      <LikeButton id={id} />
     </li>
   </ul>
 )
