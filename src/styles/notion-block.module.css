@@ -102,6 +102,7 @@
   border-style: solid;
   border-color: transparent;
   background: rgba(235, 236, 237, 0.6);
+  white-space: pre-wrap;
 }
 .callout div {
   margin: 0;
