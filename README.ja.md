@@ -21,6 +21,8 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## ユーザーブログ
 
+- [techPeck](https://techpeck.net/)
+- [チャベログ](https://chabelog.com/)
 - [オマツリ](https://omatsuri.vercel.app/)
 - [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
 - [shmn7iii](https://blog.shmn7iii.net/)

@@ -21,6 +21,8 @@ You can write on your Notion.
 
 ## Users' blogs
 
+- [techPeck](https://techpeck.net/)
+- [チャベログ](https://chabelog.com/)
 - [オマツリ](https://omatsuri.vercel.app/)
 - [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
 - [shmn7iii](https://blog.shmn7iii.net/)
