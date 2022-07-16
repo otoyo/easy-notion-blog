@@ -20,22 +20,21 @@ const ApiBlogSlug = async function(req: NextApiRequest, res: NextApiResponse) {
     return
   }
 
-  try {
-    getPostBySlug(slug as string)
-      .then(post => {
-        if (!post) throw new Error(`post not found. slug: ${slug}`)
-        return post
-      })
-      .then(post => incrementLikes(post))
-      .catch(e => console.log(e))
-
-    res.statusCode = 200
-    res.end()
-  } catch (e) {
-    console.log(e)
-    res.statusCode = 500
-    res.end()
-  }
+  getPostBySlug(slug as string)
+    .then(post => {
+      if (!post) throw new Error(`post not found. slug: ${slug}`)
+      return post
+    })
+    .then(post => incrementLikes(post))
+    .then(() => {
+      res.statusCode = 200
+      res.end()
+    })
+    .catch(e => {
+      console.log(e)
+      res.statusCode = 500
+      res.end()
+    })
 }
 
 export default ApiBlogSlug
