@@ -7,6 +7,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import GoogleAnalytics from '../components/google-analytics'
 
+import '../styles/syntax-coloring.css'
 import styles from '../styles/shared.module.css'
 
 const App = ({ Component, pageProps }) => {
