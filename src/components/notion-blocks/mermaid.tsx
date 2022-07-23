@@ -15,6 +15,8 @@ const Mermaid: FC<Props> = props => {
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
+      /* @ts-ignore */
+      theme: 'neutral',
     })
   }, [])
 
