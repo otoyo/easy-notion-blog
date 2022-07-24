@@ -51,43 +51,16 @@ You can write on your Notion.
 
 ## Quick Start
 
-1. Go to [notion.so](https://www.notion.so/) and log-in with your Notion account.
-2. Create a blank page.
-3. Add [Inline Table](https://www.notion.so/help/tables) to the page
-   - To add Inline Table to type `/table` or push the "+" button (Fig.1)
-4. Go to under page(database) named as "Untitled" (Fig.2)
-5. Check the name of the database columns to be `Name`, `Tags`. Rename if they are not so.
-6. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
-7. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
-8. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
-9. Open the Terminal.app and clone this repo into your local
-
-```
-git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog
-```
-
-10. Run initialization script
-
-```
-DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh
-```
-
-11. Go to [vercel.com](https://vercel.com/) and log-in with your account
-12. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
-13. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
-14. Your Notion Blog will be published after deploy
-
----
-
-Fig.1 Select "Table - Inline"
-
-![Fig.1](https://user-images.githubusercontent.com/1063435/140594182-1a717ed1-24ed-47e7-b037-70c684273dab.png)
-
----
-
-Fig.2 Move "Untitled" database under the new page
-
-![Fig.2](https://user-images.githubusercontent.com/1063435/140629759-b05d7596-394d-4fe4-9861-264bb01809b8.png)
+1. Star this repo 😉
+2. Duplicate [the template](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) into your Notion.
+3. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
+    * ex) `158bd90116004cd19aca26ad88cb5c07`
+4. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
+5. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
+6. Go to [vercel.com](https://vercel.com/) and log-in with your account
+7. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
+8. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
+9. Your Notion Blog will be published after deploy
 
 ## Database properties
 
