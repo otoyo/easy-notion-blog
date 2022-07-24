@@ -51,45 +51,19 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 ## クイックスタート
 
-1. [notion.so](https://www.notion.so/) にログインします
-2. 新規に空のページを作成します
-3. ページに [インラインテーブル](https://www.notion.so/ja-jp/help/tables) を追加します
-   - インラインテーブルを追加するには `/table` とタイプするか + メニューを押してインラインテーブルを選択します(下図 1)
-4. "Untitled" と名前のついた一階層下のページ(データベース) に移動します(下図 2)
-5. データベースの列名が `Name`, `Tags` になっていることを確認します。そうなっていない場合は変更します
-6. URL から次の部分を `DATABASE_ID` としてメモします `https://notion.so/your-account/<ココ>?v=xxxx`
-7. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
-8. `DATABASE_ID` をメモしたデータベースを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
-9. ターミナルアプリを開きこのリポジトリをクローンします
-
-```
-git clone git@github.com:otoyo/easy-notion-blog.git && cd easy-notion-blog
-```
-
-10. 初期化スクリプトを実行します
-
-```
-DATABASE_ID='<YOUR_DATABASE_ID>' NOTION_API_SECRET='<YOUR_NOTION_API_SECRET>' ./scripts/init-database.sh
-```
-
-11. [vercel.com](https://vercel.com/) にログインします
-12. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
-13. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
-14. デプロイが完了すると Notion Blog が見えるようになります
+1. このリポジトリを Star します😉
+2. [テンプレート](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) を自分の Notion へ複製します
+3. 複製したページの URL の次の部分を `DATABASE_ID` としてメモします
+    * `https://notion.so/your-account/<ココ>?v=xxxx`
+    * 例) `158bd90116004cd19aca26ad88cb5c07`
+4. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
+5. 複製したページを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
+6. [vercel.com](https://vercel.com/) にログインします
+7. プロジェクトを新規作成しリポジトリとして `otoyo/easy-notion-blog` をインポートします(チームの作成はスキップします)
+8. "Configure Project" で "Environment Variables" を開き先ほどメモした `NOTION_API_SECRET` と `DATABASE_ID` を入力します
+9. デプロイが完了すると Notion Blog が見えるようになります
 
 さらに詳しい解説は[へろほろさんの記事](https://herohoro.com/blog/easy-notion-blog-firstdeploy)をご覧ください。
-
----
-
-図 1 インラインテーブル (Table - Inline) を選択します
-
-![Fig. 1](https://user-images.githubusercontent.com/1063435/140594182-1a717ed1-24ed-47e7-b037-70c684273dab.png)
-
----
-
-図 2 作成された "Untitled" データベースに移動します
-
-![Fig. 2](https://user-images.githubusercontent.com/1063435/140629759-b05d7596-394d-4fe4-9861-264bb01809b8.png)
 
 ## データベースプロパティ
 
