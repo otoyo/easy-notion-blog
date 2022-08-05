@@ -82,11 +82,11 @@ const RenderPostsBeforeDate = ({
 
   return (
     <div className={styles.container}>
-      <DocumentHead description={`Post before ${date}`} />
+      <DocumentHead description={`Post before ${date.split('T')[0]}`} />
 
       <div className={styles.mainContent}>
         <header>
-          <h2>Posts before {date}</h2>
+          <h2>Posts before {date.split('T')[0]}</h2>
         </header>
 
         <NoContents contents={posts} />
