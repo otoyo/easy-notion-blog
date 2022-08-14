@@ -16,7 +16,6 @@
     }
   },
   "dependencies": {
-    "@dhaiwat10/react-link-preview": "^1.14.0",
     "@notionhq/client": "^1.0.4",
     "axios": "^0.27.2",
     "image-size": "^1.0.1",
