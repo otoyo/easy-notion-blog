@@ -1,5 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import urlMetadata from 'url-metadata'
+import got from 'got'
+import createMetascraper from 'metascraper'
+import metascraperDescription from 'metascraper-description'
+import metascraperImage from 'metascraper-image'
+import metascraperTitle from 'metascraper-title'
+
+const metascraper = createMetascraper([metascraperDescription(), metascraperImage(), metascraperTitle()])
 
 const ApiUrlMetadata = async function(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader('Content-Type', 'application/json')
@@ -10,16 +16,16 @@ const ApiUrlMetadata = async function(req: NextApiRequest, res: NextApiResponse)
     return
   }
 
-  const { url } = req.query
+  const { url: urls } = req.query
 
-  if (!url) {
+  if (!urls) {
     res.statusCode = 400
     res.end()
     return
   }
 
   try {
-    new URL(url as string)
+    new URL(urls.toString())
   } catch (e) {
     console.log(e)
 
@@ -29,16 +35,13 @@ const ApiUrlMetadata = async function(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const metadata = await urlMetadata(url as string)
+    const { body: html, url } = await got(urls.toString())
+    const metadata = await metascraper({ html, url })
     if (!metadata) {
       throw new Error(`no metadata. url: ${url}`)
     }
 
-    const title = metadata['title'] || metadata['og:title']
-    const description = metadata['description'] || metadata['og:description']
-    const image = metadata['image'] || metadata['og:image']
-
-    res.write(JSON.stringify({ title, description, image }))
+    res.json(metadata)
     res.statusCode = 200
     res.end()
   } catch (e) {
