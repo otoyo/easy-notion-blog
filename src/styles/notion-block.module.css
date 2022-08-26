@@ -119,6 +119,18 @@
 .table td {
   white-space: nowrap;
 }
+
+.columnList {
+  display: flex;
+  width: 100%;
+  margin: 1rem auto;
+  gap: 0 1rem;
+}
+.columnList > div {
+  flex: 1 1 180px;
+  width: 180px;
+}
+
 .bookmark {
   display: flex;
   overflow: hidden;
