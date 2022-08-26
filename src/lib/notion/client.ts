@@ -239,7 +239,9 @@ export async function getPostBySlug(slug: string) {
   return _buildPost(data.results[0])
 }
 
-export async function getPostsByTag(tag: string, pageSize = 100) {
+export async function getPostsByTag(tag: string | undefined, pageSize = 100) {
+  if (!tag) return []
+
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
