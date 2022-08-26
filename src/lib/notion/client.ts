@@ -514,21 +514,6 @@ export async function getAllBlocksByBlockId(blockId: string) {
 
           block.Table = table
           break
-        case 'table_row':
-          const cells: TableCell[] = item.table_row.cells.map(cell => {
-            const tableCell: TableCell = {
-              RichTexts: cell.map(_buildRichText),
-            }
-
-            return tableCell
-          })
-
-          const tableRow: TableRow = {
-            Cells: cells,
-          }
-
-          block.TableRow = tableRow
-          break
       }
 
       return block
@@ -547,8 +532,7 @@ export async function getAllBlocksByBlockId(blockId: string) {
     const block = allBlocks[i]
 
     if (block.Type === 'table') {
-      // Fetch table_row
-      block.Table.Rows = await getAllBlocksByBlockId(block.Id)
+      block.Table.Rows = await _getTableRows(block.Id)
     } else if (block.Type === 'bulleted_list_item' && block.HasChildren) {
       block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
@@ -557,6 +541,51 @@ export async function getAllBlocksByBlockId(blockId: string) {
   }
 
   return allBlocks
+}
+
+async function _getTableRows(blockId: string): Promise<TableRow[]> {
+  let tableRows: TableRow[] = []
+
+  const params = {
+    block_id: blockId,
+  }
+
+  while (true) {
+    const data = await client.blocks.children.list(params)
+
+    const blocks = data.results.map(item => {
+      const tableRow: TableRow = {
+        Id: item.id,
+        Type: item.type,
+        HasChildren: item.has_children,
+        Cells: []
+      }
+
+      if (item.type === 'table_row') {
+        const cells: TableCell[] = item.table_row.cells.map(cell => {
+          const tableCell: TableCell = {
+            RichTexts: cell.map(_buildRichText),
+          }
+
+          return tableCell
+        })
+
+        tableRow.Cells = cells
+      }
+
+      return tableRow
+    })
+
+    tableRows = tableRows.concat(blocks)
+
+    if (!data.has_more) {
+      break
+    }
+
+    params['start_cursor'] = data.next_cursor
+  }
+
+  return tableRows
 }
 
 export async function getAllTags() {
