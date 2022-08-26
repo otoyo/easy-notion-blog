@@ -20,6 +20,8 @@ import {
   Table,
   TableRow,
   TableCell,
+  ColumnList,
+  Column,
   RichText,
   Text,
   Annotation,
@@ -514,6 +516,13 @@ export async function getAllBlocksByBlockId(blockId: string) {
 
           block.Table = table
           break
+        case 'column_list':
+          const columnList: ColumnList = {
+            Columns: [],
+          }
+
+          block.ColumnList = columnList
+          break
       }
 
       return block
@@ -533,6 +542,8 @@ export async function getAllBlocksByBlockId(blockId: string) {
 
     if (block.Type === 'table') {
       block.Table.Rows = await _getTableRows(block.Id)
+    } else if (block.Type === 'column_list') {
+      block.ColumnList.Columns = await _getColumns(block.Id)
     } else if (block.Type === 'bulleted_list_item' && block.HasChildren) {
       block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
@@ -586,6 +597,41 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
   }
 
   return tableRows
+}
+
+async function _getColumns(blockId: string): Promise<Column[]> {
+  let columns: Column[] = []
+
+  const params = {
+    block_id: blockId,
+  }
+
+  while (true) {
+    const data = await client.blocks.children.list(params)
+
+    const blocks = await Promise.all(data.results.map(async item => {
+      const children = await getAllBlocksByBlockId(item.id)
+
+      const column: Column = {
+        Id: item.id,
+        Type: item.type,
+        HasChildren: item.has_children,
+        Children: children,
+      }
+
+      return column
+    }))
+
+    columns = columns.concat(blocks)
+
+    if (!data.has_more) {
+      break
+    }
+
+    params['start_cursor'] = data.next_cursor
+  }
+
+  return columns
 }
 
 export async function getAllTags() {
