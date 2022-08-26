@@ -166,10 +166,10 @@ const Table = ({ block }) => (
   <div className={styles.table}>
     <table>
       <tbody>
-        {block.Table.Rows.map((rowBlock: interfaces.Block, j: number) => {
+        {block.Table.Rows.map((tableRow: interfaces.TableRow, j: number) => {
           return (
-            <tr key={`${rowBlock.Id}-${j}`}>
-              {rowBlock.TableRow.Cells.map((cell: interfaces.TableCell, i: number) => {
+            <tr key={`${tableRow.Id}-${j}`}>
+              {tableRow.Cells.map((cell: interfaces.TableCell, i: number) => {
                 let tag = 'td'
                 if (
                   (block.Table.HasRowHeader && i === 0) ||
@@ -180,9 +180,9 @@ const Table = ({ block }) => (
 
                 return React.createElement(
                   tag,
-                  { key: `${rowBlock.Id}-${j}-${i}` },
+                  { key: `${tableRow.Id}-${j}-${i}` },
                   cell.RichTexts.map((richText: interfaces.RichText, k: number) => (
-                    <RichText richText={richText} key={`${rowBlock.Id}-${j}-${i}-${k}`} />
+                    <RichText richText={richText} key={`${tableRow.Id}-${j}-${i}-${k}`} />
                   ))
                 )
               })}
@@ -191,6 +191,18 @@ const Table = ({ block }) => (
         })}
       </tbody>
     </table>
+  </div>
+)
+
+const ColumnList = ({ block }) => (
+  <div className={styles.columnList}>
+    {block.ColumnList.Columns.map((column: interfaces.Column) => (
+      <div key={column.Id}>
+        {column.Children.map((b: interfaces.Block) => (
+          <NotionBlock block={b} key={b.Id} />
+        ))}
+      </div>
+    ))}
   </div>
 )
 
@@ -301,6 +313,8 @@ const NotionBlock = ({ block }) => {
     return <hr className="divider" />
   } else if (block.Type === 'table') {
     return <Table block={block} />
+  } else if (block.Type === 'column_list') {
+    return <ColumnList block={block} />
   } else if (block.Type === 'bulleted_list' || block.Type === 'numbered_list') {
     return <List block={block} />
   }
