@@ -11,7 +11,7 @@ const Footer = () => (
       <span>. Powered by </span>
       <ExtLink href="https://github.com/otoyo/easy-notion-blog">
         easy-notion-blog
-      </ExtLink>
+      </ExtLink>.
     </div>
   </footer>
 )
