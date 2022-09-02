@@ -2,6 +2,8 @@ import DocumentHead from '../components/document-head'
 import ExtLink from '../components/ext-link'
 import styles from '../styles/page.module.css'
 
+// For commit
+
 const RenderPage = () => (
   <div className={styles.container}>
     <DocumentHead />
