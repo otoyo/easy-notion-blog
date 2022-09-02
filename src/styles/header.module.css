@@ -1,13 +1,16 @@
+@import url('http://fonts.cdnfonts.com/css/crimson-text');
+
 .header {
   display: block;
   padding: 15px 0;
   text-align: center;
-  font-family: "Abril Fatface", serif;
 }
 .header h1 {
   padding: 0.5rem 0;
   font-weight: 400;
   color: #000;
+  font-size: 3.25rem;
+  font-family: 'Crimson Text', sans-serif;
 }
 .header h1 a {
   color: inherit;
