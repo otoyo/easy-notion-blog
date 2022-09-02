@@ -1,4 +1,5 @@
-import { SITE_TITLE, SITE_DESCRIPTION, DocumentHead } from '../components/document-head'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../components/document-head'
+import DocumentHead from '../components/document-head'
 import ExtLink from '../components/ext-link'
 import styles from '../styles/page.module.css'
 
