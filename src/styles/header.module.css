@@ -1,4 +1,4 @@
-@import url('http://fonts.cdnfonts.com/css/crimson-text');
+@import url('https://fonts.googleapis.com/css?family=Spectral');
 
 .header {
   display: block;
@@ -10,7 +10,7 @@
   font-weight: 400;
   color: #000;
   font-size: 3.25rem;
-  font-family: 'Crimson Text', sans-serif;
+  font-family: 'Spectral', sans-serif;
 }
 .header h1 a {
   color: inherit;
