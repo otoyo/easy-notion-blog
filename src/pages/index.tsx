@@ -12,7 +12,7 @@ const RenderPage = () => (
       <p>Lời quê góp nhặt dông dài</p>
       <p>Mua vui cũng được một trống canh</p>
       <br />
-      <p>${SITE_TITLE}, ${SITE_DESCRIPTION}</p>
+      <p>Thợ Code - Code gì cũng được, miễn có lương thiện là được!</p>
     </div>
   </div>
 )
