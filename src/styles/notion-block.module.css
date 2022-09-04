@@ -208,6 +208,13 @@
   object-fit: cover;
 }
 
+.toggle {
+}
+
+.toggle > div {
+  margin-left: 1em;
+}
+
 .tweetEmbed {
   width: 100%;
   max-width: 600px;
