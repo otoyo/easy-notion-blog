@@ -17,6 +17,8 @@ import {
   Video,
   Bookmark,
   LinkPreview,
+  SyncedBlock,
+  SyncedFrom,
   Table,
   TableRow,
   TableCell,
@@ -371,164 +373,7 @@ export async function getAllBlocksByBlockId(blockId: string) {
   while (true) {
     const data = await client.blocks.children.list(params)
 
-    const blocks = data.results.map(item => {
-      const block: Block = {
-        Id: item.id,
-        Type: item.type,
-        HasChildren: item.has_children,
-      }
-
-      switch (item.type) {
-        case 'paragraph':
-          const paragraph: Paragraph = {
-            RichTexts: item.paragraph.rich_text.map(_buildRichText),
-            Color: item.paragraph.color,
-          }
-
-          block.Paragraph = paragraph
-          break
-        case 'heading_1':
-          const heading1: Heading1 = {
-            RichTexts: item.heading_1.rich_text.map(_buildRichText),
-            Color: item.heading_1.color,
-          }
-
-          block.Heading1 = heading1
-          break
-        case 'heading_2':
-          const heading2: Heading2 = {
-            RichTexts: item.heading_2.rich_text.map(_buildRichText),
-            Color: item.heading_2.color,
-          }
-
-          block.Heading2 = heading2
-          break
-        case 'heading_3':
-          const heading3: Heading3 = {
-            RichTexts: item.heading_3.rich_text.map(_buildRichText),
-            Color: item.heading_3.color,
-          }
-
-          block.Heading3 = heading3
-          break
-        case 'bulleted_list_item':
-          const bulletedListItem: BulletedListItem = {
-            RichTexts: item.bulleted_list_item.rich_text.map(_buildRichText),
-            Color: item.bulleted_list_item.color,
-          }
-
-          block.BulletedListItem = bulletedListItem
-          break
-        case 'numbered_list_item':
-          const numberedListItem: NumberedListItem = {
-            RichTexts: item.numbered_list_item.rich_text.map(_buildRichText),
-            Color: item.numbered_list_item.color,
-          }
-
-          block.NumberedListItem = numberedListItem
-          break
-        case 'video':
-          const video: Video = {
-            Type: item.video.type,
-          }
-
-          if (item.video.type === 'external') {
-            video.External = { Url: item.video.external.url }
-          }
-
-          block.Video = video
-          break
-        case 'image':
-          const image: Image = {
-            Caption: item.image.caption.map(_buildRichText),
-            Type: item.image.type,
-          }
-
-          if (item.image.type === 'external') {
-            image.External = { Url: item.image.external.url }
-          } else {
-            image.File = { Url: item.image.file.url, ExpiryTime: item.image.file.expiry_time }
-          }
-
-          block.Image = image
-          break
-        case 'code':
-          const code: Code = {
-            Caption: item[item.type].caption.map(_buildRichText),
-            Text: item[item.type].rich_text.map(_buildRichText),
-            Language: item.code.language,
-          }
-
-          block.Code = code
-          break
-        case 'quote':
-          const quote: Quote = {
-            Text: item[item.type].rich_text.map(_buildRichText),
-            Color: item[item.type].color,
-          }
-
-          block.Quote = quote
-          break
-        case 'equation':
-          const equation: Equation = {
-            Expression: item[item.type].expression,
-          }
-
-          block.Equation = equation
-          break
-        case 'callout':
-          const callout: Callout = {
-            RichTexts: item[item.type].rich_text.map(_buildRichText),
-            Icon: {
-              Emoji: item[item.type].icon.emoji,
-            },
-            Color: item[item.type].color,
-          }
-
-          block.Callout = callout
-          break
-        case 'embed':
-          const embed: Embed = {
-            Url: item.embed.url,
-          }
-
-          block.Embed = embed
-          break
-        case 'bookmark':
-          const bookmark: Bookmark = {
-            Url: item.bookmark.url,
-          }
-
-          block.Bookmark = bookmark
-          break
-        case 'link_preview':
-          const linkPreview: LinkPreview = {
-            Url: item.link_preview.url,
-          }
-
-          block.LinkPreview = linkPreview
-          break
-        case 'table':
-          const table: Table = {
-            TableWidth: item.table.table_width,
-            HasColumnHeader: item.table.has_column_header,
-            HasRowHeader: item.table.has_row_header,
-            Rows: [],
-          }
-
-          block.Table = table
-          break
-        case 'column_list':
-          const columnList: ColumnList = {
-            Columns: [],
-          }
-
-          block.ColumnList = columnList
-          break
-      }
-
-      return block
-    })
+    const blocks = data.results.map(item => _buildBlock(item))
 
     allBlocks = allBlocks.concat(blocks)
 
@@ -550,10 +395,185 @@ export async function getAllBlocksByBlockId(blockId: string) {
       block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
       block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'synced_block') {
+      block.SyncedBlock.Children = await _getSyncedBlockChildren(block)
     }
   }
 
   return allBlocks
+}
+
+function _buildBlock(item) {
+  const block: Block = {
+    Id: item.id,
+    Type: item.type,
+    HasChildren: item.has_children,
+  }
+
+  switch (item.type) {
+    case 'paragraph':
+      const paragraph: Paragraph = {
+        RichTexts: item.paragraph.rich_text.map(_buildRichText),
+        Color: item.paragraph.color,
+      }
+
+      block.Paragraph = paragraph
+      break
+    case 'heading_1':
+      const heading1: Heading1 = {
+        RichTexts: item.heading_1.rich_text.map(_buildRichText),
+        Color: item.heading_1.color,
+      }
+
+      block.Heading1 = heading1
+      break
+    case 'heading_2':
+      const heading2: Heading2 = {
+        RichTexts: item.heading_2.rich_text.map(_buildRichText),
+        Color: item.heading_2.color,
+      }
+
+      block.Heading2 = heading2
+      break
+    case 'heading_3':
+      const heading3: Heading3 = {
+        RichTexts: item.heading_3.rich_text.map(_buildRichText),
+        Color: item.heading_3.color,
+      }
+
+      block.Heading3 = heading3
+      break
+    case 'bulleted_list_item':
+      const bulletedListItem: BulletedListItem = {
+        RichTexts: item.bulleted_list_item.rich_text.map(_buildRichText),
+        Color: item.bulleted_list_item.color,
+      }
+
+      block.BulletedListItem = bulletedListItem
+      break
+    case 'numbered_list_item':
+      const numberedListItem: NumberedListItem = {
+        RichTexts: item.numbered_list_item.rich_text.map(_buildRichText),
+        Color: item.numbered_list_item.color,
+      }
+
+      block.NumberedListItem = numberedListItem
+      break
+    case 'video':
+      const video: Video = {
+        Type: item.video.type,
+      }
+
+      if (item.video.type === 'external') {
+        video.External = { Url: item.video.external.url }
+      }
+
+      block.Video = video
+      break
+    case 'image':
+      const image: Image = {
+        Caption: item.image.caption.map(_buildRichText),
+        Type: item.image.type,
+      }
+
+      if (item.image.type === 'external') {
+        image.External = { Url: item.image.external.url }
+      } else {
+        image.File = { Url: item.image.file.url, ExpiryTime: item.image.file.expiry_time }
+      }
+
+      block.Image = image
+      break
+    case 'code':
+      const code: Code = {
+        Caption: item[item.type].caption.map(_buildRichText),
+        Text: item[item.type].rich_text.map(_buildRichText),
+        Language: item.code.language,
+      }
+
+      block.Code = code
+      break
+    case 'quote':
+      const quote: Quote = {
+        Text: item[item.type].rich_text.map(_buildRichText),
+        Color: item[item.type].color,
+      }
+
+      block.Quote = quote
+      break
+    case 'equation':
+      const equation: Equation = {
+        Expression: item[item.type].expression,
+      }
+
+      block.Equation = equation
+      break
+    case 'callout':
+      const callout: Callout = {
+        RichTexts: item[item.type].rich_text.map(_buildRichText),
+        Icon: {
+          Emoji: item[item.type].icon.emoji,
+        },
+        Color: item[item.type].color,
+      }
+
+      block.Callout = callout
+      break
+    case 'synced_block':
+      let syncedFrom: SyncedFrom = null
+      if (item[item.type].synced_from && item[item.type].synced_from.block_id) {
+        syncedFrom = {
+          BlockId: item[item.type].synced_from.block_id,
+        }
+      }
+
+      const syncedBlock: SyncedBlock = {
+        SyncedFrom: syncedFrom,
+      }
+
+      block.SyncedBlock = syncedBlock
+      break
+    case 'embed':
+      const embed: Embed = {
+        Url: item.embed.url,
+      }
+
+      block.Embed = embed
+      break
+    case 'bookmark':
+      const bookmark: Bookmark = {
+        Url: item.bookmark.url,
+      }
+
+      block.Bookmark = bookmark
+      break
+    case 'link_preview':
+      const linkPreview: LinkPreview = {
+        Url: item.link_preview.url,
+      }
+
+      block.LinkPreview = linkPreview
+      break
+    case 'table':
+      const table: Table = {
+        TableWidth: item.table.table_width,
+        HasColumnHeader: item.table.has_column_header,
+        HasRowHeader: item.table.has_row_header,
+        Rows: [],
+      }
+
+      block.Table = table
+      break
+    case 'column_list':
+      const columnList: ColumnList = {
+        Columns: [],
+      }
+
+      block.ColumnList = columnList
+      break
+  }
+
+  return block
 }
 
 async function _getTableRows(blockId: string): Promise<TableRow[]> {
@@ -634,6 +654,24 @@ async function _getColumns(blockId: string): Promise<Column[]> {
   }
 
   return columns
+}
+
+async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
+  let originalBlock: Block = block
+  if (block.SyncedBlock.SyncedFrom && block.SyncedBlock.SyncedFrom.BlockId) {
+    originalBlock = await _getBlock(block.SyncedBlock.SyncedFrom.BlockId)
+  }
+
+  const children = await getAllBlocksByBlockId(originalBlock.Id)
+  return children
+}
+
+async function _getBlock(blockId: string): Promise<Block> {
+  const data = await client.blocks.retrieve({
+    block_id: blockId,
+  })
+
+  return _buildBlock(data)
 }
 
 export async function getAllTags() {
