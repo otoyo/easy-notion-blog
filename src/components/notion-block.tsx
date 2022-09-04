@@ -284,6 +284,8 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
       </li>
     ))
 
+const SyncedBlock = ({ block }) => block.SyncedBlock.Children.map((child: interfaces.Block) => <NotionBlock block={child} key={child.Id} />)
+
 const NotionBlock = ({ block }) => {
   if (block.Type === 'paragraph') {
     return <Paragraph block={block} />
@@ -317,6 +319,8 @@ const NotionBlock = ({ block }) => {
     return <ColumnList block={block} />
   } else if (block.Type === 'bulleted_list' || block.Type === 'numbered_list') {
     return <List block={block} />
+  } else if (block.Type === 'synced_block') {
+    return <SyncedBlock block={block} />
   }
 
   return null
