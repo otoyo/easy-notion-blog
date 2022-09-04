@@ -284,7 +284,7 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
       </li>
     ))
 
-const SyncedBlock = ({ block }) => block.SyncedBlock.Children.map((child: interfaces.Block) => <NotionBlock block={child} key={child.Id} />)
+const SyncedBlock = ({ block }) => <NotionBlocks blocks={block.SyncedBlock.Children} />
 
 const Toggle = ({ block }) => (
   <details className={styles.toggle}>
@@ -294,7 +294,7 @@ const Toggle = ({ block }) => (
       ))}
     </summary>
     <div>
-      {block.Toggle.Children.map((child: interfaces.Block) => <NotionBlock block={child} key={child.Id} />)}
+      <NotionBlocks blocks={block.Toggle.Children} />
     </div>
   </details>
 )
