@@ -26,6 +26,7 @@ export interface Block {
   Equation?: Equation
   Callout?: Callout
   SyncedBlock?: SyncedBlock
+  Toggle?: Toggle
   Embed?: Embed
   Video?: Video
   Bookmark?: Bookmark
@@ -118,6 +119,12 @@ export interface SyncedBlock {
 
 export interface SyncedFrom {
   BlockId: string
+}
+
+export interface Toggle {
+  RichTexts: RichText[]
+  Color: string
+  Children: Block[]
 }
 
 export interface Embed {
