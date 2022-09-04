@@ -294,7 +294,7 @@ const Toggle = ({ block }) => (
       ))}
     </summary>
     <div>
-      {block.Toggle.Children.map((child: interfaces.Block) => <NotionBlock block={child} key={child.Id} />)}
+      <NotionBlocks blocks={block.Toggle.Children} />
     </div>
   </details>
 )
