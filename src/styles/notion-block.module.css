@@ -129,6 +129,14 @@
   flex: 1 1 180px;
   width: 180px;
 }
+@media (max-width: 640px) {
+  .columnList {
+    display: block;
+  }
+  .columnList > div {
+    width: 100%;
+  }
+}
 
 .bookmark {
   display: flex;
@@ -166,7 +174,7 @@
 .bookmark > a > div:first-child > div:nth-child(2) {
   font-size: 12px;
   line-height: 16px;
-  opacity: .8;
+  opacity: 0.8;
   height: 32px;
   overflow: hidden;
 }
