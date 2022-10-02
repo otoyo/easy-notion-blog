@@ -8,6 +8,7 @@ import {
   Heading3,
   BulletedListItem,
   NumberedListItem,
+  ToDo,
   Image,
   Code,
   Quote,
@@ -396,6 +397,8 @@ export async function getAllBlocksByBlockId(blockId: string) {
       block.BulletedListItem.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'numbered_list_item' && block.HasChildren) {
       block.NumberedListItem.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'to_do' && block.HasChildren) {
+      block.ToDo.Children = await getAllBlocksByBlockId(block.Id)
     } else if (block.Type === 'synced_block') {
       block.SyncedBlock.Children = await _getSyncedBlockChildren(block)
     } else if (block.Type === 'toggle') {
@@ -461,6 +464,15 @@ function _buildBlock(item) {
       }
 
       block.NumberedListItem = numberedListItem
+      break
+    case 'to_do':
+      const toDo: ToDo = {
+        RichTexts: item.to_do.rich_text.map(_buildRichText),
+        Checked: item.to_do.checked,
+        Color: item.to_do.color,
+      }
+
+      block.ToDo = toDo
       break
     case 'video':
       const video: Video = {
