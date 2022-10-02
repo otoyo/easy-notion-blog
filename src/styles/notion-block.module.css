@@ -142,6 +142,18 @@
   }
 }
 
+.toDo {
+  color: #222;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  padding-inline-start: 1rem;
+}
+.toDo > div {
+}
+.toDo > div > input {
+}
+
 .bookmark {
   display: flex;
   overflow: hidden;
