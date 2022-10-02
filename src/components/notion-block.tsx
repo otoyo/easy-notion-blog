@@ -213,11 +213,18 @@ const List = ({ block }) => {
         <BulletedListItems blocks={block.ListItems} />
       </ul>
     )
+  } else if (block.Type == 'numbered_list') {
+    return (
+      <ol>
+        <NumberedListItems blocks={block.ListItems} />
+      </ol>
+    )
   }
+
   return (
-    <ol>
-      <NumberedListItems blocks={block.ListItems} />
-    </ol>
+    <div className={styles.toDo}>
+      <ToDoItems blocks={block.ListItems} />
+    </div>
   )
 }
 
@@ -284,6 +291,26 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
       </li>
     ))
 
+const ToDoItems = ({ blocks }) =>
+  blocks
+    .filter((b: interfaces.Block) => b.Type === 'to_do')
+    .map((listItem: interfaces.Block) => (
+      <div key={`to-do-item-${listItem.Id}`}>
+        <input type="checkbox" checked={listItem.ToDo.Checked} />
+        {listItem.ToDo.RichTexts.map((richText: interfaces.RichText, i: number) => (
+          <RichText
+            richText={richText}
+            key={`to-do-item-${listItem.Id}-${i}`}
+          />
+        ))}
+        {listItem.HasChildren ? (
+          <ul>
+            <ToDoItems blocks={listItem.ToDo.Children} />
+          </ul>
+        ) : null}
+      </div>
+    ))
+
 const SyncedBlock = ({ block }) => <NotionBlocks blocks={block.SyncedBlock.Children} />
 
 const Toggle = ({ block }) => (
@@ -330,7 +357,7 @@ const NotionBlock = ({ block }) => {
     return <Table block={block} />
   } else if (block.Type === 'column_list') {
     return <ColumnList block={block} />
-  } else if (block.Type === 'bulleted_list' || block.Type === 'numbered_list') {
+  } else if (block.Type === 'bulleted_list' || block.Type === 'numbered_list' || block.Type === 'to_do') {
     return <List block={block} />
   } else if (block.Type === 'synced_block') {
     return <SyncedBlock block={block} />
@@ -353,10 +380,18 @@ const wrapListItems = (blocks: Array<interfaces.Block>) =>
   blocks.reduce((arr, block: interfaces.Block, i: number) => {
     const isBulletedListItem = block.Type === 'bulleted_list_item'
     const isNumberedListItem = block.Type === 'numbered_list_item'
+    const isToDo = block.Type === 'to_do'
 
-    if (!isBulletedListItem && !isNumberedListItem) return arr.concat(block)
+    if (!isBulletedListItem && !isNumberedListItem && !isToDo) return arr.concat(block)
 
-    const listType = isBulletedListItem ? 'bulleted_list' : 'numbered_list'
+    let listType = ''
+    if (isBulletedListItem) {
+      listType = 'bulleted_list'
+    } else if (isNumberedListItem) {
+      listType = 'numbered_list'
+    } else {
+      listType = 'to_do'
+    }
 
     if (i === 0) {
       const list: interfaces.List = {
@@ -370,7 +405,8 @@ const wrapListItems = (blocks: Array<interfaces.Block>) =>
 
     if (
       (isBulletedListItem && prevList.Type !== 'bulleted_list') ||
-      (isNumberedListItem && prevList.Type !== 'numbered_list')
+      (isNumberedListItem && prevList.Type !== 'numbered_list') ||
+      (isToDo && prevList.Type !== 'to_do')
     ) {
       const list: interfaces.List = {
         Type: listType,
