@@ -38,31 +38,31 @@
   padding: 0;
   background: rgb(247, 246, 243) !important;
 }
-.gray {
+.gray, .gray:hover {
   color: rgba(120, 119, 116, 1);
 }
-.brown {
+.brown, .brown:hover {
   color: rgba(159, 107, 83, 1);
 }
-.orange {
+.orange, .orange:hover {
   color: rgba(217, 115, 13, 1);
 }
-.yellow {
+.yellow, .yellow:hover {
   color: rgba(203, 145, 47, 1);
 }
-.green {
+.green, .green:hover {
   color: rgba(68, 131, 97, 1);
 }
-.blue {
+.blue, .blue:hover {
   color: rgba(51, 126, 169, 1);
 }
-.purple {
+.purple, .purple:hover {
   color: rgba(144, 101, 176, 1);
 }
-.pink {
+.pink, .pink:hover {
   color: rgba(193, 76, 138, 1);
 }
-.red {
+.red, .red:hover {
   color: rgba(212, 76, 71, 1);
 }
 .grayBackground {
@@ -263,4 +263,22 @@
   right: 0;
   width: 100%;
   height: 100%;
+}
+
+.tableOfContents {
+}
+.tableOfContents > a {
+  display: block;
+  line-height: 1.8rem;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+.tableOfContents > a:hover {
+  background: rgba(241, 241, 239, 1) !important;
+}
+.tableOfContents > a.indent-1 {
+  padding-left: 1.5rem;
+}
+.tableOfContents > a.indent-2 {
+  padding-left: 3.0rem;
 }

@@ -26,6 +26,7 @@ import {
   Toggle,
   ColumnList,
   Column,
+  TableOfContents,
   RichText,
   Text,
   Annotation,
@@ -594,6 +595,13 @@ function _buildBlock(item) {
       }
 
       block.ColumnList = columnList
+      break
+    case 'table_of_contents':
+      const tableOfContents: TableOfContents = {
+        Color: item.table_of_contents.color,
+      }
+
+      block.TableOfContents = tableOfContents
       break
   }
 

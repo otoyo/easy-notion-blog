@@ -34,6 +34,7 @@ export interface Block {
   LinkPreview?: LinkPreview
   Table?: Table
   ColumnList?: ColumnList
+  TableOfContents?: TableOfContents
 }
 
 export interface Paragraph {
@@ -179,6 +180,10 @@ export interface Column {
 export interface List {
   Type: string
   ListItems: Block[]
+}
+
+export interface TableOfContents {
+  Color: string
 }
 
 export interface RichText {
