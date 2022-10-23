@@ -59,12 +59,12 @@ describe('getAllBlocksByBlockId', () => {
 
 describe('getAllTags', () => {
   it('resolved 1 tag', async () => {
-    const got = await getAllTags()
-    expect(got).toHaveLength(1)
+    const tags = await getAllTags()
+    expect(tags).toHaveLength(1)
   })
 
   it('resolved 1 tag', async () => {
-    const got = await getAllTags()
-    expect(got).toEqual(expect.arrayContaining(['Diary']))
+    const tags = await getAllTags()
+    expect(tags).toEqual(expect.arrayContaining(['Diary']))
   })
 })
