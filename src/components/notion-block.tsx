@@ -166,7 +166,7 @@ const ImageBlock = ({ block }) => (
 
 const Quote = ({ block }) => (
   <blockquote className={colorClass(block.Quote.Color)}>
-    {block.Quote.Text.map((richText: interfaces.RichText, i: number) => (
+    {block.Quote.RichTexts.map((richText: interfaces.RichText, i: number) => (
       <RichText richText={richText} key={`quote-${block.Id}-${i}`} />
     ))}
   </blockquote>

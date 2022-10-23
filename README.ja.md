@@ -120,14 +120,6 @@ yarn lint
 yarn test
 ```
 
-HTML を変更した場合はスナップショットを更新してください。
-
-```
-yarn jest --updateSnapshot
-```
-
-- [Jest CLI オプション --updateSnapshot](https://jestjs.io/ja/docs/cli#--updatesnapshot)
-
 ## オプション設定
 
 - favicon

@@ -503,7 +503,7 @@ function _buildBlock(item) {
     case 'code':
       const code: Code = {
         Caption: item[item.type].caption.map(_buildRichText),
-        Text: item[item.type].rich_text.map(_buildRichText),
+        RichTexts: item[item.type].rich_text.map(_buildRichText),
         Language: item.code.language,
       }
 
@@ -511,7 +511,7 @@ function _buildBlock(item) {
       break
     case 'quote':
       const quote: Quote = {
-        Text: item[item.type].rich_text.map(_buildRichText),
+        RichTexts: item[item.type].rich_text.map(_buildRichText),
         Color: item[item.type].color,
       }
 
@@ -806,8 +806,14 @@ function _buildRichText(item) {
   if (item.type === 'text') {
     const text: Text = {
       Content: item.text.content,
-      Link: item.text.link,
     }
+
+    if (item.text.link) {
+      text.Link = {
+        Url: item.text.link.url,
+      }
+    }
+
     richText.Text = text
   } else if (item.type === 'equation') {
     const equation: Equation = {
