@@ -59,11 +59,11 @@ export async function getPosts(pageSize = 10) {
     page_size: pageSize,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return data.results
-    .filter(item => _validPost(item))
-    .map(item => _buildPost(item))
+  return res.results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getAllPosts() {
@@ -87,19 +87,21 @@ export async function getAllPosts() {
     }
 
     while (true) {
-      const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+      const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-      results = results.concat(data.results)
+      results = results.concat(res.results)
 
-      if (!data.has_more) {
+      if (!res.has_more) {
         break
       }
 
-      params['start_cursor'] = data.next_cursor
+      params['start_cursor'] = res.next_cursor
     }
   }
 
-  return results.filter(item => _validPost(item)).map(item => _buildPost(item))
+  return results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getRankedPosts(pageSize = 10) {
@@ -137,11 +139,11 @@ export async function getRankedPosts(pageSize = 10) {
     page_size: pageSize,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return data.results
-    .filter(item => _validPost(item))
-    .map(item => _buildPost(item))
+  return res.results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getPostsBefore(date: string, pageSize = 10) {
@@ -170,11 +172,11 @@ export async function getPostsBefore(date: string, pageSize = 10) {
     page_size: pageSize,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return data.results
-    .filter(item => _validPost(item))
-    .map(item => _buildPost(item))
+  return res.results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getFirstPost() {
@@ -196,17 +198,17 @@ export async function getFirstPost() {
     page_size: 1,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  if (!data.results.length) {
+  if (!res.results.length) {
     return null
   }
 
-  if (!_validPost(data.results[0])) {
+  if (!_validPageObject(res.results[0])) {
     return null
   }
 
-  return _buildPost(data.results[0])
+  return _buildPost(res.results[0])
 }
 
 export async function getPostBySlug(slug: string) {
@@ -215,7 +217,7 @@ export async function getPostBySlug(slug: string) {
     return allPosts.find(post => post.Slug === slug)
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query({
+  const res: responses.QueryDatabaseResponse = await client.databases.query({
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -234,15 +236,15 @@ export async function getPostBySlug(slug: string) {
     ],
   })
 
-  if (!data.results.length) {
+  if (!res.results.length) {
     return null
   }
 
-  if (!_validPost(data.results[0])) {
+  if (!_validPageObject(res.results[0])) {
     return null
   }
 
-  return _buildPost(data.results[0])
+  return _buildPost(res.results[0])
 }
 
 export async function getPostsByTag(tag: string | undefined, pageSize = 100) {
@@ -273,11 +275,11 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100) {
     page_size: pageSize,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return data.results
-    .filter(item => _validPost(item))
-    .map(item => _buildPost(item))
+  return res.results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getPostsByTagBefore(
@@ -320,11 +322,11 @@ export async function getPostsByTagBefore(
     page_size: pageSize,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return data.results
-    .filter(item => _validPost(item))
-    .map(item => _buildPost(item))
+  return res.results
+    .filter(pageObject => _validPageObject(pageObject))
+    .map(pageObject => _buildPost(pageObject))
 }
 
 export async function getFirstPostByTag(tag: string) {
@@ -354,17 +356,17 @@ export async function getFirstPostByTag(tag: string) {
     page_size: 1,
   }
 
-  const data: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  if (!data.results.length) {
+  if (!res.results.length) {
     return null
   }
 
-  if (!_validPost(data.results[0])) {
+  if (!_validPageObject(res.results[0])) {
     return null
   }
 
-  return _buildPost(data.results[0])
+  return _buildPost(res.results[0])
 }
 
 export async function getAllBlocksByBlockId(blockId: string) {
@@ -375,17 +377,17 @@ export async function getAllBlocksByBlockId(blockId: string) {
   }
 
   while (true) {
-    const data: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = data.results.map(item => _buildBlock(item))
+    const blocks = res.results.map(blockObject => _buildBlock(blockObject))
 
     allBlocks = allBlocks.concat(blocks)
 
-    if (!data.has_more) {
+    if (!res.has_more) {
       break
     }
 
-    params['start_cursor'] = data.next_cursor
+    params['start_cursor'] = res.next_cursor
   }
 
   for (let i = 0; i < allBlocks.length; i++) {
@@ -411,136 +413,136 @@ export async function getAllBlocksByBlockId(blockId: string) {
   return allBlocks
 }
 
-function _buildBlock(item) {
+function _buildBlock(blockObject: responses.BlockObject) {
   const block: Block = {
-    Id: item.id,
-    Type: item.type,
-    HasChildren: item.has_children,
+    Id: blockObject.id,
+    Type: blockObject.type,
+    HasChildren: blockObject.has_children,
   }
 
-  switch (item.type) {
+  switch (blockObject.type) {
     case 'paragraph':
       const paragraph: Paragraph = {
-        RichTexts: item.paragraph.rich_text.map(_buildRichText),
-        Color: item.paragraph.color,
+        RichTexts: blockObject.paragraph.rich_text.map(_buildRichText),
+        Color: blockObject.paragraph.color,
       }
 
       block.Paragraph = paragraph
       break
     case 'heading_1':
       const heading1: Heading1 = {
-        RichTexts: item.heading_1.rich_text.map(_buildRichText),
-        Color: item.heading_1.color,
+        RichTexts: blockObject.heading_1.rich_text.map(_buildRichText),
+        Color: blockObject.heading_1.color,
       }
 
       block.Heading1 = heading1
       break
     case 'heading_2':
       const heading2: Heading2 = {
-        RichTexts: item.heading_2.rich_text.map(_buildRichText),
-        Color: item.heading_2.color,
+        RichTexts: blockObject.heading_2.rich_text.map(_buildRichText),
+        Color: blockObject.heading_2.color,
       }
 
       block.Heading2 = heading2
       break
     case 'heading_3':
       const heading3: Heading3 = {
-        RichTexts: item.heading_3.rich_text.map(_buildRichText),
-        Color: item.heading_3.color,
+        RichTexts: blockObject.heading_3.rich_text.map(_buildRichText),
+        Color: blockObject.heading_3.color,
       }
 
       block.Heading3 = heading3
       break
     case 'bulleted_list_item':
       const bulletedListItem: BulletedListItem = {
-        RichTexts: item.bulleted_list_item.rich_text.map(_buildRichText),
-        Color: item.bulleted_list_item.color,
+        RichTexts: blockObject.bulleted_list_item.rich_text.map(_buildRichText),
+        Color: blockObject.bulleted_list_item.color,
       }
 
       block.BulletedListItem = bulletedListItem
       break
     case 'numbered_list_item':
       const numberedListItem: NumberedListItem = {
-        RichTexts: item.numbered_list_item.rich_text.map(_buildRichText),
-        Color: item.numbered_list_item.color,
+        RichTexts: blockObject.numbered_list_item.rich_text.map(_buildRichText),
+        Color: blockObject.numbered_list_item.color,
       }
 
       block.NumberedListItem = numberedListItem
       break
     case 'to_do':
       const toDo: ToDo = {
-        RichTexts: item.to_do.rich_text.map(_buildRichText),
-        Checked: item.to_do.checked,
-        Color: item.to_do.color,
+        RichTexts: blockObject.to_do.rich_text.map(_buildRichText),
+        Checked: blockObject.to_do.checked,
+        Color: blockObject.to_do.color,
       }
 
       block.ToDo = toDo
       break
     case 'video':
       const video: Video = {
-        Type: item.video.type,
+        Type: blockObject.video.type,
       }
 
-      if (item.video.type === 'external') {
-        video.External = { Url: item.video.external.url }
+      if (blockObject.video.type === 'external') {
+        video.External = { Url: blockObject.video.external.url }
       }
 
       block.Video = video
       break
     case 'image':
       const image: Image = {
-        Caption: item.image.caption.map(_buildRichText),
-        Type: item.image.type,
+        Caption: blockObject.image.caption.map(_buildRichText),
+        Type: blockObject.image.type,
       }
 
-      if (item.image.type === 'external') {
-        image.External = { Url: item.image.external.url }
+      if (blockObject.image.type === 'external') {
+        image.External = { Url: blockObject.image.external.url }
       } else {
-        image.File = { Url: item.image.file.url, ExpiryTime: item.image.file.expiry_time }
+        image.File = { Url: blockObject.image.file.url, ExpiryTime: blockObject.image.file.expiry_time }
       }
 
       block.Image = image
       break
     case 'code':
       const code: Code = {
-        Caption: item[item.type].caption.map(_buildRichText),
-        RichTexts: item[item.type].rich_text.map(_buildRichText),
-        Language: item.code.language,
+        Caption: blockObject[blockObject.type].caption.map(_buildRichText),
+        RichTexts: blockObject[blockObject.type].rich_text.map(_buildRichText),
+        Language: blockObject.code.language,
       }
 
       block.Code = code
       break
     case 'quote':
       const quote: Quote = {
-        RichTexts: item[item.type].rich_text.map(_buildRichText),
-        Color: item[item.type].color,
+        RichTexts: blockObject[blockObject.type].rich_text.map(_buildRichText),
+        Color: blockObject[blockObject.type].color,
       }
 
       block.Quote = quote
       break
     case 'equation':
       const equation: Equation = {
-        Expression: item[item.type].expression,
+        Expression: blockObject[blockObject.type].expression,
       }
 
       block.Equation = equation
       break
     case 'callout':
       const callout: Callout = {
-        RichTexts: item[item.type].rich_text.map(_buildRichText),
+        RichTexts: blockObject[blockObject.type].rich_text.map(_buildRichText),
         Icon: {
-          Emoji: item[item.type].icon.emoji,
+          Emoji: blockObject[blockObject.type].icon.emoji,
         },
-        Color: item[item.type].color,
+        Color: blockObject[blockObject.type].color,
       }
 
       block.Callout = callout
       break
     case 'synced_block':
       let syncedFrom: SyncedFrom = null
-      if (item[item.type].synced_from && item[item.type].synced_from.block_id) {
+      if (blockObject[blockObject.type].synced_from && blockObject[blockObject.type].synced_from.block_id) {
         syncedFrom = {
-          BlockId: item[item.type].synced_from.block_id,
+          BlockId: blockObject[blockObject.type].synced_from.block_id,
         }
       }
 
@@ -552,8 +554,8 @@ function _buildBlock(item) {
       break
     case 'toggle':
       const toggle: Toggle = {
-        RichTexts: item[item.type].rich_text.map(_buildRichText),
-        Color: item[item.type].color,
+        RichTexts: blockObject[blockObject.type].rich_text.map(_buildRichText),
+        Color: blockObject[blockObject.type].color,
         Children: [],
       }
 
@@ -561,30 +563,30 @@ function _buildBlock(item) {
       break
     case 'embed':
       const embed: Embed = {
-        Url: item.embed.url,
+        Url: blockObject.embed.url,
       }
 
       block.Embed = embed
       break
     case 'bookmark':
       const bookmark: Bookmark = {
-        Url: item.bookmark.url,
+        Url: blockObject.bookmark.url,
       }
 
       block.Bookmark = bookmark
       break
     case 'link_preview':
       const linkPreview: LinkPreview = {
-        Url: item.link_preview.url,
+        Url: blockObject.link_preview.url,
       }
 
       block.LinkPreview = linkPreview
       break
     case 'table':
       const table: Table = {
-        TableWidth: item.table.table_width,
-        HasColumnHeader: item.table.has_column_header,
-        HasRowHeader: item.table.has_row_header,
+        TableWidth: blockObject.table.table_width,
+        HasColumnHeader: blockObject.table.has_column_header,
+        HasRowHeader: blockObject.table.has_row_header,
         Rows: [],
       }
 
@@ -599,7 +601,7 @@ function _buildBlock(item) {
       break
     case 'table_of_contents':
       const tableOfContents: TableOfContents = {
-        Color: item.table_of_contents.color,
+        Color: blockObject.table_of_contents.color,
       }
 
       block.TableOfContents = tableOfContents
@@ -617,18 +619,18 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
   }
 
   while (true) {
-    const data: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = data.results.map(item => {
+    const blocks = res.results.map(blockObject => {
       const tableRow: TableRow = {
-        Id: item.id,
-        Type: item.type,
-        HasChildren: item.has_children,
+        Id: blockObject.id,
+        Type: blockObject.type,
+        HasChildren: blockObject.has_children,
         Cells: []
       }
 
-      if (item.type === 'table_row') {
-        const cells: TableCell[] = item.table_row.cells.map(cell => {
+      if (blockObject.type === 'table_row') {
+        const cells: TableCell[] = blockObject.table_row.cells.map(cell => {
           const tableCell: TableCell = {
             RichTexts: cell.map(_buildRichText),
           }
@@ -644,11 +646,11 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
 
     tableRows = tableRows.concat(blocks)
 
-    if (!data.has_more) {
+    if (!res.has_more) {
       break
     }
 
-    params['start_cursor'] = data.next_cursor
+    params['start_cursor'] = res.next_cursor
   }
 
   return tableRows
@@ -662,15 +664,15 @@ async function _getColumns(blockId: string): Promise<Column[]> {
   }
 
   while (true) {
-    const data: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = await Promise.all(data.results.map(async item => {
-      const children = await getAllBlocksByBlockId(item.id)
+    const blocks = await Promise.all(res.results.map(async blockObject => {
+      const children = await getAllBlocksByBlockId(blockObject.id)
 
       const column: Column = {
-        Id: item.id,
-        Type: item.type,
-        HasChildren: item.has_children,
+        Id: blockObject.id,
+        Type: blockObject.type,
+        HasChildren: blockObject.has_children,
         Children: children,
       }
 
@@ -679,11 +681,11 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 
     columns = columns.concat(blocks)
 
-    if (!data.has_more) {
+    if (!res.has_more) {
       break
     }
 
-    params['start_cursor'] = data.next_cursor
+    params['start_cursor'] = res.next_cursor
   }
 
   return columns
@@ -700,11 +702,11 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
 }
 
 async function _getBlock(blockId: string): Promise<Block> {
-  const data: responses.RetrieveBlockResponse = await client.blocks.retrieve({
+  const res: responses.RetrieveBlockResponse = await client.blocks.retrieve({
     block_id: blockId,
   })
 
-  return _buildBlock(data)
+  return _buildBlock(res)
 }
 
 export async function getAllTags() {
@@ -713,10 +715,10 @@ export async function getAllTags() {
     return [...new Set(allPosts.flatMap(post => post.Tags))].sort()
   }
 
-  const data: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
+  const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
     database_id: DATABASE_ID,
   })
-  return data.properties.Tags.multi_select.options
+  return res.properties.Tags.multi_select.options
     .map(option => option.name)
     .sort()
 }
@@ -758,8 +760,8 @@ function _uniqueConditions(conditions = []) {
   })
 }
 
-function _validPost(data) {
-  const prop = data.properties
+function _validPageObject(pageObject: responses.PageObject) {
+  const prop = pageObject.properties
   return (
     prop.Page.title.length > 0 &&
     prop.Slug.rich_text.length > 0 &&
@@ -767,11 +769,11 @@ function _validPost(data) {
   )
 }
 
-function _buildPost(data) {
-  const prop = data.properties
+function _buildPost(pageObject: responses.PageObject) {
+  const prop = pageObject.properties
 
   const post: Post = {
-    PageId: data.id,
+    PageId: pageObject.id,
     Title: prop.Page.title[0].plain_text,
     Slug: prop.Slug.rich_text[0].plain_text,
     Date: prop.Date.date.start,
@@ -788,37 +790,37 @@ function _buildPost(data) {
   return post
 }
 
-function _buildRichText(item) {
+function _buildRichText(richTextObject: responses.RichTextObject) {
   const annotation: Annotation = {
-    Bold: item.annotations.bold,
-    Italic: item.annotations.italic,
-    Strikethrough: item.annotations.strikethrough,
-    Underline: item.annotations.underline,
-    Code: item.annotations.code,
-    Color: item.annotations.color,
+    Bold: richTextObject.annotations.bold,
+    Italic: richTextObject.annotations.italic,
+    Strikethrough: richTextObject.annotations.strikethrough,
+    Underline: richTextObject.annotations.underline,
+    Code: richTextObject.annotations.code,
+    Color: richTextObject.annotations.color,
   }
 
   const richText: RichText = {
     Annotation: annotation,
-    PlainText: item.plain_text,
-    Href: item.href,
+    PlainText: richTextObject.plain_text,
+    Href: richTextObject.href,
   }
 
-  if (item.type === 'text') {
+  if (richTextObject.type === 'text') {
     const text: Text = {
-      Content: item.text.content,
+      Content: richTextObject.text.content,
     }
 
-    if (item.text.link) {
+    if (richTextObject.text.link) {
       text.Link = {
-        Url: item.text.link.url,
+        Url: richTextObject.text.link.url,
       }
     }
 
     richText.Text = text
-  } else if (item.type === 'equation') {
+  } else if (richTextObject.type === 'equation') {
     const equation: Equation = {
-      Expression: item.equation.expression,
+      Expression: richTextObject.equation.expression,
     }
     richText.Equation = equation
   }
