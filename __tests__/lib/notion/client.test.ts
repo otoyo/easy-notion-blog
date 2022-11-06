@@ -48,7 +48,7 @@ describe('getAllBlocksByBlockId', () => {
     Color: 'default',
   }
 
-  it('resolves paragraph block', async () => {
+  it('resolves paragraph with text block', async () => {
     const expected: Block = {
       Id: '5d04be89-54da-482a-9391-efd465f74082',
       Type: 'paragraph',
@@ -57,9 +57,9 @@ describe('getAllBlocksByBlockId', () => {
         RichTexts: [
           {
             Annotation: annotation,
-            PlainText: 'Paragraph',
+            PlainText: 'Paragraph with text',
             Text: {
-              Content: 'Paragraph',
+              Content: 'Paragraph with text',
               Link: {
                 Url: 'https://github.com/otoyo/easy-notion-blog',
               },
@@ -73,6 +73,30 @@ describe('getAllBlocksByBlockId', () => {
 
     const blocks = await getAllBlocksByBlockId(pageBlockId)
     const paragraph = blocks.find((block: Block) => block.Type === 'paragraph')
+    expect(paragraph).toMatchObject(expected)
+  })
+
+  it('resolves paragraph with equation block', async () => {
+    const expected: Block = {
+      Id: '91807f43-f95b-4079-8fcd-0ed4d3757648',
+      Type: 'paragraph',
+      HasChildren: false,
+      Paragraph: {
+        RichTexts: [
+          {
+            Annotation: annotation,
+            PlainText: 'e=mc^2',
+            Equation: {
+              Expression: 'e=mc^2',
+            },
+          }
+        ],
+        Color: 'default',
+      },
+    }
+
+    const blocks = await getAllBlocksByBlockId(pageBlockId)
+    const paragraph = blocks.filter((block: Block) => block.Type === 'paragraph')[1]
     expect(paragraph).toMatchObject(expected)
   })
 
