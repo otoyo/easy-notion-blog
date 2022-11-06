@@ -14,7 +14,7 @@
           {
             "type": "text",
             "text": {
-              "content": "Paragraph",
+              "content": "Paragraph with text",
               "link": {
                 "url": "https://github.com/otoyo/easy-notion-blog"
               }
@@ -27,8 +27,37 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "Paragraph",
+            "plain_text": "Paragraph with text",
             "href": "https://github.com/otoyo/easy-notion-blog"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "91807f43-f95b-4079-8fcd-0ed4d3757648",
+      "created_time": "2022-02-05T06:51:00.000Z",
+      "last_edited_time": "2022-02-05T06:52:00.000Z",
+      "has_children": false,
+      "archived": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "equation",
+            "equation": {
+              "expression": "e=mc^2"
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "e=mc^2"
           }
         ],
         "color": "default"

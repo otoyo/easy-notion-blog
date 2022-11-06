@@ -17,6 +17,8 @@ const RichText = ({ richText }) => {
     element = richText.Text.Content
   } else if (richText.Equation) {
     element = <InlineEquation equation={richText.Equation} />
+  } else {
+    element = null
   }
 
   if (richText.Annotation.Bold) {
