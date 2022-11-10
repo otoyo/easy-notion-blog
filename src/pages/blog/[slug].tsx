@@ -125,7 +125,7 @@ const RenderPost = ({
       <DocumentHead
         title={post.Title}
         description={post.Excerpt}
-        urlOgImage={NEXT_PUBLIC_URL && new URL(`/api/og-image?slug=${post.Slug}`, NEXT_PUBLIC_URL).toString()}
+        urlOgImage={NEXT_PUBLIC_URL && new URL(`/api/og-image/${post.Slug}`, NEXT_PUBLIC_URL).toString()}
       />
 
       <div className={styles.mainContent}>
