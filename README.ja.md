@@ -5,57 +5,40 @@
 [![GitHub stars](https://img.shields.io/github/stars/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/stargazers)
 [![GitHub license](https://img.shields.io/github/license/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/blob/master/LICENSE)
 
-![easy-notion-blog-logo-2](https://user-images.githubusercontent.com/1063435/155871688-aeb3a7ea-28cb-4b84-bcde-eafc7a2a859a.png)
+<img src="https://user-images.githubusercontent.com/1063435/155871688-aeb3a7ea-28cb-4b84-bcde-eafc7a2a859a.png" width="480">
 
-easy-notion-blog を使えば簡単にブログを開設できます。
+easy-notion-blog を使えばあっという間に Notion Blog を始めることができます。
 
-ブログは Notion で書くことができます。
+- :rocket: ページの読み込みが**爆速**
+- :pencil: **自分のNotionで**ブログが書ける
+- :hammer_and_wrench: ブログの見た目を**自分好みにカスタマイズ可能**
+- :white_check_mark: **Notion 公式API**を使っているので安心
 
 ## スクリーンショット
 
-![Screenshot](https://user-images.githubusercontent.com/1063435/152633191-0bda9095-52ce-4e01-9794-4268c26d0ef4.png)
+### :camera_flash: ブログ側
 
-## デモ
+<img src="https://user-images.githubusercontent.com/1063435/201293737-63c0d504-d34b-4500-98ab-808f4d2e89f3.png" width="600">
 
-[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
+### :camera_flash: Notion側
 
-## ユーザーブログ
+<img src="https://user-images.githubusercontent.com/1063435/201301619-54cf07da-e638-4751-b56c-7115ed5d4eb0.png" width="600">
 
-- [techPeck](https://techpeck.net/)
-- [チャベログ](https://chabelog.com/)
-- [オマツリ](https://omatsuri.vercel.app/)
-- [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
-- [shmn7iii](https://blog.shmn7iii.net/)
-- [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
-- [www.gadge7.net](https://www.gadge7.net/blog)
-- [herohoro ブログ](https://herohoro.com/) (Contributor)
-- [アルパカログ](https://alpacat.com/) (Owner)
+## クイックスタート
 
-## 特長
-
-- 高速な表示
-- Notion でブログが書ける
-- Notion 公式 API を使用
-- すべてカスタマイズ可能
-
-## 必要要件
+### 必要要件
 
 - [Notion](https://www.notion.so/) アカウント
 - [Vercel](https://vercel.com/) アカウント
 - Git
 
-(カスタマイズしたい場合は下記も)
+### 手順
 
-- Node.js v14 もしくはそれ以上
-- [Yarn](https://yarnpkg.com/getting-started)
-
-## クイックスタート
-
-1. このリポジトリを Star します😉
+1. このリポジトリを**スターします** :wink:
 2. [テンプレート](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) を自分の Notion へ複製します
-3. 複製したページの URL の次の部分を `DATABASE_ID` としてメモします
-    * `https://notion.so/your-account/<ココ>?v=xxxx`
+3. 複製したページの URL の `https://notion.so/your-account/<ココ>?v=xxxx` を `DATABASE_ID` としてメモします
     * 例) `158bd90116004cd19aca26ad88cb5c07`
+    * :warning: **注意:** `?v=ここではありません`。`?v=` の前です。
 4. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) からインテグレーションを作成し "Internal Integration Token" を `NOTION_API_SECRET` としてメモします
 5. 複製したページを再度開き [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) の手順でインテグレーションにデータベースを共有します
 6. [vercel.com](https://vercel.com/) にログインします
@@ -65,31 +48,29 @@ easy-notion-blog を使えば簡単にブログを開設できます。
 
 さらに詳しい解説は[へろほろさんの記事](https://herohoro.com/blog/easy-notion-blog-firstdeploy)をご覧ください。
 
-## データベースプロパティ
+## デモ
 
-| プロパティ | 説明                                                                     | 例                    |
-| ---------- | ------------------------------------------------------------------------ | --------------------- |
-| Page       | ブログのエントリー                                                       |
-| Slug       | エントリーの ID として使われます。URL に使用可能な文字のみ使用できます。 | my-1st-entry          |
-| Date       | エントリーの公開日                                                       | 2021/12/1             |
-| Tags       | エントリーを分類するためのタグ                                           | Diary                 |
-| OGImage    | og-image として使うための画像                                            |
-| Excerpt    | エントリーの概要                                                         | This is my 1st entry. |
-| Published  | 公開状態。チェックされたエントリーだけが公開されます。                   |
-| Rank       | おすすめ度。おすすめ記事一覧にランクの高いものから順に表示されます。     | 10                    |
+[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)  
+ユーザーブログは [wiki](https://github.com/otoyo/easy-notion-blog/wiki/Users%27-blogs-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%96%E3%83%AD%E3%82%B0) から見ることができます。
 
 ## カスタマイズするには
 
-このリポジトリをフォークしてローカルに clone します。
+### 追加の必要要件
 
-プロジェクトルートに `.env.local` ファイルを作成し下記のように環境変数を書き込みます。
+- Node.js v16 もしくはそれ以上
+- [Yarn](https://yarnpkg.com/getting-started)
+
+### 手順
+
+1. このリポジトリをフォークしてローカルに clone します
+2. プロジェクトルートに `.env.local` ファイルを作成し下記のように環境変数を書き込みます
 
 ```sh
 NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
 DATABASE_ID=<YOUR_DATABASE_ID>
 ```
 
-依存関係をインストールしローカルサーバーを起動します。
+3. 依存関係をインストールしローカルサーバーを起動します
 
 ```sh
 # 依存関係のインストール
@@ -99,41 +80,23 @@ yarn install
 yarn dev
 ```
 
-ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+4. ブラウザで [http://localhost:3000](http://localhost:3000) を開きます
 
 開発環境では `Published` でないエントリーも表示されるためプレビューすることができます。ただし `Slug` が設定されていないエントリーは表示されません。
 
-開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
+5. 開発サーバーを停止するにはターミナルで `Ctrl+C` を押します。
 
-## How to deploy to Google Cloud Run
+### その他の情報
 
-See the [wiki](https://github.com/otoyo/easy-notion-blog/wiki/How-to-deploy-easy-notion-blog-to-Google-Cloud-Run).
+[wiki](https://github.com/otoyo/easy-notion-blog/wiki) をご覧ください。
 
-## よくある質問
-
-[wiki](https://github.com/otoyo/easy-notion-blog/wiki) の「よくある質問」をご覧ください。
-
-## Lint & Test
-
-```
-yarn lint
-yarn test
-```
-
-## オプション設定
-
-- favicon
-  - `public/` ディレクトリ以下に `favicon.ico` を置きます
-- Google Analytics 4
-  - "Environment Variables" でトラッキング ID を `NEXT_PUBLIC_GA_TRACKING_ID` として設定します
-- ソーシャルボタン
-  - "Environment Variables" でサイトの URL を `NEXT_PUBLIC_URL` として設定します
-
-## バグ報告 & 要望
+## バグ報告 & 機能要望
 
 Issue を作成してください。日本語で大丈夫です。
 
-## Twitter コミュニティ
+## :bird: Twitter コミュニティ
+
+最新のアップデート情報を受け取ったり、カスタマイズに困った際に他のメンバーのサポートを得ることができます。
 
 - [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
 
