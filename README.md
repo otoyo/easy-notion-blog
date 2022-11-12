@@ -75,6 +75,9 @@ yarn install
 yarn dev
 ```
 
+In the development environment, non-published posts are also displayed to check their appearance.  
+But posts without valid `Slug` won't be displayed.
+
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 5. Press `Ctrl+C` in the terminal to stop.
 
