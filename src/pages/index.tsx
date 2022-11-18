@@ -1,23 +1,66 @@
-import DocumentHead from '../components/document-head'
-import ExtLink from '../components/ext-link'
-import styles from '../styles/page.module.css'
+import Link from 'next/link'
+import DocumentHead from 'components/document-head'
+import {
+  BlogPostLink,
+  BlogTagLink,
+  NextPageLink,
+  NoContents,
+  PostDate,
+  PostExcerpt,
+  PostTags,
+  PostTitle,
+  ReadMoreLink,
+} from 'components/blog-parts'
+import { getPosts, getFirstPost, getRankedPosts, getAllTags } from 'lib/notion/client'
 
-const RenderPage = () => (
-  <div className={styles.container}>
-    <DocumentHead />
+import config from 'utils/config'
+import Layout from 'layouts/Layout'
+import CardLarge from 'components/card/CardLarge'
+import StoryPast from 'components/card/StoryPast'
+import { Button } from 'components/base/Button'
 
-    <div>
-      <h2>Welcome!</h2>
-      <p>Your easy-notion-blog deployed successfully!</p>
-      <p>Have fun!</p>
-      <p>
-        easy-notion-blog powered by{' '}
-        <ExtLink href="https://github.com/otoyo/easy-notion-blog">
-          otoyo/easy-notion-blog
-        </ExtLink>
-      </p>
-    </div>
-  </div>
-)
+export async function getStaticProps() {
+  const [posts, firstPost, rankedPosts, tags] = await Promise.all([
+    getPosts(),
+    getFirstPost(),
+    getRankedPosts(),
+    getAllTags(),
+  ])
 
-export default RenderPage
+  return {
+    props: {
+      posts,
+      firstPost,
+      rankedPosts,
+      tags,
+    },
+    revalidate: 60,
+  }
+}
+
+const RenderPosts = ({ posts = [], firstPost, rankedPosts = [], tags = [] }) => {
+  const postNum = config.setting.postNum
+  const newPost = posts[0]
+  const pastPost = posts.slice(1, postNum)
+
+  return (
+    <>
+      <DocumentHead title='Blog' />
+      <Layout>
+        <NoContents contents={posts} />
+        {newPost && <CardLarge post={newPost} />}
+        {pastPost.length > 0 ? <StoryPast title='articles' posts={pastPost} /> : ''}
+        <Button>
+          <Link href='archives' passHref scroll={false}>
+            Archives
+          </Link>
+        </Button>
+        <footer>
+          <NextPageLink firstPost={firstPost} posts={posts} />
+        </footer>
+      </Layout>
+    </>
+  )
+}
+
+export default RenderPosts

@@ -10,10 +10,13 @@ import {
 } from 'react-share'
 
 import * as gtag from '../lib/gtag'
-import styles from '../styles/social-buttons.module.css'
+
+const bgStyle = {
+  fill: '#000000',
+}
 
 const SocialButtons = ({ title = '', url, id = null }) => (
-  <ul className={styles.socialButtons}>
+  <ul>
     <li>
       <TwitterShareButton
         url={url}
@@ -26,7 +29,7 @@ const SocialButtons = ({ title = '', url, id = null }) => (
           })
         }
       >
-        <TwitterIcon size={32} round={true} />
+        <TwitterIcon size={32} round={false} bgStyle={bgStyle} iconFillColor='white' />
       </TwitterShareButton>
     </li>
     <li>
@@ -40,7 +43,7 @@ const SocialButtons = ({ title = '', url, id = null }) => (
           })
         }
       >
-        <FacebookIcon size={32} round={true} />
+        <FacebookIcon size={32} round={false} bgStyle={bgStyle} iconFillColor='white' />
       </FacebookShareButton>
     </li>
     <li>
@@ -55,7 +58,7 @@ const SocialButtons = ({ title = '', url, id = null }) => (
           })
         }
       >
-        <PocketIcon size={32} round={true} />
+        <PocketIcon size={32} round={false} bgStyle={bgStyle} iconFillColor='white' />
       </PocketShareButton>
     </li>
     <li>
@@ -70,7 +73,7 @@ const SocialButtons = ({ title = '', url, id = null }) => (
           })
         }
       >
-        <HatenaIcon size={32} round={true} />
+        <HatenaIcon size={32} round={false} bgStyle={bgStyle} iconFillColor='white' />
       </HatenaShareButton>
     </li>
   </ul>

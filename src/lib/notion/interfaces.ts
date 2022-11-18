@@ -5,7 +5,10 @@ export interface Post {
   Date: string
   Tags: string[]
   Excerpt: string
-  OGImage: string
+  coverPostImage: string
+  coverEyeCatch: string
+  coverPostImageSP: string
+  coverCaption: string
   Rank: number
 }
 

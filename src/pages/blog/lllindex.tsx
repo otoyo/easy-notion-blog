@@ -11,12 +11,7 @@ import {
   ReadMoreLink,
 } from '../../components/blog-parts'
 import styles from '../../styles/blog.module.css'
-import {
-  getPosts,
-  getFirstPost,
-  getRankedPosts,
-  getAllTags,
-} from '../../lib/notion/client'
+import { getPosts, getFirstPost, getRankedPosts, getAllTags } from '../../lib/notion/client'
 
 export async function getStaticProps() {
   const [posts, firstPost, rankedPosts, tags] = await Promise.all([
@@ -37,20 +32,15 @@ export async function getStaticProps() {
   }
 }
 
-const RenderPosts = ({
-  posts = [],
-  firstPost,
-  rankedPosts = [],
-  tags = [],
-}) => {
+const RenderPosts = ({ posts = [], firstPost, rankedPosts = [], tags = [] }) => {
   return (
     <div className={styles.container}>
-      <DocumentHead title="Blog" />
+      <DocumentHead title='Blog' />
 
       <div className={styles.mainContent}>
         <NoContents contents={posts} />
 
-        {posts.map(post => {
+        {posts.map((post) => {
           return (
             <div className={styles.post} key={post.Slug}>
               <PostDate post={post} />
@@ -68,8 +58,8 @@ const RenderPosts = ({
       </div>
 
       <div className={styles.subContent}>
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <BlogTagLink heading="Categories" tags={tags} />
+        <BlogPostLink heading='Recommended' posts={rankedPosts} />
+        <BlogTagLink heading='Categories' tags={tags} />
       </div>
     </div>
   )

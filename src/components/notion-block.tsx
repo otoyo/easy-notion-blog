@@ -34,9 +34,7 @@ const RichText = ({ richText }) => {
     element = <u>{element}</u>
   }
   if (richText.Annotation.Color && richText.Annotation.Color !== 'default') {
-    element = (
-      <span className={colorClass(richText.Annotation.Color)}>{element}</span>
-    )
+    element = <span className={colorClass(richText.Annotation.Color)}>{element}</span>
   }
   if (richText.Annotation.Code) {
     element = <code>{element}</code>
@@ -108,7 +106,7 @@ const Heading = ({ heading, level = 1 }) => {
   const htag = React.createElement(
     tag,
     { className: colorClass(heading.Color) },
-    heading.RichTexts.map((richText: interfaces.RichText) => <RichText richText={richText} key={id} />)
+    heading.RichTexts.map((richText: interfaces.RichText) => <RichText richText={richText} key={id} />),
   )
 
   return (
@@ -118,10 +116,15 @@ const Heading = ({ heading, level = 1 }) => {
   )
 }
 
-const buildHeadingId = heading => heading.RichTexts.map((richText: interfaces.RichText) => richText.Text.Content).join().trim()
+const buildHeadingId = (heading) =>
+  heading.RichTexts.map((richText: interfaces.RichText) => richText.Text.Content)
+    .join()
+    .trim()
 
 const TableOfContents = ({ block, blocks }) => {
-  const headings = blocks.filter((b: interfaces.Block) => b.Type === 'heading_1' || b.Type === 'heading_2' || b.Type === 'heading_3')
+  const headings = blocks.filter(
+    (b: interfaces.Block) => b.Type === 'heading_1' || b.Type === 'heading_2' || b.Type === 'heading_3',
+  )
   return (
     <div className={styles.tableOfContents}>
       {headings.map((headingBlock: interfaces.Block) => {
@@ -135,7 +138,11 @@ const TableOfContents = ({ block, blocks }) => {
         }
 
         return (
-          <a href={`#${buildHeadingId(heading)}`} className={`${colorClass(block.TableOfContents.Color)} ${styles[indentClass]}`} key={headingBlock.Id}>
+          <a
+            href={`#${buildHeadingId(heading)}`}
+            className={`${colorClass(block.TableOfContents.Color)} ${styles[indentClass]}`}
+            key={headingBlock.Id}
+          >
             <div key={headingBlock.Id}>
               {heading.RichTexts.map((richText: interfaces.RichText) => richText.PlainText).join('')}
             </div>
@@ -150,18 +157,12 @@ const ImageBlock = ({ block }) => (
   <figure className={styles.image}>
     <div>
       <img
-        src={
-          block.Image.External
-            ? block.Image.External.Url
-            : block.Image.File.Url
-        }
-        alt="画像が読み込まれない場合はページを更新してみてください。"
+        src={block.Image.External ? block.Image.External.Url : block.Image.File.Url}
+        alt='画像が読み込まれない場合はページを更新してみてください。'
       />
     </div>
     {block.Image.Caption.length > 0 && block.Image.Caption[0].Text.Content ? (
-      <figcaption className={styles.caption}>
-        {block.Image.Caption[0].Text.Content}
-      </figcaption>
+      <figcaption className={styles.caption}>{block.Image.Caption[0].Text.Content}</figcaption>
     ) : null}
   </figure>
 )
@@ -169,7 +170,9 @@ const ImageBlock = ({ block }) => (
 const Quote = ({ block }) => (
   <blockquote className={colorClass(block.Quote.Color)}>
     {block.Quote.RichTexts.map((richText: interfaces.RichText, i: number) => (
-      <RichText richText={richText} key={`quote-${block.Id}-${i}`} />
+      <p key={`quote-${block.Id}-${i}`}>
+        <RichText richText={richText} />
+      </p>
     ))}
   </blockquote>
 )
@@ -199,10 +202,7 @@ const Table = ({ block }) => (
             <tr key={`${tableRow.Id}-${j}`}>
               {tableRow.Cells.map((cell: interfaces.TableCell, i: number) => {
                 let tag = 'td'
-                if (
-                  (block.Table.HasRowHeader && i === 0) ||
-                  (block.Table.HasColumnHeader && j === 0)
-                ) {
+                if ((block.Table.HasRowHeader && i === 0) || (block.Table.HasColumnHeader && j === 0)) {
                   tag = 'th'
                 }
 
@@ -211,7 +211,7 @@ const Table = ({ block }) => (
                   { key: `${tableRow.Id}-${j}-${i}` },
                   cell.RichTexts.map((richText: interfaces.RichText, k: number) => (
                     <RichText richText={richText} key={`${tableRow.Id}-${j}-${i}-${k}`} />
-                  ))
+                  )),
                 )
               })}
             </tr>
@@ -260,15 +260,9 @@ const BulletedListItems = ({ blocks }) =>
   blocks
     .filter((b: interfaces.Block) => b.Type === 'bulleted_list_item')
     .map((listItem: interfaces.Block) => (
-      <li
-        key={`bulleted-list-item-${listItem.Id}`}
-        className={colorClass(listItem.BulletedListItem.Color)}
-      >
+      <li key={`bulleted-list-item-${listItem.Id}`} className={colorClass(listItem.BulletedListItem.Color)}>
         {listItem.BulletedListItem.RichTexts.map((richText: interfaces.RichText, i: number) => (
-          <RichText
-            richText={richText}
-            key={`bulleted-list-item-${listItem.Id}-${i}`}
-          />
+          <RichText richText={richText} key={`bulleted-list-item-${listItem.Id}-${i}`} />
         ))}
         {listItem.HasChildren ? (
           <ul>
@@ -282,37 +276,22 @@ const NumberedListItems = ({ blocks, level = 1 }) =>
   blocks
     .filter((b: interfaces.Block) => b.Type === 'numbered_list_item')
     .map((listItem: interfaces.Block) => (
-      <li
-        key={`numbered-list-item-${listItem.Id}`}
-        className={colorClass(listItem.NumberedListItem.Color)}
-      >
+      <li key={`numbered-list-item-${listItem.Id}`} className={colorClass(listItem.NumberedListItem.Color)}>
         {listItem.NumberedListItem.RichTexts.map((richText: interfaces.RichText, i: number) => (
-          <RichText
-            richText={richText}
-            key={`numbered-list-item-${listItem.Id}-${i}`}
-          />
+          <RichText richText={richText} key={`numbered-list-item-${listItem.Id}-${i}`} />
         ))}
         {listItem.HasChildren ? (
           level % 3 === 0 ? (
-            <ol type="1">
-              <NumberedListItems
-                blocks={listItem.NumberedListItem.Children}
-                level={level + 1}
-              />
+            <ol type='1'>
+              <NumberedListItems blocks={listItem.NumberedListItem.Children} level={level + 1} />
             </ol>
           ) : level % 3 === 1 ? (
-            <ol type="a">
-              <NumberedListItems
-                blocks={listItem.NumberedListItem.Children}
-                level={level + 1}
-              />
+            <ol type='a'>
+              <NumberedListItems blocks={listItem.NumberedListItem.Children} level={level + 1} />
             </ol>
           ) : (
-            <ol type="i">
-              <NumberedListItems
-                blocks={listItem.NumberedListItem.Children}
-                level={level + 1}
-              />
+            <ol type='i'>
+              <NumberedListItems blocks={listItem.NumberedListItem.Children} level={level + 1} />
             </ol>
           )
         ) : null}
@@ -324,12 +303,9 @@ const ToDoItems = ({ blocks }) =>
     .filter((b: interfaces.Block) => b.Type === 'to_do')
     .map((listItem: interfaces.Block) => (
       <div key={`to-do-item-${listItem.Id}`}>
-        <input type="checkbox" defaultChecked={listItem.ToDo.Checked} />
+        <input type='checkbox' defaultChecked={listItem.ToDo.Checked} />
         {listItem.ToDo.RichTexts.map((richText: interfaces.RichText, i: number) => (
-          <RichText
-            richText={richText}
-            key={`to-do-item-${listItem.Id}-${i}`}
-          />
+          <RichText richText={richText} key={`to-do-item-${listItem.Id}-${i}`} />
         ))}
         {listItem.HasChildren ? (
           <ul>
@@ -382,7 +358,7 @@ const NotionBlock = ({ block, blocks }) => {
   } else if (block.Type === 'bookmark' || block.Type === 'link_preview') {
     return <Bookmark block={block} />
   } else if (block.Type === 'divider') {
-    return <hr className="divider" />
+    return <hr className='divider' />
   } else if (block.Type === 'table') {
     return <Table block={block} />
   } else if (block.Type === 'column_list') {

@@ -61,9 +61,7 @@ export async function getPosts(pageSize = 10): Promise<Post[]> {
 
   const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return res.results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getAllPosts(): Promise<Post[]> {
@@ -99,16 +97,14 @@ export async function getAllPosts(): Promise<Post[]> {
     }
   }
 
-  return results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
-      .filter(post => !!post.Rank)
+      .filter((post) => !!post.Rank)
       .sort((a, b) => {
         if (a.Rank > b.Rank) {
           return -1
@@ -141,15 +137,13 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
 
   const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return res.results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
 export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Date < date).slice(0, pageSize)
+    return allPosts.filter((post) => post.Date < date).slice(0, pageSize)
   }
 
   const params = {
@@ -174,12 +168,10 @@ export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[
 
   const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return res.results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getFirstPost(): Promise<Post|null> {
+export async function getFirstPost(): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts[allPosts.length - 1]
@@ -211,10 +203,10 @@ export async function getFirstPost(): Promise<Post|null> {
   return _buildPost(res.results[0])
 }
 
-export async function getPostBySlug(slug: string): Promise<Post|null> {
+export async function getPostBySlug(slug: string): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.find(post => post.Slug === slug)
+    return allPosts.find((post) => post.Slug === slug)
   }
 
   const res: responses.QueryDatabaseResponse = await client.databases.query({
@@ -252,7 +244,7 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100): Pr
 
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
+    return allPosts.filter((post) => post.Tags.includes(tag)).slice(0, pageSize)
   }
 
   const params = {
@@ -277,20 +269,14 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100): Pr
 
   const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return res.results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getPostsByTagBefore(
-  tag: string,
-  date: string,
-  pageSize = 100
-): Promise<Post[]> {
+export async function getPostsByTagBefore(tag: string, date: string, pageSize = 100): Promise<Post[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
     return allPosts
-      .filter(post => {
+      .filter((post) => {
         return post.Tags.includes(tag) && new Date(post.Date) < new Date(date)
       })
       .slice(0, pageSize)
@@ -324,15 +310,13 @@ export async function getPostsByTagBefore(
 
   const res: responses.QueryDatabaseResponse = await client.databases.query(params)
 
-  return res.results
-    .filter(pageObject => _validPageObject(pageObject))
-    .map(pageObject => _buildPost(pageObject))
+  return res.results.filter((pageObject) => _validPageObject(pageObject)).map((pageObject) => _buildPost(pageObject))
 }
 
-export async function getFirstPostByTag(tag: string): Promise<Post|null> {
+export async function getFirstPostByTag(tag: string): Promise<Post | null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    const sameTagPosts = allPosts.filter(post => post.Tags.includes(tag))
+    const sameTagPosts = allPosts.filter((post) => post.Tags.includes(tag))
     return sameTagPosts[sameTagPosts.length - 1]
   }
 
@@ -379,7 +363,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   while (true) {
     const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = res.results.map(blockObject => _buildBlock(blockObject))
+    const blocks = res.results.map((blockObject) => _buildBlock(blockObject))
 
     allBlocks = allBlocks.concat(blocks)
 
@@ -621,16 +605,16 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
   while (true) {
     const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = res.results.map(blockObject => {
+    const blocks = res.results.map((blockObject) => {
       const tableRow: TableRow = {
         Id: blockObject.id,
         Type: blockObject.type,
         HasChildren: blockObject.has_children,
-        Cells: []
+        Cells: [],
       }
 
       if (blockObject.type === 'table_row') {
-        const cells: TableCell[] = blockObject.table_row.cells.map(cell => {
+        const cells: TableCell[] = blockObject.table_row.cells.map((cell) => {
           const tableCell: TableCell = {
             RichTexts: cell.map(_buildRichText),
           }
@@ -666,18 +650,20 @@ async function _getColumns(blockId: string): Promise<Column[]> {
   while (true) {
     const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
 
-    const blocks = await Promise.all(res.results.map(async blockObject => {
-      const children = await getAllBlocksByBlockId(blockObject.id)
+    const blocks = await Promise.all(
+      res.results.map(async (blockObject) => {
+        const children = await getAllBlocksByBlockId(blockObject.id)
 
-      const column: Column = {
-        Id: blockObject.id,
-        Type: blockObject.type,
-        HasChildren: blockObject.has_children,
-        Children: children,
-      }
+        const column: Column = {
+          Id: blockObject.id,
+          Type: blockObject.type,
+          HasChildren: blockObject.has_children,
+          Children: children,
+        }
 
-      return column
-    }))
+        return column
+      }),
+    )
 
     columns = columns.concat(blocks)
 
@@ -712,15 +698,13 @@ async function _getBlock(blockId: string): Promise<Block> {
 export async function getAllTags(): Promise<string[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return [...new Set(allPosts.flatMap(post => post.Tags))].sort()
+    return [...new Set(allPosts.flatMap((post) => post.Tags))].sort()
   }
 
   const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
     database_id: DATABASE_ID,
   })
-  return res.properties.Tags.multi_select.options
-    .map(option => option.name)
-    .sort()
+  return res.properties.Tags.multi_select.options.map((option) => option.name).sort()
 }
 
 function _buildFilter(conditions = []) {
@@ -743,7 +727,7 @@ function _buildFilter(conditions = []) {
             on_or_before: new Date().toISOString(),
           },
         },
-      ])
+      ]),
     ),
   }
 }
@@ -751,7 +735,7 @@ function _buildFilter(conditions = []) {
 function _uniqueConditions(conditions = []) {
   const properties = []
 
-  return conditions.filter(cond => {
+  return conditions.filter((cond) => {
     if (properties.includes(cond.property)) {
       return false
     }
@@ -762,11 +746,7 @@ function _uniqueConditions(conditions = []) {
 
 function _validPageObject(pageObject: responses.PageObject): boolean {
   const prop = pageObject.properties
-  return (
-    prop.Page.title.length > 0 &&
-    prop.Slug.rich_text.length > 0 &&
-    !!prop.Date.date
-  )
+  return prop.Page.title.length > 0 && prop.Slug.rich_text.length > 0 && !!prop.Date.date
 }
 
 function _buildPost(pageObject: responses.PageObject): Post {
@@ -777,13 +757,12 @@ function _buildPost(pageObject: responses.PageObject): Post {
     Title: prop.Page.title[0].plain_text,
     Slug: prop.Slug.rich_text[0].plain_text,
     Date: prop.Date.date.start,
-    Tags: prop.Tags.multi_select.map(opt => opt.name),
-    Excerpt:
-      prop.Excerpt.rich_text.length > 0
-        ? prop.Excerpt.rich_text[0].plain_text
-        : '',
-    OGImage:
-      prop.OGImage.files.length > 0 ? prop.OGImage.files[0].file.url : null,
+    Tags: prop.Tags.multi_select.map((opt) => opt.name),
+    Excerpt: prop.Excerpt.rich_text.length > 0 ? prop.Excerpt.rich_text[0].plain_text : '',
+    coverPostImage: prop.coverPostImage.files.length > 0 ? prop.coverPostImage.files[0].file.url : null,
+    coverEyeCatch: prop.coverEyeCatch.files.length > 0 ? prop.coverEyeCatch.files[0].file.url : null,
+    coverPostImageSP: prop.coverPostImageSP.files.length > 0 ? prop.coverPostImageSP.files[0].file.url : null,
+    coverCaption: prop.coverCaption.rich_text.length > 0 ? prop.coverCaption.rich_text[0].plain_text : '',
     Rank: prop.Rank.number,
   }
 

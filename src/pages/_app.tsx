@@ -1,14 +1,15 @@
-import '../styles/global.css'
+//import '../styles/global.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import * as gtag from '../lib/gtag'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import GoogleAnalytics from '../components/google-analytics'
+import { AnimatePresence } from 'framer-motion'
 
-import '../styles/syntax-coloring.css'
-import styles from '../styles/shared.module.css'
+import * as gtag from 'lib/gtag'
+import GoogleAnalytics from 'components/google-analytics'
+import { MenuFlagProvider } from 'providers/MenuFlagProvider'
+
+// import '../styles/syntax-coloring.css'
+// import styles from '../styles/shared.module.css'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
@@ -26,14 +27,12 @@ const App = ({ Component, pageProps }) => {
 
   return (
     <>
-      <GoogleAnalytics />
-      <div className={styles.container}>
-        <Header />
-        <div className={styles.content}>
+      <MenuFlagProvider>
+        <GoogleAnalytics />
+        <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
           <Component {...pageProps} />
-        </div>
-        <Footer />
-      </div>
+        </AnimatePresence>
+      </MenuFlagProvider>
     </>
   )
 }

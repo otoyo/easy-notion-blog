@@ -3,47 +3,42 @@ import Link from 'next/link'
 
 import { Post } from '../lib/notion/interfaces'
 import NotionBlocks from './notion-block'
-import {
-  getBeforeLink,
-  getBlogLink,
-  getDateStr,
-  getTagLink,
-  getTagBeforeLink,
-} from '../lib/blog-helpers'
+import { getBeforeLink, getBlogLink, getDateStr, getTagLink, getTagBeforeLink } from '../lib/blog-helpers'
 import styles from '../styles/blog-parts.module.css'
+import DateFormatter from 'components/Date'
 
 export const PostDate = ({ post }) => (
-  <div className={styles.postDate}>
-    {post.Date ? getDateStr(post.Date) : ''}
-  </div>
+  <li className={styles.postDate}>
+    <DateFormatter dateString={post.Date ? getDateStr(post.Date) : ''} />
+  </li>
 )
 
 export const PostTitle = ({ post, enableLink = true }) => {
   const postTitle = post.Title ? post.Title : ''
 
   return (
-    <h3 className={styles.postTitle}>
+    <h1>
       {enableLink ? (
-        <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-          <a>{postTitle}</a>
+        <Link href='/blog/[slug]' as={getBlogLink(post.Slug)} passHref>
+          {postTitle}
         </Link>
       ) : (
         postTitle
       )}
-    </h3>
+    </h1>
   )
 }
 
 export const PostTags = ({ post }) => (
-  <div className={styles.postTags}>
+  <li>
     {post.Tags &&
       post.Tags.length > 0 &&
       post.Tags.map((tag: string) => (
-        <Link href="/blog/tag/[tag]" as={getTagLink(tag)} key={tag} passHref>
-          <a>{tag}</a>
+        <Link href='/blog/tag/[tag]' as={getTagLink(tag)} key={tag} passHref>
+          {tag}
         </Link>
       ))}
-  </div>
+  </li>
 )
 
 export const PostExcerpt = ({ post }) => (
@@ -60,8 +55,8 @@ export const PostBody = ({ blocks }) => (
 
 export const ReadMoreLink = ({ post }) => (
   <div className={styles.readMoreLink}>
-    <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-      <a className={styles.readMore}>Read more</a>
+    <Link href='/blog/[slug]' as={getBlogLink(post.Slug)} className={styles.readMore} passHref>
+      Read more
     </Link>
   </div>
 )
@@ -78,14 +73,10 @@ export const NextPageLink = ({ firstPost, posts, tag = '' }) => {
     <div className={styles.nextPageLink}>
       <Link
         href={tag ? '/blog/tag/[tag]/before/[date]' : '/blog/before/[date]'}
-        as={
-          tag
-            ? getTagBeforeLink(tag, lastPost.Date)
-            : getBeforeLink(lastPost.Date)
-        }
+        as={tag ? getTagBeforeLink(tag, lastPost.Date) : getBeforeLink(lastPost.Date)}
         passHref
       >
-        <a>Next page ＞</a>
+        Next page ＞
       </Link>
     </div>
   )
@@ -98,15 +89,15 @@ export const NoContents = ({ contents }) => {
 }
 
 export const BlogPostLink = ({ heading, posts }) => (
-  <div className={styles.blogPostLink}>
+  <>
     <h3>{heading}</h3>
     <NoContents contents={posts} />
     <PostLinkList posts={posts} />
-  </div>
+  </>
 )
 
 export const BlogTagLink = ({ heading, tags }) => (
-  <div className={styles.blogTagLink}>
+  <div>
     <h3>{heading}</h3>
     <NoContents contents={tags} />
     <TagLinkList tags={tags} />
@@ -121,8 +112,9 @@ export const PostLinkList = ({ posts }) => {
       {posts.map((post: Post) => {
         return (
           <li key={post.Slug}>
-            <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-              <a>{post.Title}</a>
+            <Link href='/blog/[slug]' as={getBlogLink(post.Slug)} passHref>
+              <div className='story-figure' style={{ backgroundImage: `url(${post.coverEyeCatch})` }}></div>
+              <span>{post.Title}</span>
             </Link>
           </li>
         )
@@ -139,8 +131,8 @@ export const TagLinkList = ({ tags }) => {
       {tags.map((tag: string) => {
         return (
           <li key={tag}>
-            <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
-              <a>{tag}</a>
+            <Link href='/blog/tag/[tag]' as={getTagLink(tag)} passHref>
+              {tag}
             </Link>
           </li>
         )
@@ -150,7 +142,5 @@ export const TagLinkList = ({ tags }) => {
 }
 
 export const PostsNotFound = () => (
-  <div className={styles.postsNotFound}>
-    Woops! did not find the posts, redirecting you back to the blog index
-  </div>
+  <div className={styles.postsNotFound}>Woops! did not find the posts, redirecting you back to the blog index</div>
 )
