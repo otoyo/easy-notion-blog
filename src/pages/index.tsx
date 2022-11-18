@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import DocumentHead from 'components/document-head'
-import { NextPageLink, NoContents } from 'components/blog-parts'
+import { NoContents } from 'components/blog-parts'
 import { getPosts, getFirstPost } from 'lib/notion/client'
 
 import config from 'utils/config'
@@ -21,7 +21,7 @@ export async function getStaticProps() {
   }
 }
 
-const RenderPosts = ({ posts = [], firstPost }) => {
+const RenderPosts = ({ posts = [] }) => {
   const postNum = config.setting.postNum
   const newPost = posts[0]
   const pastPost = posts.slice(1, postNum)
