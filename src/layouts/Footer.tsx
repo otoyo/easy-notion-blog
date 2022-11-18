@@ -2,7 +2,6 @@ import Script from 'next/script'
 import styled from '@emotion/styled'
 
 import config from 'utils/config'
-import ExtLink from 'components/ext-link'
 
 const Footer = () => {
   return (

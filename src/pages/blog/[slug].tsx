@@ -99,7 +99,7 @@ const includeExpiredImage = (blocks: Array<Block>): boolean => {
   })
 }
 
-const RenderPost = ({ slug, post, rankedPosts = [], recentPosts = [], sameTagPosts = [], tags = [], fallback }) => {
+const RenderPost = ({ slug, post, sameTagPosts = [], fallback }) => {
   const { data: blocks, error } = useSWR(includeExpiredImage(fallback[slug]) && slug, fetchBlocks, {
     fallbackData: fallback[slug],
   })

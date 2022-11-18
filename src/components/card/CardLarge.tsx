@@ -189,8 +189,6 @@ const CMInformation = styled.div`
   }
 `
 
-const CMTags = styled.div``
-
 const CMPicture = styled.div`
   width: 100%;
   height: 580px;

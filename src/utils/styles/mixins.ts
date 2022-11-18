@@ -1,5 +1,3 @@
-import sizes from 'utils/styles/sizes'
-
 const mixins = {
   transitionOpacity: `
     transition: opacity 0.7s ease-in-out;
