@@ -8,7 +8,7 @@ const DATABASE_ID = process.env.DATABASE_ID
 const NEXT_PUBLIC_URL = process.env.NEXT_PUBLIC_URL
 const NEXT_PUBLIC_GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID
 const BLOG_INDEX_CACHE = path.resolve('.blog_index_data')
-const NUMBER_OF_POSTS_PER_PAGE = 10
+const NUMBER_OF_POSTS_PER_PAGE = 20
 
 module.exports = {
   NOTION_API_SECRET,
