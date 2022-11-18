@@ -38,9 +38,6 @@ const RenderPosts = ({ posts = [], firstPost }) => {
             Archives
           </Link>
         </Button>
-        <footer>
-          <NextPageLink firstPost={firstPost} posts={posts} />
-        </footer>
       </Layout>
     </>
   )

@@ -15,7 +15,6 @@ type Props = {
 }
 
 const Index: NextPage<Props> = ({ posts = [] }) => {
-  console.log(posts)
   return (
     <>
       <Head>
