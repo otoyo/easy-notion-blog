@@ -104,6 +104,8 @@ const RenderPost = ({ slug, post, sameTagPosts = [], fallback }) => {
     fallbackData: fallback[slug],
   })
 
+  const sameTag = sameTagPosts.slice(0, 3)
+
   const controls = useAnimation()
 
   const { ref, inView } = useInView({
@@ -111,15 +113,13 @@ const RenderPost = ({ slug, post, sameTagPosts = [], fallback }) => {
     triggerOnce: true,
   })
 
-  if (error || !blocks) {
-    return <PostsNotFound />
-  }
-
   useEffect(() => {
     controls.start(inView ? 'visible' : 'hidden')
   }, [controls, inView])
 
-  const sameTag = sameTagPosts.slice(0, 3)
+  if (error || !blocks) {
+    return <PostsNotFound />
+  }
 
   return (
     <>
