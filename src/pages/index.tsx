@@ -1,16 +1,6 @@
 import Link from 'next/link'
 import DocumentHead from 'components/document-head'
-import {
-  BlogPostLink,
-  BlogTagLink,
-  NextPageLink,
-  NoContents,
-  PostDate,
-  PostExcerpt,
-  PostTags,
-  PostTitle,
-  ReadMoreLink,
-} from 'components/blog-parts'
+import { NextPageLink, NoContents } from 'components/blog-parts'
 import { getPosts, getFirstPost, getRankedPosts, getAllTags } from 'lib/notion/client'
 
 import config from 'utils/config'

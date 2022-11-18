@@ -2,18 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import {
-  BlogPostLink,
-  BlogTagLink,
-  NextPageLink,
-  NoContents,
-  PostDate,
-  PostExcerpt,
-  PostTags,
-  PostTitle,
-  ReadMoreLink,
-} from 'components/blog-parts'
-import { getPosts, getFirstPost, getRankedPosts, getAllTags } from 'lib/notion/client'
+import { getPosts } from 'lib/notion/client'
 import { Post } from 'lib/notion/interfaces'
 
 import config from 'utils/config'

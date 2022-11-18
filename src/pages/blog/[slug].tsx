@@ -11,18 +11,8 @@ import { NEXT_PUBLIC_URL } from 'lib/notion/server-constants'
 import { Post } from 'lib/notion/interfaces'
 import DocumentHead from 'components/document-head'
 import { Block } from 'lib/notion/interfaces'
-import {
-  BlogPostLink,
-  BlogTagLink,
-  NoContents,
-  PostBody,
-  PostDate,
-  PostTags,
-  PostTitle,
-  PostsNotFound,
-} from 'components/blog-parts'
+import { BlogPostLink, NoContents, PostBody, PostDate, PostTags, PostTitle, PostsNotFound } from 'components/blog-parts'
 import SocialButtons from 'components/social-buttons'
-//import styles from 'styles/blog.module.css'
 import { getBlogLink } from 'lib/blog-helpers'
 import {
   getPosts,
@@ -34,8 +24,6 @@ import {
   getAllBlocksByBlockId,
 } from 'lib/notion/client'
 
-import config from 'utils/config'
-import functions from 'utils/functions'
 import animations from 'utils/animations'
 import mixins from 'utils/styles/mixins'
 import styles from 'utils/styles'

@@ -1,4 +1,3 @@
-//import '../styles/global.css'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
@@ -7,9 +6,6 @@ import { AnimatePresence } from 'framer-motion'
 import * as gtag from 'lib/gtag'
 import GoogleAnalytics from 'components/google-analytics'
 import { MenuFlagProvider } from 'providers/MenuFlagProvider'
-
-// import '../styles/syntax-coloring.css'
-// import styles from '../styles/shared.module.css'
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter()
