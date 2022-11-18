@@ -16,7 +16,7 @@ import { getPosts, getFirstPost, getRankedPosts, getAllTags } from 'lib/notion/c
 import config from 'utils/config'
 import Layout from 'layouts/Layout'
 import CardLarge from 'components/card/CardLarge'
-import StoryPast from 'components/card/StoryPast'
+import CardSmall from 'components/card/CardSmall'
 import { Button } from 'components/base/Button'
 
 export async function getStaticProps() {
@@ -49,7 +49,7 @@ const RenderPosts = ({ posts = [], firstPost, rankedPosts = [], tags = [] }) => 
       <Layout>
         <NoContents contents={posts} />
         {newPost && <CardLarge post={newPost} />}
-        {pastPost.length > 0 ? <StoryPast title='articles' posts={pastPost} /> : ''}
+        {pastPost.length > 0 ? <CardSmall title='articles' posts={pastPost} /> : ''}
         <Button>
           <Link href='archives' passHref scroll={false}>
             Archives

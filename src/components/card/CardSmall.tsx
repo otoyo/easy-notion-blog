@@ -19,7 +19,7 @@ const StoryPast = ({ title, posts }: Props) => {
           <CMArticle key={post.Slug} className='active'>
             <Link as={`/blog/${post.Slug}`} href={`/blog/${post.Slug}`} passHref scroll={false}>
               <div className='story-figure figure' style={{ backgroundImage: `url(${post.coverEyeCatch})` }}></div>
-              <div className='story-e ntrance'>
+              <div className='story-entrance'>
                 <span className='story-category'>{post.Tags}</span>
                 <h1>{post.Title}</h1>
                 <div className='story-information'>
@@ -343,7 +343,7 @@ const CMArticle = styled.article`
     }
 
     &-entrance {
-      padding: 13px;
+      padding: 13px 0;
     }
 
     &-information {
