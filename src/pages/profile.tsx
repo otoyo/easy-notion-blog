@@ -124,17 +124,17 @@ const Profile: NextPage = () => {
                       <h3>Contact</h3>
                       <Socials>
                         <li>
-                          <a href={config.external.github.link} target='_blank'>
+                          <a href={config.external.github.link} target='_blank' rel='noreferrer'>
                             <FontAwesomeIcon icon={config.external.github.icon} />
                           </a>
                         </li>
                         <li>
-                          <a href={config.external.twitter.link} target='_blank'>
+                          <a href={config.external.twitter.link} target='_blank' rel='noreferrer'>
                             <FontAwesomeIcon icon={config.external.twitter.icon} />
                           </a>
                         </li>
                         <li>
-                          <a href={config.external.instagram.link} target='_blank'>
+                          <a href={config.external.instagram.link} target='_blank' rel='noreferrer'>
                             <FontAwesomeIcon icon={config.external.instagram.icon} />
                           </a>
                         </li>

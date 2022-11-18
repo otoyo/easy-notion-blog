@@ -14,7 +14,7 @@ const mixins = {
   transitionLeft: `
     transition: left 0.4s ease-in-out;
   `,
-  fontSize: (size: number, line: number = 24): string => {
+  fontSize: (size, line = 24): string => {
     const rem = size / 10
     const lineSize = line / size
 
