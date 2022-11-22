@@ -29,6 +29,7 @@ yarn-error.log*
 
 .now
 .vercel
+.vscode
 
 tmp/
 public/notion_images/*
