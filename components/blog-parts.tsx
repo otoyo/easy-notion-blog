@@ -24,8 +24,8 @@ export const PostTitle = ({ post, enableLink = true }) => {
   return (
     <h3 className={styles.postTitle}>
       {enableLink ? (
-        <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-          <a>{postTitle}</a>
+        <Link href={getBlogLink(post.Slug)}>
+          {postTitle}
         </Link>
       ) : (
         postTitle
@@ -39,8 +39,8 @@ export const PostTags = ({ post }) => (
     {post.Tags &&
       post.Tags.length > 0 &&
       post.Tags.map((tag: string) => (
-        <Link href="/blog/tag/[tag]" as={getTagLink(tag)} key={tag} passHref>
-          <a>{tag}</a>
+        <Link href={getTagLink(tag)} key={tag}>
+          {tag}
         </Link>
       ))}
   </div>
@@ -60,8 +60,8 @@ export const PostBody = ({ blocks }) => (
 
 export const ReadMoreLink = ({ post }) => (
   <div className={styles.readMoreLink}>
-    <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-      <a className={styles.readMore}>Read more</a>
+    <Link href={getBlogLink(post.Slug)} className={styles.readMore}>
+      Read more
     </Link>
   </div>
 )
@@ -77,15 +77,13 @@ export const NextPageLink = ({ firstPost, posts, tag = '' }) => {
   return (
     <div className={styles.nextPageLink}>
       <Link
-        href={tag ? '/blog/tag/[tag]/before/[date]' : '/blog/before/[date]'}
-        as={
+        href={
           tag
             ? getTagBeforeLink(tag, lastPost.Date)
             : getBeforeLink(lastPost.Date)
         }
-        passHref
       >
-        <a>Next page ＞</a>
+        Next page ＞
       </Link>
     </div>
   )
@@ -121,8 +119,8 @@ export const PostLinkList = ({ posts }) => {
       {posts.map((post: Post) => {
         return (
           <li key={post.Slug}>
-            <Link href="/blog/[slug]" as={getBlogLink(post.Slug)} passHref>
-              <a>{post.Title}</a>
+            <Link href={getBlogLink(post.Slug)}>
+              {post.Title}
             </Link>
           </li>
         )
@@ -139,8 +137,8 @@ export const TagLinkList = ({ tags }) => {
       {tags.map((tag: string) => {
         return (
           <li key={tag}>
-            <Link href="/blog/tag/[tag]" as={getTagLink(tag)} passHref>
-              <a>{tag}</a>
+            <Link href={getTagLink(tag)}>
+              {tag}
             </Link>
           </li>
         )
