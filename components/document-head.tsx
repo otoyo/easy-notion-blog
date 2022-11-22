@@ -8,6 +8,7 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
   return (
     <>
       <title>{title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE}</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <meta
         name="description"
         content={description ? description : NEXT_PUBLIC_SITE_DESCRIPTION}
