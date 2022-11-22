@@ -1,17 +1,12 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-
 import {
   NEXT_PUBLIC_URL,
   NEXT_PUBLIC_SITE_TITLE,
   NEXT_PUBLIC_SITE_DESCRIPTION,
 } from '../lib/notion/server-constants'
 
-const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
-  const { asPath } = useRouter()
-
+const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = '' }) => {
   return (
-    <Head>
+    <>
       <title>{title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE}</title>
       <meta
         name="description"
@@ -20,7 +15,7 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
       {NEXT_PUBLIC_URL ? (
         <meta
           property="og:url"
-          content={new URL(asPath, NEXT_PUBLIC_URL).toString()}
+          content={new URL(path, NEXT_PUBLIC_URL).toString()}
         />
       ) : null}
       <meta property="og:title" content={title ? title : NEXT_PUBLIC_SITE_TITLE} />
@@ -48,10 +43,10 @@ const DocumentHead = ({ title = '', description = '', urlOgImage = '' }) => {
       {NEXT_PUBLIC_URL ? (
         <link
           rel="canonical"
-          href={new URL(asPath, NEXT_PUBLIC_URL).toString()}
+          href={new URL(path, NEXT_PUBLIC_URL).toString()}
         />
       ) : null}
-    </Head>
+    </>
   )
 }
 
