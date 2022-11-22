@@ -1,14 +1,6 @@
-import { render } from '@testing-library/react'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import DocumentHead from '../../components/document-head'
-
-jest.mock('next/router', () => ({
-  useRouter() {
-    return {
-      asPath: '/',
-      pathname: '/',
-    }
-  },
-}))
 
 const mockNextPublicURL = jest.fn()
 jest.mock('../../lib/notion/server-constants', () => ({
@@ -17,13 +9,25 @@ jest.mock('../../lib/notion/server-constants', () => ({
   },
 }))
 
+let container: Element
+
+beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
+})
+
+afterEach(() => {
+  document.body.removeChild(container);
+  container = null;
+})
+
 describe('DocumentHead', () => {
   describe('with NEXT_PUBLIC_URL', () => {
     mockNextPublicURL.mockReturnValue('http://localhost')
 
     it('renders the component', () => {
       expect(() => {
-        render(<DocumentHead />)
+        createRoot(container).render(<DocumentHead />)
       }).not.toThrow()
     })
   })
@@ -33,7 +37,7 @@ describe('DocumentHead', () => {
 
     it('renders the component', () => {
       expect(() => {
-        render(<DocumentHead />)
+        createRoot(container).render(<DocumentHead />)
       }).not.toThrow()
     })
   })
