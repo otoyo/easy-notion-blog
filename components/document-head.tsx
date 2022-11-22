@@ -2,7 +2,7 @@ import {
   NEXT_PUBLIC_URL,
   NEXT_PUBLIC_SITE_TITLE,
   NEXT_PUBLIC_SITE_DESCRIPTION,
-} from '../lib/notion/server-constants'
+} from '../app/server-constants'
 
 const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = '' }) => (
   <>

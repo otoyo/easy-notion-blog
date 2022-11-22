@@ -1,4 +1,4 @@
-import { NOTION_API_SECRET, DATABASE_ID } from './server-constants'
+import { NOTION_API_SECRET, DATABASE_ID } from '../../app/server-constants'
 import * as responses from './responses'
 import {
   Post,

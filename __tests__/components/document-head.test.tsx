@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import DocumentHead from '../../components/document-head'
 
 const mockNextPublicURL = jest.fn()
-jest.mock('../../lib/notion/server-constants', () => ({
+jest.mock('../../app/server-constants', () => ({
   get NEXT_PUBLIC_URL() {
     return mockNextPublicURL()
   },
