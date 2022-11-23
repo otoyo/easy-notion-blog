@@ -5,6 +5,7 @@ import Code from './notion-blocks/code'
 import Embed from './notion-blocks/embed'
 import Bookmark from './notion-blocks/bookmark'
 import Video from './notion-blocks/video'
+import ImageBlock from './notion-blocks/image-block'
 import InlineEquation from './notion-blocks/inline-equation'
 import BlockEquation from './notion-blocks/block-equation'
 
@@ -144,26 +145,6 @@ const TableOfContents = ({ block, blocks }) => {
     </div>
   )
 }
-
-const ImageBlock = ({ block }) => (
-  <figure className={styles.image}>
-    <div>
-      <img
-        src={
-          block.Image.External
-            ? block.Image.External.Url
-            : block.Image.File.Url
-        }
-        alt="画像が読み込まれない場合はページを更新してみてください。"
-      />
-    </div>
-    {block.Image.Caption.length > 0 && block.Image.Caption[0].Text.Content ? (
-      <figcaption className={styles.caption}>
-        {block.Image.Caption[0].Text.Content}
-      </figcaption>
-    ) : null}
-  </figure>
-)
 
 const Quote = ({ block }) => (
   <blockquote className={colorClass(block.Quote.Color)}>
