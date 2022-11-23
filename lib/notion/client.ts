@@ -413,6 +413,14 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   return allBlocks
 }
 
+export async function getBlock(blockId: string): Promise<Block> {
+  const res: responses.RetrieveBlockResponse = await client.blocks.retrieve({
+    block_id: blockId,
+  })
+
+  return _buildBlock(res)
+}
+
 function _buildBlock(blockObject: responses.BlockObject): Block {
   const block: Block = {
     Id: blockObject.id,
@@ -694,19 +702,11 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
   let originalBlock: Block = block
   if (block.SyncedBlock.SyncedFrom && block.SyncedBlock.SyncedFrom.BlockId) {
-    originalBlock = await _getBlock(block.SyncedBlock.SyncedFrom.BlockId)
+    originalBlock = await getBlock(block.SyncedBlock.SyncedFrom.BlockId)
   }
 
   const children = await getAllBlocksByBlockId(originalBlock.Id)
   return children
-}
-
-async function _getBlock(blockId: string): Promise<Block> {
-  const res: responses.RetrieveBlockResponse = await client.blocks.retrieve({
-    block_id: blockId,
-  })
-
-  return _buildBlock(res)
 }
 
 export async function getAllTags(): Promise<string[]> {
