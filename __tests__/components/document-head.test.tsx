@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import DocumentHead from '../../src/components/document-head'
+import DocumentHead from '../../components/document-head'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -11,7 +11,7 @@ jest.mock('next/router', () => ({
 }))
 
 const mockNextPublicURL = jest.fn()
-jest.mock('../../src/lib/notion/server-constants', () => ({
+jest.mock('../../lib/notion/server-constants', () => ({
   get NEXT_PUBLIC_URL() {
     return mockNextPublicURL()
   },

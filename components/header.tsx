@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import { SITE_TITLE } from './document-head'
+import { NEXT_PUBLIC_SITE_TITLE } from '../lib/notion/server-constants'
 import styles from '../styles/header.module.css'
 
 interface NavItem {
@@ -21,7 +21,7 @@ const Header = () => {
     <header className={styles.header}>
       <h1>
         <Link href="/" passHref>
-          <a>{SITE_TITLE}</a>
+          <a>{NEXT_PUBLIC_SITE_TITLE}</a>
         </Link>
       </h1>
 
