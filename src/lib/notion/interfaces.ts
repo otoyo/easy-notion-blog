@@ -9,6 +9,7 @@ export interface Post {
   coverEyeCatch: string
   coverPostImageSP: string
   coverCaption: string
+  OGImage: string
   Rank: number
 }
 

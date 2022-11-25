@@ -123,7 +123,11 @@ const RenderPost = ({ slug, post, sameTagPosts = [], fallback }) => {
 
   return (
     <>
-      <DocumentHead title={post.Title} description={post.Excerpt} urlOgImage={post.OGImage} />
+      <DocumentHead
+        title={post.Title}
+        description={post.Excerpt}
+        urlOgImage={NEXT_PUBLIC_URL && new URL(`/api/og-image/${post.Slug}`, NEXT_PUBLIC_URL).toString()}
+      />
       <SingleWrapper>
         <Layout>
           <Root>

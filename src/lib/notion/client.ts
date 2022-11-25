@@ -763,6 +763,7 @@ function _buildPost(pageObject: responses.PageObject): Post {
     coverEyeCatch: prop.coverEyeCatch.files.length > 0 ? prop.coverEyeCatch.files[0].file.url : null,
     coverPostImageSP: prop.coverPostImageSP.files.length > 0 ? prop.coverPostImageSP.files[0].file.url : null,
     coverCaption: prop.coverCaption.rich_text.length > 0 ? prop.coverCaption.rich_text[0].plain_text : '',
+    OGImage: prop.coverPostImage.files.length > 0 ? prop.coverPostImage.files[0].file.url : null,
     Rank: prop.Rank.number,
   }
 
