@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../app/server-constants'
+import GoogleAnalytics from '../../../../components/google-analytics'
 import {
   BlogPostLink,
   BlogTagLink,
@@ -45,35 +46,38 @@ const BlogTagPage = async ({ params: { tag: encodedTag } }) => {
   ])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <header>
-          <h2>{tag}</h2>
-        </header>
+    <>
+      <GoogleAnalytics pageTitle={`Posts in ${tag}`} />
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <header>
+            <h2>{tag}</h2>
+          </header>
 
-        {posts.map(post => {
-          return (
-            <div className={styles.post} key={post.Slug}>
-              <PostDate post={post} />
-              <PostTags post={post} />
-              <PostTitle post={post} />
-              <PostExcerpt post={post} />
-              <ReadMoreLink post={post} />
-            </div>
-          )
-        })}
+          {posts.map(post => {
+            return (
+              <div className={styles.post} key={post.Slug}>
+                <PostDate post={post} />
+                <PostTags post={post} />
+                <PostTitle post={post} />
+                <PostExcerpt post={post} />
+                <ReadMoreLink post={post} />
+              </div>
+            )
+          })}
 
-        <footer>
-          <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
-        </footer>
+          <footer>
+            <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+          </footer>
+        </div>
+
+        <div className={styles.subContent}>
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+          <BlogPostLink heading="Latest Posts" posts={recentPosts} />
+          <BlogTagLink heading="Categories" tags={tags} />
+        </div>
       </div>
-
-      <div className={styles.subContent}>
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <BlogPostLink heading="Latest Posts" posts={recentPosts} />
-        <BlogTagLink heading="Categories" tags={tags} />
-      </div>
-    </div>
+    </>
   )
 }
 
