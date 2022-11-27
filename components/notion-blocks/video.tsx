@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import { isYouTubeURL, parseYouTubeVideoId } from '../../lib/blog-helpers'
