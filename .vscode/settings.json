@@ -6,5 +6,7 @@
   },
   "files.exclude": {
     "**/.yarn": true
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

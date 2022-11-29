@@ -1,9 +1,9 @@
-jest.mock('../../src/lib/notion/blog-index-cache')
+jest.mock('../../lib/notion/blog-index-cache')
 
 import {
   isYouTubeURL,
   parseYouTubeVideoId,
-} from '../../src/lib/blog-helpers'
+} from '../../lib/blog-helpers'
 
 describe('isYouTubeURL', () => {
   it('returns false with not YouTube URL', async () => {

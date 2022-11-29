@@ -5,128 +5,93 @@ English | [日本語](README.ja.md)
 [![GitHub stars](https://img.shields.io/github/stars/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/stargazers)
 [![GitHub license](https://img.shields.io/github/license/otoyo/easy-notion-blog)](https://github.com/otoyo/easy-notion-blog/blob/master/LICENSE)
 
-![easy-notion-blog-logo-2](https://user-images.githubusercontent.com/1063435/155871688-aeb3a7ea-28cb-4b84-bcde-eafc7a2a859a.png)
+<img src="https://user-images.githubusercontent.com/1063435/201917958-432ebbcb-6960-4106-8fd2-9ddcd7539781.jpg" width="480">
+easy-notion-blog is a starter-kit for Notion Blog.  
+It helps you to start your Notion Blog easily and rapidly.
 
-Easy to start your blog.
+- :rocket: **Quite fast** page loading
+- :pencil: Can write a blog **on your Notion**
+- :hammer_and_wrench: **Can fully customize** the site's appearance
+- :white_check_mark: Using **official Notion APIs**
 
-You can write on your Notion.
+## Screenshots
 
-## Screenshot
+### :camera_flash: Blog side
 
-![Screenshot](https://user-images.githubusercontent.com/1063435/152633191-0bda9095-52ce-4e01-9794-4268c26d0ef4.png)
+<img src="https://user-images.githubusercontent.com/1063435/201293737-63c0d504-d34b-4500-98ab-808f4d2e89f3.png" width="600">
 
-## Demo
+### :camera_flash: Notion side
 
-[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)
-
-## Users' blogs
-
-- [techPeck](https://techpeck.net/)
-- [チャベログ](https://chabelog.com/)
-- [オマツリ](https://omatsuri.vercel.app/)
-- [八朔 Blog](https://hassaku-easy-notion-blog.vercel.app/)
-- [shmn7iii](https://blog.shmn7iii.net/)
-- [nitaking.dev](https://blog-nitaking.vercel.app/) (Contributor)
-- [www.gadge7.net](https://www.gadge7.net/blog)
-- [herohoro ブログ](https://herohoro.com/) (Contributor)
-- [アルパカログ](https://alpacat.com/) (Owner)
-
-## Features
-
-- Very fast!
-- Write on the Notion
-- Using official API
-- Full customization
-
-## Requirements
-
-- [Notion](https://www.notion.so/) account
-- [Vercel](https://vercel.com/) account
-- Git
-
-(For your customization)
-
-- Node.js v14 or higher
-- [Yarn](https://yarnpkg.com/getting-started)
+<img src="https://user-images.githubusercontent.com/1063435/201301619-54cf07da-e638-4751-b56c-7115ed5d4eb0.png" width="600">
 
 ## Quick Start
 
-1. Star this repo 😉
+### Requirements
+
+- [Notion](https://www.notion.so/)
+- [Vercel](https://vercel.com/)
+- Git
+
+### Steps
+
+1. **Star this repo** :wink:
 2. Duplicate [the template](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) into your Notion.
 3. Note the part of URL `https://notion.so/your-account/<HERE>?v=xxxx` as `DATABASE_ID`
     * ex) `158bd90116004cd19aca26ad88cb5c07`
+    * :warning: **CAUTION:** `?v=NOT_THIS_VALUE`. Use ahead strings.
 4. [Create an integration](https://developers.notion.com/docs#step-1-create-an-integration) and note "Internal Integration Token" as `NOTION_API_SECRET`
-5. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) in the previous database
-6. Go to [vercel.com](https://vercel.com/) and log-in with your account
-7. Create new project by importing GitHub repo `otoyo/easy-notion-blog` (Skip team create)
+5. [Share a database with your integration](https://developers.notion.com/docs#step-1-create-an-integration) at the Notion database page
+6. Go to [vercel.com](https://vercel.com/) and log-in
+7. Create new project by importing this repository `otoyo/easy-notion-blog` (Skip creating a team)
 8. In "Configure Project", open "Environment Variables" settings and set `NOTION_API_SECRET` and `DATABASE_ID`
 9. Your Notion Blog will be published after deploy
 
-## Database properties
+## Demo
 
-| Property  | Description                                                            | Example               |
-| --------- | ---------------------------------------------------------------------- | --------------------- |
-| Page      | A blog entry.                                                          |
-| Slug      | Entry ID used as end of URL. Valid URL characters are only allowed.    | my-1st-entry          |
-| Date      | Publishing date                                                        | 2021/12/1             |
-| Tags      | Categorize entories by tags                                            | Diary                 |
-| OGImage   | An image treated as og-image                                           |
-| Excerpt   | Excerpt of the entry                                                   | This is my 1st entry. |
-| Published | Publishing state. Only checked entries are published.                  |
-| Rank      | Recommendation rank. Recommended entries are ordered by rank decendant | 10                    |
+[https://easy-notion-blog-otoyo.vercel.app/blog](https://easy-notion-blog-otoyo.vercel.app/blog)  
+See also users' sites from [wiki](https://github.com/otoyo/easy-notion-blog/wiki/Users%27-blogs-%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%96%E3%83%AD%E3%82%B0).
 
 ## How to customize
 
-Fork this repo from "Fork" button and clone it into your local.
+### Additional requirements
 
-Create `.env.local` file in project root and write your ENV as follows.
+- Node.js v16 or higher
+- [Yarn](https://yarnpkg.com/getting-started)
+
+### Steps
+
+1. Fork this repo from "Fork" button and clone it into your local workspace.
+2. Create `.env.local` file just under the project root and put your environment variables as follows:
 
 ```sh
 NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
 DATABASE_ID=<YOUR_DATABASE_ID>
 ```
 
-Install dependencies and start local server.
+3. Install dependencies and start local server.
 
 ```sh
-# Install dependencies
 yarn install
-
-# Start local server at localhost:3000
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+In the development environment, non-published posts are also displayed to check their appearance.  
+But posts without valid `Slug` won't be displayed.
 
-Entries without `Published` are also displayed for preview in local. But no `Slug` entries are not displayed.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Press `Ctrl+C` in the terminal to stop.
 
-Press `Ctrl+C` to stop local server in the terminal.
+### For more information
 
-## How to deploy to Google Cloud Run
+See [wiki](https://github.com/otoyo/easy-notion-blog/wiki).
 
-See the [wiki](https://github.com/otoyo/easy-notion-blog/wiki/How-to-deploy-easy-notion-blog-to-Google-Cloud-Run).
+## Bug reports & feature requests
 
-## Lint & Test
+Please create an issue. **Both in English and in Japanese are OK.** :wink:
 
-```
-yarn lint
-yarn test
-```
+## :bird: Twitter community
 
-## Optional settings
-
-- favicon
-  - Place `favicon.ico` under `public/` directory
-- Google Analytics 4
-  - Set your tracking ID to "Environment Variables" as `NEXT_PUBLIC_GA_TRACKING_ID`
-- Social Buttons
-  - Set your site URL to "Environment Variables" as `NEXT_PUBLIC_URL`
-
-## Bug report & requests
-
-Please create an issue in English or Japanese.
-
-## Twitter community
+You can get latest information about updates, and you can be supported by other members if you want to know how to customize.
 
 - [easy-notion-blog](https://twitter.com/i/communities/1497431576975908868)
 

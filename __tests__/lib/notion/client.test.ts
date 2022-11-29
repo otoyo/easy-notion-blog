@@ -1,16 +1,16 @@
-jest.mock('../../../src/lib/notion/blog-index-cache')
+jest.mock('../../../lib/notion/blog-index-cache')
 
 import {
   getPosts,
   getAllBlocksByBlockId,
   getAllTags,
-} from '../../../src/lib/notion/client'
+} from '../../../lib/notion/client'
 
 import {
   Post,
   Block,
   Annotation,
-} from '../../../src/lib/notion/interfaces'
+} from '../../../lib/notion/interfaces'
 
 describe('getPosts', () => {
   const expected: Post[] = [
