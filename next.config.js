@@ -28,17 +28,14 @@ if (!DATABASE_ID) {
 }
 
 module.exports = {
-  images: {
-    domains: ['s3.us-west-2.amazonaws.com', 'images.unsplash.com'],
-  },
-
   outputFileTracing: false,
-
   experimental: {
     appDir: true,
   },
-
-  compiler: {
-    emotion: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+  images: {
+    domains: ['s3.us-west-2.amazonaws.com', 'images.unsplash.com'],
   },
 }

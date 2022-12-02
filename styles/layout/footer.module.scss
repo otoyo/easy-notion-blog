@@ -1,0 +1,19 @@
+@use '../common/variable' as var;
+@import 'styles/mixin/mixin';
+
+#root {
+  grid-area: footer;
+  text-align: center;
+
+  p {
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+}
+
+#dmca {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+  background-color: #000000;
+}

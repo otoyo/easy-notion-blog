@@ -1,10 +1,18 @@
 import { notFound } from 'next/navigation'
-import { NUMBER_OF_POSTS_PER_PAGE } from 'app/server-constants'
-
-import { getPostsByTag, getAllTags } from 'lib/notion/client'
-
-import Layout from 'layouts/Layout'
-import CardSmall from 'components/card/CardSmall'
+import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../app/server-constants'
+import GoogleAnalytics from '../../../../components/google-analytics'
+import {
+  BlogPostLink,
+  BlogTagLink,
+  NextPageLink,
+  PostDate,
+  PostExcerpt,
+  PostTags,
+  PostTitle,
+  ReadMoreLink,
+} from '../../../../components/blog-parts'
+import styles from '../../../../styles/blog.module.css'
+import { getPosts, getRankedPosts, getPostsByTag, getFirstPostByTag, getAllTags } from '../../../../lib/notion/client'
 
 export const revalidate = 60
 // TODO: Enable after fixed https://github.com/vercel/next.js/issues/43357
@@ -24,9 +32,45 @@ const BlogTagPage = async ({ params: { tag: encodedTag } }) => {
     notFound()
   }
 
+  const [firstPost, rankedPosts, recentPosts, tags] = await Promise.all([
+    getFirstPostByTag(tag),
+    getRankedPosts(),
+    getPosts(5),
+    getAllTags(),
+  ])
+
   return (
     <>
-      <Layout>{posts.length > 0 ? <CardSmall title={tag} posts={posts} /> : ''}</Layout>
+      <GoogleAnalytics pageTitle={`Posts in ${tag}`} />
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <header>
+            <h2>{tag}</h2>
+          </header>
+
+          {posts.map((post) => {
+            return (
+              <div className={styles.post} key={post.Slug}>
+                <PostDate post={post} />
+                <PostTags post={post} />
+                <PostTitle post={post} />
+                <PostExcerpt post={post} />
+                <ReadMoreLink post={post} />
+              </div>
+            )
+          })}
+
+          <footer>
+            <NextPageLink firstPost={firstPost} posts={posts} tag={tag} />
+          </footer>
+        </div>
+
+        <div className={styles.subContent}>
+          <BlogPostLink heading='Recommended' posts={rankedPosts} />
+          <BlogPostLink heading='Latest Posts' posts={recentPosts} />
+          <BlogTagLink heading='Categories' tags={tags} />
+        </div>
+      </div>
     </>
   )
 }

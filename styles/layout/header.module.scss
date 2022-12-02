@@ -1,0 +1,70 @@
+@use '../common/variable' as var;
+@import 'styles/mixin/mixin';
+
+#root {
+  grid-area: header;
+  position: relative;
+  border-bottom: 1px solid #000;
+  background-color: var.$background;
+  z-index: 1;
+
+  @media (max-width: var.$small) {
+    border-bottom: none;
+  }
+}
+
+#welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 18px 20px 18px;
+
+  @media (max-width: var.$small) {
+    padding: 10px 10px 5px;
+  }
+
+  h1 {
+    position: relative;
+    display: inline-block;
+
+    @include fontSize(12, 12);
+
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+}
+
+#menuLine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 44px;
+  box-sizing: border-box;
+  transition: all 0.4s;
+  cursor: pointer;
+
+  span {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    transition: all 0.4s;
+    box-sizing: border-box;
+    background-color: #000;
+  }
+
+  &.is-open {
+    span {
+      display: none;
+    }
+  }
+
+  &.active {
+    span {
+      -webkit-font-smoothing: antialiased;
+      -webkit-transform: translate3d(-1px, 0, 0) rotate(-45deg);
+      transform: translate3d(-1px, 0, 0) rotate(-45deg);
+    }
+  }
+}
