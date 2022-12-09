@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import Link from 'next/link'
 import { Metrophobic } from '@next/font/google'
 import { motion, useAnimation } from 'framer-motion'
 import { MenuFlagContext } from 'providers/MenuFlagProvider'
@@ -32,16 +33,16 @@ const Menu = () => {
             <div className={menu.section}>
               <h3>pages</h3>
               <ul>
-                {/* <li>
+                <li>
                   <Link href='/profile' passHref>
                     profile
                   </Link>
                 </li>
                 <li>
-                  <Link href='/archives' passHref>
+                  <Link href='/blog' passHref>
                     archives
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </div>
           </div>

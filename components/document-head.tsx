@@ -1,5 +1,8 @@
 'use client'
 
+import { Global as GlobalStyles } from '@emotion/react'
+import { global as globalStyles } from 'utils/styles'
+
 import { NEXT_PUBLIC_URL, NEXT_PUBLIC_SITE_TITLE, NEXT_PUBLIC_SITE_DESCRIPTION } from '../app/server-constants'
 
 const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = '' }) => (
@@ -22,6 +25,7 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
       <meta name='twitter:image' content={new URL('/default.png', NEXT_PUBLIC_URL).toString()} />
     ) : null}
     {NEXT_PUBLIC_URL ? <link rel='canonical' href={new URL(path, NEXT_PUBLIC_URL).toString()} /> : null}
+    <GlobalStyles styles={globalStyles} />
   </>
 )
 

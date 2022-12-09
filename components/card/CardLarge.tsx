@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import styled from '@emotion/styled'
 import { Post } from 'lib/notion/interfaces'

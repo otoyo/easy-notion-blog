@@ -5,11 +5,11 @@ import config from 'utils/config'
 const Footer = () => {
   return (
     <div id={footer.root}>
-      <p>
-        &copy; 2022 {config.info.siteName} <br /> Powered by{' '}
-        <a href='https://github.com/otoyo/easy-notion-blog'>easy-notion-blog</a>
-      </p>
       <div id={footer.dmca}>
+        <p>
+          &copy; 2022 {config.info.siteName} <br /> Powered by{' '}
+          <a href='https://github.com/otoyo/easy-notion-blog'>easy-notion-blog</a>
+        </p>
         <a
           href='//www.dmca.com/Protection/Status.aspx?ID=7a648f21-69b5-4293-8a57-0897e957963c'
           title='DMCA.com Protection Status'
@@ -25,8 +25,6 @@ const Footer = () => {
     </div>
   )
 }
-
-export default Footer
 
 // const Root = styled.footer`
 //   grid-area: footer;
@@ -53,3 +51,5 @@ export default Footer
 //   padding: 8px;
 //   background-color: #000000;
 // `
+
+export default Footer

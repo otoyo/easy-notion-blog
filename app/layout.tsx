@@ -6,49 +6,28 @@ import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { MenuFlagProvider, MenuFlagContext } from 'providers/MenuFlagProvider'
-import Menu from 'components/menu/menu'
 
-import Header from 'components/layout/header'
-import Footer from 'components/layout/footer'
+import Header from 'components/layout/Header'
+import Footer from 'components/layout/Footer'
 
 import 'styles/syntax-coloring.css'
-import 'styles/common/global.scss'
-import layout from 'styles/layout/layout.module.scss'
 
 import styles from 'utils/styles'
 import animations from 'utils/animations'
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const { openMenu, setOpenMenu } = useContext(MenuFlagContext)
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const router = useRouter()
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      if (openMenu) setOpenMenu(!openMenu)
-    }
-    const url = pathname + searchParams.toString()
-    handleRouteChange()
-    // //router.events.on('routeChangeComplete', handleRouteChange)
-    // return () => {
-    //   //router.events.off('routeChangeComplete', handleRouteChange)
-    // }
-  }, [pathname, searchParams])
-
   return (
     <html lang='ja'>
       <body>
         <MenuFlagProvider>
           <Root>
-            <Wrapper className={openMenu ? 'is-open' : ''}>
+            <Wrapper>
               <Header />
               <motion.div initial='hidden' animate='visible' variants={animations.fadeIn}>
-                <Main className={openMenu ? 'blur' : ''}>{children}</Main>
+                <Main>{children}</Main>
               </motion.div>
               <Footer />
             </Wrapper>
-            <Menu />
           </Root>
         </MenuFlagProvider>
       </body>
