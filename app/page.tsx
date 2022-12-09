@@ -12,17 +12,12 @@ import {
 } from 'components/blog-parts'
 import styles from 'styles/blog.module.css'
 import CardSmall from 'components/card/CardSmall'
-import { getPosts, getFirstPost, getRankedPosts, getAllTags } from 'lib/notion/client'
+import { getPosts, getFirstPost } from 'lib/notion/client'
 
 export const revalidate = 60
 
 const RootPage = async () => {
-  const [posts, firstPost, rankedPosts, tags] = await Promise.all([
-    getPosts(NUMBER_OF_POSTS_PER_PAGE),
-    getFirstPost(),
-    getRankedPosts(),
-    getAllTags(),
-  ])
+  const [posts, firstPost] = await Promise.all([getPosts(NUMBER_OF_POSTS_PER_PAGE), getFirstPost()])
 
   return (
     <div className={styles.container}>

@@ -2,6 +2,7 @@
 
 import { useContext, useEffect } from 'react'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
 
 import { MenuFlagProvider, MenuFlagContext } from 'providers/MenuFlagProvider'
@@ -14,6 +15,7 @@ import 'styles/syntax-coloring.css'
 import 'styles/common/global.scss'
 import layout from 'styles/layout/layout.module.scss'
 
+import styles from 'utils/styles'
 import animations from 'utils/animations'
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
@@ -38,16 +40,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang='ja'>
       <body>
         <MenuFlagProvider>
-          <div className={layout.global_wrapper}>
-            <div className={openMenu ? 'is-open' : ''}>
+          <Root>
+            <Wrapper className={openMenu ? 'is-open' : ''}>
               <Header />
               <motion.div initial='hidden' animate='visible' variants={animations.fadeIn}>
-                <main className={openMenu ? 'blur' : ''}>{children}</main>
+                <Main className={openMenu ? 'blur' : ''}>{children}</Main>
               </motion.div>
               <Footer />
-            </div>
+            </Wrapper>
             <Menu />
-          </div>
+          </Root>
         </MenuFlagProvider>
       </body>
     </html>
@@ -56,74 +58,74 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
 export default RootLayout
 
-// const Root = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   position: relative;
-//   width: 100%;
-//   min-height: 100vh;
-//   transform: translateX(0);
-//   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-//   background-color: ${styles.colors.background};
-//   z-index: 2;
-//   will-change: auto;
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  background-color: ${styles.colors.background};
+  z-index: 2;
+  will-change: auto;
 
-//   @media (max-width: ${styles.sizes.breakpoint.small}) {
-//     width: 100%;
-//   }
-// `
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    width: 100%;
+  }
+`
 
-// const Wrapper = styled.div`
-//   display: grid;
-//   grid:
-//     'header' 86px
-//     'main' 1fr
-//     'footer' 82.5px
-//     / 1fr;
-//   gap: 8px;
-//   height: 100vh;
-//   transition: 0.3s ease-in-out;
+const Wrapper = styled.div`
+  display: grid;
+  grid:
+    'header' 86px
+    'main' 1fr
+    'footer' 82.5px
+    / 1fr;
+  gap: 8px;
+  height: 100vh;
+  transition: 0.3s ease-in-out;
 
-//   @media (max-width: ${styles.sizes.breakpoint.small}) {
-//     grid:
-//       'header' 55px
-//       'main' 1fr
-//       'footer' 82.5px
-//       / 1fr;
-//     gap: 5px;
-//   }
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    grid:
+      'header' 55px
+      'main' 1fr
+      'footer' 82.5px
+      / 1fr;
+    gap: 5px;
+  }
 
-//   &.is-open {
-//     overflow: hidden;
-//     filter: blur(3px);
-//     //transform: translateX(-350px);
+  &.is-open {
+    overflow: hidden;
+    filter: blur(3px);
+    //transform: translateX(-350px);
 
-//     @media (max-width: ${styles.sizes.breakpoint.small}) {
-//       transform: translateX(0);
-//     }
-//   }
-// `
+    @media (max-width: ${styles.sizes.breakpoint.small}) {
+      transform: translateX(0);
+    }
+  }
+`
 
-// const Main = styled.main`
-//   grid-area: main;
-//   position: relative;
-//   width: 100%;
-//   max-width: 1200px;
-//   margin: 0 auto;
+const Main = styled.main`
+  grid-area: main;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
-//   @media (max-width: ${styles.sizes.breakpoint.small}) {
-//     max-width: 100%;
-//   }
+  @media (max-width: ${styles.sizes.breakpoint.small}) {
+    max-width: 100%;
+  }
 
-//   &.scale {
-//     .entries {
-//       transition: 1s ease-in-out;
-//       transform: scale(0.9);
-//       filter: blur(4px);
-//     }
+  &.scale {
+    .entries {
+      transition: 1s ease-in-out;
+      transform: scale(0.9);
+      filter: blur(4px);
+    }
 
-//     &:before {
-//       filter: blur(4px);
-//     }
-//   }
-// `
+    &:before {
+      filter: blur(4px);
+    }
+  }
+`

@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { NEXT_PUBLIC_URL } from '../../server-constants'
 import { Post } from '../../../lib/notion/interfaces'
+import GoogleAnalytics from '../../../components/google-analytics'
 import {
   BlogPostLink,
   BlogTagLink,
@@ -24,8 +25,7 @@ import {
 } from '../../../lib/notion/client'
 
 export const revalidate = 30
-// TODO: Enable after fixed https://github.com/vercel/next.js/issues/43357
-// export const dynamicParams = false
+export const dynamicParams = false
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
@@ -57,41 +57,44 @@ const BlogSlugPage = async ({ params: { slug } }) => {
   const otherPostsHavingSameTag = sameTagPosts.filter((p: Post) => p.Slug !== post.Slug)
 
   return (
-    <div className={styles.container}>
-      <div className={styles.mainContent}>
-        <div className={styles.post}>
-          <PostDate post={post} />
-          <PostTags post={post} />
-          <PostTitle post={post} enableLink={false} />
+    <>
+      <GoogleAnalytics pageTitle={post.Title} />
+      <div className={styles.container}>
+        <div className={styles.mainContent}>
+          <div className={styles.post}>
+            <PostDate post={post} />
+            <PostTags post={post} />
+            <PostTitle post={post} enableLink={false} />
 
-          <NoContents contents={blocks} />
-          <PostBody blocks={blocks} />
+            <NoContents contents={blocks} />
+            <PostBody blocks={blocks} />
 
-          <footer>
-            {NEXT_PUBLIC_URL && (
-              <SocialButtons
-                title={post.Title}
-                url={new URL(
-                  getBlogLink(post.Slug),
-                  NEXT_PUBLIC_URL
-                ).toString()}
-                id={post.Slug}
-              />
-            )}
-          </footer>
+            <footer>
+              {NEXT_PUBLIC_URL && (
+                <SocialButtons
+                  title={post.Title}
+                  url={new URL(
+                    getBlogLink(post.Slug),
+                    NEXT_PUBLIC_URL
+                  ).toString()}
+                  id={post.Slug}
+                />
+              )}
+            </footer>
+          </div>
+        </div>
+
+        <div className={styles.subContent}>
+          <BlogPostLink
+            heading="Posts in the same category"
+            posts={otherPostsHavingSameTag}
+          />
+          <BlogPostLink heading="Recommended" posts={rankedPosts} />
+          <BlogPostLink heading="Latest posts" posts={recentPosts} />
+          <BlogTagLink heading="Categories" tags={tags} />
         </div>
       </div>
-
-      <div className={styles.subContent}>
-        <BlogPostLink
-          heading="Posts in the same category"
-          posts={otherPostsHavingSameTag}
-        />
-        <BlogPostLink heading="Recommended" posts={rankedPosts} />
-        <BlogPostLink heading="Latest posts" posts={recentPosts} />
-        <BlogTagLink heading="Categories" tags={tags} />
-      </div>
-    </div>
+    </>
   )
 }
 
