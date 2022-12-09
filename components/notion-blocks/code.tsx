@@ -19,7 +19,6 @@ import Mermaid from './mermaid'
 import { RichText } from '../../lib/notion/interfaces'
 import styles from '../../styles/notion-block.module.css'
 
-
 const Code = ({ block }) => {
   const code = block.Code.RichTexts.map((richText: RichText) => richText.Text.Content).join('')
   const language = block.Code.Language.toLowerCase()
@@ -39,9 +38,7 @@ const Code = ({ block }) => {
         </pre>
       )}
       {block.Code.Caption.length > 0 && block.Code.Caption[0].Text.Content ? (
-        <div className={styles.caption}>
-          {block.Code.Caption[0].Text.Content}
-        </div>
+        <div className={styles.caption}>{block.Code.Caption[0].Text.Content}</div>
       ) : null}
     </div>
   )

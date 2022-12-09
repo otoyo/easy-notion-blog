@@ -2,12 +2,9 @@
 
 import Link from 'next/link'
 import styled from '@emotion/styled'
-
 import { Post } from 'lib/notion/interfaces'
 import DateFormatter from 'components/Date'
-
 import styles from 'utils/styles'
-import card from 'styles/components/card.module.scss'
 
 type Props = {
   posts: Post[]
@@ -20,7 +17,7 @@ const CardSmall = ({ posts, title }: Props) => {
       <h1 className='section-title'>{title}</h1>
       <ArticleWrapper>
         {posts.map((post) => (
-          <Article key={post.Slug} className={card.article}>
+          <Article key={post.Slug}>
             <Link as={`/blog/${post.Slug}`} href={`/blog/${post.Slug}`} passHref scroll={false}>
               <div className='story-figure figure' style={{ backgroundImage: `url(${post.coverEyeCatch})` }}></div>
               <div className='story-entrance'>

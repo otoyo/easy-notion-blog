@@ -127,28 +127,32 @@ const TableOfContents = ({ block, blocks }) => {
   )
   return (
     <div className={styles.tableOfContents}>
-      {headings.map((headingBlock: interfaces.Block) => {
-        const heading = headingBlock.Heading1 || headingBlock.Heading2 || headingBlock.Heading3
+      <ul>
+        {headings.map((headingBlock: interfaces.Block) => {
+          const heading = headingBlock.Heading1 || headingBlock.Heading2 || headingBlock.Heading3
 
-        let indentClass = ''
-        if (headingBlock.Type === 'heading_2') {
-          indentClass = 'indent-1'
-        } else if (headingBlock.Type === 'heading_3') {
-          indentClass = 'indent-2'
-        }
+          let indentClass = ''
+          if (headingBlock.Type === 'heading_2') {
+            indentClass = 'indent-1'
+          } else if (headingBlock.Type === 'heading_3') {
+            indentClass = 'indent-2'
+          }
 
-        return (
-          <a
-            href={`#${buildHeadingId(heading)}`}
-            className={`${colorClass(block.TableOfContents.Color)} ${styles[indentClass]}`}
-            key={headingBlock.Id}
-          >
-            <div key={headingBlock.Id}>
-              {heading.RichTexts.map((richText: interfaces.RichText) => richText.PlainText).join('')}
-            </div>
-          </a>
-        )
-      })}
+          return (
+            <li>
+              <a
+                href={`#${buildHeadingId(heading)}`}
+                className={`${colorClass(block.TableOfContents.Color)} ${styles[indentClass]}`}
+                key={headingBlock.Id}
+              >
+                <div key={headingBlock.Id}>
+                  {heading.RichTexts.map((richText: interfaces.RichText) => richText.PlainText).join('')}
+                </div>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

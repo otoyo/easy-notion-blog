@@ -1,11 +1,7 @@
 'use client'
 
-import { useContext, useEffect } from 'react'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import styled from '@emotion/styled'
 import { motion } from 'framer-motion'
-
-import { MenuFlagProvider, MenuFlagContext } from 'providers/MenuFlagProvider'
 
 import Header from 'components/layout/Header'
 import Footer from 'components/layout/Footer'
@@ -19,17 +15,15 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang='ja'>
       <body>
-        <MenuFlagProvider>
-          <Root>
-            <Wrapper>
-              <Header />
-              <motion.div initial='hidden' animate='visible' variants={animations.fadeIn}>
-                <Main>{children}</Main>
-              </motion.div>
-              <Footer />
-            </Wrapper>
-          </Root>
-        </MenuFlagProvider>
+        <Root>
+          <Wrapper>
+            <Header />
+            <motion.div initial='hidden' animate='visible' variants={animations.fadeIn}>
+              <Main>{children}</Main>
+            </motion.div>
+            <Footer />
+          </Wrapper>
+        </Root>
       </body>
     </html>
   )
@@ -59,7 +53,7 @@ const Wrapper = styled.div`
   grid:
     'header' 86px
     'main' 1fr
-    'footer' 82.5px
+    'footer' 37px
     / 1fr;
   gap: 8px;
   height: 100vh;

@@ -213,9 +213,9 @@ const globalStyles = css`
   }
 
   pre code {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-family: Roboto, sans-serif;
-    line-height: 1.8;
+    line-height: 1.3;
     letter-spacing: 0.15rem;
   }
 

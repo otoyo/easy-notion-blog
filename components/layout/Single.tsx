@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from '@emotion/styled'
@@ -11,7 +12,7 @@ import styles from 'utils/styles'
 import mixins from 'utils/styles/mixins'
 import animations from 'utils/animations'
 
-import { BlogPostLink, NoContents, PostBody, PostDate, PostTags, PostTitle } from 'components/blog-parts'
+import { NoContents, PostBody, PostDate, PostTags, PostTitle } from 'components/blog-parts'
 
 type Props = {
   post: Post
@@ -67,12 +68,6 @@ const Single = ({ post, blocks, sameTagPosts }: Props) => {
             <PostBody blocks={blocks} />
           </Body>
         </motion.div>
-
-        <FooterContents>
-          <SameTagPosts>
-            <BlogPostLink heading='Posts in the same category' posts={sameTag} />
-          </SameTagPosts>
-        </FooterContents>
       </Root>
     </SingleWrapper>
   )
@@ -543,11 +538,12 @@ const Body = styled.div`
 
   a {
     position: relative;
-    padding: 0 4px 1px 4px;
+    padding: 0 0 1px 0;
     text-decoration: underline;
     color: #d57339;
     transition: all 0.2s ease-out;
     z-index: 2;
+    transition: color 0.3s, background-color 0.3s;
 
     &:hover {
       color: #fff;
@@ -602,7 +598,7 @@ const Body = styled.div`
     }
 
     h5 {
-      margin: 20px 0;
+      margin: 50px 0 10px;
       ${mixins.fontSize(22, 34)}
       text-decoration: none;
     }
@@ -629,7 +625,7 @@ const Body = styled.div`
     }
   }
 
-  pre {
+  /* pre {
     margin: 20px auto;
     padding: 10px 10px;
     background-color: #242424;
@@ -642,7 +638,7 @@ const Body = styled.div`
     @media (max-width: ${styles.sizes.breakpoint.small}) {
       overflow: auto;
     }
-  }
+  } */
 
   ul,
   ol {

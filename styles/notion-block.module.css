@@ -22,13 +22,14 @@
   display: block;
   width: 100%;
   padding: 1rem 0;
+  border: 1px solid #d1d1d1;
 }
 .code pre {
   display: block;
   overflow: auto;
   margin: 5px;
-  padding: 0.8rem;
-  background: rgb(247, 246, 243);
+  padding: 2rem;
+  background: rgb(230, 230, 221);
   font-size: 0.9rem;
   line-height: 1.2rem;
   border-radius: var(--radius);
@@ -36,33 +37,42 @@
 .code pre code {
   color: var(--fg);
   padding: 0;
-  background: rgb(247, 246, 243) !important;
+  background: rgb(230, 230, 221) !important;
 }
-.gray, .gray:hover {
+.gray,
+.gray:hover {
   color: rgba(120, 119, 116, 1);
 }
-.brown, .brown:hover {
+.brown,
+.brown:hover {
   color: rgba(159, 107, 83, 1);
 }
-.orange, .orange:hover {
+.orange,
+.orange:hover {
   color: rgba(217, 115, 13, 1);
 }
-.yellow, .yellow:hover {
+.yellow,
+.yellow:hover {
   color: rgba(203, 145, 47, 1);
 }
-.green, .green:hover {
+.green,
+.green:hover {
   color: rgba(68, 131, 97, 1);
 }
-.blue, .blue:hover {
+.blue,
+.blue:hover {
   color: rgba(51, 126, 169, 1);
 }
-.purple, .purple:hover {
+.purple,
+.purple:hover {
   color: rgba(144, 101, 176, 1);
 }
-.pink, .pink:hover {
+.pink,
+.pink:hover {
   color: rgba(193, 76, 138, 1);
 }
-.red, .red:hover {
+.red,
+.red:hover {
   color: rgba(212, 76, 71, 1);
 }
 .grayBackground {
@@ -267,18 +277,57 @@
 
 .tableOfContents {
 }
-.tableOfContents > a {
+.tableOfContents::before {
+  content: 'Table Of Contents';
+  font-size: 1.3rem;
+}
+.tableOfContents:after {
+  content: '⋯';
   display: block;
+  margin: 20px 0;
+  text-align: center;
+  color: #333;
+}
+.tableOfContents ul {
+  margin: 0 0 1rem 1rem;
+  padding: 0;
+  list-style: none !important;
+  counter-reset: number 0;
+}
+.tableOfContents li::before {
+  counter-increment: number;
+  content: counter(number, decimal-leading-zero);
+}
+.tableOfContents li > a {
+  position: relative;
   line-height: 1.8rem;
-  font-size: 0.9rem;
-  text-decoration: underline;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #000;
 }
-.tableOfContents > a:hover {
-  background: rgba(241, 241, 239, 1) !important;
+.tableOfContents li > a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #d57339;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
 }
-.tableOfContents > a.indent-1 {
-  padding-left: 1.5rem;
+.tableOfContents li > a:hover {
+  color: #d57339;
+  background-color: transparent;
+}
+.tableOfContents li > a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.tableOfContents li > a.indent-1 {
+  margin-left: 1.5rem;
 }
 .tableOfContents > a.indent-2 {
-  padding-left: 3.0rem;
+  margin-left: 3rem;
 }
