@@ -12,11 +12,22 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="robots" content="max-image-preview:large" />
+      <meta charSet="utf-8" />
       <title>{title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE}</title>
       {NEXT_PUBLIC_URL ? (
         <link
           rel="canonical"
           href={new URL(path, NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
+      <meta itemProp="name" content={title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE} />
+      {urlOgImage ? (
+        <meta itemProp="image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          itemProp="image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
         />
       ) : null}
       <meta
@@ -59,6 +70,11 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
           content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
         />
       ) : null}
+      <meta name="twitter:title" content={title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE} />
+      <meta
+        name="twitter:description"
+        content={description ? description : NEXT_PUBLIC_SITE_DESCRIPTION}
+      />
     </>
   )
 }
