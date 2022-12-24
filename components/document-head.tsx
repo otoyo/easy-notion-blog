@@ -23,6 +23,7 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
       property="og:description"
       content={description ? description : NEXT_PUBLIC_SITE_DESCRIPTION}
     />
+    <meta property="og:site_name" content={NEXT_PUBLIC_SITE_TITLE} />
     {urlOgImage ? (
       <meta property="og:image" content={urlOgImage} />
     ) : NEXT_PUBLIC_URL ? (
