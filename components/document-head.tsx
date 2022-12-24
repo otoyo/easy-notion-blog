@@ -11,8 +11,14 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
 
   return (
     <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE}</title>
-      <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      {NEXT_PUBLIC_URL ? (
+        <link
+          rel="canonical"
+          href={new URL(path, NEXT_PUBLIC_URL).toString()}
+        />
+      ) : null}
       <meta
         name="description"
         content={description ? description : NEXT_PUBLIC_SITE_DESCRIPTION}
@@ -51,12 +57,6 @@ const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = ''
         <meta
           name="twitter:image"
           content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
-        />
-      ) : null}
-      {NEXT_PUBLIC_URL ? (
-        <link
-          rel="canonical"
-          href={new URL(path, NEXT_PUBLIC_URL).toString()}
         />
       ) : null}
     </>
