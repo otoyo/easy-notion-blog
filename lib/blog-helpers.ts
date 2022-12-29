@@ -16,6 +16,14 @@ export const getTagBeforeLink = (tag: string, date: string) => {
 
 export const getDateStr = (date: string) => {
   const dt = new Date(date)
+
+  // Consider timezone
+  const elements = date.split('T')[1].split(/([+-])/)
+  if (elements.length > 1) {
+    const diff = parseInt(`${elements[1]}${elements[2]}`, 10)
+    dt.setHours(dt.getHours() + diff)
+  }
+
   const y = dt.getFullYear()
   const m = ('00' + (dt.getMonth() + 1)).slice(-2)
   const d = ('00' + dt.getDate()).slice(-2)
