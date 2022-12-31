@@ -34,18 +34,12 @@ import {
 } from './interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
-import * as blogIndexCache from './blog-index-cache'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
 
 export async function getPosts(pageSize = 10): Promise<Post[]> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts.slice(0, pageSize)
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
@@ -69,34 +63,29 @@ export async function getPosts(pageSize = 10): Promise<Post[]> {
 export async function getAllPosts(): Promise<Post[]> {
   let results = []
 
-  if (blogIndexCache.exists()) {
-    results = blogIndexCache.get()
-    console.log('Found cached posts.')
-  } else {
-    const params = {
-      database_id: DATABASE_ID,
-      filter: _buildFilter(),
-      sorts: [
-        {
-          property: 'Date',
-          timestamp: 'created_time',
-          direction: 'descending',
-        },
-      ],
-      page_size: 100,
+  const params = {
+    database_id: DATABASE_ID,
+    filter: _buildFilter(),
+    sorts: [
+      {
+        property: 'Date',
+        timestamp: 'created_time',
+        direction: 'descending',
+      },
+    ],
+    page_size: 100,
+  }
+
+  while (true) {
+    const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+
+    results = results.concat(res.results)
+
+    if (!res.has_more) {
+      break
     }
 
-    while (true) {
-      const res: responses.QueryDatabaseResponse = await client.databases.query(params)
-
-      results = results.concat(res.results)
-
-      if (!res.has_more) {
-        break
-      }
-
-      params['start_cursor'] = res.next_cursor
-    }
+    params['start_cursor'] = res.next_cursor
   }
 
   return results
@@ -105,21 +94,6 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts
-      .filter(post => !!post.Rank)
-      .sort((a, b) => {
-        if (a.Rank > b.Rank) {
-          return -1
-        } else if (a.Rank === b.Rank) {
-          return 0
-        }
-        return 1
-      })
-      .slice(0, pageSize)
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -147,11 +121,6 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
 }
 
 export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[]> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Date < date).slice(0, pageSize)
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -180,11 +149,6 @@ export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[
 }
 
 export async function getFirstPost(): Promise<Post|null> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts[allPosts.length - 1]
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
@@ -212,11 +176,6 @@ export async function getFirstPost(): Promise<Post|null> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post|null> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts.find(post => post.Slug === slug)
-  }
-
   const res: responses.QueryDatabaseResponse = await client.databases.query({
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -250,11 +209,6 @@ export async function getPostBySlug(slug: string): Promise<Post|null> {
 export async function getPostsByTag(tag: string | undefined, pageSize = 100): Promise<Post[]> {
   if (!tag) return []
 
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -287,15 +241,6 @@ export async function getPostsByTagBefore(
   date: string,
   pageSize = 100
 ): Promise<Post[]> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return allPosts
-      .filter(post => {
-        return post.Tags.includes(tag) && new Date(post.Date) < new Date(date)
-      })
-      .slice(0, pageSize)
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -330,12 +275,6 @@ export async function getPostsByTagBefore(
 }
 
 export async function getFirstPostByTag(tag: string): Promise<Post|null> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    const sameTagPosts = allPosts.filter(post => post.Tags.includes(tag))
-    return sameTagPosts[sameTagPosts.length - 1]
-  }
-
   const params = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
@@ -710,11 +649,6 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
 }
 
 export async function getAllTags(): Promise<string[]> {
-  if (blogIndexCache.exists()) {
-    const allPosts = await getAllPosts()
-    return [...new Set(allPosts.flatMap(post => post.Tags))].sort()
-  }
-
   const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
     database_id: DATABASE_ID,
   })
@@ -760,7 +694,7 @@ function _uniqueConditions(conditions = []) {
   })
 }
 
-function _validPageObject(pageObject: responses.PageObject): boolean {
+export function _validPageObject(pageObject: responses.PageObject): boolean {
   const prop = pageObject.properties
   return (
     prop.Page.title.length > 0 &&
@@ -769,7 +703,7 @@ function _validPageObject(pageObject: responses.PageObject): boolean {
   )
 }
 
-function _buildPost(pageObject: responses.PageObject): Post {
+export function _buildPost(pageObject: responses.PageObject): Post {
   const prop = pageObject.properties
 
   const post: Post = {
