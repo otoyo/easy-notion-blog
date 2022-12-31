@@ -6,7 +6,7 @@ import {
   getPostsBefore,
   getFirstPost,
   getAllTags,
-} from '../../../../lib/notion/client'
+} from '../../../../lib/notion/client-through-cache'
 import {
   BlogPostLink,
   BlogTagLink,

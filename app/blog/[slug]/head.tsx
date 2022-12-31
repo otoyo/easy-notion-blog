@@ -1,5 +1,5 @@
 import { NEXT_PUBLIC_URL } from '../../server-constants'
-import { getPostBySlug } from '../../../lib/notion/client'
+import { getPostBySlug } from '../../../lib/notion/client-through-cache'
 import { getBlogLink } from '../../../lib/blog-helpers'
 import DocumentHead from '../../../components/document-head'
 
