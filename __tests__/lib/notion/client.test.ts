@@ -1,3 +1,5 @@
+jest.mock('../../../lib/notion/blog-index-cache')
+
 import {
   getPosts,
   getAllBlocksByBlockId,

@@ -4,19 +4,10 @@ import {
   NEXT_PUBLIC_SITE_DESCRIPTION,
 } from '../app/server-constants'
 
-const DocumentHead = ({ title = '', description = '', path = '' }) => {
+const DocumentHead = ({ title = '', description = '', path = '', urlOgImage = '' }) => {
   const elements = path.split('/')
   const isSlugPath = elements[0] === '' && elements[1] === 'blog' && elements.length === 3
   const isRootPath = path === '' || path === '/'
-
-  let ogImageContent = ''
-  if (!ogImageContent && NEXT_PUBLIC_URL) {
-    if (isSlugPath) {
-      ogImageContent = new URL(`/api/og-image?slug=${elements[2]}`, NEXT_PUBLIC_URL).toString()
-    } else {
-      ogImageContent = new URL('/default.png', NEXT_PUBLIC_URL).toString()
-    }
-  }
 
   return (
     <>
@@ -31,8 +22,13 @@ const DocumentHead = ({ title = '', description = '', path = '' }) => {
         />
       ) : null}
       <meta itemProp="name" content={title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE} />
-      {ogImageContent ? (
-        <meta itemProp="image" content={ogImageContent} />
+      {urlOgImage ? (
+        <meta itemProp="image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          itemProp="image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
+        />
       ) : null}
       <meta
         name="description"
@@ -57,12 +53,22 @@ const DocumentHead = ({ title = '', description = '', path = '' }) => {
             ? 'article'
         : 'blog'
       } />
-      {ogImageContent ? (
-        <meta property="og:image" content={ogImageContent} />
+      {urlOgImage ? (
+        <meta property="og:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          property="og:image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
+        />
       ) : null}
       <meta name="twitter:card" content="summary_large_image" />
-      {ogImageContent ? (
-        <meta name="twitter:image" content={ogImageContent} />
+      {urlOgImage ? (
+        <meta name="twitter:image" content={urlOgImage} />
+      ) : NEXT_PUBLIC_URL ? (
+        <meta
+          name="twitter:image"
+          content={new URL('/default.png', NEXT_PUBLIC_URL).toString()}
+        />
       ) : null}
       <meta name="twitter:title" content={title ? `${title} - ${NEXT_PUBLIC_SITE_TITLE}` : NEXT_PUBLIC_SITE_TITLE} />
       <meta

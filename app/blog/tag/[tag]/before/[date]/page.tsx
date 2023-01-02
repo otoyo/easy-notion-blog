@@ -18,7 +18,7 @@ import {
   getPostsByTagBefore,
   getFirstPostByTag,
   getAllTags,
-} from '../../../../../../lib/notion/client-through-cache'
+} from '../../../../../../lib/notion/client'
 import styles from '../../../../../../styles/blog.module.css'
 
 export const revalidate = 3600

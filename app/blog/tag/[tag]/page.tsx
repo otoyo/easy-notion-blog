@@ -18,7 +18,7 @@ import {
   getPostsByTag,
   getFirstPostByTag,
   getAllTags,
-} from '../../../../lib/notion/client-through-cache'
+} from '../../../../lib/notion/client'
 
 export const revalidate = 60
 
