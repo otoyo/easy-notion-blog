@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server'
 import { ImageResponse } from '@vercel/og'
 import { getPostBySlug } from '../../lib/notion/client'
-import { NEXT_PUBLIC_SITE_TITLE } from '../../app/server-constants'
+import { NEXT_PUBLIC_SITE_TITLE, NOTION_API_SECRET } from '../../app/server-constants'
 
 export const config = { runtime: 'experimental-edge' }
 
@@ -11,6 +11,7 @@ const ApiOgImage = async function(req: NextRequest) {
   if (req.method !== 'GET') {
     throw new Error(`GET method only allowed. method: ${req.method}`)
   }
+  console.log(NOTION_API_SECRET)
 
   const { searchParams } = new URL(req.url);
 
