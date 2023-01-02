@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-explicit-any: 0 */
+
 import { NOTION_API_SECRET, DATABASE_ID } from '../../app/server-constants'
 import * as responses from './responses'
 import {
@@ -33,14 +35,14 @@ import {
   Annotation,
 } from './interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { Client } = require('@notionhq/client')
+import { Client } from '@notionhq/client'
 
 const client = new Client({
   auth: NOTION_API_SECRET,
 })
 
 export async function getPosts(pageSize = 10): Promise<Post[]> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
     sorts: [
@@ -53,7 +55,7 @@ export async function getPosts(pageSize = 10): Promise<Post[]> {
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   return res.results
     .filter(pageObject => _validPageObject(pageObject))
@@ -63,7 +65,7 @@ export async function getPosts(pageSize = 10): Promise<Post[]> {
 export async function getAllPosts(): Promise<Post[]> {
   let results = []
 
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
     sorts: [
@@ -77,7 +79,7 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   while (true) {
-    const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+    const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
     results = results.concat(res.results)
 
@@ -94,7 +96,7 @@ export async function getAllPosts(): Promise<Post[]> {
 }
 
 export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -113,7 +115,7 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   return res.results
     .filter(pageObject => _validPageObject(pageObject))
@@ -121,7 +123,7 @@ export async function getRankedPosts(pageSize = 10): Promise<Post[]> {
 }
 
 export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[]> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -141,7 +143,7 @@ export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   return res.results
     .filter(pageObject => _validPageObject(pageObject))
@@ -149,7 +151,7 @@ export async function getPostsBefore(date: string, pageSize = 10): Promise<Post[
 }
 
 export async function getFirstPost(): Promise<Post|null> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter(),
     sorts: [
@@ -162,7 +164,7 @@ export async function getFirstPost(): Promise<Post|null> {
     page_size: 1,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   if (!res.results.length) {
     return null
@@ -193,7 +195,7 @@ export async function getPostBySlug(slug: string): Promise<Post|null> {
         direction: 'ascending',
       },
     ],
-  })
+  }) as any
 
   if (!res.results.length) {
     return null
@@ -209,7 +211,7 @@ export async function getPostBySlug(slug: string): Promise<Post|null> {
 export async function getPostsByTag(tag: string | undefined, pageSize = 100): Promise<Post[]> {
   if (!tag) return []
 
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -229,7 +231,7 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100): Pr
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   return res.results
     .filter(pageObject => _validPageObject(pageObject))
@@ -241,7 +243,7 @@ export async function getPostsByTagBefore(
   date: string,
   pageSize = 100
 ): Promise<Post[]> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -267,7 +269,7 @@ export async function getPostsByTagBefore(
     page_size: pageSize,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   return res.results
     .filter(pageObject => _validPageObject(pageObject))
@@ -275,7 +277,7 @@ export async function getPostsByTagBefore(
 }
 
 export async function getFirstPostByTag(tag: string): Promise<Post|null> {
-  const params = {
+  const params: any = {
     database_id: DATABASE_ID,
     filter: _buildFilter([
       {
@@ -295,7 +297,7 @@ export async function getFirstPostByTag(tag: string): Promise<Post|null> {
     page_size: 1,
   }
 
-  const res: responses.QueryDatabaseResponse = await client.databases.query(params)
+  const res: responses.QueryDatabaseResponse = await client.databases.query(params) as any
 
   if (!res.results.length) {
     return null
@@ -311,12 +313,12 @@ export async function getFirstPostByTag(tag: string): Promise<Post|null> {
 export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
   let allBlocks: Block[] = []
 
-  const params = {
+  const params: any = {
     block_id: blockId,
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params) as any
 
     const blocks = res.results.map(blockObject => _buildBlock(blockObject))
 
@@ -355,7 +357,7 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
 export async function getBlock(blockId: string): Promise<Block> {
   const res: responses.RetrieveBlockResponse = await client.blocks.retrieve({
     block_id: blockId,
-  })
+  }) as any
 
   return _buildBlock(res)
 }
@@ -566,7 +568,7 @@ async function _getTableRows(blockId: string): Promise<TableRow[]> {
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params) as any
 
     const blocks = res.results.map(blockObject => {
       const tableRow: TableRow = {
@@ -611,7 +613,7 @@ async function _getColumns(blockId: string): Promise<Column[]> {
   }
 
   while (true) {
-    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params)
+    const res: responses.RetrieveBlockChildrenResponse = await client.blocks.children.list(params) as any
 
     const blocks = await Promise.all(res.results.map(async blockObject => {
       const children = await getAllBlocksByBlockId(blockObject.id)
@@ -651,7 +653,7 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
 export async function getAllTags(): Promise<string[]> {
   const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
     database_id: DATABASE_ID,
-  })
+  }) as any
   return res.properties.Tags.multi_select.options
     .map(option => option.name)
     .sort()
