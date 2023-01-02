@@ -22,7 +22,7 @@ import {
   getPostsByTag,
   getAllTags,
   getAllBlocksByBlockId,
-} from '../../../lib/notion/client'
+} from '../../../lib/notion/client-through-cache'
 
 export const revalidate = 30
 
