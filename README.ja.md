@@ -35,6 +35,7 @@ easy-notion-blog を使えばあっという間に Notion Blog を始めるこ�
 ### 手順
 
 1. このリポジトリを**スターします** :wink:
+    * スターしていただけると開発の励みになります
 2. [テンプレート](https://www.notion.so/otoyo/158bd90116004cd19aca26ad88cb5c07?v=a20acca876c2428380e5a2a33db233ed) を自分の Notion へ複製します
 3. 複製したページの URL の `https://notion.so/your-account/<ココ>?v=xxxx` を `DATABASE_ID` としてメモします
     * 例) `158bd90116004cd19aca26ad88cb5c07`
