@@ -46,16 +46,19 @@ export interface Paragraph {
 export interface Heading1 {
   RichTexts: RichText[]
   Color: string
+  IsToggleable: boolean
 }
 
 export interface Heading2 {
   RichTexts: RichText[]
   Color: string
+  IsToggleable: boolean
 }
 
 export interface Heading3 {
   RichTexts: RichText[]
   Color: string
+  IsToggleable: boolean
 }
 
 export interface BulletedListItem {

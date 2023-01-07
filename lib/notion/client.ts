@@ -441,6 +441,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading1: Heading1 = {
         RichTexts: blockObject.heading_1.rich_text.map(_buildRichText),
         Color: blockObject.heading_1.color,
+        IsToggleable: blockObject.heading_1.is_toggleable,
       }
 
       block.Heading1 = heading1
@@ -449,6 +450,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading2: Heading2 = {
         RichTexts: blockObject.heading_2.rich_text.map(_buildRichText),
         Color: blockObject.heading_2.color,
+        IsToggleable: blockObject.heading_2.is_toggleable,
       }
 
       block.Heading2 = heading2
@@ -457,6 +459,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading3: Heading3 = {
         RichTexts: blockObject.heading_3.rich_text.map(_buildRichText),
         Color: blockObject.heading_3.color,
+        IsToggleable: blockObject.heading_3.is_toggleable,
       }
 
       block.Heading3 = heading3
