@@ -205,9 +205,7 @@ const ColumnList = ({ block, headings }) => (
   <div className={styles.columnList}>
     {block.ColumnList.Columns.map((column: interfaces.Column) => (
       <div key={column.Id}>
-        {column.Children.map((b: interfaces.Block) => (
-          <NotionBlock block={b} headings={headings} key={b.Id} />
-        ))}
+        <NotionBlocks blocks={column.Children} headings={headings} />
       </div>
     ))}
   </div>
