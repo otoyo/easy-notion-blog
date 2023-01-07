@@ -22,6 +22,12 @@ const ApiBlock = async function(req: NextApiRequest, res: NextApiResponse) {
   try {
     const block = await getBlock(id)
 
+    if (block.Type !== 'image') {
+      res.statusCode = 404
+      res.end()
+      return
+    }
+
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify(block))
     res.statusCode = 200
