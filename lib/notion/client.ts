@@ -407,6 +407,18 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
       block.SyncedBlock.Children = await _getSyncedBlockChildren(block)
     } else if (block.Type === 'toggle') {
       block.Toggle.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'paragraph' && block.HasChildren) {
+      block.Paragraph.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_1' && block.HasChildren) {
+      block.Heading1.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_2' && block.HasChildren) {
+      block.Heading2.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_3' && block.HasChildren) {
+      block.Heading3.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'quote' && block.HasChildren) {
+      block.Quote.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'callout' && block.HasChildren) {
+      block.Callout.Children = await getAllBlocksByBlockId(block.Id)
     }
   }
 

@@ -47,18 +47,21 @@ export interface Heading1 {
   RichTexts: RichText[]
   Color: string
   IsToggleable: boolean
+  Children?: Block[]
 }
 
 export interface Heading2 {
   RichTexts: RichText[]
   Color: string
   IsToggleable: boolean
+  Children?: Block[]
 }
 
 export interface Heading3 {
   RichTexts: RichText[]
   Color: string
   IsToggleable: boolean
+  Children?: Block[]
 }
 
 export interface BulletedListItem {
@@ -112,6 +115,7 @@ export interface Code {
 export interface Quote {
   RichTexts: RichText[]
   Color: string
+  Children?: Block[]
 }
 
 export interface Equation {
@@ -122,6 +126,7 @@ export interface Callout {
   RichTexts: RichText[]
   Icon: Icon
   Color: string
+  Children?: Block[]
 }
 
 export interface SyncedBlock {
