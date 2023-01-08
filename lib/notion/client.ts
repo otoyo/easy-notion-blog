@@ -407,6 +407,18 @@ export async function getAllBlocksByBlockId(blockId: string): Promise<Block[]> {
       block.SyncedBlock.Children = await _getSyncedBlockChildren(block)
     } else if (block.Type === 'toggle') {
       block.Toggle.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'paragraph' && block.HasChildren) {
+      block.Paragraph.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_1' && block.HasChildren) {
+      block.Heading1.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_2' && block.HasChildren) {
+      block.Heading2.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'heading_3' && block.HasChildren) {
+      block.Heading3.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'quote' && block.HasChildren) {
+      block.Quote.Children = await getAllBlocksByBlockId(block.Id)
+    } else if (block.Type === 'callout' && block.HasChildren) {
+      block.Callout.Children = await getAllBlocksByBlockId(block.Id)
     }
   }
 
@@ -441,6 +453,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading1: Heading1 = {
         RichTexts: blockObject.heading_1.rich_text.map(_buildRichText),
         Color: blockObject.heading_1.color,
+        IsToggleable: blockObject.heading_1.is_toggleable,
       }
 
       block.Heading1 = heading1
@@ -449,6 +462,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading2: Heading2 = {
         RichTexts: blockObject.heading_2.rich_text.map(_buildRichText),
         Color: blockObject.heading_2.color,
+        IsToggleable: blockObject.heading_2.is_toggleable,
       }
 
       block.Heading2 = heading2
@@ -457,6 +471,7 @@ function _buildBlock(blockObject: responses.BlockObject): Block {
       const heading3: Heading3 = {
         RichTexts: blockObject.heading_3.rich_text.map(_buildRichText),
         Color: blockObject.heading_3.color,
+        IsToggleable: blockObject.heading_3.is_toggleable,
       }
 
       block.Heading3 = heading3
