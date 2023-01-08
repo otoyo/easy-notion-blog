@@ -112,6 +112,21 @@ const Heading = ({ heading, level = 1, headings }) => {
     heading.RichTexts.map((richText: interfaces.RichText) => <RichText richText={richText} key={id} />)
   )
 
+  if (heading.IsToggleable) {
+    return (
+      <details className={styles.toggle}>
+        <summary>
+          <a href={`#${id}`} id={id}>
+            {htag}
+          </a>
+        </summary>
+        <div>
+          <NotionBlocks blocks={heading.Children} headings={headings} />
+        </div>
+      </details>
+    )
+  }
+
   return (
     <a href={`#${id}`} id={id}>
       {htag}
