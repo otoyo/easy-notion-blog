@@ -239,6 +239,17 @@
   cursor: pointer;
 }
 
+.toggle > summary > a {
+  display: inline;
+}
+
+.toggle > summary > a > h4,
+.toggle > summary > a > h5,
+.toggle > summary > a > h6
+{
+  display: inline;
+}
+
 .toggle > div {
   margin-left: 1em;
 }
