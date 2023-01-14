@@ -233,6 +233,7 @@
 }
 
 .toggle {
+  padding: 0.4rem;
 }
 
 .toggle > summary {
