@@ -323,13 +323,13 @@ const ToDoItems = ({ blocks, headings }) =>
     .filter((b: interfaces.Block) => b.Type === 'to_do')
     .map((listItem: interfaces.Block) => (
       <div className={colorClass(listItem.ToDo.Color)} key={`to-do-item-${listItem.Id}`}>
-        <input type="checkbox" defaultChecked={listItem.ToDo.Checked} />
-        {listItem.ToDo.RichTexts.map((richText: interfaces.RichText, i: number) => (
-          <RichText
-            richText={richText}
-            key={`to-do-item-${listItem.Id}-${i}`}
-          />
-        ))}
+        <input type="checkbox" defaultChecked={listItem.ToDo.Checked} disabled={true} />
+        {listItem.ToDo.RichTexts.map((richText: interfaces.RichText, i: number) => {
+          if (listItem.ToDo.Checked) {
+            return <s key={`to-do-item-${listItem.Id}-${i}`}><RichText richText={richText} /></s>
+          }
+          return <RichText richText={richText} key={`to-do-item-${listItem.Id}-${i}`} />
+        })}
         {listItem.HasChildren ? (
           <NotionBlocks blocks={listItem.ToDo.Children} headings={headings} />
         ) : null}
