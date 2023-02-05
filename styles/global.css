@@ -82,7 +82,7 @@ h1 {
   font-size: 2rem;
   font-weight: 700;
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   h1 {
     font-size: 1.6rem;
   }
@@ -94,7 +94,7 @@ h2 {
   font-size: 1.2rem;
   font-weight: 700;
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   h2 {
     font-size: 1.15rem;
   }
@@ -106,20 +106,21 @@ h3 {
   font-size: 1.2rem;
   font-weight: 700;
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   h3 {
     font-size: 1.15rem;
   }
 }
 
-ol {
+p {
   color: #222;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.8rem;
 }
-p,
-ul {
+ul, ol {
+  margin: 0;
+  padding-inline-start: 1.5rem;
   color: #222;
   font-weight: 400;
   font-size: 1rem;

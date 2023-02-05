@@ -2,9 +2,9 @@
 }
 
 .caption {
+  margin-top: 0.4rem;
   font-size: 0.9rem;
   color: var(--accents-3);
-  text-align: center;
 }
 
 .image {
@@ -15,19 +15,17 @@
 }
 
 .equation {
-  overflow-x: scroll;
+  text-align: center;
 }
 
 .code {
   display: block;
   width: 100%;
-  padding: 1rem 0;
 }
 .code pre {
   display: block;
   overflow: auto;
-  margin: 5px;
-  padding: 0.8rem;
+  padding: 2rem;
   background: rgb(247, 246, 243);
   font-size: 0.9rem;
   line-height: 1.2rem;
@@ -105,7 +103,6 @@
   border-style: solid;
   border-color: transparent;
   background: rgba(235, 236, 237, 0.6);
-  white-space: pre-wrap;
 }
 .callout div {
   margin: 0;
@@ -152,6 +149,9 @@
 .toDo > div {
 }
 .toDo > div > input {
+}
+.toDo > div > s {
+  color: var(--accents-3);
 }
 
 .bookmark {
