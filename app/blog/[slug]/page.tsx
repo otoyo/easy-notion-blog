@@ -50,7 +50,7 @@ const BlogSlugPage = async ({ params: { slug } }) => {
     getRankedPosts(),
     getPosts(5),
     getAllTags(),
-    getPostsByTag(post.Tags[0], 6),
+    getPostsByTag(post.Tags[0]?.name, 6),
   ])
 
   const otherPostsHavingSameTag = sameTagPosts.filter((p: Post) => p.Slug !== post.Slug)
