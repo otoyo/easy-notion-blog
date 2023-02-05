@@ -14,7 +14,12 @@ import styles from '../styles/notion-block.module.css'
 const RichText = ({ richText }) => {
   let element
   if (richText.Text) {
-    element = richText.Text.Content
+    element = richText.Text.Content.split('\n').reduce((acc: string, content: string, i: number) => {
+      if (i === 0) {
+        return content
+      }
+      return <React.Fragment key={`${content}-${i}`}>{acc}<br />{content}</React.Fragment>
+    }, '')
   } else if (richText.Equation) {
     element = <InlineEquation equation={richText.Equation} />
   } else {
