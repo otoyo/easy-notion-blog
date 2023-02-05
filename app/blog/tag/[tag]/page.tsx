@@ -53,7 +53,7 @@ const BlogTagPage = async ({ params: { tag: encodedTag } }) => {
       <div className={styles.container}>
         <div className={styles.mainContent}>
           <header>
-            <h2><span className={`tag ${colorClass(currentTag.color)}Background`}>{tag}</span></h2>
+            <h2><span className={`tag ${colorClass(currentTag.color)}`}>{tag}</span></h2>
           </header>
 
           {posts.map(post => {

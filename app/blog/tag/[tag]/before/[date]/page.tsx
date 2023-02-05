@@ -49,7 +49,7 @@ const BlogTagBeforeDatePage = async ({ params: { tag: encodedTag, date: encodedD
       <div className={styles.container}>
         <div className={styles.mainContent}>
           <header>
-            <h2><span className={`tag ${currentTag && colorClass(currentTag.color)}Background`}>{tag}</span> before {date.split('T')[0]}</h2>
+            <h2><span className={`tag ${currentTag && colorClass(currentTag.color)}`}>{tag}</span> before {date.split('T')[0]}</h2>
           </header>
 
           <NoContents contents={posts} />
