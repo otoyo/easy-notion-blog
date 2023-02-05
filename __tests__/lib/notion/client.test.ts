@@ -19,7 +19,7 @@ describe('getPosts', () => {
       Title: "あのイーハトーヴォのすきとおった風",
       Slug: "ihatov",
       Date: "2021-11-06",
-      Tags: ["Diary"],
+      Tags: [{name: "Diary", id: "ed0090ef-628c-4cfd-a8ea-1a5326855f8a", color: "default"}],
       Excerpt: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
       OGImage: null,
       Rank: 3,
@@ -113,6 +113,7 @@ describe('getAllBlocksByBlockId', () => {
           }
         ],
         Color: 'default',
+        IsToggleable: false,
       },
     }
 
@@ -134,6 +135,7 @@ describe('getAllBlocksByBlockId', () => {
           }
         ],
         Color: 'default',
+        IsToggleable: false,
       },
     }
 
@@ -155,6 +157,7 @@ describe('getAllBlocksByBlockId', () => {
           }
         ],
         Color: 'default',
+        IsToggleable: false,
       },
     }
 
@@ -678,6 +681,6 @@ describe('getAllTags', () => {
 
   it('resolved 1 tag', async () => {
     const tags = await getAllTags()
-    expect(tags).toEqual(expect.arrayContaining(['Diary']))
+    expect(tags.map(t => t.name)).toEqual(expect.arrayContaining(['Diary']))
   })
 })
