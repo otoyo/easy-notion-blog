@@ -716,8 +716,13 @@ async function _getColumns(blockId: string): Promise<Column[]> {
 
 async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
   let originalBlock: Block = block
-  if (block.SyncedBlock.SyncedFrom && block.SyncedBlock.SyncedFrom.BlockId) {
-    originalBlock = await getBlock(block.SyncedBlock.SyncedFrom.BlockId)
+  if (block.SyncedBlock && block.SyncedBlock.SyncedFrom && block.SyncedBlock.SyncedFrom.BlockId) {
+    try {
+      originalBlock = await getBlock(block.SyncedBlock.SyncedFrom.BlockId)
+    } catch (err) {
+      console.log(`Could not retrieve the original synced_block. error: ${err}`)
+      return []
+    }
   }
 
   const children = await getAllBlocksByBlockId(originalBlock.Id)
