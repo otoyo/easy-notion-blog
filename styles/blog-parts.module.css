@@ -89,6 +89,7 @@
   list-style-type: none;
   padding: 0;
   margin-top: 0.3rem;
+  margin-block-end: 1rem;
 }
 .blogPostLink ul li {
   position: relative;
@@ -119,6 +120,7 @@
   list-style-type: none;
   padding: 0;
   margin-top: 0.3rem;
+  margin-block-end: 1rem;
 }
 .blogTagLink ul li {
   position: relative;
