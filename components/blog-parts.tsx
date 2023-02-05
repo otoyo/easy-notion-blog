@@ -43,7 +43,7 @@ export const PostTags = ({ post }) => (
     {post.Tags &&
       post.Tags.length > 0 &&
       post.Tags.map((tag: SelectProperty) => (
-        <Link href={getTagLink(tag.name)} className={`${colorClass(tag.color)}Background`} key={tag.name}>
+        <Link href={getTagLink(tag.name)} className={`tag ${colorClass(tag.color)}`} key={tag.name}>
           {tag.name}
         </Link>
       ))}
@@ -141,7 +141,7 @@ export const TagLinkList = ({ tags }) => {
       {tags.map((tag: SelectProperty) => {
         return (
           <li key={tag.name}>
-            <Link href={getTagLink(tag.name)} className={`${colorClass(tag.color)}Background`}>
+            <Link href={getTagLink(tag.name)} className={`tag ${colorClass(tag.color)}`}>
               {tag.name}
             </Link>
           </li>
