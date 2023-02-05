@@ -31,6 +31,7 @@ import {
   RichText,
   Text,
   Annotation,
+  SelectProperty,
 } from './interfaces'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { Client } = require('@notionhq/client')
@@ -247,12 +248,12 @@ export async function getPostBySlug(slug: string): Promise<Post|null> {
   return _buildPost(res.results[0])
 }
 
-export async function getPostsByTag(tag: string | undefined, pageSize = 100): Promise<Post[]> {
-  if (!tag) return []
+export async function getPostsByTag(tagName: string | undefined, pageSize = 100): Promise<Post[]> {
+  if (!tagName) return []
 
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return allPosts.filter(post => post.Tags.includes(tag)).slice(0, pageSize)
+    return allPosts.filter(post => post.Tags.map(t => t.name).includes(tagName)).slice(0, pageSize)
   }
 
   const params = {
@@ -261,7 +262,7 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100): Pr
       {
         property: 'Tags',
         multi_select: {
-          contains: tag,
+          contains: tagName,
         },
       },
     ]),
@@ -283,7 +284,7 @@ export async function getPostsByTag(tag: string | undefined, pageSize = 100): Pr
 }
 
 export async function getPostsByTagBefore(
-  tag: string,
+  tagName: string,
   date: string,
   pageSize = 100
 ): Promise<Post[]> {
@@ -291,7 +292,7 @@ export async function getPostsByTagBefore(
     const allPosts = await getAllPosts()
     return allPosts
       .filter(post => {
-        return post.Tags.includes(tag) && new Date(post.Date) < new Date(date)
+        return post.Tags.map(t => t.name).includes(tagName) && new Date(post.Date) < new Date(date)
       })
       .slice(0, pageSize)
   }
@@ -302,7 +303,7 @@ export async function getPostsByTagBefore(
       {
         property: 'Tags',
         multi_select: {
-          contains: tag,
+          contains: tagName,
         },
       },
       {
@@ -329,10 +330,10 @@ export async function getPostsByTagBefore(
     .map(pageObject => _buildPost(pageObject))
 }
 
-export async function getFirstPostByTag(tag: string): Promise<Post|null> {
+export async function getFirstPostByTag(tagName: string): Promise<Post|null> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    const sameTagPosts = allPosts.filter(post => post.Tags.includes(tag))
+    const sameTagPosts = allPosts.filter(post => post.Tags.map(t => t.name).includes(tagName))
     return sameTagPosts[sameTagPosts.length - 1]
   }
 
@@ -342,7 +343,7 @@ export async function getFirstPostByTag(tag: string): Promise<Post|null> {
       {
         property: 'Tags',
         multi_select: {
-          contains: tag,
+          contains: tagName,
         },
       },
     ]),
@@ -729,18 +730,20 @@ async function _getSyncedBlockChildren(block: Block): Promise<Block[]> {
   return children
 }
 
-export async function getAllTags(): Promise<string[]> {
+export async function getAllTags(): Promise<SelectProperty[]> {
   if (blogIndexCache.exists()) {
     const allPosts = await getAllPosts()
-    return [...new Set(allPosts.flatMap(post => post.Tags))].sort()
+    return [...new Set(allPosts.flatMap(post => post.Tags))].sort((a: SelectProperty, b: SelectProperty) => a.name.localeCompare(b.name))
   }
 
   const res: responses.RetrieveDatabaseResponse = await client.databases.retrieve({
     database_id: DATABASE_ID,
   })
-  return res.properties.Tags.multi_select.options
-    .map(option => option.name)
-    .sort()
+
+  return res.properties.Tags.multi_select.options.reduce((acc: SelectProperty[], tag: SelectProperty) => {
+    acc.push(tag)
+    return acc
+  }, [] as SelectProperty[]).sort((a: SelectProperty, b: SelectProperty) => a.name.localeCompare(b.name))
 }
 
 function _buildFilter(conditions = []) {
@@ -797,7 +800,7 @@ function _buildPost(pageObject: responses.PageObject): Post {
     Title: prop.Page.title[0].plain_text,
     Slug: prop.Slug.rich_text[0].plain_text,
     Date: prop.Date.date.start,
-    Tags: prop.Tags.multi_select.map(opt => opt.name),
+    Tags: prop.Tags.multi_select ? prop.Tags.multi_select : [],
     Excerpt:
       prop.Excerpt.rich_text.length > 0
         ? prop.Excerpt.rich_text[0].plain_text

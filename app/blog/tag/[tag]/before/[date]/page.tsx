@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { NUMBER_OF_POSTS_PER_PAGE } from '../../../../../../app/server-constants'
 import GoogleAnalytics from '../../../../../../components/google-analytics'
+import { colorClass } from '../../../../../../components/notion-block'
 import {
   BlogPostLink,
   BlogTagLink,
@@ -20,6 +21,7 @@ import {
   getAllTags,
 } from '../../../../../../lib/notion/client'
 import styles from '../../../../../../styles/blog.module.css'
+import '../../../../../../styles/notion-color.css'
 
 export const revalidate = 3600
 
@@ -39,13 +41,15 @@ const BlogTagBeforeDatePage = async ({ params: { tag: encodedTag, date: encodedD
     getAllTags(),
   ])
 
+  const currentTag = posts[0]?.Tags.find(t => t.name === tag)
+
   return (
     <>
       <GoogleAnalytics pageTitle={`Posts in ${tag} before ${date.split('T')[0]}`} />
       <div className={styles.container}>
         <div className={styles.mainContent}>
           <header>
-            <h2>{tag} before {date.split('T')[0]}</h2>
+            <h2><span className={`tag ${currentTag && colorClass(currentTag.color)}Background`}>{tag}</span> before {date.split('T')[0]}</h2>
           </header>
 
           <NoContents contents={posts} />

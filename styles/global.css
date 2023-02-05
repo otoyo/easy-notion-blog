@@ -91,13 +91,19 @@ h1 {
 h2 {
   margin: 0;
   color: var(--fg);
+  line-height: 1.3;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: normal;
 }
 @media (max-width: 640px) {
   h2 {
     font-size: 1.15rem;
   }
+}
+h2 > span.tag {
+  border-radius: 4px;
+  padding: 3px 9px;
+  background: rgba(227, 226, 224, 0.5);
 }
 
 h3 {
