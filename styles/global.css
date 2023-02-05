@@ -112,14 +112,15 @@ h3 {
   }
 }
 
-ol {
+p {
   color: #222;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.8rem;
 }
-p,
-ul {
+ul, ol {
+  margin: 0;
+  padding-inline-start: 1.5rem;
   color: #222;
   font-weight: 400;
   font-size: 1rem;
