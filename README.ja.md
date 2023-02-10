@@ -1,4 +1,4 @@
-[English](README.md) | 日本語
+[English](README.md) | 日本語 | [한국어](README.kr.md)
 
 # easy-notion-blog
 
