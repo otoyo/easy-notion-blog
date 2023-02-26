@@ -1,5 +1,9 @@
+import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import { NEXT_PUBLIC_URL } from '../../server-constants'
+import {
+  NEXT_PUBLIC_URL,
+  NEXT_PUBLIC_SITE_TITLE,
+} from '../../server-constants'
 import { Post } from '../../../lib/notion/interfaces'
 import GoogleAnalytics from '../../../components/google-analytics'
 import {
@@ -25,6 +29,38 @@ import {
 } from '../../../lib/notion/client'
 
 export const revalidate = 30
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const post = await getPostBySlug(params.slug)
+  const title = `${post?.Title} - ${NEXT_PUBLIC_SITE_TITLE}`
+  const description = post?.Excerpt
+  const url = NEXT_PUBLIC_URL ? new URL(getBlogLink(post?.Slug || ''), NEXT_PUBLIC_URL) : undefined
+  const imageURL = new URL(`/api/og-image?slug=${post?.Slug}`, NEXT_PUBLIC_URL)
+
+  const metadata: Metadata = {
+    title: title,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      url: url,
+      siteName: title,
+      type: 'website',
+      images: [{url: imageURL}],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [{url: imageURL}],
+    },
+    alternates: {
+      canonical: url,
+    },
+  }
+
+  return metadata
+}
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
