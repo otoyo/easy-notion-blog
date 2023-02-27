@@ -14,6 +14,8 @@ easy-notion-blog는 노션 블로그의 스타트 키트입니다. Notion 블로
 - :hammer_and_wrench: 사이트의 레이아웃을 **사용자 정의할 수 있습니다**
 - :white_check_mark: **Notion 공식 API를** 사용합니다
 
+[astro-notion-blog](https://github.com/otoyo/astro-notion-blog) 는 잘 개발되고 있으니 참고 부탁드립니다.
+
 ## 스크린샷
 
 ### :camera_flash: 블로그

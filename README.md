@@ -14,6 +14,8 @@ It helps you to start your Notion Blog easily and rapidly.
 - :hammer_and_wrench: **Can fully customize** the site's appearance
 - :white_check_mark: Using **official Notion APIs**
 
+Please consider [astro-notion-blog](https://github.com/otoyo/astro-notion-blog) as it is being developed well.
+
 ## Screenshots
 
 ### :camera_flash: Blog side
