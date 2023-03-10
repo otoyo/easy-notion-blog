@@ -60,15 +60,20 @@ See also users' sites from [wiki](https://github.com/otoyo/easy-notion-blog/wiki
 
 - Node.js v16 or higher
 - [Yarn](https://yarnpkg.com/getting-started)
+- [direnv](https://github.com/direnv/direnv)
 
 ### Steps
 
 1. Fork this repo from "Fork" button and clone it into your local workspace.
-2. Create `.env.local` file just under the project root and put your environment variables as follows:
+2. Set the following environment variables with direnv in the project root.
 
 ```sh
-NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
-DATABASE_ID=<YOUR_DATABASE_ID>
+direnv edit .
+```
+
+```sh
+export NOTION_API_SECRET=<YOUR_NOTION_API_SECRET>
+export DATABASE_ID=<YOUR_DATABASE_ID>
 ```
 
 3. Install dependencies and start local server.
